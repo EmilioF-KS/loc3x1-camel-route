@@ -1,0 +1,26 @@
+logging:
+  level:
+    org.apache.camel: DEBUG
+
+camel:
+  springboot:
+    yaml-routes:
+      enabled: true
+      locations: classpath:routes/*.yaml
+  component:
+    servlet:
+      mapping:
+        context-path: /api/*
+
+loc3x1m.host:
+  localhost
+loc3x1m.port:
+  8080
+crp11x1.host:
+  localhost
+crp11x1.port:
+  8081
+crp10x1.host:
+  localhost
+crp10x1.port:
+  8082

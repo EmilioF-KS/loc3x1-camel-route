@@ -1,0 +1,90 @@
+- route:
+    id: getLocationListRoute
+    from:
+      uri: 'direct:locationProcess'
+      steps:
+        - log: Start GetLocationList Process
+        - setHeader:
+            name: valid
+            method:
+              ref: validationService
+              method: validate
+        - choice:
+            when:
+              - simple: '${header.valid} == true'
+                steps:
+                  - log: Request is valid
+                  - choice:
+                      when:
+                        - expression:
+                            method:
+                              ref: enrichmentService
+                              method: needsStateEnrichment
+                          steps:
+                            - to: 'bean:enrichmentService?method=enrichState'
+                            - log:
+                                message: 'SOAP Response: ${body}'
+                        - expression:
+                            method:
+                              ref: enrichmentService
+                              method: needsCountryEnrichment
+                          steps:
+                            - to: 'bean:enrichmentService?method=enrichCountry'
+                  - to: 'bean:mappingService?method=transform'
+                  - to: 'bean:fireDistrictService?method=checkAndWarn'
+            otherwise:
+              steps:
+                - log: Request is invalid
+                - to: 'direct:createSimpleFault'
+        - log: End GetLocationList Process
+- route:
+    id: getLocationWithTaxingJurisdictionsRoute
+    from:
+      uri: 'direct:locationWithTaxingJurisdictionsProcess'
+      steps:
+        - log: Start GetLocationWithTaxingJurisdictions Process
+        - setHeader:
+            name: valid
+            method:
+              ref: validationService
+              method: validateWithTaxingJurisdictions
+        - choice:
+            when:
+              - simple: '${header.valid} == true'
+                steps:
+                  - log: Request is valid
+                  - choice:
+                      when:
+                        - expression:
+                            method:
+                              ref: enrichmentService
+                              method: needsStateEnrichment
+                          steps:
+                            - to: 'bean:enrichmentService?method=enrichState'
+                            - log:
+                                message: 'SOAP Response: ${body}'
+                        - expression:
+                            method:
+                              ref: enrichmentService
+                              method: needsCountryEnrichment
+                          steps:
+                            - to: 'bean:enrichmentService?method=enrichCountry'
+                  - to: 'bean:mappingService?method=transform'
+                  - to: 'bean:fireDistrictService?method=checkAndWarn'
+            otherwise:
+              steps:
+                - log: Request is invalid
+                - to: 'direct:createSimpleFault'
+        - log: End GetLocationWithTaxingJurisdictions Process
+- route:
+    id: createSimpleFault
+    from:
+      uri: 'direct:createSimpleFault'
+      steps:
+        - setBody:
+            method:
+              ref: simpleFaultService
+              method: createFault
+        - setHeader:
+            name: Content-Type
+            constant: application/json
