@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/file"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/languagex1">
+	<xsd:import schemaLocation="LanguageX1.xsd"
+		namespace="http://ei/core/languagex1">
+	</xsd:import>
+	<xsd:complexType name="File">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Language"
+				type="bons0:Language">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the file.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains an identifier for a file.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="URL" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a Uniform Resource Location, which is a simple and extensible means for locating a resource.
+A URL consists of a schema: &lt;scheme&gt;:&lt;scheme-specific-part&gt;.  The list of valid schemes is registered with IANA (Internet Assigned Numbers Authority: http://www.iana.org http://www.iana.org)
+Some valid schemes include ftp, file, and http. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileString"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the content of the file stored in a string data type.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileBytes"
+				type="xsd:base64Binary"><xsd:annotation><xsd:documentation>This element contains the content of the file stored in a base64Binary data type.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileXML">
+				<xsd:annotation><xsd:documentation>This contains any XML document.</xsd:documentation></xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##other"
+							processContents="lax" minOccurs="0" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MIMETypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a system assigned standard MIME type for this document type (ie., Application/msword).  
+This is an internet standard that extends the format of email.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EncodingTypeCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies how the data is encoded to allow it to pass through mail transports having data or character set limitations. 
+The list of valid conversion values is registered with IANA (Internet Assigned Numbers Authority: http://www.iana.org http://www.iana.org).</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileSize"
+				type="xsd:long"><xsd:annotation><xsd:documentation>This element is a value that represents the number of bytes used to store a file. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileStandardExtensionName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the standard document extension on the file.
+For example: doc, xls, etc.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileStandardTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is used to identify the standard system name for the extension. Used to launch, view and edit tools. 
+For example: WORD, ACROBAT.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="FileStandardTypeDescription" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains an area of text that describes the standard name of the extension (ie., Microsoft Word). 
+The descriptive name of the application used to view or edit the file i.e.'Microsoft Word'. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+            <xsd:element minOccurs="0" name="FileExtensionName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the file extension to a file name which can be under a ILE directory name.  It does include the (.) period.
+ie., .PDF, .DOC, .ORG, .GOV, etc...</xsd:documentation></xsd:annotation>
+			</xsd:element>
+            <xsd:element minOccurs="0" name="CreationTimestamp"
+				type="xsd:dateTime"><xsd:annotation><xsd:documentation>This element is the date and time that the entity was created.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LastUpdateTimestamp"
+				type="xsd:dateTime"><xsd:annotation><xsd:documentation>This element is date and time that the user made the update.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FileCreatorUserIdCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element represents the user id of the individual that created the file.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LastUpdateUserIdCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is used to identify the last peron who made an update.  This element primarily holds a RACF ID but is also capable of holding the extranet user ids that are 32 characters long.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

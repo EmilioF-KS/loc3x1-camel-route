@@ -1,0 +1,3 @@
+Tests scanned reports:        1
+Failing suites:        0
+Reports dir: /Users/albertohernandez/Documents/projects/camel-route/tests/results/junit

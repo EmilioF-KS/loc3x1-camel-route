@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/corelibrary/statusinformation">
+
+	<xsd:element name="StatusInformation">
+		<xsd:complexType>
+			<xsd:annotation><xsd:documentation>This Business Object is used to send warning messages back to consumers.  </xsd:documentation></xsd:annotation>
+			<xsd:sequence>
+				<xsd:element name="Errors" minOccurs="0">
+					<xsd:annotation><xsd:documentation>This element is a collection of error or wanring messages.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation><xsd:documentation>This is a collection of error and warning messages. </xsd:documentation></xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Error" minOccurs="0"
+								maxOccurs="unbounded">
+								<xsd:annotation><xsd:documentation>
+This element is the occurance of  the error or warning messsage. 
+
+This may include a number with the message. </xsd:documentation></xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="ErrorCode"
+											type="xsd:string" minOccurs="0" />
+										<xsd:element
+											name="ErrorDescription" type="xsd:string" minOccurs="0" />
+										<xsd:element
+											name="ErrorSeverityLevel" type="xsd:string" minOccurs="0" />
+										<xsd:element
+											name="ErrorSourceIdentifier" type="xsd:string"
+											minOccurs="0"><xsd:annotation><xsd:documentation>This element contains information about the source of the error.</xsd:documentation></xsd:annotation>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="StatusCode" type="xsd:string"
+					minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifies a code that identifies the type of error.
+
+Valid values are 'E' for Error or 'W' for warning.</xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

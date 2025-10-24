@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/insurance_admin_role" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="InsuranceAdminRole">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="AdminRoleCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code asigned to a Admin Role.
+The E1TA0161 Corporate Table contains valid values for this element in the "ADMN_ROLE_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdminRoleName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name asigned to a Admin Role.
+The E1TA0161 Corporate Table contains valid values for this element in the "ADMN_ROLE_NA" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnterpriseBPRoleAbbreviation" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains the function or position a specific business party may play on a Policy or Service Offering for a given enterprise.
+The E1T01611 Corporate Table contains valid values for this element in the "ENTRP_BP_ROLE_AB" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdminRoleFunctionCode" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains a code that describes the function of the Admin role.
+The E1TA0161 Corporate Table contains valid values for this element in the "ADMN_ROLE_FUNC_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdminRoleFunctionName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that describes the function of the Admin role.
+The E1TA0161 Corporate Table contains valid values for this element in the "ADMN_ROLE_FUNC_NA" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdminRoleFunctionIndicator" type="xsd:boolean">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if this admin role function is present for the Policy.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

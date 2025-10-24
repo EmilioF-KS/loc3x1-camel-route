@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/loss_control_location_with_survey"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/loss_control_location"
+	xmlns:bons1="http://ei/core/loss_control_survey"
+	xmlns:bons2="http://ei/core/survey_contactx1">
+	<xsd:import schemaLocation="SurveyContactX1.xsd"
+		namespace="http://ei/core/survey_contactx1">
+	</xsd:import>
+	<xsd:import schemaLocation="LossControlSurvey.xsd"
+		namespace="http://ei/core/loss_control_survey">
+	</xsd:import>
+	<xsd:import schemaLocation="LossControlLocation.xsd"
+		namespace="http://ei/core/loss_control_location">
+	</xsd:import>
+	<xsd:complexType name="LossControlLocationWithSurvey">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:LossControlLocation">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="LossControlSurvey"
+						type="bons1:LossControlSurvey" maxOccurs="unbounded">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="LocationContact"
+						type="bons2:SurveyContact" maxOccurs="unbounded">
+					</xsd:element>
+				</xsd:sequence>
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

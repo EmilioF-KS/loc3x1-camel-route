@@ -1,0 +1,505 @@
+## CURRENT SYSTEM STATUS
+Note: This plan is superseded by the agentic runtime plan. See `doc/master-plan.agentic.md` for authoritative agent-driven execution; this file remains as a compatibility index.
+
+### Implemented Components
+- [*] LaTeX documentation Loc-Camlel-Route.tex completed and compiles to PDF; figures and tables have clickable references; diagrams updated for folder organisation and agentic pipeline
+- [*] Project virtual environment (venv/) present with activation scripts; mandate: all scripts run inside this venv
+- [*] Master plan file present (this document) aligned to “no mocks” governance and British English style
+- [*] Original contract assets present: BPEL (LocationRetrievalLOC3X1Process.bpel), WSDLs (LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl, LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl, LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl, CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl), HTTP binding WSDLs (e.g., LocationRetrievalLOC3X1Http.wsdl, CountryRetrievalCRP10X1Http.wsdl), and extensive XSDs under sample/Schemas and sample/PrivateSchemas (including SimpleFault.xsd)
+- [*] Tooling preflight script and report template present: scripts/preflight.sh, doc/tooling-report.md
+- [ ] Maven multi-module project scaffolding (parent and modules)
+- [*] CXF/JAXB generation from contracts (CRP10X1 and CRP11X1 generated; LOC3X1 blocked)
+- [ ] Spring Boot inbound SOAP service (LOC3X1B) with CXF
+- [ ] Outbound CXF clients (LOC3X1M, CRP11X1, CRP10X1)
+- [ ] Apache Camel orchestration mirroring BPEL mediation
+- [ ] MapStruct deterministic mappings replacing BPEL assignments
+- [ ] Centralised fault handling serialising to SimpleFault.xsd
+- [ ] Contract compliance and integration tests (real endpoints only)
+- [ ] Quality gates, runbook, audit report, release packaging
+
+### Available Resources
+- Documentation: doc/Loc-Camlel-Route.tex (authoritative plan and architecture)
+- Contracts: sample/LocationRetrievalLOC3X1/, sample/LocationRetrievalLOC3X1B/, sample/LocationRetrievalLOC3X1M/, sample/CountryRetrievalCRP10X1/, sample/StateOrProvinceRetrievalCRP11X1/ and XSDs under sample/Schemas, sample/PrivateSchemas
+- Key artefacts: sample/PrivateSchemas/SimpleFault.xsd (fault model), sample/LocationRetrievalLOC3X1Process.bpel (orchestration), mapping artefacts (.map) under sample/LOC3X1/ (useful for deriving mapping intent)
+- Environment: venv/ with activation scripts (bin/activate, etc.)
+- Scripts: scripts/preflight.sh (preflight), to be added per Loc-Camlel-Route.tex (bootstrap_java.sh, generate_contracts.sh, build_all.sh, run_services.sh, test_integrations.sh)
+- Preflight report: doc/tooling-report.md (versions and readiness; smoke build results when applicable)
+
+---
+
+## SYSTEM ARCHITECTURE
+
+LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
+===================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         LOC-CAMEL-ROUTE PROJECT                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌──────────────────────────┐ │
+│  │   AGENTS &      │    │     BUILD       │    │        SERVICES          │ │
+│  │  AUTOMATION     │◄──►│   (Maven)       │◄──►│  (Spring Boot + CXF)     │ │
+│  │ (Ollama/LangGraph│    │  Modules/POMs   │    │  Inbound LOC3X1B SOAP    │ │
+│  │  Shell/Python)  │    │  Plugins (CXF,   │    │  Endpoints               │ │
+│  └─────────────────┘    │  MapStruct,      │    └──────────────────────────┘ │
+│           │             │  Surefire)       │              │                  │
+│           │             └─────────────────┘              │                  │
+│           │                                              ▼                  │
+│  ┌──────────────────────────┐    ┌───────────────────────────┐              │
+│  │    ORCHESTRATION         │    │          CLIENTS          │              │
+│  │ (Apache Camel Routes)    │◄──►│ (CXF: LOC3X1M, CRP11X1,   │              │
+│  │  Sequence per BPEL       │    │  CRP10X1)                 │              │
+│  └──────────────────────────┘    └───────────────────────────┘              │
+│           │                                              │                  │
+│           ▼                                              ▼                  │
+│  ┌──────────────────────────┐    ┌───────────────────────────┐              │
+│  │         MAPPINGS         │    │       CONFIG & SECURITY    │              │
+│  │   (MapStruct, DTOs)      │    │ (Spring profiles, TLS,     │              │
+│  │   Deterministic assigns  │    │  secrets not committed)     │              │
+│  └──────────────────────────┘    └───────────────────────────┘              │
+│           │                                              │                  │
+│           ▼                                              ▼                  │
+│  ┌──────────────────────────┐    ┌───────────────────────────┐              │
+│  │          TESTS           │    │          PARTNERS          │              │
+│  │ (Contract + Integration  │    │ (Real endpoints only:      │              │
+│  │  JUnit/Surefire)         │    │  State/Province, Country,  │              │
+│  └──────────────────────────┘    │  Internal LOC3X1M)         │              │
+│                                   └───────────────────────────┘              │
+│                                                                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐   │
+│  │                            DATA & CONTRACTS                           │   │
+│  │  WSDL/XSD (Schemas, PrivateSchemas) + BPEL (LocationRetrievalLOC3X1) │   │
+│  └───────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+---
+
+# PHASE 0: TOOLING PREFLIGHT AND ENVIRONMENT INSTALLER
+
+## 0.1 Preflight and Readiness Report
+**Responsible Agent: Environment Installer**
+- [ ] Verify venv activation; enforce venv-only execution
+- [ ] Check installed tools and versions: Java 17 (JDK), Maven, jq, yq, Python 3 + pip
+- [ ] Verify Python packages: lxml, pyyaml (extend if needed)
+- [ ] Generate doc/tooling-report.md with versions, PATH checks, and pass/fail summary
+- [ ] If a Maven project exists, run smoke build (`mvn -q -DskipTests package`); attach logs in doc/.preflight/smoke.log
+
+## 0.2 Acceptance Criteria
+- Tooling preflight passes with Java 17 and Maven present on PATH
+- doc/tooling-report.md exists with versions recorded and clear status
+- Smoke build succeeds or is explicitly marked skipped/failed with evidence
+- Governance enforced: British English, no secrets committed, no mocks
+
+---
+
+# PHASE 1: CONTRACT INVENTORY AND GOVERNANCE
+
+## 1.1 Contract Inventory
+**Responsible Agent: Contract Engineer**
+- [*] Enumerate WSDL/XSD under sample/Schemas and sample/PrivateSchemas
+- [ ] Identify BPEL: sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel and root sample/LocationRetrievalLOC3X1Process.bpel
+- [*] Produce contracts/inventory.json with namespaces, versions, file paths, and bindings (HTTP vs SOAP)
+- [ ] Validate presence and usage of sample/PrivateSchemas/SimpleFault.xsd across WSDLs
+- [*] Record operations available in LOC3X1B and LOC3X1M WSDLs; list partner operations in CRP10X1 and CRP11X1
+
+## 1.2 BPEL Analysis
+**Responsible Agent: Orchestration Engineer**
+- [ ] Parse partner links (LOC3X1M, CRP11X1, CRP10X1), variables, fault handlers
+- [ ] Extract inbound operations: GetLocationList3X1B, GetLocationWithTaxingJurisdictions3X1B
+- [ ] Derive mediation order: CRP11X1 → CRP10X1 → LOC3X1M (per BPEL invokes)
+- [ ] Catalogue assign activities and mapping intents for MapStruct replacement
+- [ ] Document error-handling paths leading to SimpleFault composition
+
+## 1.3 Canonical Schema Governance
+**Responsible Agent: Schema Curator**
+- [ ] Review schema variants in sample/Schemas and select canonical versions
+- [ ] Create contracts/canonical-map.yaml mapping namespaces to canonical files
+- [ ] Flag duplicates/inconsistencies; propose alignment rules
+- [ ] Define versioning policy and namespace enforcement across modules
+- [ ] Establish validation checklist for schema imports and includes
+
+## 1.4 Agent Plan and Acceptance Criteria
+**Responsible Agent: Planner**
+- [ ] Produce an agentic execution plan aligned with doc/Loc-Camlel-Route.tex
+- [ ] Define phase-level acceptance criteria (build success, tests, audit)
+- [ ] Enforce governance: British English, no mocks, venv-only execution
+- [ ] Identify automation touchpoints (scripts and agents) per phase
+- [ ] Sequence dependencies across modules and scripts
+
+# AGENT IMPLEMENTATION AND ORCHESTRATION
+
+## A. Planner Agent
+**Responsible Agent: Planner**
+- [ ] Implement planner that reads doc/Loc-Camlel-Route.tex and contracts/inventory.json
+- [ ] Produce `doc/agent-plan.json` with ordered phases, dependencies, and acceptance criteria
+- [ ] Enforce governance (British English, venv-only, no mocks); include policy checks in output
+- [ ] Emit traceable decisions and assumptions; log to `doc/agent-plan.log`
+
+## B. Contract Reader Agent
+**Responsible Agent: Contract Engineer**
+- [*] Scan WSDL/XSD under `sample/` and populate `contracts/inventory.json`
+- [ ] Verify references to `sample/PrivateSchemas/SimpleFault.xsd`
+- [ ] Optionally trigger CXF/JAXB codegen via hooks (Phase 2.2); record outputs
+- [ ] Emit `contracts/validation-report.md` with contract compliance notes
+
+## C. BPEL Parser Agent
+**Responsible Agent: Orchestration Engineer**
+- [ ] Use `BpelAgent` to parse partner links, inbound ops, invokes, fault paths
+- [*] Produce `orchestration/spec.yaml` describing flows: CRP11X1 → CRP10X1 → LOC3X1M
+- [*] Extract mapping intents by parsing original `.map` XML artefacts; attach to spec as `data_mappings`
+- [*] Emit `orchestration/bpel-analysis.md` with key findings and references
+
+## D. Schema Aligner Agent
+**Responsible Agent: Schema Curator**
+- [ ] Generate `contracts/canonical-map.yaml` selecting canonical schemas and namespaces
+- [ ] Emit `contracts/alignment-report.md` listing duplicates, drifts, and resolutions
+- [ ] Provide enforcement checklist to be consumed by CI (Phase 5.2)
+
+## E. Integration Builder Agent (CXF/Camel)
+**Responsible Agent: Service/Orchestration Engineers**
+- [ ] Create scaffolds for inbound LOC3X1B (CXF) and clients (LOC3X1M, CRP11X1, CRP10X1)
+- [ ] Generate Apache Camel routes per `orchestration/spec.yaml`
+- [ ] Externalise endpoints and timeouts; respect profiles and security posture
+- [*] Emit `modules/orchestration/ROUTES.md` documenting mediation and error handling
+
+## F. Mapping Builder Agent (MapStruct)
+**Responsible Agent: Mapping Engineer**
+- [ ] Define mapper interfaces for request/response transforms mirroring BPEL `assign`
+- [ ] Implement deterministic rules and edge-case handling; add unit tests (no mocks)
+- [ ] Emit `modules/mappings/MAPPINGS.md` with transformation catalogue and coverage
+
+## G. Test Designer Agent
+**Responsible Agent: QA Engineer**
+- [ ] Generate contract tests (signature/schema) and integration tests (real endpoints)
+- [ ] Provide dataset references and setup notes; mark unavailable endpoints as Blocked
+- [ ] Emit `tests/TEST-PLAN.md` and store JUnit XML under `tests/results/`
+
+## H. Environment Installer Agent
+**Responsible Agent: Platform/Automation Engineers**
+- [ ] Run `scripts/preflight.sh` and `scripts/bootstrap_java.sh` as needed
+- [ ] Verify JDK/Maven, jq/yq, Python packages; produce `doc/tooling-report.md`
+- [ ] Guard all scripts with venv checks; emit logs to `doc/.preflight/`
+
+## I. Evaluator/Referee Agent
+**Responsible Agent: QA Lead**
+- [ ] Execute build/tests; verify runtime; collect artefacts and evidence
+- [ ] Produce `doc/evaluation-report.md` summarising pass/fail and blockers
+- [ ] Gate release readiness per acceptance criteria across phases
+
+## Orchestration Graph and Controls
+**Responsible Agent: Architecture/Automation Leads**
+- [ ] Define agent graph (LangGraph) Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval
+- [ ] Provide CLI runner `scripts/agents/run.py` with options: `--all`, `--agent <name>`, `--from <stage>`
+- [ ] Integrate FastAPI hooks (Phase 10.2): `POST /agents/run`, `POST /orchestrations/run`
+- [ ] Persist run metadata (file-based by default) with timestamps, inputs, outputs
+
+## Evidence and Artefacts
+- [ ] All agents emit artefacts under `doc/`, `contracts/`, `orchestration/`, `modules/`, or `tests/` to keep a full audit trail
+- [ ] Logs and reports are versioned and cross-linked; use British English consistently
+
+## Governance and Runtime
+- [ ] All automation runs inside venv; scripts assert activation and exit otherwise
+- [ ] No mocks or synthetic data; unavailable endpoints are recorded as Blocked
+- [ ] Secrets never committed; configuration via environment-only inputs
+
+## Acceptance Criteria (Agent Layer)
+- [ ] `doc/agent-plan.json` exists and matches LaTeX architecture
+- [ ] `contracts/inventory.json` and `contracts/canonical-map.yaml` complete and validated
+- [ ] `orchestration/spec.yaml` reflects BPEL invokes and error paths
+- [ ] Inbound service, clients, routes, and mappings scaffolded and build under Maven
+- [ ] Tests generated and runnable; evidence archived under `tests/results/`
+- [ ] Evaluation report produced; release gating wired to agent outputs
+
+---
+
+# PHASE 2: CODE GENERATION AND MAVEN SCAFFOLD
+
+## 2.1 Maven Multi-Module Scaffold
+**Responsible Agent: Build Engineer**
+- [ ] Create parent pom.xml and modules: contracts, services/loc3x1b, clients/loc3x1m, clients/crp11x1, clients/crp10x1, mappings, orchestration, tests
+- [ ] Configure pluginManagement: maven-cxf-plugin (codegen), mapstruct-processor, surefire, checkstyle, spotbugs
+- [ ] Define Java 17 toolchain and compiler plugin settings
+- [ ] Ensure mvn -q -DskipTests package succeeds for scaffolding
+- [ ] Add module-specific README properties reference (not secrets)
+
+## 2.2 CXF/JAXB Generation
+**Responsible Agent: Contract Engineer**
+- [ ] Configure scripts/generate_contracts.sh (run within venv; checks activation)
+- [*] Generate Java models/stubs from WSDL/XSD (CRP10X1, CRP11X1 complete; LOC3X1 blocked)
+- [*] Include HTTP binding WSDLs for endpoint discovery (CRP10X1Http, CRP11X1Http added)
+- [ ] Commit generated sources under contracts-target/ or module target/
+- [ ] Verify signatures against WSDL/XSD and namespace coherence
+
+## 2.3 Build Pipeline Scripts
+**Responsible Agent: Automation Engineer**
+- [ ] scripts/bootstrap_java.sh to install JDK/Maven locally (no global changes)
+- [ ] scripts/build_all.sh for compile, test, package; validate module order
+- [ ] scripts/run_services.sh to launch inbound service; health check
+- [ ] scripts/test_integrations.sh to run real endpoint tests; produce JUnit XML
+- [ ] All scripts must assert active venv before execution and exit otherwise
+
+---
+
+# PHASE 3: SERVICES AND CLIENTS
+
+## 3.1 Inbound LOC3X1B Service (Spring Boot + CXF)
+**Responsible Agent: Service Engineer**
+- [ ] Configure CXF servlet and endpoint beans per LocationRetrievalLOC3X1B.wsdl
+- [ ] Bind generated interfaces to Spring controllers
+- [ ] Health endpoint and startup verification (actuator)
+- [ ] Externalise service address and bindings in application.properties
+- [ ] Logging correlation IDs and request/response payload marshalling
+
+## 3.2 Outbound Clients (LOC3X1M, CRP11X1, CRP10X1)
+**Responsible Agent: Client Engineer**
+- [ ] Create CXF client factories per partner service
+- [ ] Externalise endpoints via profiles; support TLS and timeouts
+- [ ] Do not commit secrets; inject via environment variables only
+- [ ] Validate client invocations against real endpoints where available
+- [ ] Retry/backoff strategy for transient failures
+
+## 3.3 DTOs and Contract Guardrails
+**Responsible Agent: Contract Engineer**
+- [ ] Define DTOs where necessary to stabilise mapping boundaries
+- [ ] Add input validation against XSD-derived classes
+- [ ] Establish guardrails for optional/nullable fields
+- [ ] Document assumptions for each operation
+- [ ] Provide sample payloads derived from real schemas (no synthetic data)
+
+---
+
+# PHASE 4: ORCHESTRATION AND MAPPINGS
+
+## 4.1 Apache Camel Routes
+**Responsible Agent: Orchestration Engineer**
+- [ ] Define routes for inbound operations mirroring BPEL sequence
+- [ ] Implement partner call order (CRP11X1 → CRP10X1 → LOC3X1M)
+- [ ] Add error handling that produces SimpleFault.xsd-compliant faults
+- [ ] Correlate route IDs with operations; add metrics
+- [ ] Document the mediation flow with references to BPEL nodes
+
+## 4.2 MapStruct Deterministic Mappings
+**Responsible Agent: Mapping Engineer**
+- [ ] Define mapper interfaces for request and reply transformations
+- [ ] Implement field-level transformations replacing BPEL assigns
+- [ ] Cover edge cases (e.g., absent jurisdictions) with explicit rules
+- [ ] Unit tests for mapping coverage and correctness (no mocks)
+- [ ] Use sample/LOC3X1/*.map files to derive mapping intent where applicable
+
+## 4.3 Centralised Fault Handling and Logging
+**Responsible Agent: Platform Engineer**
+- [ ] Exception translators to SOAP faults per SimpleFault.xsd
+- [ ] SLF4J/Logback with correlation IDs and route markers
+- [ ] Validate SOAP fault serialisation and log format across services
+- [ ] Provide structured logging for partner calls and outcomes
+- [ ] Add audit events for error paths
+
+---
+
+# PHASE 5: CONFIGURATION, SECURITY, AND GOVERNANCE
+
+## 5.1 Externalised Configuration
+**Responsible Agent: Platform Engineer**
+- [ ] Profiles and environment variables for endpoints, timeouts
+- [ ] Properties reference without committing secrets
+- [ ] Document operational properties (scripts/README.properties.txt)
+- [ ] Provide sample env files with placeholders (values supplied at runtime)
+- [ ] Validate configuration precedence (env → profile → defaults)
+
+## 5.2 Namespace/Version Governance
+**Responsible Agent: Schema Curator**
+- [ ] Enforce canonical-map.yaml in code generation and modules
+- [ ] Validate namespaces across generated artefacts and code
+- [ ] Provide CI check that fails on namespace drift
+- [ ] Record schema versions and changes in contracts/inventory.json
+- [ ] Document import/include patterns used by WSDL/XSD
+
+## 5.3 Security Posture
+**Responsible Agent: Platform Engineer**
+- [ ] Enable TLS for outbound clients where supported
+- [ ] Configure truststores/keystores via environment-only inputs
+- [ ] Add minimal role-based access for management endpoints
+- [ ] Ensure logs do not include sensitive values
+- [ ] Provide security checklist per release
+
+---
+
+# PHASE 6: TESTING AND VERIFICATION (NO MOCKS)
+
+## 6.1 Contract Compliance Tests
+**Responsible Agent: QA Engineer**
+- [ ] Validate services/clients against WSDL definitions (operation signatures)
+- [ ] Schema validation for request/response payloads
+- [ ] Record deviations and corrective actions
+- [ ] Include namespace/element presence checks
+- [ ] Generate test reports (JUnit XML + HTML summary)
+
+## 6.2 Integration Tests with Real Endpoints
+**Responsible Agent: QA Engineer**
+- [ ] Configure test profiles with real URLs
+- [ ] Execute end-to-end flows for both inbound operations
+- [ ] Capture partner responses and timings
+- [ ] If endpoints unavailable, mark explicitly as Blocked (never simulate)
+- [ ] Provide reproducible steps and environment notes
+
+## 6.3 Performance and Reliability Checks
+**Responsible Agent: QA Engineer**
+- [ ] Measure route latency and partner call durations
+- [ ] Validate retry/backoff behaviour under transient failures
+- [ ] Verify memory/CPU for service under typical load
+- [ ] Check logging volume and log rotation
+- [ ] Record bottlenecks and improvement suggestions
+
+---
+
+# PHASE 7: QUALITY, DOCUMENTATION, AND RELEASE
+
+## 7.1 Quality Gates
+**Responsible Agent: Build Engineer**
+- [ ] Configure Checkstyle/SpotBugs; address findings
+- [ ] Add Surefire/Failsafe settings and flaky test detection
+- [ ] Enforce minimum code coverage thresholds
+- [ ] Add licence headers and copyright notices
+- [ ] Provide CI script skeleton (local runner via venv)
+
+## 7.2 Operational Runbook
+**Responsible Agent: Platform Engineer**
+- [ ] Provide minimal runbook and configuration reference
+- [ ] Start/stop procedures and health checks
+- [ ] Troubleshooting for common partner failures
+- [ ] Upgrade/downgrade notes for Java/Maven
+- [ ] Backup/restore guidelines for configs
+
+## 7.3 Final Evaluation and Audit
+**Responsible Agent: QA Lead**
+- [ ] Summarise builds, tests, runtime evaluation; list blockers with evidence
+- [ ] Document deviations from BPEL intent (if any) and resolutions
+- [ ] Provide acceptance report per phase
+- [ ] Attach logs, test artefacts, and configuration snapshots
+- [ ] Recommend follow-up actions where needed
+
+## 7.4 Release Packaging
+**Responsible Agent: Release Engineer**
+- [ ] Package artefacts (source, binaries, docs, scripts) with checksums
+- [ ] Include contracts inventory and canonical map
+- [ ] Provide verification script for integrity and versions
+- [ ] Prepare versioned release notes (British English)
+- [ ] Store release bundle in designated location
+
+## 7.5 Governance Review
+**Responsible Agent: Architecture Lead**
+- [ ] Verify namespace/version governance and licensing headers
+- [ ] Confirm no secrets committed; validate environment-only inputs
+- [ ] Assess alignment with agentic plan and Loc-Camlel-Route.tex
+- [ ] Approve or reject release readiness
+- [ ] Record decisions and rationale
+
+---
+
+# ENVIRONMENT REQUIREMENTS
+- Java 17, Maven
+- Spring Boot, Apache CXF, Apache Camel, MapStruct, JUnit, SLF4J/Logback
+- Local agents orchestrated via Ollama/LangGraph for planning and automation
+- All scripts and automation MUST run inside the project virtual environment (venv)
+- No mocks or simulated data; tests rely on real endpoints; blocked tests are recorded, not simulated
+
+---
+
+# ACCEPTANCE CRITERIA
+- Phase 2 builds succeed (mvn package) with generated contracts and no compilation errors
+- Inbound LOC3X1B service starts, exposes WSDL, and passes basic health and contract checks
+- Camel routes execute the BPEL-derived sequence; partner calls occur in the correct order
+- MapStruct mappings cover all fields required for replies; unit tests pass without mocks
+- Fault handling produces SimpleFault-compliant payloads under error conditions
+- Integration tests against real endpoints succeed or are marked Blocked with traceable evidence
+- Quality gates pass; release artefacts are packaged with checksums and documentation
+
+---
+
+# PHASE 8: CI/CD PIPELINE (LOCAL + HOSTED)
+
+## 8.1 Pipeline Definition
+**Responsible Agent: CI/CD Engineer**
+- [ ] Define local runner scripts (venv-guarded) for preflight, build, test, package
+- [ ] Provide hosted CI (GitHub Actions or Jenkins) configuration for deterministic runs
+- [ ] Capture artefacts (JUnit XML, logs, reports) in a structured workspace
+- [ ] Enforce branch protections and status checks (where applicable)
+
+## 8.2 Acceptance Criteria
+- CI runs preflight → build → tests → package successfully
+- Artefacts archived per run; versions and environment recorded
+- Pipeline deterministic and reproducible locally and hosted
+
+---
+
+# PHASE 9: CONTAINERISATION
+
+## 9.1 Dockerfiles and Compose
+**Responsible Agent: Containerisation Engineer**
+- [ ] Provide multi-stage Dockerfiles for Java modules
+- [ ] Add Compose services for inbound service, clients, orchestration, FastAPI, optional DB
+- [ ] Externalise configuration via environment variables; no secrets committed
+- [ ] Document local run: `docker compose up`
+
+## 9.2 Acceptance Criteria
+- Images build locally; services start via Compose
+- Health checks pass; logs available
+- Configurable via environment without secrets in repo
+
+---
+
+# PHASE 10: FRONTEND (REACT) AND API (FASTAPI)
+
+## 10.1 React Frontend
+**Responsible Agent: Frontend Engineer**
+- [ ] Scaffold `frontend/` with React app for dashboards and evidence viewing
+- [ ] Integrate with API endpoints for test results and orchestration controls
+- [ ] Provide local dev scripts and container image
+
+## 10.2 FastAPI Service
+**Responsible Agent: API Engineer**
+- [ ] Scaffold `api/` with FastAPI endpoints for evidence metadata and agent hooks
+- [ ] Persist optional run metadata (file-based or DB if approved)
+- [ ] Provide local dev scripts and container image
+
+## 10.3 Acceptance Criteria
+- Frontend and API build/run locally and via containers
+- Evidence browsing and basic orchestration controls functional
+
+---
+
+# PHASE 11: MASTER TEST RUNNER
+
+## 11.1 Test Orchestration
+**Responsible Agent: QA Engineer**
+- [ ] Implement `scripts/test_master.sh` to run by ordinal (LOC-XXX), by section, or all
+- [ ] Map sections to test directories; integrate with Maven Surefire/Failsafe
+- [ ] Output JUnit XML and HTML summaries; store under `tests/results/`
+
+## 11.2 Acceptance Criteria
+- Master runner executes targeted tests deterministically
+- Reports generated and archived; exit codes reflect pass/fail
+
+---
+
+# PHASE 12: DATABASE EVALUATION
+
+## 12.1 Decision and Minimal Implementation (Optional)
+**Responsible Agent: Architecture Lead**
+- [ ] Evaluate need for persistence (evidence metadata, run history, configs)
+- [ ] If necessary, add Postgres via Compose, minimal DAL in FastAPI
+- [ ] Governance: no secrets in repo; migrations documented
+
+## 12.2 Acceptance Criteria
+- Decision recorded with rationale; defaults to no DB if not needed
+- If added, DB integrates cleanly with API; migrations and configs documented
+
+---
+
+# TASK EXECUTION POLICY
+- Always operate within venv; scripts MUST assert activation
+- Use British English in documentation, code comments, and tickets
+- Never use mocks or simulated data; only real inputs/outputs
+- Prefer deterministic generation from contracts; avoid manual drift
+- Maintain clear audit trail of changes, decisions, and test evidence
+- Every feature/step MUST end with a unit test, integrated into `tests/run_tests.py`

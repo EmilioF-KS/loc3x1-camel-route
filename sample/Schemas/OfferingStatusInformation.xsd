@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/offering_status_information" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="OfferingStatusInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="OfferingStatusCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element identifies via a code the current status on an Offering.
+The E1T00831 Corporate Table contains valid values for this element in the "OFFRG_STAT_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OfferingStatusName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the current status on an Offering. 
+The E1T00831 Corporate Table contains valid values for this element in the "OFFRG_STAT_NA" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OfferingStatusDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains text to describe the current status of an offering.
+The E1T00831 Corporate Table contains valid values for this element in the "OFFRG_STAT_DE" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CancelReasonTableRequiredIndicatior" type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates whether the cancel reason table (E1T00271) should be called.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RelatedCancelReasonName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the related cancel reason associated with the Offering Status Code.
+The E1T00831 Offering Status Code Corporate Table contains valid values for this element in the "RLTD_CANC_RSN_NA" 
+column.   "RLTD_CANC_RSN_NA" can be used as input criteria to ICC service CancellationReasonRetrievalCRP13X1 to 
+retrieve a list of Cancellation Reasons that are related to the Offering Status Code.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

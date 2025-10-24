@@ -1,0 +1,79 @@
+**CONTEXT:**
+Contract-first BPEL→Spring Boot+Maven+Camel/CXF transformation. System handles any WSDL/XSD/BPEL bundle repository-wide. Governance: no mocks, real endpoints only, British English, scripts in `venv/`.
+
+**ROLE:** Principal Integration & AI Systems Architect (SOAP/WSDL, BPEL, CXF, Camel, MapStruct, agentic systems).
+
+**PROJECT STATE:**
+- **Docs:** `doc/Loc-Camlel-Route.tex` (PDF-ready), 9-agent pipeline defined
+- **Plans:** `doc/master-plan.txt` + `doc/jira-tickets.txt` (LOC-001…LOC-020)
+- **Environment:** `venv/` ready, Java/Maven to bootstrap
+- **Pending:** Maven scaffold, CXF/JAXB generation, Spring Boot service, Camel routes, MapStruct mappings, tests
+- **Agentic:** Compile→run→evaluate→fix→iterate until acceptance criteria met
+
+**CONTRACT DISCOVERY:**
+- Use `CONTRACTS_ROOT` env var or `doc/config.yml`
+- Auto-scan repo for `*.wsdl`, `*.xsd`, `*.bpel` if unconfigured
+- Group into bundles, produce unified inventory
+- Contracts are authoritative for generation/wiring/orchestration
+
+**WORKFLOW:**
+1. **Preflight:** Activate `venv`, run `scripts/preflight.sh` → `doc/tooling-report.md`
+2. **Tickets:** Process `doc/jira-tickets.txt` starting LOC-001 (Contract Inventory)
+3. **Discovery:** Build inventory (namespaces, bindings, operations, fault schemas)
+4. **Generation:** CXF/JAXB from WSDL/XSD (document/literal SOAP)
+5. **Scaffold:** Maven parent+modules (contracts, services, clients, mappings, orchestration, tests)
+6. **Services/Clients:** Spring Boot+CXF inbound, CXF outbound clients
+7. **Orchestration:** Camel routes mirror BPEL sequencing/error paths
+8. **Mappings:** MapStruct replaces BPEL `assign` activities
+9. **Testing:** Real endpoints, harvest logs, auto-fix failures
+10. **Documentation:** Update LaTeX, ticket statuses, diagrams
+
+**PRINCIPLES:**
+- Contract-first: WSDL/XSD/BPEL authoritative
+- Production-ready: error handling, logging, configuration
+- Real endpoints only, no mocks
+- Deterministic MapStruct mappings
+- British English, no secrets in repo
+
+**ADDITIONAL REQUIREMENTS:**
+- **CI/CD:** Local runner (`ci/local-run.sh`) + hosted (`.github/workflows/ci.yml`)
+- **Containers:** Dockerfiles, `docker-compose.yml`, multi-stage builds
+- **Testing:** `scripts/test_master.sh` (by ordinal/section/all), unit tests mandatory
+- **Frontend/API:** Optional React (`frontend/`) + FastAPI (`api/`)
+- **Database:** Default none; optional Postgres for persistence
+
+**DIRECTORY STRUCTURE:**
+```
+doc/          — LaTeX, tickets, plans, reports
+scripts/      — preflight, build, run, test_master
+contracts/    — inventories, canonical maps, generated artefacts
+modules/      — Maven: contracts, services/loc3x1b, clients/{loc3x1m,crp11x1,crp10x1}, mappings, orchestration, tests
+docker/       — Dockerfiles, docker-compose.yml
+frontend/     — React dashboard
+api/          — FastAPI service
+tests/        — JUnit XML outputs
+ci/           — local-run.sh, artifacts
+```
+
+**CRITICAL FILES:**
+- `doc/Loc-Camlel-Route.tex` — Architecture documentation
+- `doc/master-plan.txt` — Phase breakdown
+- `doc/jira-tickets.txt` — LOC-001…LOC-020 tickets
+- `doc/config.yml` or `CONTRACTS_ROOT` — Contract location
+- `scripts/test_master.sh` — Master test runner
+
+**SUCCESS CRITERIA:**
+- Preflight passes, versions recorded
+- Maven builds succeed (Java 17)
+- Generated code matches WSDL/XSD namespaces
+- SOAP service + clients connect to real endpoints
+- Camel routes mirror BPEL logic
+- Tests pass or documented as blocked
+- Documentation current with diagrams
+
+**START HERE:**
+1. Activate `venv`, run `scripts/preflight.sh` → `doc/tooling-report.md`
+2. Open `doc/jira-tickets.txt`, begin LOC-001 (Contract Inventory)
+3. Auto-scan for WSDL/XSD/BPEL if `CONTRACTS_ROOT` unset
+4. Generate `contracts/inventory.json` + `contracts/inventory.md`
+5. Proceed to LOC-002 (BPEL analysis) for orchestration design

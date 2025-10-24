@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:LOC3X1GetLocationListReplySubMap="http://Location2MediationModule" xmlns:Location="http://ei/location/location" xmlns:dto.rand.chubb.com="http://dto.rand.chubb.com" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location2MediationModule">
+  <map:name>LOC3X1MGetLocationListReplySubMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="dto.rand.chubb.com:Location" name="Location"/>
+  <map:outputBusinessObjectVariable businessObjectRef="Location:Location" name="Location_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="locationClassCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="LocationInformation/LocationClassificationCode"/>
+      <map:javaCode>java.lang.String __Location_locationClassCode = (java.lang.String)Location_locationClassCode;&#xD;
+java.lang.String __Location_1_LocationInformation_LocationClassificationCode = (java.lang.String)Location_1_LocationInformation_LocationClassificationCode;&#xD;
+boolean __result__1 = __Location_locationClassCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_locationClassCode.trim();&#xD;
+	__Location_1_LocationInformation_LocationClassificationCode = __result__5;&#xD;
+	Location_1_LocationInformation_LocationClassificationCode = __Location_1_LocationInformation_LocationClassificationCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_locationClassCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_locationClassCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_locationClassCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_LocationInformation_LocationClassificationCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="windstormZoneIndicator"/>
+      <map:input businessObjectVariableRef="Location" property="windstormZoneCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="HazardousArea"/>
+      <map:javaCode>java.lang.String __Location_windstormZoneIndicator = (java.lang.String)Location_windstormZoneIndicator;&#xD;
+java.lang.String __Location_windstormZoneCode = (java.lang.String)Location_windstormZoneCode;&#xD;
+java.util.List __Location_1_HazardousArea = (java.util.List)Location_1_HazardousArea;&#xD;
+commonj.sdo.DataObject __result__1;&#xD;
+{// create HazardousArea&#xD;
+	com.ibm.websphere.bo.BOFactory factory = 
+	   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+	 __result__1 = factory.create(&quot;http://ei/core/hazardous_area&quot;,&quot;HazardousArea&quot;);&#xD;
+}&#xD;
+commonj.sdo.DataObject HazardousArea = __result__1;&#xD;
+java.lang.String __result__3 = &quot;WindstormZone&quot;;&#xD;
+HazardousArea.setString(&quot;HazardousAreaTypeName&quot;, __result__3);&#xD;
+HazardousArea.setString(&quot;HazardousAreaIndicator&quot;, __Location_windstormZoneIndicator);&#xD;
+boolean __result__8 = __Location_windstormZoneCode != null;&#xD;
+if (__result__8){&#xD;
+	java.lang.String __result__12 = __Location_windstormZoneCode.trim();&#xD;
+	HazardousArea.setString(&quot;HazardousAreaCode&quot;, __result__12);&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__16;&#xD;
+{// add item to list&#xD;
+	__result__16 = __Location_1_HazardousArea.add(HazardousArea);&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_windstormZoneIndicator&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;Location_windstormZoneCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create HazardousArea&quot; description=&quot;create a new HazardousArea {http://ei/core/hazardous_area}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/hazardous_area&amp;quot;,&amp;quot;HazardousArea&amp;quot;);&quot;>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;HazardousArea&quot; namespace=&quot;http://ei/core/hazardous_area&quot; nillable=&quot;false&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;HazardousArea&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;HazardousArea&quot; namespace=&quot;http://ei/core/hazardous_area&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;WindstormZone&amp;quot;&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.3&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@dataOutputs.0&quot; value=&quot;HazardousArea.HazardousAreaTypeName&quot; field=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_windstormZoneIndicator&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.5&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.4/@dataOutputs.0&quot; value=&quot;HazardousArea.HazardousAreaIndicator&quot; field=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_1_HazardousArea&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.10/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_windstormZoneCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.8&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.7/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_windstormZoneCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.8/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.8/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.8/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.8/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;HazardousArea.HazardousAreaCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.8/@conditionalActivities.0/@executableElements.0 //@executableElements.8/@conditionalActivities.0/@executableElements.1 //@executableElements.8/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;HazardousArea&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.10/@parameters.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;HazardousArea&quot; namespace=&quot;http://ei/core/hazardous_area&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//    &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//    &lt;/parameters>
+//    &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.9/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//    &lt;/parameters>
+//    &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;localVariables name=&quot;HazardousArea&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;HazardousArea&quot; namespace=&quot;http://ei/core/hazardous_area&quot;/>
+//  &lt;/localVariables>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.2 //@executableElements.3&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.4 //@executableElements.5&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.7 //@executableElements.8&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.6 //@executableElements.9 //@executableElements.10&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:4,6&#xD;
+//!SMAP!2:10,1&#xD;
+//!SMAP!3:11,1&#xD;
+//!SMAP!4:12,1&#xD;
+//!SMAP!6:13,1&#xD;
+//!SMAP!8:14,1&#xD;
+//!SMAP!9:15,1&#xD;
+//!SMAP!12:16,1&#xD;
+//!SMAP!13:17,1&#xD;
+//!SMAP!16:21,4&#xD;
+//!SMAP!1000000:132,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+</map:businessObjectMap>

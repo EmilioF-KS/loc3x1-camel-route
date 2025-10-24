@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/document_reference_information"
+	targetNamespace="http://ei/core/document_reference_information">
+	<xsd:complexType name="DocumentReferenceInformation">
+		<xsd:sequence>			<xsd:element minOccurs="0" name="DocumentXML">
+				<xsd:annotation><xsd:documentation>This contains any XML document.</xsd:documentation></xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##other"
+							processContents="lax" minOccurs="0" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentString"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the content of the document stored in a string data type.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentByte"
+				type="xsd:base64Binary">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the content of the document stored in a base64Binary data type.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="URL" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a Uniform Resource Location, which is a simple and extensible means for locating a resource.
+A URL consists of a schema: &lt;scheme&gt;:&lt;scheme-specific-part&gt;.  The list of valid schemes is registered with IANA (Internet Assigned Numbers Authority: http://www.iana.org http://www.iana.org)
+Some valid schemes include ftp, file, and http. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContentTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the type and subtype of data in the body of a message. 
+The type and subtype must be separated by a "/" as specified in section 5.1 of RFC 2045.
+The list of valid content types and sub-types are registered with IANA (Internet Assigned Numbers Authority: http://www.iana.org" http://www.iana.org).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EncodingTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies how the data is encoded to allow it to pass through mail transports having data or character set limitations. 
+The list of valid conversion values is registered with IANA (Internet Assigned Numbers Authority: http://www.iana.org http://www.iana.org).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

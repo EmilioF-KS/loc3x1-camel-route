@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/prdct_compnt_cross_reference" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PrdctCompntCrossReference">
+		<xsd:annotation>
+      <xsd:documentation>This entity is used to relate a Product Component in the Product Catalog to its identifier in another system.
+</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ExternalSystemTableGIN" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the unique identifier of the external system item to be used in the cross reference translation.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ExternalSystemTableName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the table name for the external system entity to be used by the cross reference translation.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemProductComponentId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the id of the product component instance as it is known by the source system.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SystemId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element identifies internal/external sources of information.
+This is also known as the System Source Code. 
+The Corporate table E1T00871 contains the valid values for this element in the "SYS_SRC_C"  column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

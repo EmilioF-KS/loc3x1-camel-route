@@ -1,0 +1,26 @@
+{
+  "generated_at": "2025-10-23T17:25:07.057646",
+  "sources": {
+    "spec_yaml": "/Users/albertohernandez/Documents/projects/camel-route/orchestration/spec.yaml",
+    "inventory_json": "/Users/albertohernandez/Documents/projects/camel-route/contracts/inventory.json",
+    "bpel_analysis_md": "/Users/albertohernandez/Documents/projects/camel-route/doc/bpel-analysis.md",
+    "mappings_md": "/Users/albertohernandez/Documents/projects/camel-route/modules/mappings/MAPPINGS.md",
+    "routes_md": "/Users/albertohernandez/Documents/projects/camel-route/modules/orchestration/ROUTES.md",
+    "master_plan_agentic": "/Users/albertohernandez/Documents/projects/camel-route/doc/master-plan.agentic.md"
+  },
+  "presence": {
+    "spec_yaml": true,
+    "inventory_json": true,
+    "bpel_analysis_md": true,
+    "mappings_md": false,
+    "routes_md": true,
+    "master_plan_agentic": true
+  },
+  "next_actions": [
+    "If spec is absent, run analyze_bpel.py to produce orchestration/spec.yaml",
+    "If inventory is absent, run generate_contract_inventory.py",
+    "Run generate_routes.py to materialize routes and parent/client POMs",
+    "Run generate_mappers.py to emit mapper interfaces and MAPPINGS.md",
+    "Run preflight_agent.py and scripts/test_master.sh for smoke checks"
+  ]
+}

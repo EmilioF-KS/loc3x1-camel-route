@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/product_support_properties_pdt804x1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/product_identifier">
+	<xsd:import schemaLocation="../Schemas/ProductIdentifier.xsd"
+		namespace="http://ei/core/product_identifier">
+	</xsd:import>
+	<xsd:complexType name="ProductSupportProperties">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ProductIdentifier"
+				type="bons0:ProductIdentifier" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

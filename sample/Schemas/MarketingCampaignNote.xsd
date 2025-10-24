@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/marketing_campaign_note"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="MarketingCampaignNote">
+		<xsd:sequence>
+			<xsd:element name="NoteSequenceNumber" type="xsd:integer"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains a unique identifier of a note.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NoteCaptionText" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This elment contains a caption given to the note as defined by the business.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NoteCommentText" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains user comments.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemNoteId" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the identifier of a note in the source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

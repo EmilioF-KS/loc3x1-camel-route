@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/form_destination_receiver" xmlns:bons0="http://ei/core/business_partyx1">
+	<xsd:import namespace="http://ei/core/business_partyx1" schemaLocation="BusinessPartyX1.xsd">
+	</xsd:import>
+	<xsd:complexType name="FormDestinationReceiver">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:BusinessParty">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="UserId" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>This element is used to sign on to an application.  
+This is also known as RACFId.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

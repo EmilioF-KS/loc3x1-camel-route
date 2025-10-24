@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/policy_type_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PolicyTypeInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="PolicyTypeCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies the type of the insurance contract with a code.
+The Corporate table E1T00221 contain the valid values for this element in the &quot;POL_TY_C&quot; column.
+					</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyTypeSubCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>The element is used to divide Policy Type Code in order to provide more categories for some insurance contracts.  (This is also known as PolicySubTypeCode.)
+The Corporate table E1T00221 contain the valid values for this element if the &quot;POL_SUB_TY_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0"
+				name="PolicyTypeEnglishAbbreviation" type="xsd:string"><xsd:annotation><xsd:documentation>This element is the name assigned to a policy that represents the type of insurance contract. 
+The Corporate table E1T00221 contain the valid values for this element if the &quot;POL_TY_AB&quot; column.
+					</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicySubTypeDescription"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is describes the subtype of the insurance contract. 
+The Corporate table E1T00221 contain the valid values for this element if the &quot;POL_SUB_TY_DE&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyType4Abbreviation"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the 4 character abbreviation assigned to a policy that represents the type of insurance contract. 
+The Corporate table E1T00221 contains the valid values for this element if the &quot;POL_TY_4_AB&quot; column.
+					</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WIPPolicyTypeSegmentKey"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the policy type code (key) of the WIP segement.
+The Corporate table E1T00221 contain the valid values for this element if the &quot;WIP_POL_TY_SEG_K &quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0"
+				name="ConformedLineOfAuthorityCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element identifies the line of authority standardized across all states. It is determined by the type of insurance the producer is authorized to transact.  It is aligned to the NAIC uniform app for ins. license {entity/individual producer}.
+The Corporate table E1T01551 contains the valid values for this element if the &quot;CFORM_LOA_C&quot; column.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PolicyTypeLineOfBusinessCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the code which indentifies the Chubb Lines of Business under which thePolicy has been written and the type 
+ of Insurance contract.  The Corporate table E1T00221 contains the valid values for this element if the &quot;POL_TY_LOB_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ODENBasePolicyTypeName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name given to type of Insurance Contract in the ODEN Vendor system.   These ODEN Policy Types map one for one to the Chubb Policy Types.
+The Corporate table E1T00221 contains the valid values for this element if the &quot;ODEN_BS_POL_TY_NA&quot; column.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

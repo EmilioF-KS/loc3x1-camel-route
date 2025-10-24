@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/location"
+	xmlns:tns="http://ei/location/location"
+	elementFormDefault="qualified">
+	
+	<xsd:complexType name="Location">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="cityName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the city for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="countyName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the county for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="stateOrProvinceCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The code for the state or province of this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="stateOrProvinceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the state or province for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="postalCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The postal code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="countryCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The country code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="countryName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The country name for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="poBoxIndicator" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Indicates if this is a PO Box address.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="fireDistrictCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The fire district code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="locationClassCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The classification code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="windstormZoneIndicator" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Indicates if this location is in a windstorm zone.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="windstormZoneCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The windstorm zone code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="taxInfo" type="tns:TaxInfo">
+				<xsd:annotation>
+					<xsd:documentation>Tax information for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TaxInfo">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="licenseCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The license code for tax purposes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="taxCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The primary tax code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="alternateTaxCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The alternate tax code for this location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

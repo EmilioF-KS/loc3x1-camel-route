@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/affiliate_company">
+	<xsd:complexType name="AffiliateCompany">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="SourceSystemAffiliateCompanyId" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains an identifier, which can be a GIN, that uniquely identifies the affiliate company in the source system. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AffiliateCompanyName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the insurance company that was used to place coverage for a Chubb insured where a Chubb company is not licensed to do business. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AffiliateCompanyCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element identifies via a code the insurance company that placed the coverage for a Chubb insured where Chubb is not licensed to do business.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AffiliateCompanyAbbreviation" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the abbreviated name of the 'AffiliateCompanyName'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AffiliateCompanyTypeCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies the type of affiliate company. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

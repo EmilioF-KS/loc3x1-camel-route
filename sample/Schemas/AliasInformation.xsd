@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/alias_information">
+	<xsd:complexType name="AliasInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="AliasName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the entity name when different than previous information supplied and/or available.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AliasCategoryName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the alias category. Some valid values include 'WEAK' and 'STRONG'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AliasTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the type of alias. The typical value is 'Alias'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

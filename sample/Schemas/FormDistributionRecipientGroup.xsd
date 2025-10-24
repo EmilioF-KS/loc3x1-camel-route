@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/form_distribution_recipient_group"
+	xmlns:bons0="http://ei/core/form_recipient_distribution_settings"
+	xmlns:bons1="http://ei/core/customization"
+	xmlns:bons2="http://ei/core/recipient_policy_form_reference"
+	xmlns:bons3="http://ei/core/form_destination_receiver"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/form_destination_receiver"
+		schemaLocation="FormDestinationReceiver.xsd" />
+	<xsd:import
+		namespace="http://ei/core/recipient_policy_form_reference"
+		schemaLocation="RecipientPolicyFormReference.xsd" />
+	<xsd:import namespace="http://ei/core/customization"
+		schemaLocation="Customization.xsd">
+	</xsd:import>
+
+	<xsd:import
+		namespace="http://ei/core/form_recipient_distribution_settings"
+		schemaLocation="FormRecipientDistributionSettings.xsd" />
+
+
+	<xsd:complexType name="FormDistributionRecipientGroup">
+		<xsd:sequence>
+
+
+			<xsd:element minOccurs="0" name="FormDestinationReceiver"
+				type="bons3:FormDestinationReceiver">
+			</xsd:element>
+
+			<xsd:element minOccurs="0"
+				name="FormRecipientDistributionSettings"
+				type="bons0:FormRecipientDistributionSettings">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="RecipientPolicyFormReference"
+				type="bons2:RecipientPolicyFormReference">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Customization" type="bons1:Customization">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RecipientGroupName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element identifies the destination of a group of Policy Forms or a Policy Document. 
+Some valid values include: Insured, Producer, Underwriter, Bureau, and Mortgagee.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

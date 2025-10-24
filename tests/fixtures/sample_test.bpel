@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" name="TestProcess">
+  <bpws:partnerLinks>
+    <bpws:partnerLink name="InboundService" partnerLinkType="ns:InboundPLT" myRole="Interface"/>
+    <bpws:partnerLink name="ExternalPartner" partnerLinkType="ns:ExternalPLT" partnerRole="Interface"/>
+  </bpws:partnerLinks>
+  <bpws:pick>
+    <bpws:onMessage partnerLink="InboundService" portType="ns:InboundPT" operation="GetSomething">
+      <bpws:sequence>
+        <bpws:invoke name="CallExternal" operation="DoWork" partnerLink="ExternalPartner"/>
+        <bpws:reply faultName="ns3:SimpleFaultReply" operation="GetSomething"/>
+      </bpws:sequence>
+    </bpws:onMessage>
+  </bpws:pick>
+</bpws:process>

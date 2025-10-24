@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/producer_identifierx4">
+	<xsd:complexType name="ProducerIdentifier">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ProducerName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the name of an agent or broker.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a Chubb ID number for an agent or broker
+This is also known as the Agent Number.
+The AGTAGDA1 Corporate Table contains valid values for this element in the "AGT_N" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerSubNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies a subdivision of business within an agent or broker.
+This also known as Sub Agent Number or Sub Producer Number.
+The AGTAGDA1 Corporate Table contains valid values for this element in the "SUB_AGT_N" column.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NAICNationalProducerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a number for the producer that is assigned by NIPR.  The National Insurance Producer Registry (NIPR) is a non-profit affiliate of the National Association of Insurance Commissioners (NAIC). </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a unique id assigned to a Producer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerDataSourceName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the name of the data source for the Producer data.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MasterProducerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a number used to group several producer codes, which were assigned for premium and loss tracking for
+one producer who requires only one account current and submits one payment under the master number.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MasterProducerName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the master Producer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubMasterProducerNumber"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies a subdivision within a producer business.  This can also be used by Chubb to designate categories of business for particular producers; it is used for payment under a master producer number.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PASNationalProducerCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the National Producer Group for a Producer.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PASSourceProducerCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the code assigned to the producer in the ACE PAS system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

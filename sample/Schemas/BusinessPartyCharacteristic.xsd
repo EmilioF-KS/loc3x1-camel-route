@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/business_party_characteristic" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="BusinessPartyCharacteristic">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="BPCharacteristicName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the BPCharacteristic.  This value set for any/all use of this Abstract element is set within the context of a specific service.  The type of data stored within this varies based on the Business Party (Driver, Mortgagee, ect) that it is used on.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicValue" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the a value associated with the  BPCharacteristic Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicAmount" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the an amount associated with the  BPCharacteristic Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicIndicator" type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the an indicator associated with the  BPCharacteristic Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicDate" type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the a date associated with the  BPCharacteristic Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicCurrencyCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains a code which indentifies the currency of the  BPCharacteristic Amount.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPCharacteristicAmountTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the type of data contained in the BPCharacteristic Amount.
+Valid values for this element include Currency, Distance, Time, and Quantity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="UnitOfMeasure" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the measure for the Amount provided for Distance, Time, and Quantity Amounts. 
+Some valid values for this element would include day, weeks, months.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

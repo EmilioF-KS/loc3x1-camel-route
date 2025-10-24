@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/writing_company" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="WritingCompany">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="WritingCompanyCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the code for an indivdual company that issues policies within The Chubb Insurance Group (also known as InsurerNumber). 
+The E1T00011 Corporate Table contains valid values for this element in the "WTE_CO_C" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyAbbreviation" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the abbreviation for an indivdual company that issues policies within The Chubb Insurance Group (also known as Insurer Abbreviation).
+The E1T00011 Corporate Table contains valid values for this element in the "WTE_CO_AB" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompany1PositionCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the code for an indivdual company that issues policies within The Chubb Insurance Group.
+The E1T00011 Corporate Table contains valid values for this element in the "WTE_CO_1POS_C" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the incorporated, or legal name, of an indivdual company that issues policies within The Chubb Insurance Group. (also known as InsurerName). 
+The E1T00011 Corporate Table contains valid values for this element in the "WTE_CO_NA".</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyMixedCaseName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the incorporated, or legal name, of an indivdual company that issues policies within The Chubb Insurance Group.
+The E1T00011 Corporate Table contains valid values for this element in the  "WTE_CO_MXC_NA" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="WritingCompanyIncorporatedDate" type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date the Writing Company was first established.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyCommencementDate" type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date that Chubb begins to manage the Writing Company.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyCancellationDate" type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date that Chubb ceases to manage the Writing Company.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LicenseInsurerIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indentifies if the company is now or was ever licensed to issue policies.
+Valid values for this element are 'Y' or 'N'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyDomicileCountryCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the country the company is registered or incorporated.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyDomicileStateOrProvinceCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the state within the United States the Writing Company is incorporated.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NAICCompanyNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the symbol assigned by the National Association of Insurance Commisioners to identify a reporting company. 
+ The E1T00011 Corporate Table contains valid values for this element in the "NAIC_CO_N" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NAICGroupNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the numeric value for the Chubb companies assigned to a common group code for reporting to the National Association of Insurance Commissioners. 
+The E1T00011 Corporate Table contains valid values for this element in the "NAIC_GRP_N" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="SourceSystemWritingCompanyName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the name of the writing company as it is known by the source system.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LloydsRateLevelCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains a code that l identifies a rate deviation used in determining premium for Texas homeowner policies written under Chubb Lyoyds Texas.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WritingCompanyRateLevelCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element identifies a rate tier within a writing company.   This allows base rates to be varied within a company.  The variation is compensated for by a corresponding variation in commission.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

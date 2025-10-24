@@ -1,0 +1,793 @@
+================================================================================
+# LOC-CAMEL-ROUTE PROJECT - JIRA TICKETS
+# Generated from doc/master-plan.txt with correct phase-to-task mapping
+# Date: 20 October 2025
+================================================================================
+
+[LOC-000] Tooling Preflight and Environment Installer
+[In charge] Automation Engineer
+[Master Plan] 0.1 Tooling Preflight and Environment Installer
+[status] Pending
+[unit test] scripts/preflight.sh && verify doc/tooling-report.md exists and smoke build completes when `pom.xml` present
+
+**Description:**
+Verify and, if necessary, install/prepare local tooling required to build, run, and test the project end-to-end. Capture versions and readiness in a structured report. Run a smoke build when a Maven project is present.
+
+**Detailed Implementation Steps:**
+1. Execute `scripts/preflight.sh` to check tools: Java 17, Maven, `jq`, `yq`, `python3`, `pip`
+2. Verify Python packages: `lxml`, `pyyaml`; install if missing (user-approved, venv-aware)
+3. Detect `pom.xml`; if present, run smoke build: `mvn -q -DskipTests package`
+4. Emit `doc/tooling-report.md` with versions, readiness, and recommendations
+5. Persist logs under `logs/preflight/` (create if absent)
+
+**Related Files:**
+- scripts/preflight.sh
+- doc/tooling-report.md
+- doc/Loc-Camlel-Route.tex (Environment Installer agent)
+- doc/master-plan.txt (Phase 0: Preflight)
+
+**Inputs:**
+- Local environment and PATH
+- Optional `CONTRACTS_ROOT` or `doc/config.yml` for contract discovery context
+- Presence of `pom.xml` for smoke build
+
+**Outputs:**
+- Generated `doc/tooling-report.md`
+- `logs/preflight/preflight.log`
+- Smoke build artefacts (target/*) if `pom.xml` exists
+
+**Acceptance Criteria:**
+- [ ] All required tools detected with minimum versions (Java 17, Maven)
+- [ ] Python packages `lxml` and `pyyaml` present
+- [ ] `doc/tooling-report.md` generated with sections populated
+- [ ] Smoke build completes successfully when `pom.xml` is present
+- [ ] Preflight logs stored under `logs/preflight/`
+
+**Assigned to:** Automation Engineer
+**Priority:** High
+**Story Points:** 3
+
+[LOC-001] Contract Inventory and Catalogue
+[In charge] Contract Engineer
+[Master Plan] 1.1 Contract Inventory
+[status] Pending
+[unit test] tests/contract/test_contract_inventory_report.md - Verifies inventory generation against actual WSDL/XSD/BPEL artefacts with namespace and binding checks
+
+**Description:**
+Catalogue all WSDL, XSD, and BPEL artefacts in the repository, recording namespaces, bindings, versions, operations, and full file paths. Confirm SimpleFault.xsd usage and version across inbound service and orchestration.
+
+**Detailed Implementation Steps:**
+1. Enumerate artefacts under sample/Schemas and sample/PrivateSchemas
+2. Catalogue WSDLs for LocationRetrievalLOC3X1[B|M], CountryRetrievalCRP10X1, StateOrProvinceRetrievalCRP11X1
+3. Record SOAP/HTTP bindings, ports, operations, and service names
+4. Include BPEL: sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel
+5. Generate inventory.json and inventory.md with summary tables
+
+**Related Files:**
+- doc/Loc-Camlel-Route.tex
+- sample/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl
+- sample/LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl
+- sample/CountryRetrievalCRP10X1/*.wsdl
+- sample/StateOrProvinceRetrievalCRP11X1/*.wsdl
+- sample/PrivateSchemas/SimpleFault.xsd
+
+**Inputs:**
+- Actual WSDL/XSD/BPEL files under sample/*
+- Repository structure in /Users/albertohernandez/Documents/projects/camel-route
+- Master plan governance rules (no mocks, venv required)
+
+**Outputs:**
+- contracts/inventory.json
+- contracts/inventory.md (human-readable summary)
+- Evidence screenshots and logs in tests/contract/artifacts/
+
+**Acceptance Criteria:**
+- [ ] Inventory lists all artefacts with correct paths and versions
+- [ ] Namespaces and bindings validated against WSDL/XSD content
+- [ ] SimpleFault.xsd presence and version confirmed
+- [ ] Generated reports reviewed and approved
+- [ ] Test evidence stored and cross-referenced
+
+**Assigned to:** Contract Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-002] BPEL Analysis and Partner Sequencing
+[In charge] Orchestration Engineer
+[Master Plan] 1.2 BPEL Analysis
+[status] Pending
+[unit test] tests/orchestration/test_bpel_analysis.md - Confirms extracted partner links, invokes, assigns, and error handling paths with real BPEL parsing
+
+**Description:**
+Analyse partner links, variables, assigns, and fault handlers to derive precise invocation order (CRP11X1 → CRP10X1 → LOC3X1M) and mapping intent. Document inbound operations and error paths that serialise to SimpleFault.
+
+**Detailed Implementation Steps:**
+1. Parse LocationRetrievalLOC3X1Process.bpel for partnerLinks and variables
+2. Extract inbound operations (GetLocationList3X1B, GetLocationWithTaxingJurisdictions3X1B)
+3. Catalogue assign activities and map source→target intents
+4. Identify fault handlers and serialisation to SimpleFault.xsd
+5. Produce bpel-analysis.md with sequence diagrams
+
+**Related Files:**
+- sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel
+- sample/PrivateSchemas/SimpleFault.xsd
+
+**Inputs:**
+- Real BPEL file and associated schemas
+- Inventory artefacts from LOC-001
+
+**Outputs:**
+- docs/bpel-analysis.md
+- diagrams/bpel-sequence.svg
+
+**Acceptance Criteria:**
+- [ ] Partner sequencing accurately documented
+- [ ] Assign mapping intents extracted and tabulated
+- [ ] Fault handling paths fully described
+- [ ] Evidence tests parse and validate BPEL content
+
+**Assigned to:** Orchestration Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-003] Canonical Schema Governance Map
+[In charge] Schema Curator
+[Master Plan] 1.3 Canonical Schema Governance
+[status] Pending
+[unit test] tests/schema/test_canonical_map.md - Validates canonical-map.yaml references and CI checks against actual schemas
+
+**Description:**
+Establish canonical schema selections and governance rules. Produce canonical-map.yaml to enforce namespace, version, and duplication policies in CI.
+
+**Detailed Implementation Steps:**
+1. Review duplicates and variants in sample/Schemas
+2. Select canonical XSDs per domain with rationale
+3. Write contracts/canonical-map.yaml with namespace/version rules
+4. Implement CI validation checklist and scripts
+
+**Related Files:**
+- sample/Schemas/*
+- sample/PrivateSchemas/*
+- contracts/canonical-map.yaml (new)
+
+**Inputs:**
+- Real schema files and inventory
+- Governance requirements from master plan
+
+**Outputs:**
+- canonical-map.yaml
+- ci/canonical-schema-check.sh
+
+**Acceptance Criteria:**
+- [ ] Canonical selections documented and approved
+- [ ] CI scripts detect non-canonical usage
+- [ ] Namespaces and versions enforced
+
+**Assigned to:** Schema Curator
+**Priority:** Medium
+**Story Points:** 3
+
+---
+
+[LOC-004] Maven Multi-Module Scaffold
+[In charge] Build Engineer
+[Master Plan] 2.1 Maven Scaffold
+[status] Pending
+[unit test] mvn -q -DskipTests package - Parent and modules compile successfully under venv
+
+**Description:**
+Create a Maven parent POM and modules: contracts, services/loc3x1b, clients/{loc3x1m,crp11x1,crp10x1}, mappings, orchestration, tests. Configure plugins (CXF, MapStruct, Surefire, Checkstyle, SpotBugs) and Java 17 toolchains.
+
+**Detailed Implementation Steps:**
+1. Define parent POM with pluginManagement and dependencyManagement
+2. Create modules with appropriate POMs and packaging
+3. Configure toolchains and common properties
+4. Verify clean package success
+
+**Related Files:**
+- pom.xml (parent)
+- modules/*/pom.xml
+
+**Inputs:**
+- Inventory of contracts and target packages
+- Java 17 environment via bootstrap scripts
+
+**Outputs:**
+- Multi-module Maven structure
+- Successful initial build logs
+
+**Acceptance Criteria:**
+- [ ] Parent and modules compile without errors
+- [ ] Plugins configured and effective
+- [ ] Toolchains enforced (Java 17)
+
+**Assigned to:** Build Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-005] CXF/JAXB Contract Code Generation
+[In charge] Contract Engineer
+[Master Plan] 2.2 CXF/JAXB Generation
+[status] Pending
+[unit test] tests/contract/test_cxf_generation.md - Asserts generated stubs and models compile and match contract signatures
+
+**Description:**
+Generate Java stubs/models from WSDL/XSD with CXF and JAXB; include HTTP bindings where applicable; verify namespaces and operation signatures against real contracts.
+
+**Detailed Implementation Steps:**
+1. Implement scripts/generate_contracts.sh (ensures active venv)
+2. Configure maven-cxf-plugin per WSDLs
+3. Generate sources and verify signatures/namespaces
+4. Produce generation logs for evidence
+
+**Related Files:**
+- sample/*/*.wsdl, *.xsd
+- contracts-target/ (generated)
+
+**Inputs:**
+- Real WSDL/XSD contracts
+- Maven configuration
+
+**Outputs:**
+- Generated Java sources
+- Evidence logs and reports
+
+**Acceptance Criteria:**
+- [ ] Generated sources compile
+- [ ] Namespaces and signatures match contracts
+- [ ] Evidence logs stored and reviewed
+
+**Assigned to:** Contract Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-006] Build and Run Scripts (venv-guarded)
+[In charge] Automation Engineer
+[Master Plan] 2.3 Build Pipeline Scripts
+[status] Pending
+[unit test] scripts/test_scripts.sh - Executes under venv and validates build/run/test flows
+
+**Description:**
+Create bootstrap_java.sh, build_all.sh, run_services.sh, and test_integrations.sh. All scripts assert an active project virtual environment and produce JUnit XML output for tests.
+
+**Detailed Implementation Steps:**
+1. Implement venv checks for all scripts
+2. Build, run, and test flows integrated
+3. Configure JUnit XML outputs and artefact directories
+
+**Related Files:**
+- scripts/*.sh (new)
+
+**Inputs:**
+- Project venv and environment variables
+- Maven multi-module project
+
+**Outputs:**
+- Executable scripts with logs
+- Test artefacts in tests/results/
+
+**Acceptance Criteria:**
+- [ ] Scripts refuse to run outside venv
+- [ ] Build, run, and test flows succeed
+- [ ] JUnit XML artefacts generated
+
+**Assigned to:** Automation Engineer
+**Priority:** Medium
+**Story Points:** 3
+
+---
+
+[LOC-007] LOC3X1B Inbound SOAP Service
+[In charge] Service Engineer
+[Master Plan] 3.1 Inbound Service
+[status] Pending
+[unit test] services/loc3x1b/src/test/java/ContractComplianceTest.java - Validates WSDL exposure, operation signatures, and service health
+
+**Description:**
+Configure Spring Boot + CXF to expose LOC3X1B endpoints per WSDL. Bind generated interfaces to controllers and add health probes via Spring Actuator.
+
+**Detailed Implementation Steps:**
+1. Configure CXF servlet and endpoint beans per LocationRetrievalLOC3X1B.wsdl
+2. Bind generated interfaces and implement basic behaviour
+3. Add actuator health and readiness checks
+
+**Related Files:**
+- services/loc3x1b/*
+- sample/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl
+
+**Inputs:**
+- Generated CXF interfaces
+- Service configuration properties
+
+**Outputs:**
+- Running service exposing WSDL
+- Health endpoints
+
+**Acceptance Criteria:**
+- [ ] Service starts with correct endpoints
+- [ ] WSDL published and accessible
+- [ ] Basic contract tests pass
+
+**Assigned to:** Service Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-008] Outbound CXF Clients (LOC3X1M, CRP11X1, CRP10X1)
+[In charge] Client Engineer
+[Master Plan] 3.2 Outbound Clients
+[status] Pending
+[unit test] clients/*/src/test/java/ClientInvocationTest.java - Validates client factory configuration, TLS, timeouts, and invocation behaviour
+
+**Description:**
+Create CXF client factories with externalised endpoints via profiles. Support TLS and timeouts, add retry/backoff policies, and ensure real endpoint invocation where available.
+
+**Detailed Implementation Steps:**
+1. Implement client factories per partner service
+2. Externalise endpoints with profiles and environment variables
+3. Configure TLS, timeouts, and retry/backoff policies
+
+**Related Files:**
+- clients/*
+- sample/*/*.wsdl
+
+**Inputs:**
+- Generated client stubs
+- Environment configuration
+
+**Outputs:**
+- Executable client modules
+- Test reports and logs
+
+**Acceptance Criteria:**
+- [ ] Clients can invoke real endpoints (if reachable)
+- [ ] TLS and timeouts correctly enforced
+- [ ] Retry/backoff policies validated
+
+**Assigned to:** Client Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-009] Apache Camel Orchestration per BPEL
+[In charge] Orchestration Engineer
+[Master Plan] 4.1 Camel Routes
+[status] Pending
+[unit test] orchestration/src/test/java/RouteSequenceTest.java - Verifies route sequence, correlation IDs, metrics, and error handling to SimpleFault
+
+**Description:**
+Implement Camel routes mirroring BPEL invocation order. Add metrics and correlation IDs, and route errors to SimpleFault.xsd serialisation.
+
+**Detailed Implementation Steps:**
+1. Define routes for inbound operations
+2. Invoke partners in sequence CRP11X1 → CRP10X1 → LOC3X1M
+3. Implement fault handling and serialisation to SimpleFault.xsd
+
+**Related Files:**
+- orchestration/*
+- sample/PrivateSchemas/SimpleFault.xsd
+
+**Inputs:**
+- BPEL analysis and mapping intents
+- Client/service modules
+
+**Outputs:**
+- Camel route definitions
+- Test evidence and logs
+
+**Acceptance Criteria:**
+- [ ] Route sequence matches BPEL analysis
+- [ ] Correlation and metrics recorded
+- [ ] Faults serialised per schema
+
+**Assigned to:** Orchestration Engineer
+**Priority:** High
+**Story Points:** 8
+
+---
+
+[LOC-010] MapStruct Deterministic Mappings
+[In charge] Mapping Engineer
+[Master Plan] 4.2 MapStruct Mappings
+[status] Pending
+[unit test] mappings/src/test/java/MappingCoverageTest.java - Confirms mapper coverage, field-level transforms, and edge cases without mocks
+
+**Description:**
+Replace BPEL assign logic with MapStruct mappers. Derive intent from *.map artefacts and cover edge cases with deterministic transforms.
+
+**Detailed Implementation Steps:**
+1. Define mapper interfaces and DTOs
+2. Implement field-level transforms and mappings
+3. Add comprehensive unit tests without mocks
+
+**Related Files:**
+- mappings/*
+- sample/LOC3X1/*.map
+
+**Inputs:**
+- Real mapping artefacts and schemas
+- DTO and model classes
+
+**Outputs:**
+- MapStruct mappers and tests
+- Coverage reports
+
+**Acceptance Criteria:**
+- [ ] Mapping coverage meets requirements
+- [ ] Edge cases handled deterministically
+- [ ] Tests pass with real inputs
+
+**Assigned to:** Mapping Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-011] Centralised Fault Handling and Logging
+[In charge] Platform Engineer
+[Master Plan] 4.3 Fault Handling and Logging
+[status] Pending
+[unit test] tests/integration/test_fault_serialisation.md - Validates fault translators and structured logging with correlation IDs
+
+**Description:**
+Provide SOAP fault translators to SimpleFault.xsd and implement structured logging with correlation IDs and audit events.
+
+**Detailed Implementation Steps:**
+1. Implement exception translators and mappers
+2. Configure Logback and structured logging
+3. Emit audit events on error paths
+
+**Related Files:**
+- services/*, orchestration/*
+- sample/PrivateSchemas/SimpleFault.xsd
+
+**Inputs:**
+- Real schema and route errors
+- Logging configurations
+
+**Outputs:**
+- Fault translator components
+- Structured logs and audit events
+
+**Acceptance Criteria:**
+- [ ] Faults conform to SimpleFault.xsd
+- [ ] Logs include correlation and structure
+- [ ] Audit events generated on errors
+
+**Assigned to:** Platform Engineer
+**Priority:** Medium
+**Story Points:** 3
+
+---
+
+[LOC-012] Externalised Configuration and Security
+[In charge] Platform Engineer
+[Master Plan] 5.1, 5.3 Configuration & Security
+[status] Pending
+[unit test] tests/config/test_profiles_and_tls.md - Asserts profile precedence, environment variables, and TLS keystore/truststore usage
+
+**Description:**
+Externalise endpoints and timeouts via profiles and environment variables. Enable TLS using keystores/truststores injected at runtime (no secrets committed).
+
+**Detailed Implementation Steps:**
+1. Reference properties and profiles in services/clients
+2. Provide sample environment files (no secrets)
+3. Validate TLS and timeout behaviours
+
+**Related Files:**
+- services/*/resources/application.properties
+- clients/*/resources/application.properties
+
+**Inputs:**
+- Environment variables and keystore materials (external)
+- Application properties
+
+**Outputs:**
+- Configured profiles and TLS settings
+- Test evidence
+
+**Acceptance Criteria:**
+- [ ] Configuration precedence validated
+- [ ] TLS enabled where supported
+- [ ] No secrets committed to repository
+
+**Assigned to:** Platform Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-013] Contract Compliance Tests (No Mocks)
+[In charge] QA Engineer
+[Master Plan] 6.1 Contract Compliance Tests
+[status] Pending
+[unit test] tests/contract/* - JUnit tests validate signatures, schemas, and namespaces with real inputs
+
+**Description:**
+Validate service and client signatures against WSDL and perform schema validation for payloads, including strict namespace checks. All tests use real inputs; no mocks.
+
+**Detailed Implementation Steps:**
+1. Generate tests directly from WSDL/XSD contracts
+2. Validate signatures and schemas for all operations
+3. Produce JUnit XML and HTML summaries with evidence
+
+**Related Files:**
+- sample/*/*.wsdl, *.xsd
+- tests/contract/*
+
+**Inputs:**
+- Real contracts and generated code
+- Test harness
+
+**Outputs:**
+- Compliance test reports
+- Evidence artefacts
+
+**Acceptance Criteria:**
+- [ ] All contract tests pass without mocks
+- [ ] Deviations recorded and justified
+- [ ] Evidence artefacts stored
+
+**Assigned to:** QA Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-014] Integration Tests with Real Endpoints
+[In charge] QA Engineer
+[Master Plan] 6.2 Integration Tests
+[status] Pending
+[unit test] tests/integration/* - End-to-end flow tests with timing capture; blocked endpoints documented with evidence
+
+**Description:**
+Execute end-to-end flows with real partner endpoints, capturing responses and timings. Unavailable endpoints are marked Blocked with evidence and root cause notes.
+
+**Detailed Implementation Steps:**
+1. Configure test profiles for real endpoints
+2. Run LOC3X1B flows through CRP11X1 → CRP10X1 → LOC3X1M
+3. Capture timings, outcomes, and error traces
+
+**Related Files:**
+- clients/*, services/*, orchestration/*
+
+**Inputs:**
+- Real endpoints (where accessible)
+- Configured clients and routes
+
+**Outputs:**
+- End-to-end test reports
+- Evidence logs and screenshots
+
+**Acceptance Criteria:**
+- [ ] Flows succeed or are documented as Blocked
+- [ ] Timings recorded and compared against thresholds
+- [ ] Evidence attached for all outcomes
+
+**Assigned to:** QA Engineer
+**Priority:** High
+**Story Points:** 8
+
+---
+
+[LOC-015] CI/CD Pipeline Setup
+[In charge] CI/CD Engineer
+[Master Plan] 8.1 Pipeline Definition
+[status] Pending
+[unit test] ci/local-run.sh; hosted CI workflow executes preflight → build → test → package
+
+**Description:**
+Define local and hosted CI pipelines executing preflight, build, tests, and packaging deterministically. Archive artefacts and enforce status checks.
+
+**Detailed Implementation Steps:**
+1. Create venv-guarded local runner scripts for preflight/build/test/package
+2. Add GitHub Actions (or Jenkinsfile) with equivalent steps
+3. Archive artefacts: JUnit XML, logs, reports
+4. Document CI usage and policies
+
+**Related Files:**
+- ci/* (new)
+- scripts/*.sh
+- doc/tooling-report.md
+
+**Inputs:**
+- Repository scripts and configuration
+
+**Outputs:**
+- Working local runner and hosted CI
+- Archived artefacts per run
+
+**Acceptance Criteria:**
+- [ ] CI executes preflight → build → tests → package successfully
+- [ ] Artefacts archived; versions recorded
+- [ ] Branch protections/status checks configured (if applicable)
+
+**Assigned to:** CI/CD Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-016] Containerisation (Dockerfiles and Compose)
+[In charge] Containerisation Engineer
+[Master Plan] 9.1 Dockerfiles and Compose
+[status] Pending
+[unit test] docker compose up; health endpoints reachable; container logs collected
+
+**Description:**
+Create multi-stage Dockerfiles for Java modules and Compose services for inbound, clients, orchestration, FastAPI, and optional DB. Externalise config via env vars.
+
+**Detailed Implementation Steps:**
+1. Provide Dockerfiles per module (multi-stage build)
+2. Add docker-compose.yml with services and networks
+3. Configure env-based settings (no secrets in repo)
+4. Document local run and health checks
+
+**Related Files:**
+- docker/* (new)
+- modules/*
+
+**Inputs:**
+- Build artifacts and configuration
+
+**Outputs:**
+- Built images and compose stack
+
+**Acceptance Criteria:**
+- [ ] Images build locally
+- [ ] Services start via Compose with health checks
+- [ ] Configuration via env only; no secrets committed
+
+**Assigned to:** Containerisation Engineer
+**Priority:** High
+**Story Points:** 5
+
+---
+
+[LOC-017] Master Test Runner Script
+[In charge] QA Engineer
+[Master Plan] 11.1 Test Orchestration
+[status] Pending
+[unit test] scripts/test_master.sh --all; --section contract; --ordinal 003
+
+**Description:**
+Implement a master test runner that executes tests by ordinal (LOC-XXX), by section (contract, orchestration, mappings, services, clients), or all; integrates with Maven Surefire/Failsafe.
+
+**Detailed Implementation Steps:**
+1. Implement scripts/test_master.sh (venv-guarded) with argument parsing
+2. Map sections to test directories; run maven tests accordingly
+3. Produce JUnit XML and HTML summaries in tests/results/
+
+**Related Files:**
+- scripts/test_master.sh (new)
+- modules/tests/*
+- tests/results/*
+
+**Inputs:**
+- Maven project and test suites
+
+**Outputs:**
+- Deterministic test execution and reports
+
+**Acceptance Criteria:**
+- [ ] Runner executes by ordinal, section, and all
+- [ ] Reports archived with clear pass/fail
+
+**Assigned to:** QA Engineer
+**Priority:** High
+**Story Points:** 3
+
+---
+
+[LOC-018] React Frontend Scaffold
+[In charge] Frontend Engineer
+[Master Plan] 10.1 React Frontend
+[status] Pending
+[unit test] frontend build runs; container image builds; basic page loads
+
+**Description:**
+Scaffold a React app for dashboards and evidence viewing; integrate with FastAPI endpoints; provide dev scripts and container image.
+
+**Detailed Implementation Steps:**
+1. Create frontend/ with React scaffold (vite or CRA)
+2. Implement pages for test evidence and logs
+3. Integrate with FastAPI API endpoints
+4. Provide Dockerfile for frontend image
+
+**Related Files:**
+- frontend/* (new)
+- docker/Dockerfile.frontend (new)
+
+**Inputs:**
+- API endpoints and test artefacts
+
+**Outputs:**
+- Frontend app and container image
+
+**Acceptance Criteria:**
+- [ ] React app builds and runs
+- [ ] Basic evidence viewer functional
+
+**Assigned to:** Frontend Engineer
+**Priority:** Medium
+**Story Points:** 5
+
+---
+
+[LOC-019] FastAPI Service Scaffold
+[In charge] API Engineer
+[Master Plan] 10.2 FastAPI Service
+[status] Pending
+[unit test] uvicorn dev server runs; container image builds; endpoints respond
+
+**Description:**
+Create a FastAPI service for evidence metadata and orchestration hooks; optional persistence layer for run history.
+
+**Detailed Implementation Steps:**
+1. Create api/ with FastAPI scaffold
+2. Implement endpoints for evidence metadata
+3. Integrate with filesystem or DB (optional) for run history
+4. Provide Dockerfile for API image
+
+**Related Files:**
+- api/* (new)
+- docker/Dockerfile.fastapi (new)
+
+**Inputs:**
+- Test artefacts and orchestration needs
+
+**Outputs:**
+- FastAPI service and container image
+
+**Acceptance Criteria:**
+- [ ] FastAPI builds and runs
+- [ ] Endpoints respond and integrate with frontend
+
+**Assigned to:** API Engineer
+**Priority:** Medium
+**Story Points:** 5
+
+---
+
+[LOC-020] Database Evaluation and Optional Postgres
+[In charge] Architecture Lead
+[Master Plan] 12.1 Decision and Minimal Implementation
+[status] Pending
+[unit test] Decision document exists; if DB added, compose stack includes Postgres and migrations run
+
+**Description:**
+Evaluate necessity of a database for evidence/run metadata. If required, add Postgres via Compose and minimal DAL in FastAPI with migrations.
+
+**Detailed Implementation Steps:**
+1. Produce decision record (doc/db-evaluation.md)
+2. If approved, add Postgres service to compose
+3. Implement minimal DAL in FastAPI; define migrations
+
+**Related Files:**
+- doc/db-evaluation.md (new)
+- docker/docker-compose.yml
+- api/* (DAL)
+
+**Inputs:**
+- Project requirements and evidence handling needs
+
+**Outputs:**
+- Decision record; optional DB integration
+
+**Acceptance Criteria:**
+- [ ] Decision recorded; default no DB unless justified
+- [ ] If added, Postgres integrates cleanly; migrations documented
+
+**Assigned to:** Architecture Lead
+**Priority:** Medium
+**Story Points:** 3

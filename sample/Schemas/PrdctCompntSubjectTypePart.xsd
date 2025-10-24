@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/prdct_compnt_subject_type_part" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PrdctCompntSubjectTypePart">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="SubjectTypePartGIN" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a unique system generated number assigned to a subject type part.
+
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePartAbbreviation" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an abbreviation for an object of interest that has the potential to cause or sustain a loss.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePartClassificationCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the type of subject type part.   Some valid values include: 'TYPE'- Subject Type Part. 'PRMG'- Parameter Group, and 'PARM'-Parameter.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePartName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name of an object of interest that has the potential to cause or sustain a loss.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePartBusinessName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the business name of an object of interest that has the potential to cause or sustain a loss.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePartDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes an object of interest that has the potential to cause or sustain a loss.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
