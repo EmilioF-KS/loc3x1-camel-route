@@ -56,10 +56,10 @@ All routes implement centralised error handling:
 
 ## Testing
 
-Route testing follows Apache Camel testing patterns:
+Route testing follows Apache Camel testing patterns aligned with governance:
 
-- **Unit Tests:** Route logic testing with mock endpoints
-- **Integration Tests:** End-to-end testing with real services
+- **Unit Tests:** Route logic testing using AdviceWith and real Camel routes; no mocks
+- **Integration Tests:** End-to-end testing with real services or deterministic local routes
 - **Contract Tests:** Schema validation and compliance
 
 ## Deployment

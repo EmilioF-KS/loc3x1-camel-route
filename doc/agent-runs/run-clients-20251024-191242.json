@@ -1,0 +1,11 @@
+{
+  "stage": "clients",
+  "outputs": {
+    "run_log": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/run-clients.log",
+    "client_out": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/client-run.out",
+    "request_meta": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/artifacts/clients/client-ping.request.meta.txt",
+    "response_meta": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/artifacts/clients/client-ping.response.meta.txt"
+  },
+  "rc": 0,
+  "ok": true
+}

@@ -100,7 +100,7 @@ IBM-specific BPEL features (BOFactory, SDO) must be mapped to plain JAXB + Sprin
 
 \subsection{Used Technology}
 \begin{itemize}
-  \item \textbf{Local agents orchestrated with Ollama and LangGraph} — Lightweight, on-premise LLM orchestration and graph-based agent coordination.
+  \item \textbf{Deterministic agents via shell/Python; optional LLM reviewer (Ollama/LangGraph)} — Reproducible, CI-safe automation core with an optional, explainability-only reviewer.
   \item \textbf{Java 17} — Long-term-support JVM release providing modern language features and performance.
   \item \textbf{Maven} — Declarative Java build and dependency-management tool.
   \item \textbf{Spring Boot} — Opinionated micro-service framework for rapid, production-ready Spring applications.
@@ -120,11 +120,11 @@ IBM-specific BPEL features (BOFactory, SDO) must be mapped to plain JAXB + Sprin
 
 \subsection{Local Models via Ollama}
 \begin{itemize}
-  \item Instruction/Planner model: use a general instruction-tuned model to plan tasks, enforce governance (no mocks, British English), and produce concise, action-oriented steps for agents.
-  \item Code generation model: use a coder-oriented model to generate Java/Spring Boot, Maven, Apache Camel, and Apache CXF code with high syntactic accuracy and consistent patterns.
-  \item Embedding/Retrieval model: use a high-quality text embedding model to index and retrieve WSDL/XSD contracts and code snippets for precise mapping and route wiring.
+  \item Reviewer/Interpreter model (optional): runs after evaluation to generate an executive explanation report from artefacts; never changes code or gates release.
+  \item Deterministic core: planning, scaffolding, build, tests, evaluation executed by shell/Python without LLM; reproducible and CI-safe.
+  \item Retrieval (optional): embeddings used solely to fetch relevant artefact snippets for the reviewer; not required for the core.
 \end{itemize}
-Table \ref{tab:local-models} details the recommended local models and their rationale.
+Table \ref{tab:local-models} details the optional reviewer model and supporting components when enabled.
 \renewcommand{\arraystretch}{1.2}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{6.0cm}|>{\raggedright\arraybackslash}p{6.0cm}|}
 \caption{Recommended local models and rationale.}\label{tab:local-models}\\
@@ -308,6 +308,15 @@ Figure \ref{fig:agentic-cycle} illustrates this closed-loop process, showing how
 \item \textbf{Monitor}: Tracks runtime performance, error rates, and availability metrics. Detects degradation patterns that trigger cycle re-entry.
 \item \textbf{Adapt}: Adjusts integration strategies based on accumulated evidence. May switch from static to dynamic approaches or activate fallback mechanisms.
 \end{itemize}
+
+\subsubsection{Deterministic Core and Reviewer Agent}
+The core pipeline is \textbf{deterministic}, repository-aware, and evidence-driven. Planning, scaffolding, build, tests, and evaluation are performed by guarded shell/Python scripts that operate only on explicit artefacts (WSDL/XSD, BPEL, YAML specs), enforce virtual-environment execution, and persist logs and run metadata. This yields reproducibility, auditability, and CI compatibility; no local LLM is required for correctness.
+
+\paragraph{Reviewer/Interpreter (Optional)}
+When enabled, a local LLM runs \textit{after} evaluation to interpret artefacts and produce an executive explanation report. Inputs include scaffold/build logs, test results, the agent plan, and route specifications. Outputs are written to `doc/reviewer-report.md` as a plain-English narrative of decisions, evidence chains, and risks. The reviewer never changes code or gates release; it augments explainability only.
+
+\paragraph{Guardrails}
+LLM outputs are schema-validated and cross-checked against deterministic artefacts; disagreements are flagged, not auto-applied. The deterministic core remains authoritative regardless of reviewer presence.
 
 \subsection{Static versus Dynamic Invocation Strategy}
 The agentic system employs a \textbf{hybrid invocation model} that dynamically selects between static code generation and runtime service discovery based on contract stability and operational requirements.

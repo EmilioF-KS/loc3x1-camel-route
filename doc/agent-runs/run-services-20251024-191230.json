@@ -1,0 +1,12 @@
+{
+  "stage": "services",
+  "outputs": {
+    "run_log": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/run-services.log",
+    "service_out": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/inbound-service.out",
+    "wsdl_probe": "http://localhost:8085/services/BasicService?wsdl",
+    "soap_request": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/soap-ping.xml",
+    "soap_response": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/soap-ping.response.xml"
+  },
+  "rc": 0,
+  "ok": true
+}

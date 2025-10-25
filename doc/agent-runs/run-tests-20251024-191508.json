@@ -1,0 +1,10 @@
+{
+  "stage": "tests",
+  "outputs": {
+    "integration_tests_log": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/logs/integration-tests.log",
+    "junit_dir": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/junit",
+    "html_dir": "/Users/albertohernandez/Documents/projects/camel-route/tests/results/html"
+  },
+  "rc": 0,
+  "ok": true
+}

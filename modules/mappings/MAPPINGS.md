@@ -1,0 +1,20 @@
+# Mappings Summary
+
+Generated: 2025-10-24T18:40:21.048371
+
+Count: 14
+
+- GetLocationListLOC3X1BReplySubMapMapper
+- GetLocationWithTaxingJurisdictionsLOC3X1BReplyMapMapper
+- LOC3X1GetLocationWithTaxingJurisdictionsRequestMapMapper
+- LOC3X1GetLocationWithTaxingJurisdictionsReplyMapMapper
+- LOC3X1GetLocationListReplySubMapMapper
+- GetLocationListLOC3X1BReplyMapMapper
+- LOC3X1MGetLocationWithTaxingJurisdictionsRequestMapMapper
+- GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMapMapper
+- LOC3X1GetLocationWithTaxingJurisdictionsReplySubMapMapper
+- LOC3X1GetLocationListReplyMapMapper
+- LOC3X1MGetLocationListRequestMapMapper
+- RandLocationToCimLocationMapMapper
+- LOC3X1GetLocationListRequestMapMapper
+- LOC3X1MGetLocationListRequestMapMapper

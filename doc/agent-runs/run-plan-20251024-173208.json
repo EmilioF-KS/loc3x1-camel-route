@@ -1,0 +1,8 @@
+{
+  "stage": "plan",
+  "outputs": {
+    "agent_plan_json": "/Users/albertohernandez/Documents/projects/camel-route/doc/agent-plan.json",
+    "agent_plan_log": "/Users/albertohernandez/Documents/projects/camel-route/doc/agent-plan.log"
+  },
+  "ok": true
+}

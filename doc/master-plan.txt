@@ -97,7 +97,7 @@ LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
 ## 1.1 Contract Inventory
 **Responsible Agent: Contract Engineer**
 - [*] Enumerate WSDL/XSD under sample/Schemas and sample/PrivateSchemas
-- [ ] Identify BPEL: sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel and root sample/LocationRetrievalLOC3X1Process.bpel
+- [*] Identify BPEL: sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel and root sample/LocationRetrievalLOC3X1Process.bpel
 - [*] Produce contracts/inventory.json with namespaces, versions, file paths, and bindings (HTTP vs SOAP)
 - [ ] Validate presence and usage of sample/PrivateSchemas/SimpleFault.xsd across WSDLs
 - [*] Record operations available in LOC3X1B and LOC3X1M WSDLs; list partner operations in CRP10X1 and CRP11X1
@@ -131,7 +131,7 @@ LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
 ## A. Planner Agent
 **Responsible Agent: Planner**
 - [ ] Implement planner that reads doc/Loc-Camlel-Route.tex and contracts/inventory.json
-- [ ] Produce `doc/agent-plan.json` with ordered phases, dependencies, and acceptance criteria
+- [*] Produce `doc/agent-plan.json` with ordered phases, dependencies, and acceptance criteria
 - [ ] Enforce governance (British English, venv-only, no mocks); include policy checks in output
 - [ ] Emit traceable decisions and assumptions; log to `doc/agent-plan.log`
 
@@ -186,9 +186,15 @@ LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
 - [ ] Produce `doc/evaluation-report.md` summarising pass/fail and blockers
 - [ ] Gate release readiness per acceptance criteria across phases
 
+## J. Reviewer/Interpreter Agent (Optional)
+**Responsible Agent: Documentation/Explainability Engineer**
+- [ ] Interpret deterministic artefacts (scaffold/build logs, test results, agent plan, route specs)
+- [ ] Produce `doc/reviewer-report.md` with executive narrative, decisions trace, and risks
+- [ ] Never gate release or modify code; augment explainability only; schema-validate outputs
+
 ## Orchestration Graph and Controls
 **Responsible Agent: Architecture/Automation Leads**
-- [ ] Define agent graph (LangGraph) Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval
+- [ ] Define agent graph (deterministic core) Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review
 - [ ] Provide CLI runner `scripts/agents/run.py` with options: `--all`, `--agent <name>`, `--from <stage>`
 - [ ] Integrate FastAPI hooks (Phase 10.2): `POST /agents/run`, `POST /orchestrations/run`
 - [ ] Persist run metadata (file-based by default) with timestamps, inputs, outputs
@@ -208,6 +214,7 @@ LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
 - [ ] `orchestration/spec.yaml` reflects BPEL invokes and error paths
 - [ ] Inbound service, clients, routes, and mappings scaffolded and build under Maven
 - [ ] Tests generated and runnable; evidence archived under `tests/results/`
+- [ ] `doc/reviewer-report.md` present when reviewer enabled; aligns with deterministic artefacts
 - [ ] Evaluation report produced; release gating wired to agent outputs
 
 ---
@@ -399,7 +406,7 @@ LOC-CAMEL-ROUTE SYSTEM ARCHITECTURE
 # ENVIRONMENT REQUIREMENTS
 - Java 17, Maven
 - Spring Boot, Apache CXF, Apache Camel, MapStruct, JUnit, SLF4J/Logback
-- Local agents orchestrated via Ollama/LangGraph for planning and automation
+- Deterministic agents via shell/Python; optional LLM reviewer via Ollama/LangGraph for explainability
 - All scripts and automation MUST run inside the project virtual environment (venv)
 - No mocks or simulated data; tests rely on real endpoints; blocked tests are recorded, not simulated
 

@@ -4,5 +4,5 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface LOC3X1GetLocationWithTaxingJurisdictionsRequestMapMapper {
-    Object map(Object source);
+    GetLocationWithTaxingJurisdictionsTypes.GetLocationWithTaxingJurisdictions3X1BRequestMsg map(GetLocationWithTaxingJurisdictionsTypes.GetLocationWithTaxingJurisdictionsRequestMsg source);
 }

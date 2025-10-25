@@ -1,0 +1,13 @@
+{
+  "stage": "bpel",
+  "inputs": {
+    "root": "/Users/albertohernandez/Documents/projects/camel-route",
+    "bpel": "auto",
+    "use_agent": false
+  },
+  "outputs": {
+    "bpel_analysis_md": "/Users/albertohernandez/Documents/projects/camel-route/doc/bpel-analysis.md",
+    "spec_yaml": "/Users/albertohernandez/Documents/projects/camel-route/orchestration/spec.yaml"
+  },
+  "ok": true
+}

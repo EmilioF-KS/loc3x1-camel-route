@@ -1,0 +1,9 @@
+{
+  "stage": "scaffold",
+  "outputs": {
+    "scaffold_report_md": "/Users/albertohernandez/Documents/projects/camel-route/doc/.preflight/scaffold-report.md",
+    "maven_build_log": "/Users/albertohernandez/Documents/projects/camel-route/ci/artifacts/maven-build.log"
+  },
+  "ok": true,
+  "changed_parent_pom": false
+}

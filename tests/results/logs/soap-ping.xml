@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://ei.com/contracts/basic">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <tns:Ping>
+      <message>hello</message>
+    </tns:Ping>
+  </soapenv:Body>
+</soapenv:Envelope>

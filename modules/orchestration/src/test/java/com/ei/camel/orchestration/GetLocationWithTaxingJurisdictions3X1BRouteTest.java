@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.annotation.DirtiesContext;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +24,7 @@ import com.ei.camel.orchestration.config.CxfServiceConfig;
     "clients.loc3x1b.address=http://localhost:8081/services/loc3x1b",
     "camel.springboot.auto-startup=false"
 })
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 class GetLocationWithTaxingJurisdictions3X1BRouteTest {
 
     @Autowired
@@ -54,12 +56,6 @@ class GetLocationWithTaxingJurisdictions3X1BRouteTest {
         // Start Camel context and required routes after advice
         camelContext.start();
         camelContext.getRouteController().startRoute("getlocationwithtaxingjurisdictions3x1b-route");
-        camelContext.getRouteController().startRoute("stub-outbound-route");
-        // camelContext.getRouteController().startRoute("validateRequest-route");
-        // camelContext.getRouteController().startRoute("simpleFaultHandler-route");
-        // camelContext.getRouteController().startRoute("mapFinalResponse-route");
-        // camelContext.getRouteController().startRoute("mapLocationRetrievalLOC3X1BRequest-route");
-        // camelContext.getRouteController().startRoute("mapLocationRetrievalLOC3X1BResponse-route");
         camelContext.getRouteController().startRoute("stub-outbound-route");
     }
 

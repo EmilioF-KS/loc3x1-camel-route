@@ -1,0 +1,4 @@
+wsdl=http://localhost:8085/services/BasicService?wsdl
+msg=client
+connect_timeout_ms=5000
+receive_timeout_ms=5000

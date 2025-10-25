@@ -1,0 +1,26 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-10-24T19:12:39.578-06:00  INFO 56508 --- [           main] com.ei.inbound.Application               : Starting Application using Java 25 with PID 56508 (/Users/albertohernandez/Documents/projects/camel-route/modules/inbound/target/inbound-1.0.0-SNAPSHOT.jar started by albertohernandez in /Users/albertohernandez/Documents/projects/camel-route)
+2025-10-24T19:12:39.579-06:00  INFO 56508 --- [           main] com.ei.inbound.Application               : No active profile set, falling back to 1 default profile: "default"
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/Users/albertohernandez/Documents/projects/camel-route/modules/inbound/target/inbound-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.16.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2025-10-24T19:12:39.953-06:00  INFO 56508 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-10-24T19:12:39.956-06:00  INFO 56508 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-24T19:12:39.957-06:00  INFO 56508 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-10-24T19:12:39.968-06:00  INFO 56508 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-24T19:12:39.968-06:00  INFO 56508 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 370 ms
+2025-10-24T19:12:40.075-06:00  INFO 56508 --- [           main] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://ei.com/contracts/basic}BasicService from class com.ei.inbound.BasicPortType
+2025-10-24T19:12:40.231-06:00  INFO 56508 --- [           main] org.apache.cxf.endpoint.ServerImpl       : Setting the server's publish address to be /BasicService
+2025-10-24T19:12:40.384-06:00  INFO 56508 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2025-10-24T19:12:40.417-06:00  INFO 56508 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
+2025-10-24T19:12:40.425-06:00  INFO 56508 --- [           main] com.ei.inbound.Application               : Started Application in 0.981 seconds (process running for 1.122)

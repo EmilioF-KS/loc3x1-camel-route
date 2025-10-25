@@ -1,0 +1,3 @@
+CXF DynamicClient invoking Ping: wsdl=http://localhost:8085/services/BasicService?wsdl, msg=client
+Ping reply=PONG:client
+✓ CXF client Ping succeeded

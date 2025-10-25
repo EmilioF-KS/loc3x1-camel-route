@@ -6,17 +6,17 @@
 
 ## Counts
 - JSON WSDL: 8
-- JSON XSD: 382
+- JSON XSD: 383
 - JSON BPEL: -1
-- JSON Total: 390
+- JSON Total: 391
 - MD WSDL: 8
-- MD XSD: 382
+- MD XSD: 383
 - MD BPEL: 2
-- MD Total: 392
+- MD Total: 393
 - Counts Match: True
 
 ## File Existence
-- OK Files: 390
+- OK Files: 391
 - Missing Files: 0
 
 ## Imports
@@ -26,9 +26,9 @@
 - Unresolved XSD Imports: 0
 
 ## Namespaces
-- JSON Target Namespaces: 389
+- JSON Target Namespaces: 390
 - JSON Import Namespaces: 170
-- MD Namespaces: 432
+- MD Namespaces: 433
 - JSON Targets Missing in MD: 0
 - MD Extras Not in JSON: 25
 
@@ -44,7 +44,7 @@
 - WSDL binding mismatches: 0
 
 ## Summary
-- Ok Files: 390
+- Ok Files: 391
 - Missing Files: 0
 - Ok Wsdl Imports: 23
 - Ok Xsd Imports: 304

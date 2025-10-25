@@ -1,0 +1,1892 @@
+summary:
+  generated_at: '2025-10-24T17:36:47.074612'
+  xsd_total: 383
+  groups: 299
+  variant_groups: 53
+canonical_groups:
+- id: ei.corporate.get_state_or_province_list_reply_crp11
+  base_namespace: http://ei/corporate/get_state_or_province_list_reply_crp11
+  canonical_namespace: http://ei/corporate/get_state_or_province_list_reply_crp11x1
+  variants:
+  - http://ei/corporate/get_state_or_province_list_reply_crp11x1
+  canonical_file: sample/StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceListReply.xsd
+- id: ei.corporate.get_state_or_province_request_crp11
+  base_namespace: http://ei/corporate/get_state_or_province_request_crp11
+  canonical_namespace: http://ei/corporate/get_state_or_province_request_crp11x1
+  variants:
+  - http://ei/corporate/get_state_or_province_request_crp11x1
+  canonical_file: sample/StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceRequest.xsd
+- id: ei.location.location_list_reply_\1
+  base_namespace: http://ei/location/location_list_reply_\1
+  canonical_namespace: http://ei/location/location_list_reply_loc3x1b
+  variants:
+  - http://ei/location/location_list_reply_loc3x1b
+  - http://ei/location/location_list_reply_loc3x1m
+  canonical_file: sample/LocationRetrievalLOC3X1B/LocationListReply.xsd
+- id: ei.location.location_request_\1
+  base_namespace: http://ei/location/location_request_\1
+  canonical_namespace: http://ei/location/location_request_loc3x1b
+  variants:
+  - http://ei/location/location_request_loc3x1b
+  - http://ei/location/location_request_loc3x1m
+  canonical_file: sample/LocationRetrievalLOC3X1B/LocationRequest.xsd
+- id: ei.location.get_location_list_request_\1
+  base_namespace: http://ei/location/get_location_list_request_\1
+  canonical_namespace: http://ei/location/get_location_list_request_loc3x1b
+  variants:
+  - http://ei/location/get_location_list_request_loc3x1b
+  - http://ei/location/get_location_list_request_loc3x1m
+  canonical_file: sample/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd
+- id: ei.corporate.get_country_request_crp10
+  base_namespace: http://ei/corporate/get_country_request_crp10
+  canonical_namespace: http://ei/corporate/get_country_request_crp10x1
+  variants:
+  - http://ei/corporate/get_country_request_crp10x1
+  canonical_file: sample/CountryRetrievalCRP10X1/GetCountryRequest.xsd
+- id: ei.corporate.get_country_reply_crp10
+  base_namespace: http://ei/corporate/get_country_reply_crp10
+  canonical_namespace: http://ei/corporate/get_country_reply_crp10x1
+  variants:
+  - http://ei/corporate/get_country_reply_crp10x1
+  canonical_file: sample/CountryRetrievalCRP10X1/GetCountryReply.xsd
+- id: ei.corporate.get_country_list_reply_crp10
+  base_namespace: http://ei/corporate/get_country_list_reply_crp10
+  canonical_namespace: http://ei/corporate/get_country_list_reply_crp10x1
+  variants:
+  - http://ei/corporate/get_country_list_reply_crp10x1
+  canonical_file: sample/CountryRetrievalCRP10X1/GetCountryListReply.xsd
+- id: ei.core.policy_identifier
+  base_namespace: http://ei/core/policy_identifier
+  canonical_namespace: http://ei/core/policy_identifier
+  variants:
+  - http://ei/core/policy_identifier
+  - http://ei/core/policy_identifierx1
+  canonical_file: sample/Schemas/PolicyIdentifier.xsd
+- id: ei.core.organization_information
+  base_namespace: http://ei/core/organization_information
+  canonical_namespace: http://ei/core/organization_information
+  variants:
+  - http://ei/core/organization_information
+  canonical_file: sample/Schemas/OrganizationInformation.xsd
+- id: ei.core.currency
+  base_namespace: http://ei/core/currency
+  canonical_namespace: http://ei/core/currency
+  variants:
+  - http://ei/core/currency
+  canonical_file: sample/Schemas/Currency.xsd
+- id: ei.core.birth_date_information
+  base_namespace: http://ei/core/birth_date_information
+  canonical_namespace: http://ei/core/birth_date_information
+  variants:
+  - http://ei/core/birth_date_information
+  canonical_file: sample/Schemas/BirthDateInformation.xsd
+- id: ei.core.time_zone
+  base_namespace: http://ei/core/time_zone
+  canonical_namespace: http://ei/core/time_zone
+  variants:
+  - http://ei/core/time_zone
+  canonical_file: sample/Schemas/TimeZone.xsd
+- id: ei.core.medical_institution
+  base_namespace: http://ei/core/medical_institution
+  canonical_namespace: http://ei/core/medical_institution
+  variants:
+  - http://ei/core/medical_institution
+  - http://ei/core/medical_institutionx1
+  - http://ei/core/medical_institutionx2
+  - http://ei/core/medical_institutionx3
+  canonical_file: sample/Schemas/MedicalInstitution.xsd
+- id: ei.location.location
+  base_namespace: http://ei/location/location
+  canonical_namespace: http://ei/location/location
+  variants:
+  - http://ei/location/location
+  canonical_file: sample/Schemas/Location.xsd
+- id: ei.core.alliance_sbu_monthly_financial
+  base_namespace: http://ei/core/alliance_sbu_monthly_financial
+  canonical_namespace: http://ei/core/alliance_sbu_monthly_financial
+  variants:
+  - http://ei/core/alliance_sbu_monthly_financial
+  canonical_file: sample/Schemas/AllianceSBUMonthlyFinancial.xsd
+- id: ei.core.business_contact
+  base_namespace: http://ei/core/business_contact
+  canonical_namespace: http://ei/core/business_contact
+  variants:
+  - http://ei/core/business_contact
+  - http://ei/core/business_contactx1
+  - http://ei/core/business_contactx2
+  - http://ei/core/business_contactx3
+  - http://ei/core/business_contactx4
+  canonical_file: sample/Schemas/BusinessContact.xsd
+- id: ei.core.taxing_jurisdiction
+  base_namespace: http://ei/core/taxing_jurisdiction
+  canonical_namespace: http://ei/core/taxing_jurisdiction
+  variants:
+  - http://ei/core/taxing_jurisdiction
+  - http://ei/core/taxing_jurisdictionx1
+  canonical_file: sample/Schemas/TaxingJurisdiction.xsd
+- id: ei.core.individual_identifier
+  base_namespace: http://ei/core/individual_identifier
+  canonical_namespace: http://ei/core/individual_identifier
+  variants:
+  - http://ei/core/individual_identifier
+  - http://ei/core/individual_identifierx1
+  canonical_file: sample/Schemas/IndividualIdentifier.xsd
+- id: ei.core.legal_representative
+  base_namespace: http://ei/core/legal_representative
+  canonical_namespace: http://ei/core/legal_representative
+  variants:
+  - http://ei/core/legal_representative
+  - http://ei/core/legal_representativex1
+  - http://ei/core/legal_representativex2
+  - http://ei/core/legal_representativex3
+  canonical_file: sample/Schemas/LegalRepresentative.xsd
+- id: ei.core.location_occupancy_aggregation
+  base_namespace: http://ei/core/location_occupancy_aggregation
+  canonical_namespace: http://ei/core/location_occupancy_aggregation
+  variants:
+  - http://ei/core/location_occupancy_aggregation
+  - http://ei/core/location_occupancy_aggregationx1
+  - http://ei/core/location_occupancy_aggregationx2
+  canonical_file: sample/Schemas/LocationOccupancyAggregation.xsd
+- id: ei.core.business_event_key
+  base_namespace: http://ei/core/business_event_key
+  canonical_namespace: http://ei/core/business_event_key
+  variants:
+  - http://ei/core/business_event_key
+  canonical_file: sample/Schemas/BusinessEventKey.xsd
+- id: ei.core.product_identifier
+  base_namespace: http://ei/core/product_identifier
+  canonical_namespace: http://ei/core/product_identifier
+  variants:
+  - http://ei/core/product_identifier
+  canonical_file: sample/Schemas/ProductIdentifier.xsd
+- id: ei.core.item
+  base_namespace: http://ei/core/item
+  canonical_namespace: http://ei/core/item
+  variants:
+  - http://ei/core/item
+  canonical_file: sample/Schemas/Item.xsd
+- id: ei.core.offering_status_information
+  base_namespace: http://ei/core/offering_status_information
+  canonical_namespace: http://ei/core/offering_status_information
+  variants:
+  - http://ei/core/offering_status_information
+  canonical_file: sample/Schemas/OfferingStatusInformation.xsd
+- id: ei.core.strategic_alliance_sbu
+  base_namespace: http://ei/core/strategic_alliance_sbu
+  canonical_namespace: http://ei/core/strategic_alliance_sbu
+  variants:
+  - http://ei/core/strategic_alliance_sbu
+  canonical_file: sample/Schemas/StrategicAllianceSBU.xsd
+- id: ei.core.competitor
+  base_namespace: http://ei/core/competitor
+  canonical_namespace: http://ei/core/competitor
+  variants:
+  - http://ei/core/competitor
+  canonical_file: sample/Schemas/Competitor.xsd
+- id: ei.core.public_protection_information
+  base_namespace: http://ei/core/public_protection_information
+  canonical_namespace: http://ei/core/public_protection_information
+  variants:
+  - http://ei/core/public_protection_information
+  canonical_file: sample/Schemas/PublicProtectionInformation.xsd
+- id: ei.core.document_business_type
+  base_namespace: http://ei/core/document_business_type
+  canonical_namespace: http://ei/core/document_business_type
+  variants:
+  - http://ei/core/document_business_type
+  canonical_file: sample/Schemas/DocumentBusinessType.xsd
+- id: ei.core.bill_payor
+  base_namespace: http://ei/core/bill_payor
+  canonical_namespace: http://ei/core/bill_payor
+  variants:
+  - http://ei/core/bill_payor
+  canonical_file: sample/Schemas/BillPayor.xsd
+- id: ei.core.document_property
+  base_namespace: http://ei/core/document_property
+  canonical_namespace: http://ei/core/document_property
+  variants:
+  - http://ei/core/document_property
+  canonical_file: sample/Schemas/DocumentProperty.xsd
+- id: ei.core.extended_insurance_admin_role
+  base_namespace: http://ei/core/extended_insurance_admin_role
+  canonical_namespace: http://ei/core/extended_insurance_admin_role
+  variants:
+  - http://ei/core/extended_insurance_admin_role
+  canonical_file: sample/Schemas/ExtendedInsuranceAdminRole.xsd
+- id: ei.core.entity_alias_name
+  base_namespace: http://ei/core/entity_alias_name
+  canonical_namespace: http://ei/core/entity_alias_name
+  variants:
+  - http://ei/core/entity_alias_name
+  - http://ei/core/entity_alias_namex1
+  canonical_file: sample/Schemas/EntityAliasName.xsd
+- id: ei.core.language
+  base_namespace: http://ei/core/language
+  canonical_namespace: http://ei/core/language
+  variants:
+  - http://ei/core/language
+  - http://ei/core/languagex1
+  canonical_file: sample/Schemas/Language.xsd
+- id: ei.core.performance_metric
+  base_namespace: http://ei/core/performance_metric
+  canonical_namespace: http://ei/core/performance_metric
+  variants:
+  - http://ei/core/performance_metric
+  canonical_file: sample/Schemas/PerformanceMetric.xsd
+- id: ei.core.exposure
+  base_namespace: http://ei/core/exposure
+  canonical_namespace: http://ei/core/exposurex1
+  variants:
+  - http://ei/core/exposurex1
+  - http://ei/core/exposurex2
+  canonical_file: sample/Schemas/Exposurex1.xsd
+- id: ei.core.assigned_resource_id_by_role
+  base_namespace: http://ei/core/assigned_resource_id_by_role
+  canonical_namespace: http://ei/core/assigned_resource_id_by_role
+  variants:
+  - http://ei/core/assigned_resource_id_by_role
+  canonical_file: sample/Schemas/AssignedResourceIdByRole.xsd
+- id: ei.core.docusign_envelope
+  base_namespace: http://ei/core/docusign_envelope
+  canonical_namespace: http://ei/core/docusign_envelope
+  variants:
+  - http://ei/core/docusign_envelope
+  canonical_file: sample/Schemas/DocuSignEnvelope.xsd
+- id: ei.core.payroll_report
+  base_namespace: http://ei/core/payroll_report
+  canonical_namespace: http://ei/core/payroll_report
+  variants:
+  - http://ei/core/payroll_report
+  canonical_file: sample/Schemas/PayrollReport.xsd
+- id: ei.core.household
+  base_namespace: http://ei/core/household
+  canonical_namespace: http://ei/core/household
+  variants:
+  - http://ei/core/household
+  - http://ei/core/householdx1
+  canonical_file: sample/Schemas/Household.xsd
+- id: ei.core.user_authorization
+  base_namespace: http://ei/core/user_authorization
+  canonical_namespace: http://ei/core/user_authorization
+  variants:
+  - http://ei/core/user_authorization
+  canonical_file: sample/Schemas/UserAuthorization.xsd
+- id: ei.core.businessinformation
+  base_namespace: http://ei/core/businessinformation
+  canonical_namespace: http://ei/core/businessinformation
+  variants:
+  - http://ei/core/businessinformation
+  canonical_file: sample/Schemas/BusinessInformation.xsd
+- id: ei.core.policy_processing_information
+  base_namespace: http://ei/core/policy_processing_information
+  canonical_namespace: http://ei/core/policy_processing_information
+  variants:
+  - http://ei/core/policy_processing_information
+  canonical_file: sample/Schemas/PolicyProcessingInformation.xsd
+- id: ei.core.individual_name
+  base_namespace: http://ei/core/individual_name
+  canonical_namespace: http://ei/core/individual_name
+  variants:
+  - http://ei/core/individual_name
+  canonical_file: sample/Schemas/IndividualName.xsd
+- id: ei.core.commission_rates_by_policy_category
+  base_namespace: http://ei/core/commission_rates_by_policy_category
+  canonical_namespace: http://ei/core/commission_rates_by_policy_category
+  variants:
+  - http://ei/core/commission_rates_by_policy_category
+  canonical_file: sample/Schemas/CommissionRatesByPolicyCategory.xsd
+- id: ei.core.prdct_compnt_exclusion_variation
+  base_namespace: http://ei/core/prdct_compnt_exclusion_variation
+  canonical_namespace: http://ei/core/prdct_compnt_exclusion_variation
+  variants:
+  - http://ei/core/prdct_compnt_exclusion_variation
+  canonical_file: sample/Schemas/PrdctCompntExclusionVariation.xsd
+- id: ei.core.notification_property
+  base_namespace: http://ei/core/notification_property
+  canonical_namespace: http://ei/core/notification_property
+  variants:
+  - http://ei/core/notification_property
+  canonical_file: sample/Schemas/NotificationProperty.xsd
+- id: ei.core.prior_carrier
+  base_namespace: http://ei/core/prior_carrier
+  canonical_namespace: http://ei/core/prior_carrier
+  variants:
+  - http://ei/core/prior_carrier
+  canonical_file: sample/Schemas/PriorCarrier.xsd
+- id: ei.core.document_reference_information
+  base_namespace: http://ei/core/document_reference_information
+  canonical_namespace: http://ei/core/document_reference_information
+  variants:
+  - http://ei/core/document_reference_information
+  canonical_file: sample/Schemas/DocumentReferenceInformation.xsd
+- id: ei.core.policy_type_information
+  base_namespace: http://ei/core/policy_type_information
+  canonical_namespace: http://ei/core/policy_type_information
+  variants:
+  - http://ei/core/policy_type_information
+  canonical_file: sample/Schemas/PolicyTypeInformation.xsd
+- id: ei.core.issued_policy_form
+  base_namespace: http://ei/core/issued_policy_form
+  canonical_namespace: http://ei/core/issued_policy_form
+  variants:
+  - http://ei/core/issued_policy_form
+  canonical_file: sample/Schemas/IssuedPolicyForm.xsd
+- id: ei.core.policy_transaction_identifier
+  base_namespace: http://ei/core/policy_transaction_identifier
+  canonical_namespace: http://ei/core/policy_transaction_identifier
+  variants:
+  - http://ei/core/policy_transaction_identifier
+  canonical_file: sample/Schemas/PolicyTransactionIdentifier.xsd
+- id: ei.core.header
+  base_namespace: http://ei/core/header
+  canonical_namespace: http://ei/core/header
+  variants:
+  - http://ei/core/header
+  canonical_file: sample/Schemas/Header.xsd
+- id: ei.core.campaign_contact_alliance_sbu_association
+  base_namespace: http://ei/core/campaign_contact_alliance_sbu_association
+  canonical_namespace: http://ei/core/campaign_contact_alliance_sbu_association
+  variants:
+  - http://ei/core/campaign_contact_alliance_sbu_association
+  canonical_file: sample/Schemas/CampaignContactAllianceSBUAssociation.xsd
+- id: ei.core.phone_information
+  base_namespace: http://ei/core/phone_information
+  canonical_namespace: http://ei/core/phone_information
+  variants:
+  - http://ei/core/phone_information
+  canonical_file: sample/Schemas/PhoneInformation.xsd
+- id: ei.core.endpoint_information
+  base_namespace: http://ei/core/endpoint_information
+  canonical_namespace: http://ei/core/endpoint_information
+  variants:
+  - http://ei/core/endpoint_information
+  - http://ei/core/endpoint_informationx1
+  canonical_file: sample/Schemas/EndpointInformation.xsd
+- id: ei.core.accounting_period
+  base_namespace: http://ei/core/accounting_period
+  canonical_namespace: http://ei/core/accounting_period
+  variants:
+  - http://ei/core/accounting_period
+  canonical_file: sample/Schemas/AccountingPeriod.xsd
+- id: ei.core.business_party
+  base_namespace: http://ei/core/business_party
+  canonical_namespace: http://ei/core/business_party
+  variants:
+  - http://ei/core/business_party
+  - http://ei/core/business_partyx1
+  canonical_file: sample/Schemas/BusinessParty.xsd
+- id: ei.core.territory
+  base_namespace: http://ei/core/territory
+  canonical_namespace: http://ei/core/territory
+  variants:
+  - http://ei/core/territory
+  canonical_file: sample/Schemas/Territory.xsd
+- id: ei.core.rating_territory
+  base_namespace: http://ei/core/rating_territory
+  canonical_namespace: http://ei/core/rating_territory
+  variants:
+  - http://ei/core/rating_territory
+  - http://ei/core/rating_territoryx1
+  canonical_file: sample/Schemas/RatingTerritory.xsd
+- id: ei.core.business_party_covered_risk_interest
+  base_namespace: http://ei/core/business_party_covered_risk_interest
+  canonical_namespace: http://ei/core/business_party_covered_risk_interest
+  variants:
+  - http://ei/core/business_party_covered_risk_interest
+  canonical_file: sample/Schemas/BusinessPartyCoveredRiskInterest.xsd
+- id: ei.core.business_process_location_type
+  base_namespace: http://ei/core/business_process_location_type
+  canonical_namespace: http://ei/core/business_process_location_type
+  variants:
+  - http://ei/core/business_process_location_type
+  canonical_file: sample/Schemas/BusinessProcessLocationType.xsd
+- id: ei.core.risk_class_grade_information
+  base_namespace: http://ei/core/risk_class_grade_information
+  canonical_namespace: http://ei/core/risk_class_grade_information
+  variants:
+  - http://ei/core/risk_class_grade_information
+  canonical_file: sample/Schemas/RiskClassGradeInformation.xsd
+- id: ei.core.uw_industry_segment
+  base_namespace: http://ei/core/uw_industry_segment
+  canonical_namespace: http://ei/core/uw_industry_segment
+  variants:
+  - http://ei/core/uw_industry_segment
+  canonical_file: sample/Schemas/UWIndustrySegment.xsd
+- id: ei.core.messageinformation
+  base_namespace: http://ei/core/messageinformation
+  canonical_namespace: http://ei/core/messageinformation
+  variants:
+  - http://ei/core/messageinformation
+  canonical_file: sample/Schemas/MessageInformation.xsd
+- id: ei.core.user_profile_identifier
+  base_namespace: http://ei/core/user_profile_identifier
+  canonical_namespace: http://ei/core/user_profile_identifier
+  variants:
+  - http://ei/core/user_profile_identifier
+  canonical_file: sample/Schemas/UserProfileIdentifier.xsd
+- id: ei.core.status_information
+  base_namespace: http://ei/core/status_information
+  canonical_namespace: http://ei/core/status_informationx1
+  variants:
+  - http://ei/core/status_informationx1
+  - http://ei/core/status_informationx2
+  canonical_file: sample/Schemas/StatusInformationX1.xsd
+- id: ei.core.business_contact_type
+  base_namespace: http://ei/core/business_contact_type
+  canonical_namespace: http://ei/core/business_contact_type
+  variants:
+  - http://ei/core/business_contact_type
+  canonical_file: sample/Schemas/BusinessContactType.xsd
+- id: ei.core.access_attribute
+  base_namespace: http://ei/core/access_attribute
+  canonical_namespace: http://ei/core/access_attribute
+  variants:
+  - http://ei/core/access_attribute
+  canonical_file: sample/Schemas/AccessAttribute.xsd
+- id: ei.core.individual_information
+  base_namespace: http://ei/core/individual_information
+  canonical_namespace: http://ei/core/individual_information
+  variants:
+  - http://ei/core/individual_information
+  - http://ei/core/individual_informationx1
+  - http://ei/core/individual_informationx2
+  canonical_file: sample/Schemas/IndividualInformation.xsd
+- id: ei.core.error
+  base_namespace: http://ei/core/error
+  canonical_namespace: http://ei/core/error
+  variants:
+  - http://ei/core/error
+  canonical_file: sample/Schemas/Error.xsd
+- id: ei.core.business_party_characteristic
+  base_namespace: http://ei/core/business_party_characteristic
+  canonical_namespace: http://ei/core/business_party_characteristic
+  variants:
+  - http://ei/core/business_party_characteristic
+  canonical_file: sample/Schemas/BusinessPartyCharacteristic.xsd
+- id: ei.core.text_analytics_concept
+  base_namespace: http://ei/core/text_analytics_concept
+  canonical_namespace: http://ei/core/text_analytics_concept
+  variants:
+  - http://ei/core/text_analytics_concept
+  canonical_file: sample/Schemas/TextAnalyticsConcept.xsd
+- id: ei.core.premium_apportionment
+  base_namespace: http://ei/core/premium_apportionment
+  canonical_namespace: http://ei/core/premium_apportionment
+  variants:
+  - http://ei/core/premium_apportionment
+  canonical_file: sample/Schemas/PremiumApportionment.xsd
+- id: ei.core.form_destination_receiver
+  base_namespace: http://ei/core/form_destination_receiver
+  canonical_namespace: http://ei/core/form_destination_receiver
+  variants:
+  - http://ei/core/form_destination_receiver
+  canonical_file: sample/Schemas/FormDestinationReceiver.xsd
+- id: ei.core.extended_insurer
+  base_namespace: http://ei/core/extended_insurer
+  canonical_namespace: http://ei/core/extended_insurer
+  variants:
+  - http://ei/core/extended_insurer
+  - http://ei/core/extended_insurerx1
+  - http://ei/core/extended_insurerx2
+  canonical_file: sample/Schemas/ExtendedInsurer.xsd
+- id: ei.core.customer_segment
+  base_namespace: http://ei/core/customer_segment
+  canonical_namespace: http://ei/core/customer_segment
+  variants:
+  - http://ei/core/customer_segment
+  canonical_file: sample/Schemas/CustomerSegment.xsd
+- id: ei.core.processing_option
+  base_namespace: http://ei/core/processing_option
+  canonical_namespace: http://ei/core/processing_option
+  variants:
+  - http://ei/core/processing_option
+  canonical_file: sample/Schemas/ProcessingOption.xsd
+- id: ei.core.cache_key
+  base_namespace: http://ei/core/cache_key
+  canonical_namespace: http://ei/core/cache_key
+  variants:
+  - http://ei/core/cache_key
+  canonical_file: sample/Schemas/CacheKey.xsd
+- id: ei.core.telecomm_electronic_address
+  base_namespace: http://ei/core/telecomm_electronic_address
+  canonical_namespace: http://ei/core/telecomm_electronic_address
+  variants:
+  - http://ei/core/telecomm_electronic_address
+  canonical_file: sample/Schemas/TelecommElectronicAddress.xsd
+- id: ei.core.vehicle_registrant
+  base_namespace: http://ei/core/vehicle_registrant
+  canonical_namespace: http://ei/core/vehicle_registrant
+  variants:
+  - http://ei/core/vehicle_registrant
+  - http://ei/core/vehicle_registrantx1
+  canonical_file: sample/Schemas/VehicleRegistrant.xsd
+- id: ei.core.dfi_account
+  base_namespace: http://ei/core/dfi_account
+  canonical_namespace: http://ei/core/dfi_account
+  variants:
+  - http://ei/core/dfi_account
+  canonical_file: sample/Schemas/DFIAccount.xsd
+- id: ei.core.policy_term_identifier
+  base_namespace: http://ei/core/policy_term_identifier
+  canonical_namespace: http://ei/core/policy_term_identifier
+  variants:
+  - http://ei/core/policy_term_identifier
+  canonical_file: sample/Schemas/PolicyTermIdentifier.xsd
+- id: ei.core.survey_evaluation_information
+  base_namespace: http://ei/core/survey_evaluation_information
+  canonical_namespace: http://ei/core/survey_evaluation_information
+  variants:
+  - http://ei/core/survey_evaluation_information
+  canonical_file: sample/Schemas/SurveyEvaluationInformation.xsd
+- id: ei.core.marketing_campaign
+  base_namespace: http://ei/core/marketing_campaign
+  canonical_namespace: http://ei/core/marketing_campaign
+  variants:
+  - http://ei/core/marketing_campaign
+  canonical_file: sample/Schemas/MarketingCampaign.xsd
+- id: ei.core.mortgagee_invoice_document
+  base_namespace: http://ei/core/mortgagee_invoice_document
+  canonical_namespace: http://ei/core/mortgagee_invoice_document
+  variants:
+  - http://ei/core/mortgagee_invoice_document
+  canonical_file: sample/Schemas/MortgageeInvoiceDocument.xsd
+- id: ei.core.extendedbranch
+  base_namespace: http://ei/core/extendedbranch
+  canonical_namespace: http://ei/core/extendedbranch
+  variants:
+  - http://ei/core/extendedbranch
+  canonical_file: sample/Schemas/ExtendedBranch.xsd
+- id: ei.core.iso_symbol_information
+  base_namespace: http://ei/core/iso_symbol_information
+  canonical_namespace: http://ei/core/iso_symbol_information
+  variants:
+  - http://ei/core/iso_symbol_information
+  canonical_file: sample/Schemas/ISOSymbolInformation.xsd
+- id: ei.core.physicaladdress
+  base_namespace: http://ei/core/physicaladdress
+  canonical_namespace: http://ei/core/physicaladdress
+  variants:
+  - http://ei/core/physicaladdress
+  canonical_file: sample/Schemas/PhysicalAddress.xsd
+- id: ei.core.tax
+  base_namespace: http://ei/core/tax
+  canonical_namespace: http://ei/core/taxx2
+  variants:
+  - http://ei/core/taxx2
+  canonical_file: sample/Schemas/TaxX2.xsd
+- id: ei.core.loss_payee
+  base_namespace: http://ei/core/loss_payee
+  canonical_namespace: http://ei/core/loss_payee
+  variants:
+  - http://ei/core/loss_payee
+  canonical_file: sample/Schemas/LossPayee.xsd
+- id: ei.core.marketing_program
+  base_namespace: http://ei/core/marketing_program
+  canonical_namespace: http://ei/core/marketing_program
+  variants:
+  - http://ei/core/marketing_program
+  canonical_file: sample/Schemas/MarketingProgram.xsd
+- id: ei.core.ppc_aggregated_summary
+  base_namespace: http://ei/core/ppc_aggregated_summary
+  canonical_namespace: http://ei/core/ppc_aggregated_summary
+  variants:
+  - http://ei/core/ppc_aggregated_summary
+  - http://ei/core/ppc_aggregated_summaryx1
+  canonical_file: sample/Schemas/PPCAggregatedSummary.xsd
+- id: ei.core.policy_type_identifier
+  base_namespace: http://ei/core/policy_type_identifier
+  canonical_namespace: http://ei/core/policy_type_identifierx1
+  variants:
+  - http://ei/core/policy_type_identifierx1
+  canonical_file: sample/Schemas/PolicyTypeIdentifierX1.xsd
+- id: ei.core.driver
+  base_namespace: http://ei/core/driver
+  canonical_namespace: http://ei/core/driver
+  variants:
+  - http://ei/core/driver
+  - http://ei/core/driverx1
+  - http://ei/core/driverx2
+  - http://ei/core/driverx3
+  canonical_file: sample/Schemas/Driver.xsd
+- id: ei.core.risk_rating_group
+  base_namespace: http://ei/core/risk_rating_group
+  canonical_namespace: http://ei/core/risk_rating_group
+  variants:
+  - http://ei/core/risk_rating_group
+  canonical_file: sample/Schemas/RiskRatingGroup.xsd
+- id: ei.core.parent_activity_status_information
+  base_namespace: http://ei/core/parent_activity_status_information
+  canonical_namespace: http://ei/core/parent_activity_status_information
+  variants:
+  - http://ei/core/parent_activity_status_information
+  canonical_file: sample/Schemas/ParentActivityStatusInformation.xsd
+- id: ei.core.bank_vault
+  base_namespace: http://ei/core/bank_vault
+  canonical_namespace: http://ei/core/bank_vault
+  variants:
+  - http://ei/core/bank_vault
+  canonical_file: sample/Schemas/BankVault.xsd
+- id: ei.core.loss_control_location
+  base_namespace: http://ei/core/loss_control_location
+  canonical_namespace: http://ei/core/loss_control_location
+  variants:
+  - http://ei/core/loss_control_location
+  canonical_file: sample/Schemas/LossControlLocation.xsd
+- id: ei.core.section_policy_type_cross_reference
+  base_namespace: http://ei/core/section_policy_type_cross_reference
+  canonical_namespace: http://ei/core/section_policy_type_cross_reference
+  variants:
+  - http://ei/core/section_policy_type_cross_reference
+  canonical_file: sample/Schemas/SectionPolicyTypeCrossReference.xsd
+- id: ei.core.policy_term_rule_based_status
+  base_namespace: http://ei/core/policy_term_rule_based_status
+  canonical_namespace: http://ei/core/policy_term_rule_based_status
+  variants:
+  - http://ei/core/policy_term_rule_based_status
+  canonical_file: sample/Schemas/PolicyTermRuleBasedStatus.xsd
+- id: ei.core.coverage_category_information
+  base_namespace: http://ei/core/coverage_category_information
+  canonical_namespace: http://ei/core/coverage_category_information
+  variants:
+  - http://ei/core/coverage_category_information
+  canonical_file: sample/Schemas/CoverageCategoryInformation.xsd
+- id: ei.core.salesforce_contact_notification_preferences
+  base_namespace: http://ei/core/salesforce_contact_notification_preferences
+  canonical_namespace: http://ei/core/salesforce_contact_notification_preferences
+  variants:
+  - http://ei/core/salesforce_contact_notification_preferences
+  canonical_file: sample/Schemas/SalesforceContactNotificationPreferences.xsd
+- id: ei.core.medical_investigator
+  base_namespace: http://ei/core/medical_investigator
+  canonical_namespace: http://ei/core/medical_investigator
+  variants:
+  - http://ei/core/medical_investigator
+  - http://ei/core/medical_investigatorx1
+  - http://ei/core/medical_investigatorx2
+  - http://ei/core/medical_investigatorx3
+  canonical_file: sample/Schemas/MedicalInvestigator.xsd
+- id: ei.core.client_update_process_information
+  base_namespace: http://ei/core/client_update_process_information
+  canonical_namespace: http://ei/core/client_update_process_information
+  variants:
+  - http://ei/core/client_update_process_information
+  canonical_file: sample/Schemas/ClientUpdateProcessInformation.xsd
+- id: ei.core.custom_business_data
+  base_namespace: http://ei/core/custom_business_data
+  canonical_namespace: http://ei/core/custom_business_data
+  variants:
+  - http://ei/core/custom_business_data
+  canonical_file: sample/Schemas/CustomBusinessData.xsd
+- id: http:.core.custom_business_data_group
+  base_namespace: http:/core/custom_business_data_group
+  canonical_namespace: http:/core/custom_business_data_group
+  variants:
+  - http:/core/custom_business_data_group
+  canonical_file: sample/Schemas/CustomBusinessDataGroup.xsd
+- id: ei.core.alliance_market_segment
+  base_namespace: http://ei/core/alliance_market_segment
+  canonical_namespace: http://ei/core/alliance_market_segment
+  variants:
+  - http://ei/core/alliance_market_segment
+  canonical_file: sample/Schemas/AllianceMarketSegment.xsd
+- id: ei.core.application_user_profile_property
+  base_namespace: http://ei/core/application_user_profile_property
+  canonical_namespace: http://ei/core/application_user_profile_property
+  variants:
+  - http://ei/core/application_user_profile_property
+  canonical_file: sample/Schemas/ApplicationUserProfileProperty.xsd
+- id: ei.corelibrary.statusinformation
+  base_namespace: http://ei/corelibrary/statusinformation
+  canonical_namespace: http://ei/corelibrary/statusinformation
+  variants:
+  - http://ei/corelibrary/statusinformation
+  canonical_file: sample/Schemas/StatusInformation.xsd
+- id: ei.core.loss_control_location_with_survey
+  base_namespace: http://ei/core/loss_control_location_with_survey
+  canonical_namespace: http://ei/core/loss_control_location_with_survey
+  variants:
+  - http://ei/core/loss_control_location_with_survey
+  canonical_file: sample/Schemas/LossControlLocationWithSurvey.xsd
+- id: ei.core.customization
+  base_namespace: http://ei/core/customization
+  canonical_namespace: http://ei/core/customization
+  variants:
+  - http://ei/core/customization
+  - http://ei/core/customizationx1
+  - http://ei/core/customizationx2
+  canonical_file: sample/Schemas/Customization.xsd
+- id: ei.core.event_property
+  base_namespace: http://ei/core/event_property
+  canonical_namespace: http://ei/core/event_property
+  variants:
+  - http://ei/core/event_property
+  canonical_file: sample/Schemas/EventProperty.xsd
+- id: ei.core.loss_history
+  base_namespace: http://ei/core/loss_history
+  canonical_namespace: http://ei/core/loss_history
+  variants:
+  - http://ei/core/loss_history
+  canonical_file: sample/Schemas/LossHistory.xsd
+- id: ei.core.typed_address
+  base_namespace: http://ei/core/typed_address
+  canonical_namespace: http://ei/core/typed_address
+  variants:
+  - http://ei/core/typed_address
+  - http://ei/core/typed_addressx2
+  - http://ei/core/typed_addressx3
+  canonical_file: sample/Schemas/TypedAddress.xsd
+- id: ei.core.CUWDocumentFiling
+  base_namespace: http://ei/core/CUWDocumentFiling
+  canonical_namespace: http://ei/core/CUWDocumentFiling
+  variants:
+  - http://ei/core/CUWDocumentFiling
+  canonical_file: sample/Schemas/CUWDocumentFiling.xsd
+- id: ei.core.location_adjacency_calculation
+  base_namespace: http://ei/core/location_adjacency_calculation
+  canonical_namespace: http://ei/core/location_adjacency_calculation
+  variants:
+  - http://ei/core/location_adjacency_calculation
+  canonical_file: sample/Schemas/LocationAdjacencyCalculation.xsd
+- id: ei.core.producer_identifier
+  base_namespace: http://ei/core/producer_identifier
+  canonical_namespace: http://ei/core/producer_identifierx2
+  variants:
+  - http://ei/core/producer_identifierx2
+  - http://ei/core/producer_identifierx4
+  canonical_file: sample/Schemas/ProducerIdentifierX2.xsd
+- id: ei.core.hazardous_area
+  base_namespace: http://ei/core/hazardous_area
+  canonical_namespace: http://ei/core/hazardous_area
+  variants:
+  - http://ei/core/hazardous_area
+  - http://ei/core/hazardous_areax1
+  canonical_file: sample/Schemas/HazardousArea.xsd
+- id: ei.core.related_business_party
+  base_namespace: http://ei/core/related_business_party
+  canonical_namespace: http://ei/core/related_business_party
+  variants:
+  - http://ei/core/related_business_party
+  - http://ei/core/related_business_partyx1
+  canonical_file: sample/Schemas/RelatedBusinessParty.xsd
+- id: ei.risk.survey_message_information
+  base_namespace: http://ei/risk/survey_message_information
+  canonical_namespace: http://ei/risk/survey_message_information
+  variants:
+  - http://ei/risk/survey_message_information
+  canonical_file: sample/Schemas/SurveyMessageInformation.xsd
+- id: ei.core.alias_information
+  base_namespace: http://ei/core/alias_information
+  canonical_namespace: http://ei/core/alias_information
+  variants:
+  - http://ei/core/alias_information
+  canonical_file: sample/Schemas/AliasInformation.xsd
+- id: ei.core.weather_station_information
+  base_namespace: http://ei/core/weather_station_information
+  canonical_namespace: http://ei/core/weather_station_information
+  variants:
+  - http://ei/core/weather_station_information
+  canonical_file: sample/Schemas/WeatherStationInformation.xsd
+- id: ei.core.country
+  base_namespace: http://ei/core/country
+  canonical_namespace: http://ei/core/country
+  variants:
+  - http://ei/core/country
+  - http://ei/core/countryx1
+  canonical_file: sample/Schemas/Country.xsd
+- id: ei.core.alliance_product_category
+  base_namespace: http://ei/core/alliance_product_category
+  canonical_namespace: http://ei/core/alliance_product_category
+  variants:
+  - http://ei/core/alliance_product_category
+  canonical_file: sample/Schemas/AllianceProductCategory.xsd
+- id: ei.producer.producer_identifier
+  base_namespace: http://ei/producer/producer_identifier
+  canonical_namespace: http://ei/producer/producer_identifierx3
+  variants:
+  - http://ei/producer/producer_identifierx3
+  canonical_file: sample/Schemas/ProducerIdentifierX3.xsd
+- id: ei.core.document_url_information
+  base_namespace: http://ei/core/document_url_information
+  canonical_namespace: http://ei/core/document_url_information
+  variants:
+  - http://ei/core/document_url_information
+  canonical_file: sample/Schemas/DocumentURLInformation.xsd
+- id: ei.core.medical_device
+  base_namespace: http://ei/core/medical_device
+  canonical_namespace: http://ei/core/medical_device
+  variants:
+  - http://ei/core/medical_device
+  canonical_file: sample/Schemas/MedicalDevice.xsd
+- id: ei.core.QuestionAndAnswer
+  base_namespace: http://ei/core/QuestionAndAnswer
+  canonical_namespace: http://ei/core/QuestionAndAnswer
+  variants:
+  - http://ei/core/QuestionAndAnswer
+  canonical_file: sample/Schemas/QuestionAndAnswer.xsd
+- id: ei.core.daily_weather_data
+  base_namespace: http://ei/core/daily_weather_data
+  canonical_namespace: http://ei/core/daily_weather_data
+  variants:
+  - http://ei/core/daily_weather_data
+  canonical_file: sample/Schemas/DailyWeatherData.xsd
+- id: ei.core.business_contact_role
+  base_namespace: http://ei/core/business_contact_role
+  canonical_namespace: http://ei/core/business_contact_role
+  variants:
+  - http://ei/core/business_contact_role
+  canonical_file: sample/Schemas/BusinessContactRole.xsd
+- id: ei.core.special_arrangement_fee
+  base_namespace: http://ei/core/special_arrangement_fee
+  canonical_namespace: http://ei/core/special_arrangement_fee
+  variants:
+  - http://ei/core/special_arrangement_fee
+  canonical_file: sample/Schemas/SpecialArrangementFee.xsd
+- id: ei.core.peril_information
+  base_namespace: http://ei/core/peril_information
+  canonical_namespace: http://ei/core/peril_information
+  variants:
+  - http://ei/core/peril_information
+  canonical_file: sample/Schemas/PerilInformation.xsd
+- id: ei.core.form
+  base_namespace: http://ei/core/form
+  canonical_namespace: http://ei/core/form
+  variants:
+  - http://ei/core/form
+  - http://ei/core/formx1
+  - http://ei/core/formx2
+  canonical_file: sample/Schemas/Form.xsd
+- id: ei.core.business_event_information
+  base_namespace: http://ei/core/business_event_information
+  canonical_namespace: http://ei/core/business_event_information
+  variants:
+  - http://ei/core/business_event_information
+  - http://ei/core/business_event_informationx1
+  canonical_file: sample/Schemas/BusinessEventInformation.xsd
+- id: ei.core.nationality_information
+  base_namespace: http://ei/core/nationality_information
+  canonical_namespace: http://ei/core/nationality_information
+  variants:
+  - http://ei/core/nationality_information
+  canonical_file: sample/Schemas/NationalityInformation.xsd
+- id: ei.core.billing_account
+  base_namespace: http://ei/core/billing_account
+  canonical_namespace: http://ei/core/billing_account
+  variants:
+  - http://ei/core/billing_account
+  canonical_file: sample/Schemas/BillingAccount.xsd
+- id: ei.core.producer_commission_rate
+  base_namespace: http://ei/core/producer_commission_rate
+  canonical_namespace: http://ei/core/producer_commission_rate
+  variants:
+  - http://ei/core/producer_commission_rate
+  canonical_file: sample/Schemas/ProducerCommissionRate.xsd
+- id: ei.core.form_recipient_distribution_settings
+  base_namespace: http://ei/core/form_recipient_distribution_settings
+  canonical_namespace: http://ei/core/form_recipient_distribution_settings
+  variants:
+  - http://ei/core/form_recipient_distribution_settings
+  canonical_file: sample/Schemas/FormRecipientDistributionSettings.xsd
+- id: ei.core.business_party_with_relationship
+  base_namespace: http://ei/core/business_party_with_relationship
+  canonical_namespace: http://ei/core/business_party_with_relationship
+  variants:
+  - http://ei/core/business_party_with_relationship
+  - http://ei/core/business_party_with_relationshipx1
+  canonical_file: sample/Schemas/BusinessPartyWithRelationship.xsd
+- id: ei.core.component_property
+  base_namespace: http://ei/core/component_property
+  canonical_namespace: http://ei/core/component_property
+  variants:
+  - http://ei/core/component_property
+  canonical_file: sample/Schemas/ComponentProperty.xsd
+- id: ei.core.additional_interest
+  base_namespace: http://ei/core/additional_interest
+  canonical_namespace: http://ei/core/additional_interest
+  variants:
+  - http://ei/core/additional_interest
+  canonical_file: sample/Schemas/AdditionalInterest.xsd
+- id: ei.core.reinsurance_information
+  base_namespace: http://ei/core/reinsurance_information
+  canonical_namespace: http://ei/core/reinsurance_information
+  variants:
+  - http://ei/core/reinsurance_information
+  canonical_file: sample/Schemas/ReinsuranceInformation.xsd
+- id: ei.core.genius_section
+  base_namespace: http://ei/core/genius_section
+  canonical_namespace: http://ei/core/genius_section
+  variants:
+  - http://ei/core/genius_section
+  canonical_file: sample/Schemas/GeniusSection.xsd
+- id: ei.core.performer
+  base_namespace: http://ei/core/performer
+  canonical_namespace: http://ei/core/performer
+  variants:
+  - http://ei/core/performer
+  - http://ei/core/performerx1
+  - http://ei/core/performerx2
+  canonical_file: sample/Schemas/Performer.xsd
+- id: ei.core.web_focus_log_on_information
+  base_namespace: http://ei/core/web_focus_log_on_information
+  canonical_namespace: http://ei/core/web_focus_log_on_information
+  variants:
+  - http://ei/core/web_focus_log_on_information
+  canonical_file: sample/Schemas/WebFocusLogOnInformation.xsd
+- id: ei.core.policy_processing_note
+  base_namespace: http://ei/core/policy_processing_note
+  canonical_namespace: http://ei/core/policy_processing_note
+  variants:
+  - http://ei/core/policy_processing_note
+  canonical_file: sample/Schemas/PolicyProcessingNote.xsd
+- id: ei.core.affiliate_company
+  base_namespace: http://ei/core/affiliate_company
+  canonical_namespace: http://ei/core/affiliate_company
+  variants:
+  - http://ei/core/affiliate_company
+  canonical_file: sample/Schemas/AffiliateCompany.xsd
+- id: ei.core.external_vendor_system
+  base_namespace: http://ei/core/external_vendor_system
+  canonical_namespace: http://ei/core/external_vendor_system
+  variants:
+  - http://ei/core/external_vendor_system
+  canonical_file: sample/Schemas/ExternalVendorSystem.xsd
+- id: ei.core.prdct_compnt_restriction_option
+  base_namespace: http://ei/core/prdct_compnt_restriction_option
+  canonical_namespace: http://ei/core/prdct_compnt_restriction_option
+  variants:
+  - http://ei/core/prdct_compnt_restriction_option
+  canonical_file: sample/Schemas/PrdctCompntRestrictionOption.xsd
+- id: ei.core.marketing_campaign_accreditation
+  base_namespace: http://ei/core/marketing_campaign_accreditation
+  canonical_namespace: http://ei/core/marketing_campaign_accreditation
+  variants:
+  - http://ei/core/marketing_campaign_accreditation
+  canonical_file: sample/Schemas/MarketingCampaignAccreditation.xsd
+- id: ei.core.routing_code_information
+  base_namespace: http://ei/core/routing_code_information
+  canonical_namespace: http://ei/core/routing_code_information
+  variants:
+  - http://ei/core/routing_code_information
+  canonical_file: sample/Schemas/RoutingCodeInformation.xsd
+- id: ei.core.application_user_profile
+  base_namespace: http://ei/core/application_user_profile
+  canonical_namespace: http://ei/core/application_user_profile
+  variants:
+  - http://ei/core/application_user_profile
+  canonical_file: sample/Schemas/ApplicationUserProfile.xsd
+- id: ei.core.form_distribution_recipient_group
+  base_namespace: http://ei/core/form_distribution_recipient_group
+  canonical_namespace: http://ei/core/form_distribution_recipient_group
+  variants:
+  - http://ei/core/form_distribution_recipient_group
+  canonical_file: sample/Schemas/FormDistributionRecipientGroup.xsd
+- id: ei.core.ccm_category
+  base_namespace: http://ei/core/ccm_category
+  canonical_namespace: http://ei/core/ccm_category
+  variants:
+  - http://ei/core/ccm_category
+  canonical_file: sample/Schemas/CCMCategory.xsd
+- id: ei.core.loss_type
+  base_namespace: http://ei/core/loss_type
+  canonical_namespace: http://ei/core/loss_type
+  variants:
+  - http://ei/core/loss_type
+  canonical_file: sample/Schemas/LossType.xsd
+- id: ei.core.hash_map
+  base_namespace: http://ei/core/hash_map
+  canonical_namespace: http://ei/core/hash_map
+  variants:
+  - http://ei/core/hash_map
+  canonical_file: sample/Schemas/HashMap.xsd
+- id: ei.core.payment_option
+  base_namespace: http://ei/core/payment_option
+  canonical_namespace: http://ei/core/payment_option
+  variants:
+  - http://ei/core/payment_option
+  canonical_file: sample/Schemas/PaymentOption.xsd
+- id: ei.core.bm_certificate_jurisdiction_fee_summary
+  base_namespace: http://ei/core/bm_certificate_jurisdiction_fee_summary
+  canonical_namespace: http://ei/core/bm_certificate_jurisdiction_fee_summary
+  variants:
+  - http://ei/core/bm_certificate_jurisdiction_fee_summary
+  canonical_file: sample/Schemas/BMCertificateJurisdictionFeeSummary.xsd
+- id: ei.core.document_set
+  base_namespace: http://ei/core/document_set
+  canonical_namespace: http://ei/core/document_set
+  variants:
+  - http://ei/core/document_set
+  canonical_file: sample/Schemas/DocumentSet.xsd
+- id: ei.core.prdct_compnt_rule_group
+  base_namespace: http://ei/core/prdct_compnt_rule_group
+  canonical_namespace: http://ei/core/prdct_compnt_rule_group
+  variants:
+  - http://ei/core/prdct_compnt_rule_group
+  canonical_file: sample/Schemas/PrdctCompntRuleGroup.xsd
+- id: ei.core.billing_activity
+  base_namespace: http://ei/core/billing_activity
+  canonical_namespace: http://ei/core/billing_activity
+  variants:
+  - http://ei/core/billing_activity
+  canonical_file: sample/Schemas/BillingActivity.xsd
+- id: ei.core.alliance_customer_group
+  base_namespace: http://ei/core/alliance_customer_group
+  canonical_namespace: http://ei/core/alliance_customer_group
+  variants:
+  - http://ei/core/alliance_customer_group
+  canonical_file: sample/Schemas/AllianceCustomerGroup.xsd
+- id: ei.core.marketing_campaign_note
+  base_namespace: http://ei/core/marketing_campaign_note
+  canonical_namespace: http://ei/core/marketing_campaign_note
+  variants:
+  - http://ei/core/marketing_campaign_note
+  canonical_file: sample/Schemas/MarketingCampaignNote.xsd
+- id: ei.core.product
+  base_namespace: http://ei/core/product
+  canonical_namespace: http://ei/core/product
+  variants:
+  - http://ei/core/product
+  canonical_file: sample/Schemas/Product.xsd
+- id: ei.core.get_access_source_information
+  base_namespace: http://ei/core/get_access_source_information
+  canonical_namespace: http://ei/core/get_access_source_information
+  variants:
+  - http://ei/core/get_access_source_information
+  canonical_file: sample/Schemas/GetAccessSourceInformation.xsd
+- id: ei.core.limit
+  base_namespace: http://ei/core/limit
+  canonical_namespace: http://ei/core/limitx2
+  variants:
+  - http://ei/core/limitx2
+  - http://ei/core/limitx3
+  canonical_file: sample/Schemas/LimitX2.xsd
+- id: ei.core.naics_information
+  base_namespace: http://ei/core/naics_information
+  canonical_namespace: http://ei/core/naics_information
+  variants:
+  - http://ei/core/naics_information
+  canonical_file: sample/Schemas/NAICSInformation.xsd
+- id: ei.core.entry_type_information
+  base_namespace: http://ei/core/entry_type_information
+  canonical_namespace: http://ei/core/entry_type_information
+  variants:
+  - http://ei/core/entry_type_information
+  canonical_file: sample/Schemas/EntryTypeInformation.xsd
+- id: ei.core.get_access_user_information
+  base_namespace: http://ei/core/get_access_user_information
+  canonical_namespace: http://ei/core/get_access_user_information
+  variants:
+  - http://ei/core/get_access_user_information
+  canonical_file: sample/Schemas/GetAccessUserInformation.xsd
+- id: ei.core.surcharge
+  base_namespace: http://ei/core/surcharge
+  canonical_namespace: http://ei/core/surchargex1
+  variants:
+  - http://ei/core/surchargex1
+  - http://ei/core/surchargex2
+  canonical_file: sample/Schemas/SurchargeX1.xsd
+- id: ei.core.driver_violation
+  base_namespace: http://ei/core/driver_violation
+  canonical_namespace: http://ei/core/driver_violation
+  variants:
+  - http://ei/core/driver_violation
+  canonical_file: sample/Schemas/DriverViolation.xsd
+- id: ei.core.organizationunits
+  base_namespace: http://ei/core/organizationunits
+  canonical_namespace: http://ei/core/organizationunits
+  variants:
+  - http://ei/core/organizationunits
+  canonical_file: sample/Schemas/OrganizationUnits.xsd
+- id: ei.core.document_search_criteria
+  base_namespace: http://ei/core/document_search_criteria
+  canonical_namespace: http://ei/core/document_search_criteria
+  variants:
+  - http://ei/core/document_search_criteria
+  canonical_file: sample/Schemas/DocumentSearchCriteria.xsd
+- id: ei.core.related_household
+  base_namespace: http://ei/core/related_household
+  canonical_namespace: http://ei/core/related_household
+  variants:
+  - http://ei/core/related_household
+  - http://ei/core/related_householdx1
+  canonical_file: sample/Schemas/RelatedHousehold.xsd
+- id: ei.core.program_information
+  base_namespace: http://ei/core/program_information
+  canonical_namespace: http://ei/core/program_information
+  variants:
+  - http://ei/core/program_information
+  canonical_file: sample/Schemas/ProgramInformation.xsd
+- id: ei.core.email_information
+  base_namespace: http://ei/core/email_information
+  canonical_namespace: http://ei/core/email_information
+  variants:
+  - http://ei/core/email_information
+  - http://ei/core/email_informationx1
+  canonical_file: sample/Schemas/EmailInformation.xsd
+- id: ei.core.payroll_reporting_transaction
+  base_namespace: http://ei/core/payroll_reporting_transaction
+  canonical_namespace: http://ei/core/payroll_reporting_transaction
+  variants:
+  - http://ei/core/payroll_reporting_transaction
+  canonical_file: sample/Schemas/PayrollReportingTransaction.xsd
+- id: ei.core.text_analytics_text_object_key
+  base_namespace: http://ei/core/text_analytics_text_object_key
+  canonical_namespace: http://ei/core/text_analytics_text_object_key
+  variants:
+  - http://ei/core/text_analytics_text_object_key
+  canonical_file: sample/Schemas/TextAnalyticsTextObjectKey.xsd
+- id: ei.core.standardized_address
+  base_namespace: http://ei/core/standardized_address
+  canonical_namespace: http://ei/core/standardized_addressx3
+  variants:
+  - http://ei/core/standardized_addressx3
+  - http://ei/core/standardized_addressx4
+  - http://ei/core/standardized_addressx5
+  canonical_file: sample/Schemas/StandardizedAddressX3.xsd
+- id: ei.core.prdct_compnt_subject_type_part
+  base_namespace: http://ei/core/prdct_compnt_subject_type_part
+  canonical_namespace: http://ei/core/prdct_compnt_subject_type_part
+  variants:
+  - http://ei/core/prdct_compnt_subject_type_part
+  canonical_file: sample/Schemas/PrdctCompntSubjectTypePart.xsd
+- id: ei.core.other_participating_carrier_information
+  base_namespace: http://ei/core/other_participating_carrier_information
+  canonical_namespace: http://ei/core/other_participating_carrier_information
+  variants:
+  - http://ei/core/other_participating_carrier_information
+  canonical_file: sample/Schemas/OtherParticipatingCarrierInformation.xsd
+- id: ei.core.service_process_classification
+  base_namespace: http://ei/core/service_process_classification
+  canonical_namespace: http://ei/core/service_process_classification
+  variants:
+  - http://ei/core/service_process_classification
+  canonical_file: sample/Schemas/ServiceProcessClassification.xsd
+- id: ei.core.survey_recommendation_response
+  base_namespace: http://ei/core/survey_recommendation_response
+  canonical_namespace: http://ei/core/survey_recommendation_response
+  variants:
+  - http://ei/core/survey_recommendation_response
+  canonical_file: sample/Schemas/SurveyRecommendationResponse.xsd
+- id: ei.core.writing_company
+  base_namespace: http://ei/core/writing_company
+  canonical_namespace: http://ei/core/writing_company
+  variants:
+  - http://ei/core/writing_company
+  canonical_file: sample/Schemas/WritingCompany.xsd
+- id: ei.core.capturable
+  base_namespace: http://ei/core/capturable
+  canonical_namespace: http://ei/core/capturable
+  variants:
+  - http://ei/core/capturable
+  - http://ei/core/capturablex1
+  canonical_file: sample/Schemas/Capturable.xsd
+- id: ei.core.message_logging_information
+  base_namespace: http://ei/core/message_logging_information
+  canonical_namespace: http://ei/core/message_logging_information
+  variants:
+  - http://ei/core/message_logging_information
+  canonical_file: sample/Schemas/MessageLoggingInformation.xsd
+- id: ei.core.resume_activity_input_data
+  base_namespace: http://ei/core/resume_activity_input_data
+  canonical_namespace: http://ei/core/resume_activity_input_data
+  variants:
+  - http://ei/core/resume_activity_input_data
+  canonical_file: sample/Schemas/ResumeActivityInputData.xsd
+- id: ei.core.survey_contact
+  base_namespace: http://ei/core/survey_contact
+  canonical_namespace: http://ei/core/survey_contact
+  variants:
+  - http://ei/core/survey_contact
+  - http://ei/core/survey_contactx1
+  canonical_file: sample/Schemas/SurveyContact.xsd
+- id: ei.core.loss_control_survey
+  base_namespace: http://ei/core/loss_control_survey
+  canonical_namespace: http://ei/core/loss_control_survey
+  variants:
+  - http://ei/core/loss_control_survey
+  canonical_file: sample/Schemas/LossControlSurvey.xsd
+- id: ei.core.billing_account_payment_summary
+  base_namespace: http://ei/core/billing_account_payment_summary
+  canonical_namespace: http://ei/core/billing_account_payment_summary
+  variants:
+  - http://ei/core/billing_account_payment_summary
+  canonical_file: sample/Schemas/BillingAccountPaymentSummary.xsd
+- id: ei.core.managed_document
+  base_namespace: http://ei/core/managed_document
+  canonical_namespace: http://ei/core/managed_document
+  variants:
+  - http://ei/core/managed_document
+  - http://ei/core/managed_documentx1
+  canonical_file: sample/Schemas/ManagedDocument.xsd
+- id: ei.core.text_analytics_concept_term_result
+  base_namespace: http://ei/core/text_analytics_concept_term_result
+  canonical_namespace: http://ei/core/text_analytics_concept_term_result
+  variants:
+  - http://ei/core/text_analytics_concept_term_result
+  canonical_file: sample/Schemas/TextAnalyticsConceptTermResult.xsd
+- id: ei.core.text_analytics_text_object_key_component
+  base_namespace: http://ei/core/text_analytics_text_object_key_component
+  canonical_namespace: http://ei/core/text_analytics_text_object_key_component
+  variants:
+  - http://ei/core/text_analytics_text_object_key_component
+  canonical_file: sample/Schemas/TextAnalyticsTextObjectKeyComponent.xsd
+- id: ei.core.document_indexing_input_group
+  base_namespace: http://ei/core/document_indexing_input_group
+  canonical_namespace: http://ei/core/document_indexing_input_group
+  variants:
+  - http://ei/core/document_indexing_input_group
+  canonical_file: sample/Schemas/DocumentIndexingInputGroup.xsd
+- id: ei.core.management_oriented_codes
+  base_namespace: http://ei/core/management_oriented_codes
+  canonical_namespace: http://ei/core/management_oriented_codes
+  variants:
+  - http://ei/core/management_oriented_codes
+  canonical_file: sample/Schemas/ManagementOrientedCodes.xsd
+- id: http:.ei.core.policy_processing_note_set
+  base_namespace: http:/ei/core/policy_processing_note_set
+  canonical_namespace: http:/ei/core/policy_processing_note_set
+  variants:
+  - http:/ei/core/policy_processing_note_set
+  canonical_file: sample/Schemas/PolicyProcessingNoteSet.xsd
+- id: ei.core.error_information
+  base_namespace: http://ei/core/error_information
+  canonical_namespace: http://ei/core/error_information
+  variants:
+  - http://ei/core/error_information
+  canonical_file: sample/Schemas/ErrorInformation.xsd
+- id: ei.core.text_analytics_concept_result
+  base_namespace: http://ei/core/text_analytics_concept_result
+  canonical_namespace: http://ei/core/text_analytics_concept_result
+  variants:
+  - http://ei/core/text_analytics_concept_result
+  canonical_file: sample/Schemas/TextAnalyticsConceptResult.xsd
+- id: ei.core.iso_category_symbol_information
+  base_namespace: http://ei/core/iso_category_symbol_information
+  canonical_namespace: http://ei/core/iso_category_symbol_information
+  variants:
+  - http://ei/core/iso_category_symbol_information
+  canonical_file: sample/Schemas/ISOCategorySymbolInformation.xsd
+- id: ei.core.source_system_user_profile_id
+  base_namespace: http://ei/core/source_system_user_profile_id
+  canonical_namespace: http://ei/core/source_system_user_profile_id
+  variants:
+  - http://ei/core/source_system_user_profile_id
+  canonical_file: sample/Schemas/SourceSystemUserProfileId.xsd
+- id: ei.core.claim_life_cycle_stage_property
+  base_namespace: http://ei/core/claim_life_cycle_stage_property
+  canonical_namespace: http://ei/core/claim_life_cycle_stage_property
+  variants:
+  - http://ei/core/claim_life_cycle_stage_property
+  canonical_file: sample/Schemas/ClaimLifeCycleStageProperty.xsd
+- id: ei.core.premium
+  base_namespace: http://ei/core/premium
+  canonical_namespace: http://ei/core/premiumx5
+  variants:
+  - http://ei/core/premiumx5
+  - http://ei/core/premiumx6
+  - http://ei/core/premiumx7
+  canonical_file: sample/Schemas/PremiumX5.xsd
+- id: ei.core.survey_recommendation
+  base_namespace: http://ei/core/survey_recommendation
+  canonical_namespace: http://ei/core/survey_recommendation
+  variants:
+  - http://ei/core/survey_recommendation
+  canonical_file: sample/Schemas/SurveyRecommendation.xsd
+- id: ei.core.modifier
+  base_namespace: http://ei/core/modifier
+  canonical_namespace: http://ei/core/modifier
+  variants:
+  - http://ei/core/modifier
+  - http://ei/core/modifierx2
+  canonical_file: sample/Schemas/ModifiersX1.xsd
+- id: ei.core.affiliate_company_information
+  base_namespace: http://ei/core/affiliate_company_information
+  canonical_namespace: http://ei/core/affiliate_company_information
+  variants:
+  - http://ei/core/affiliate_company_information
+  canonical_file: sample/Schemas/AffiliateCompanyInformation.xsd
+- id: ei.core.region_and_language_settings
+  base_namespace: http://ei/core/region_and_language_settings
+  canonical_namespace: http://ei/core/region_and_language_settings
+  variants:
+  - http://ei/core/region_and_language_settings
+  canonical_file: sample/Schemas/RegionAndLanguageSettings.xsd
+- id: http:.ei.core.claim_note_set
+  base_namespace: http:/ei/core/claim_note_set
+  canonical_namespace: http:/ei/core/claim_note_set
+  variants:
+  - http:/ei/core/claim_note_set
+  canonical_file: sample/Schemas/ClaimNoteSet.xsd
+- id: ei.core.additional_insured
+  base_namespace: http://ei/core/additional_insured
+  canonical_namespace: http://ei/core/additional_insured
+  variants:
+  - http://ei/core/additional_insured
+  - http://ei/core/additional_insuredx1
+  canonical_file: sample/Schemas/AdditionalInsured.xsd
+- id: ei.core.prdct_compnt_cross_reference
+  base_namespace: http://ei/core/prdct_compnt_cross_reference
+  canonical_namespace: http://ei/core/prdct_compnt_cross_reference
+  variants:
+  - http://ei/core/prdct_compnt_cross_reference
+  canonical_file: sample/Schemas/PrdctCompntCrossReference.xsd
+- id: ei.core.source_system_data
+  base_namespace: http://ei/core/source_system_data
+  canonical_namespace: http://ei/core/source_system_data
+  variants:
+  - http://ei/core/source_system_data
+  canonical_file: sample/Schemas/SourceSystemData.xsd
+- id: ei.core.prdct_compnt_product_part
+  base_namespace: http://ei/core/prdct_compnt_product_part
+  canonical_namespace: http://ei/core/prdct_compnt_product_part
+  variants:
+  - http://ei/core/prdct_compnt_product_part
+  canonical_file: sample/Schemas/PrdctCompntProductPart.xsd
+- id: ei.core.strategic_alliance
+  base_namespace: http://ei/core/strategic_alliance
+  canonical_namespace: http://ei/core/strategic_alliance
+  variants:
+  - http://ei/core/strategic_alliance
+  canonical_file: sample/Schemas/StrategicAlliance.xsd
+- id: ei.core.document_business_property
+  base_namespace: http://ei/core/document_business_property
+  canonical_namespace: http://ei/core/document_business_property
+  variants:
+  - http://ei/core/document_business_property
+  canonical_file: sample/Schemas/DocumentBusinessProperty.xsd
+- id: ei.core.mortgagee
+  base_namespace: http://ei/core/mortgagee
+  canonical_namespace: http://ei/core/mortgagee
+  variants:
+  - http://ei/core/mortgagee
+  canonical_file: sample/Schemas/Mortgagee.xsd
+- id: ei.core.policy_event
+  base_namespace: http://ei/core/policy_event
+  canonical_namespace: http://ei/core/policy_event
+  variants:
+  - http://ei/core/policy_event
+  canonical_file: sample/Schemas/PolicyEvent.xsd
+- id: ei.core.referral_zone
+  base_namespace: http://ei/core/referral_zone
+  canonical_namespace: http://ei/core/referral_zone
+  variants:
+  - http://ei/core/referral_zone
+  canonical_file: sample/Schemas/ReferralZone.xsd
+- id: ei.core.iso_state_exception
+  base_namespace: http://ei/core/iso_state_exception
+  canonical_namespace: http://ei/core/iso_state_exception
+  variants:
+  - http://ei/core/iso_state_exception
+  canonical_file: sample/Schemas/ISOStateException.xsd
+- id: ei.core.marketing_campaign_contact
+  base_namespace: http://ei/core/marketing_campaign_contact
+  canonical_namespace: http://ei/core/marketing_campaign_contact
+  variants:
+  - http://ei/core/marketing_campaign_contact
+  canonical_file: sample/Schemas/MarketingCampaignContact.xsd
+- id: ei.core.sponsor
+  base_namespace: http://ei/core/sponsor
+  canonical_namespace: http://ei/core/sponsor
+  variants:
+  - http://ei/core/sponsor
+  - http://ei/core/sponsorx1
+  - http://ei/core/sponsorx2
+  - http://ei/core/sponsorx3
+  canonical_file: sample/Schemas/Sponsor.xsd
+- id: ei.core.payment_method
+  base_namespace: http://ei/core/payment_method
+  canonical_namespace: http://ei/core/payment_method
+  variants:
+  - http://ei/core/payment_method
+  canonical_file: sample/Schemas/PaymentMethod.xsd
+- id: ei.core.identification_information
+  base_namespace: http://ei/core/identification_information
+  canonical_namespace: http://ei/core/identification_information
+  variants:
+  - http://ei/core/identification_information
+  canonical_file: sample/Schemas/IdentificationInformation.xsd
+- id: ei.core.claim_note
+  base_namespace: http://ei/core/claim_note
+  canonical_namespace: http://ei/core/claim_note
+  variants:
+  - http://ei/core/claim_note
+  canonical_file: sample/Schemas/ClaimNote.xsd
+- id: ei.core.product_policy_type_cross_reference
+  base_namespace: http://ei/core/product_policy_type_cross_reference
+  canonical_namespace: http://ei/core/product_policy_type_cross_reference
+  variants:
+  - http://ei/core/product_policy_type_cross_reference
+  canonical_file: sample/Schemas/ProductPolicyTypeCrossReference.xsd
+- id: ei.core.currency_exchange_rates
+  base_namespace: http://ei/core/currency_exchange_rates
+  canonical_namespace: http://ei/core/currency_exchange_rates
+  variants:
+  - http://ei/core/currency_exchange_rates
+  canonical_file: sample/Schemas/CurrencyExchangeRates.xsd
+- id: http:.core.custom_business_data_groups
+  base_namespace: http:/core/custom_business_data_groups
+  canonical_namespace: http:/core/custom_business_data_groups
+  variants:
+  - http:/core/custom_business_data_groups
+  canonical_file: sample/Schemas/CustomBusinessDataGroups.xsd
+- id: ei.core.resource
+  base_namespace: http://ei/core/resource
+  canonical_namespace: http://ei/core/resourcex1
+  variants:
+  - http://ei/core/resourcex1
+  canonical_file: sample/Schemas/ResourceX1.xsd
+- id: ei.core.special_arrangement_producer
+  base_namespace: http://ei/core/special_arrangement_producer
+  canonical_namespace: http://ei/core/special_arrangement_producer
+  variants:
+  - http://ei/core/special_arrangement_producer
+  canonical_file: sample/Schemas/SpecialArrangementProducer.xsd
+- id: ei.core.user_profile
+  base_namespace: http://ei/core/user_profile
+  canonical_namespace: http://ei/core/user_profile
+  variants:
+  - http://ei/core/user_profile
+  canonical_file: sample/Schemas/UserProfile.xsd
+- id: ei.core.department
+  base_namespace: http://ei/core/department
+  canonical_namespace: http://ei/core/departmentx1
+  variants:
+  - http://ei/core/departmentx1
+  canonical_file: sample/Schemas/DepartmentX1.xsd
+- id: ei.core.document_indexing_group
+  base_namespace: http://ei/core/document_indexing_group
+  canonical_namespace: http://ei/core/document_indexing_group
+  variants:
+  - http://ei/core/document_indexing_group
+  canonical_file: sample/Schemas/DocumentIndexingGroup.xsd
+- id: ei.core.document
+  base_namespace: http://ei/core/document
+  canonical_namespace: http://ei/core/document
+  variants:
+  - http://ei/core/document
+  canonical_file: sample/Schemas/Document.xsd
+- id: ei.core.service_information
+  base_namespace: http://ei/core/service_information
+  canonical_namespace: http://ei/core/service_information
+  variants:
+  - http://ei/core/service_information
+  canonical_file: sample/Schemas/ServiceInformation.xsd
+- id: ei.core.business_unit_information
+  base_namespace: http://ei/core/business_unit_information
+  canonical_namespace: http://ei/core/business_unit_information
+  variants:
+  - http://ei/core/business_unit_information
+  canonical_file: sample/Schemas/BusinessUnitInformation.xsd
+- id: ei.core.residential_structure_wildfire_enrollment
+  base_namespace: http://ei/core/residential_structure_wildfire_enrollment
+  canonical_namespace: http://ei/core/residential_structure_wildfire_enrollment
+  variants:
+  - http://ei/core/residential_structure_wildfire_enrollment
+  canonical_file: sample/Schemas/ResidentialStructureWildfireEnrollment.xsd
+- id: ei.core.prdct_compnt_statistical_instruction
+  base_namespace: http://ei/core/prdct_compnt_statistical_instruction
+  canonical_namespace: http://ei/core/prdct_compnt_statistical_instruction
+  variants:
+  - http://ei/core/prdct_compnt_statistical_instruction
+  canonical_file: sample/Schemas/PrdctCompntStatisticalInstruction.xsd
+- id: ei.core.business_event_detail
+  base_namespace: http://ei/core/business_event_detail
+  canonical_namespace: http://ei/core/business_event_detail
+  variants:
+  - http://ei/core/business_event_detail
+  canonical_file: sample/Schemas/BusinessEventDetail.xsd
+- id: ei.core.business_event_level_information
+  base_namespace: http://ei/core/business_event_level_information
+  canonical_namespace: http://ei/core/business_event_level_information
+  variants:
+  - http://ei/core/business_event_level_information
+  canonical_file: sample/Schemas/BusinessEventLevelInformation.xsd
+- id: ei.core.native_language_information
+  base_namespace: http://ei/core/native_language_information
+  canonical_namespace: http://ei/core/native_language_information
+  variants:
+  - http://ei/core/native_language_information
+  canonical_file: sample/Schemas/NativeLanguageInformation.xsd
+- id: ei.core.insurer
+  base_namespace: http://ei/core/insurer
+  canonical_namespace: http://ei/core/insurer
+  variants:
+  - http://ei/core/insurer
+  - http://ei/core/insurerx1
+  - http://ei/core/insurerx2
+  canonical_file: sample/Schemas/Insurer.xsd
+- id: ei.core.state_mandated_information
+  base_namespace: http://ei/core/state_mandated_information
+  canonical_namespace: http://ei/core/state_mandated_information
+  variants:
+  - http://ei/core/state_mandated_information
+  canonical_file: sample/Schemas/StateMandatedInformation.xsd
+- id: ei.core.webdav_key
+  base_namespace: http://ei/core/webdav_key
+  canonical_namespace: http://ei/core/webdav_key
+  variants:
+  - http://ei/core/webdav_key
+  canonical_file: sample/Schemas/WebDavKey.xsd
+- id: ei.core.currency_exchange_rate
+  base_namespace: http://ei/core/currency_exchange_rate
+  canonical_namespace: http://ei/core/currency_exchange_rate
+  variants:
+  - http://ei/core/currency_exchange_rate
+  canonical_file: sample/Schemas/CurrencyExchangeRate.xsd
+- id: ei.core.line_of_business_information
+  base_namespace: http://ei/core/line_of_business_information
+  canonical_namespace: http://ei/core/line_of_business_information
+  variants:
+  - http://ei/core/line_of_business_information
+  canonical_file: sample/Schemas/LineOfBusinessInformation.xsd
+- id: ei.core.location_adjacency_aggregation
+  base_namespace: http://ei/core/location_adjacency_aggregation
+  canonical_namespace: http://ei/core/location_adjacency_aggregation
+  variants:
+  - http://ei/core/location_adjacency_aggregation
+  - http://ei/core/location_adjacency_aggregationx1
+  - http://ei/core/location_adjacency_aggregationx2
+  canonical_file: sample/Schemas/LocationAdjacencyAggregation.xsd
+- id: ei.core.survey_location
+  base_namespace: http://ei/core/survey_location
+  canonical_namespace: http://ei/core/survey_location
+  variants:
+  - http://ei/core/survey_location
+  canonical_file: sample/Schemas/SurveyLocation.xsd
+- id: ei.core.deductible
+  base_namespace: http://ei/core/deductible
+  canonical_namespace: http://ei/core/deductiblex2
+  variants:
+  - http://ei/core/deductiblex2
+  - http://ei/core/deductiblex3
+  canonical_file: sample/Schemas/DeductibleX2.xsd
+- id: ei.core.address
+  base_namespace: http://ei/core/address
+  canonical_namespace: http://ei/core/address
+  variants:
+  - http://ei/core/address
+  - http://ei/core/addressx1
+  - http://ei/core/addressx2
+  - http://ei/core/addressx3
+  - http://ei/core/addressx4
+  - http://ei/core/addressx5
+  canonical_file: sample/Schemas/Address.xsd
+- id: ei.core.risk_adjustment_program
+  base_namespace: http://ei/core/risk_adjustment_program
+  canonical_namespace: http://ei/core/risk_adjustment_program
+  variants:
+  - http://ei/core/risk_adjustment_program
+  canonical_file: sample/Schemas/RiskAdjustmentProgram.xsd
+- id: ei.core.extended_address
+  base_namespace: http://ei/core/extended_address
+  canonical_namespace: http://ei/core/extended_addressx1
+  variants:
+  - http://ei/core/extended_addressx1
+  - http://ei/core/extended_addressx2
+  - http://ei/core/extended_addressx3
+  canonical_file: sample/Schemas/ExtendedAddressX1.xsd
+- id: ei.core.catastrophe_event_information
+  base_namespace: http://ei/core/catastrophe_event_information
+  canonical_namespace: http://ei/core/catastrophe_event_information
+  variants:
+  - http://ei/core/catastrophe_event_information
+  canonical_file: sample/Schemas/CatastropheEventInformation.xsd
+- id: ei.core.business_information
+  base_namespace: http://ei/core/business_information
+  canonical_namespace: http://ei/core/business_informationx1
+  variants:
+  - http://ei/core/business_informationx1
+  - http://ei/core/business_informationx2
+  - http://ei/core/business_informationx3
+  canonical_file: sample/Schemas/BusinessInformationX1.xsd
+- id: ei.core.claim_life_cycle_stage
+  base_namespace: http://ei/core/claim_life_cycle_stage
+  canonical_namespace: http://ei/core/claim_life_cycle_stage
+  variants:
+  - http://ei/core/claim_life_cycle_stage
+  canonical_file: sample/Schemas/ClaimLifeCycleStage.xsd
+- id: ei.core.location_occupancy_calculation
+  base_namespace: http://ei/core/location_occupancy_calculation
+  canonical_namespace: http://ei/core/location_occupancy_calculation
+  variants:
+  - http://ei/core/location_occupancy_calculation
+  canonical_file: sample/Schemas/LocationOccupancyCalculation.xsd
+- id: ei.core.line_of_business_tax_rate
+  base_namespace: http://ei/core/line_of_business_tax_rate
+  canonical_namespace: http://ei/core/line_of_business_tax_ratex1
+  variants:
+  - http://ei/core/line_of_business_tax_ratex1
+  canonical_file: sample/Schemas/LineOfBusinessTaxRateX1.xsd
+- id: ei.core.text_analytics_concept_group_result
+  base_namespace: http://ei/core/text_analytics_concept_group_result
+  canonical_namespace: http://ei/core/text_analytics_concept_group_result
+  variants:
+  - http://ei/core/text_analytics_concept_group_result
+  canonical_file: sample/Schemas/TextAnalyticsConceptGroupResult.xsd
+- id: ei.core.drug
+  base_namespace: http://ei/core/drug
+  canonical_namespace: http://ei/core/drug
+  variants:
+  - http://ei/core/drug
+  canonical_file: sample/Schemas/Drug.xsd
+- id: ei.core.prdct_compnt_hazard
+  base_namespace: http://ei/core/prdct_compnt_hazard
+  canonical_namespace: http://ei/core/prdct_compnt_hazard
+  variants:
+  - http://ei/core/prdct_compnt_hazard
+  canonical_file: sample/Schemas/PrdctCompntHazard.xsd
+- id: ei.core.input_parameter
+  base_namespace: http://ei/core/input_parameter
+  canonical_namespace: http://ei/core/input_parameter
+  variants:
+  - http://ei/core/input_parameter
+  canonical_file: sample/Schemas/InputParameter.xsd
+- id: ei.core.citizenship_information
+  base_namespace: http://ei/core/citizenship_information
+  canonical_namespace: http://ei/core/citizenship_information
+  variants:
+  - http://ei/core/citizenship_information
+  canonical_file: sample/Schemas/CitizenshipInformation.xsd
+- id: ei.core.user
+  base_namespace: http://ei/core/user
+  canonical_namespace: http://ei/core/user
+  variants:
+  - http://ei/core/user
+  canonical_file: sample/Schemas/User.xsd
+- id: ei.core.event_date_time
+  base_namespace: http://ei/core/event_date_time
+  canonical_namespace: http://ei/core/event_date_time
+  variants:
+  - http://ei/core/event_date_time
+  canonical_file: sample/Schemas/EventDateTime.xsd
+- id: ei.core.activity_status_information
+  base_namespace: http://ei/core/activity_status_information
+  canonical_namespace: http://ei/core/activity_status_information
+  variants:
+  - http://ei/core/activity_status_information
+  canonical_file: sample/Schemas/ActivityStatusInformation.xsd
+- id: ei.core.loss_history_cause_of_loss_payment
+  base_namespace: http://ei/core/loss_history_cause_of_loss_payment
+  canonical_namespace: http://ei/core/loss_history_cause_of_loss_payment
+  variants:
+  - http://ei/core/loss_history_cause_of_loss_payment
+  canonical_file: sample/Schemas/LossHistoryCauseOfLossPayment.xsd
+- id: ei.risk.survey_peril
+  base_namespace: http://ei/risk/survey_peril
+  canonical_namespace: http://ei/risk/survey_peril
+  variants:
+  - http://ei/risk/survey_peril
+  canonical_file: sample/Schemas/SurveyPeril.xsd
+- id: ei.core.web_application_cookie
+  base_namespace: http://ei/core/web_application_cookie
+  canonical_namespace: http://ei/core/web_application_cookie
+  variants:
+  - http://ei/core/web_application_cookie
+  canonical_file: sample/Schemas/WebApplicationCookie.xsd
+- id: ei.core.state_or_province
+  base_namespace: http://ei/core/state_or_province
+  canonical_namespace: http://ei/core/state_or_province
+  variants:
+  - http://ei/core/state_or_province
+  canonical_file: sample/Schemas/StateOrProvince.xsd
+- id: ei.core.contract_research_organization
+  base_namespace: http://ei/core/contract_research_organization
+  canonical_namespace: http://ei/core/contract_research_organization
+  variants:
+  - http://ei/core/contract_research_organization
+  canonical_file: sample/Schemas/ContractResearchOrganization.xsd
+- id: ei.core.family_office
+  base_namespace: http://ei/core/family_office
+  canonical_namespace: http://ei/core/family_office
+  variants:
+  - http://ei/core/family_office
+  canonical_file: sample/Schemas/FamilyOffice.xsd
+- id: ei.core.risk_rating_parameter
+  base_namespace: http://ei/core/risk_rating_parameter
+  canonical_namespace: http://ei/core/risk_rating_parameter
+  variants:
+  - http://ei/core/risk_rating_parameter
+  canonical_file: sample/Schemas/RiskRatingParameter.xsd
+- id: ei.core.vin_information
+  base_namespace: http://ei/core/vin_information
+  canonical_namespace: http://ei/core/vin_information
+  variants:
+  - http://ei/core/vin_information
+  canonical_file: sample/Schemas/VINInformation.xsd
+- id: ei.core.customer_group
+  base_namespace: http://ei/core/customer_group
+  canonical_namespace: http://ei/core/customer_groupx1
+  variants:
+  - http://ei/core/customer_groupx1
+  - http://ei/core/customer_groupx2
+  canonical_file: sample/Schemas/CustomerGroupX1.xsd
+- id: ei.core.recipient_policy_form_reference
+  base_namespace: http://ei/core/recipient_policy_form_reference
+  canonical_namespace: http://ei/core/recipient_policy_form_reference
+  variants:
+  - http://ei/core/recipient_policy_form_reference
+  canonical_file: sample/Schemas/RecipientPolicyFormReference.xsd
+- id: ei.core.get_access_role_information
+  base_namespace: http://ei/core/get_access_role_information
+  canonical_namespace: http://ei/core/get_access_role_information
+  variants:
+  - http://ei/core/get_access_role_information
+  canonical_file: sample/Schemas/GetAccessRoleInformation.xsd
+- id: ei.core.insurance_admin_role
+  base_namespace: http://ei/core/insurance_admin_role
+  canonical_namespace: http://ei/core/insurance_admin_role
+  variants:
+  - http://ei/core/insurance_admin_role
+  canonical_file: sample/Schemas/InsuranceAdminRole.xsd
+- id: ei.core.policy_processing_data
+  base_namespace: http://ei/core/policy_processing_data
+  canonical_namespace: http://ei/core/policy_processing_data
+  variants:
+  - http://ei/core/policy_processing_data
+  canonical_file: sample/Schemas/PolicyProcessingData.xsd
+- id: ei.core.fee
+  base_namespace: http://ei/core/fee
+  canonical_namespace: http://ei/core/fee
+  variants:
+  - http://ei/core/fee
+  canonical_file: sample/Schemas/Fee.xsd
+- id: ei.core.access_control_group
+  base_namespace: http://ei/core/access_control_group
+  canonical_namespace: http://ei/core/access_control_group
+  variants:
+  - http://ei/core/access_control_group
+  canonical_file: sample/Schemas/AccessControlGroup.xsd
+- id: ei.core.question_and_answer
+  base_namespace: http://ei/core/question_and_answer
+  canonical_namespace: http://ei/core/question_and_answerx1
+  variants:
+  - http://ei/core/question_and_answerx1
+  canonical_file: sample/Schemas/QuestionAndAnswerX1.xsd
+- id: ei.crm.detailed_error
+  base_namespace: http://ei/crm/detailed_error
+  canonical_namespace: http://ei/crm/detailed_error
+  variants:
+  - http://ei/crm/detailed_error
+  canonical_file: sample/Schemas/DetailedError.xsd
+- id: ei.core.state_mandated_parameter
+  base_namespace: http://ei/core/state_mandated_parameter
+  canonical_namespace: http://ei/core/state_mandated_parameter
+  variants:
+  - http://ei/core/state_mandated_parameter
+  canonical_file: sample/Schemas/StateMandatedParameter.xsd
+- id: ei.core.business_source_information
+  base_namespace: http://ei/core/business_source_information
+  canonical_namespace: http://ei/core/business_source_information
+  variants:
+  - http://ei/core/business_source_information
+  canonical_file: sample/Schemas/BusinessSourceInformation.xsd
+- id: ei.core.alliance_sbu_yearly_financial
+  base_namespace: http://ei/core/alliance_sbu_yearly_financial
+  canonical_namespace: http://ei/core/alliance_sbu_yearly_financial
+  variants:
+  - http://ei/core/alliance_sbu_yearly_financial
+  canonical_file: sample/Schemas/AllianceSBUYearlyFinancial.xsd
+- id: ei.core.policy_key_parameter
+  base_namespace: http://ei/core/policy_key_parameter
+  canonical_namespace: http://ei/core/policy_key_parameter
+  variants:
+  - http://ei/core/policy_key_parameter
+  canonical_file: sample/Schemas/PolicyKeyParameter.xsd
+- id: ei.core.sic_information
+  base_namespace: http://ei/core/sic_information
+  canonical_namespace: http://ei/core/sic_information
+  variants:
+  - http://ei/core/sic_information
+  canonical_file: sample/Schemas/SICInformation.xsd
+- id: ei.core.file
+  base_namespace: http://ei/core/file
+  canonical_namespace: http://ei/core/file
+  variants:
+  - http://ei/core/file
+  canonical_file: sample/Schemas/File.xsd
+- id: ei.core.document_search_subcriteria
+  base_namespace: http://ei/core/document_search_subcriteria
+  canonical_namespace: http://ei/core/document_search_subcriteria
+  variants:
+  - http://ei/core/document_search_subcriteria
+  canonical_file: sample/Schemas/DocumentSearchSubcriteria.xsd
+- id: ei.core.prdct_compnt_loss_value_option
+  base_namespace: http://ei/core/prdct_compnt_loss_value_option
+  canonical_namespace: http://ei/core/prdct_compnt_loss_value_option
+  variants:
+  - http://ei/core/prdct_compnt_loss_value_option
+  canonical_file: sample/Schemas/PrdctCompntLossValueOption.xsd
+- id: ei.core.branch
+  base_namespace: http://ei/core/branch
+  canonical_namespace: http://ei/core/branchx1
+  variants:
+  - http://ei/core/branchx1
+  canonical_file: sample/Schemas/BranchX1.xsd
+- id: ei.core.policy_contact_information
+  base_namespace: http://ei/core/policy_contact_information
+  canonical_namespace: http://ei/core/policy_contact_information
+  variants:
+  - http://ei/core/policy_contact_information
+  canonical_file: sample/Schemas/PolicyContactInformation.xsd
+- id: ei.location.location_list_reply
+  base_namespace: http://ei/location/location_list_reply
+  canonical_namespace: http://ei/location/location_list_reply
+  variants:
+  - http://ei/location/location_list_reply
+  canonical_file: sample/LocationRetrievalLOC3X1/LocationListReply.xsd
+- id: ei.location.location_request
+  base_namespace: http://ei/location/location_request
+  canonical_namespace: http://ei/location/location_request
+  variants:
+  - http://ei/location/location_request
+  canonical_file: sample/LocationRetrievalLOC3X1/LocationRequest.xsd
+- id: ei.location.get_location_list_request_loc3
+  base_namespace: http://ei/location/get_location_list_request_loc3
+  canonical_namespace: http://ei/location/get_location_list_request_loc3x1
+  variants:
+  - http://ei/location/get_location_list_request_loc3x1
+  canonical_file: sample/LocationRetrievalLOC3X1/GetLocationListRequest.xsd
+- id: ei.core.get_bytes_reply
+  base_namespace: http://ei/core/get_bytes_reply
+  canonical_namespace: http://ei/core/get_bytes_reply
+  variants:
+  - http://ei/core/get_bytes_reply
+  canonical_file: sample/PrivateSchemas/GetBytesReply.xsd
+- id: ei.core.properties
+  base_namespace: http://ei/core/properties
+  canonical_namespace: http://ei/core/properties
+  variants:
+  - http://ei/core/properties
+  canonical_file: sample/PrivateSchemas/EndpointMapping.xsd
+- id: ei.core.get_string_reply
+  base_namespace: http://ei/core/get_string_reply
+  canonical_namespace: http://ei/core/get_string_reply
+  variants:
+  - http://ei/core/get_string_reply
+  canonical_file: sample/PrivateSchemas/GetStringReply.xsd
+- id: ei.core.source_translation
+  base_namespace: http://ei/core/source_translation
+  canonical_namespace: http://ei/core/source_translation
+  variants:
+  - http://ei/core/source_translation
+  canonical_file: sample/PrivateSchemas/SourceTranslation.xsd
+- id: ei.core.product_support_properties_pdt804
+  base_namespace: http://ei/core/product_support_properties_pdt804
+  canonical_namespace: http://ei/core/product_support_properties_pdt804x1
+  variants:
+  - http://ei/core/product_support_properties_pdt804x1
+  canonical_file: sample/PrivateSchemas/ProductSupportProperties.xsd
+- id: ei.core.simplefault
+  base_namespace: http://ei/core/simplefault
+  canonical_namespace: http://ei/core/simplefault
+  variants:
+  - http://ei/core/simplefault
+  canonical_file: sample/PrivateSchemas/SimpleFault.xsd
+rules:
+- Prefer canonical namespaces without xN suffix when available
+- "Normalise trailing letter variants after numeric version (e.g., loc3x1m \u2192\
+  \ loc3x1)"
+- WSDL/XSD imports should reference canonical namespaces where a group exists
+ci_policies:
+- Fail if inventory namespaces missing from inventory.md
+- Fail if XSD import cycles involve PrivateSchemas
+- Warn on unresolved XSD imports; allow known gaps (Location.xsd variants)

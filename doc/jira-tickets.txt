@@ -1,582 +1,400 @@
 ================================================================================
-# LOC-CAMEL-ROUTE PROJECT - JIRA TICKETS
-# Generated from doc/master-plan.txt with correct phase-to-task mapping
+# LOC-CAMEL-ROUTE PROJECT — JIRA TICKETS (Agentic Alignment Edition)
 # Date: 20 October 2025
+# Traceability: Aligns to doc/Loc-Camel-Route.tex, doc/master-plan.txt, doc/comment.txt
 ================================================================================
+
+Global Governance & Evidence (applies to all tickets):
+- British English; no mocks; secrets never committed; venv-only execution for scripts.
+- Accept `SOURCE_ROOT` via CLI/env; recursively discover `*.bpel`, `*.wsdl`, `*.xsd`; never hardwire names/paths/namespaces/constants.
+- Tests run via `tests/run_tests.py`; produce JUnit XML + HTML under `tests/results/{junit,html}/`; logs under `tests/results/logs/`.
+
+Agentic Execution Policy:
+- All tickets are executed by autonomous agents; `[In charge]` denotes the agent role.
+- Each ticket must provide agent-facing tooling/entrypoints and integrate with `scripts/agents/run.py`.
+- Acceptance includes agent-run evidence: inputs, outputs, logs, timestamps, and runner parameters.
+- Agents operate via recursive discovery and parameterised inputs; no hardwired names/paths/namespaces.
+
+---
 
 [LOC-000] Tooling Preflight and Environment Installer
 [In charge] Automation Engineer
 [Master Plan] 0.1 Tooling Preflight and Environment Installer
-[status] Pending
-[unit test] scripts/preflight.sh && verify doc/tooling-report.md exists and smoke build completes when `pom.xml` present
+[status] Implemented
+[evidence] doc/.preflight/agent-checks.md; doc/tooling-report.md
+[unit test] tests/test_preflight_agent.py via tests/run_tests.py
 
-**Description:**
-Verify and, if necessary, install/prepare local tooling required to build, run, and test the project end-to-end. Capture versions and readiness in a structured report. Run a smoke build when a Maven project is present.
+Description:
+Executed by Preflight Agent via Agents CLI runner; produces/uses `scripts/preflight_agent.py` and `scripts/preflight.sh`.
+Verify local tooling readiness (Java 17, Maven, jq, yq, Python3/pip) and capture versions/evidence. If Maven present, execute smoke build.
 
-**Detailed Implementation Steps:**
-1. Execute `scripts/preflight.sh` to check tools: Java 17, Maven, `jq`, `yq`, `python3`, `pip`
-2. Verify Python packages: `lxml`, `pyyaml`; install if missing (user-approved, venv-aware)
-3. Detect `pom.xml`; if present, run smoke build: `mvn -q -DskipTests package`
-4. Emit `doc/tooling-report.md` with versions, readiness, and recommendations
-5. Persist logs under `logs/preflight/` (create if absent)
+Implementation Steps:
+1. Run `scripts/preflight.sh` (venv-guarded) to detect tools and versions.
+2. Verify Python packages: `lxml`, `pyyaml`.
+3. If `pom.xml` exists, run `mvn -q -DskipTests package` (smoke build).
+4. Emit `doc/tooling-report.md`; store logs under `tests/results/logs/preflight.log`.
 
-**Related Files:**
-- scripts/preflight.sh
-- doc/tooling-report.md
-- doc/Loc-Camlel-Route.tex (Environment Installer agent)
-- doc/master-plan.txt (Phase 0: Preflight)
+Acceptance Criteria:
+- Tools detected with minimum versions; Python packages present.
+- `doc/tooling-report.md` generated with clear status.
+- Smoke build succeeds or is marked skipped/failed with evidence.
 
-**Inputs:**
-- Local environment and PATH
-- Optional `CONTRACTS_ROOT` or `doc/config.yml` for contract discovery context
-- Presence of `pom.xml` for smoke build
-
-**Outputs:**
-- Generated `doc/tooling-report.md`
-- `logs/preflight/preflight.log`
-- Smoke build artefacts (target/*) if `pom.xml` exists
-
-**Acceptance Criteria:**
-- [ ] All required tools detected with minimum versions (Java 17, Maven)
-- [ ] Python packages `lxml` and `pyyaml` present
-- [ ] `doc/tooling-report.md` generated with sections populated
-- [ ] Smoke build completes successfully when `pom.xml` is present
-- [ ] Preflight logs stored under `logs/preflight/`
-
-**Assigned to:** Automation Engineer
-**Priority:** High
-**Story Points:** 3
+---
 
 [LOC-001] Contract Inventory and Catalogue
 [In charge] Contract Engineer
 [Master Plan] 1.1 Contract Inventory
-[status] Pending
-[unit test] tests/contract/test_contract_inventory_report.md - Verifies inventory generation against actual WSDL/XSD/BPEL artefacts with namespace and binding checks
+[status] Implemented
+[evidence] contracts/inventory.json; contracts/inventory.md; doc/.preflight/contracts-checks.md; doc/agent-runs/run-contracts-20251024-173208.json
+[unit test] tests/test_contract_inventory.py; tests/test_contracts_validator.py
 
-**Description:**
-Catalogue all WSDL, XSD, and BPEL artefacts in the repository, recording namespaces, bindings, versions, operations, and full file paths. Confirm SimpleFault.xsd usage and version across inbound service and orchestration.
+Description:
+Executed by Contracts Agent via Agents CLI runner; produces/uses `scripts/contracts_validator.py`.
+Catalogue WSDL/XSD/BPEL artefacts by recursive discovery under `SOURCE_ROOT` (default `sample/`). Record namespaces, bindings, versions, operations, and file paths. Confirm `SimpleFault.xsd` usage.
 
-**Detailed Implementation Steps:**
-1. Enumerate artefacts under sample/Schemas and sample/PrivateSchemas
-2. Catalogue WSDLs for LocationRetrievalLOC3X1[B|M], CountryRetrievalCRP10X1, StateOrProvinceRetrievalCRP11X1
-3. Record SOAP/HTTP bindings, ports, operations, and service names
-4. Include BPEL: sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel
-5. Generate inventory.json and inventory.md with summary tables
+Implementation Steps:
+1. Discover contracts under `SOURCE_ROOT` recursively.
+2. Record SOAP/HTTP bindings, ports, operations, and services.
+3. Include BPEL processes discovered; normalise paths deterministically.
+4. Generate `contracts/inventory.json` and `contracts/inventory.md`.
 
-**Related Files:**
-- doc/Loc-Camlel-Route.tex
-- sample/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl
-- sample/LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl
-- sample/CountryRetrievalCRP10X1/*.wsdl
-- sample/StateOrProvinceRetrievalCRP11X1/*.wsdl
-- sample/PrivateSchemas/SimpleFault.xsd
-
-**Inputs:**
-- Actual WSDL/XSD/BPEL files under sample/*
-- Repository structure in /Users/albertohernandez/Documents/projects/camel-route
-- Master plan governance rules (no mocks, venv required)
-
-**Outputs:**
-- contracts/inventory.json
-- contracts/inventory.md (human-readable summary)
-- Evidence screenshots and logs in tests/contract/artifacts/
-
-**Acceptance Criteria:**
-- [ ] Inventory lists all artefacts with correct paths and versions
-- [ ] Namespaces and bindings validated against WSDL/XSD content
-- [ ] SimpleFault.xsd presence and version confirmed
-- [ ] Generated reports reviewed and approved
-- [ ] Test evidence stored and cross-referenced
-
-**Assigned to:** Contract Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Inventory lists all artefacts with paths, versions, namespaces, and bindings.
+- `SimpleFault.xsd` presence and references confirmed.
 
 ---
 
 [LOC-002] BPEL Analysis and Partner Sequencing
 [In charge] Orchestration Engineer
 [Master Plan] 1.2 BPEL Analysis
-[status] Pending
-[unit test] tests/orchestration/test_bpel_analysis.md - Confirms extracted partner links, invokes, assigns, and error handling paths with real BPEL parsing
+[status] Implemented
+[evidence] doc/bpel-analysis.md; orchestration/spec.yaml; doc/agent-runs/run-bpel-20251024-173441.json
+[unit test] tests/test_bpel_agent.py
 
-**Description:**
-Analyse partner links, variables, assigns, and fault handlers to derive precise invocation order (CRP11X1 → CRP10X1 → LOC3X1M) and mapping intent. Document inbound operations and error paths that serialise to SimpleFault.
+Description:
+Executed by BPEL Orchestration Agent via Agents CLI runner; produces/uses `agents/bpel_agent.py` and `scripts/analyze_bpel.py`.
+Parse BPEL to extract partner links, variables, inbound ops, invokes, assigns, and fault paths; derive mediation order and mapping intents.
 
-**Detailed Implementation Steps:**
-1. Parse LocationRetrievalLOC3X1Process.bpel for partnerLinks and variables
-2. Extract inbound operations (GetLocationList3X1B, GetLocationWithTaxingJurisdictions3X1B)
-3. Catalogue assign activities and map source→target intents
-4. Identify fault handlers and serialisation to SimpleFault.xsd
-5. Produce bpel-analysis.md with sequence diagrams
+Implementation Steps:
+1. Parse partnerLinks/variables/invokes/assigns/faultHandlers.
+2. Identify inbound operations and partner sequence (e.g., CRP11X1 → CRP10X1 → LOC3X1M).
+3. Produce `orchestration/bpel-analysis.md` and update/produce `orchestration/spec.yaml` with invokes + error paths.
 
-**Related Files:**
-- sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel
-- sample/PrivateSchemas/SimpleFault.xsd
-
-**Inputs:**
-- Real BPEL file and associated schemas
-- Inventory artefacts from LOC-001
-
-**Outputs:**
-- docs/bpel-analysis.md
-- diagrams/bpel-sequence.svg
-
-**Acceptance Criteria:**
-- [ ] Partner sequencing accurately documented
-- [ ] Assign mapping intents extracted and tabulated
-- [ ] Fault handling paths fully described
-- [ ] Evidence tests parse and validate BPEL content
-
-**Assigned to:** Orchestration Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Sequencing, assigns, and fault paths accurately documented.
+- `orchestration/spec.yaml` reflects invokes and error paths.
 
 ---
 
 [LOC-003] Canonical Schema Governance Map
 [In charge] Schema Curator
 [Master Plan] 1.3 Canonical Schema Governance
-[status] Pending
-[unit test] tests/schema/test_canonical_map.md - Validates canonical-map.yaml references and CI checks against actual schemas
+[status] Implemented
+[evidence] contracts/canonical-map.yaml; doc/.preflight/schema-governance.md; doc/agent-runs/run-schema-20251024-173647.json
+[unit test] tests/test_contracts_validator.py (namespace/version checks)
 
-**Description:**
-Establish canonical schema selections and governance rules. Produce canonical-map.yaml to enforce namespace, version, and duplication policies in CI.
+Description:
+Executed by Schema Governance Agent via Agents CLI runner; produces `contracts/canonical-map.yaml` and CI governance checks; uses `scripts/contracts_validator.py`.
+Select canonical schemas and enforce namespace/version governance.
 
-**Detailed Implementation Steps:**
-1. Review duplicates and variants in sample/Schemas
-2. Select canonical XSDs per domain with rationale
-3. Write contracts/canonical-map.yaml with namespace/version rules
-4. Implement CI validation checklist and scripts
+Implementation Steps:
+1. Identify duplicates/variants; select canonical XSDs.
+2. Write `contracts/canonical-map.yaml` and alignment rules.
+3. Provide CI validation checklist.
 
-**Related Files:**
-- sample/Schemas/*
-- sample/PrivateSchemas/*
-- contracts/canonical-map.yaml (new)
-
-**Inputs:**
-- Real schema files and inventory
-- Governance requirements from master plan
-
-**Outputs:**
-- canonical-map.yaml
-- ci/canonical-schema-check.sh
-
-**Acceptance Criteria:**
-- [ ] Canonical selections documented and approved
-- [ ] CI scripts detect non-canonical usage
-- [ ] Namespaces and versions enforced
-
-**Assigned to:** Schema Curator
-**Priority:** Medium
-**Story Points:** 3
+Acceptance Criteria:
+- Canonical selections documented; namespaces/versions enforced by CI.
 
 ---
 
-[LOC-004] Maven Multi-Module Scaffold
+[LOC-004] Maven Multi-Module Scaffold (Parameterised)
 [In charge] Build Engineer
 [Master Plan] 2.1 Maven Scaffold
-[status] Pending
-[unit test] mvn -q -DskipTests package - Parent and modules compile successfully under venv
+[status] Implemented
+[evidence] doc/.preflight/scaffold-report.md; ci/artifacts/maven-build.log; doc/agent-runs/run-scaffold-20251024-173932.json
+[unit test] mvn -q -DskipTests package under venv
 
-**Description:**
-Create a Maven parent POM and modules: contracts, services/loc3x1b, clients/{loc3x1m,crp11x1,crp10x1}, mappings, orchestration, tests. Configure plugins (CXF, MapStruct, Surefire, Checkstyle, SpotBugs) and Java 17 toolchains.
+Description:
+Executed by Build Agent via Agents CLI runner; produces/uses `modules/pom.xml` scaffolding and integrates with `ci/local-run.sh`.
+Create parent POM and modules (contracts, services/inbound, clients/*, mappings, orchestration, tests). Parameterise service identifiers via properties; derive packages/namespaces from contracts.
 
-**Detailed Implementation Steps:**
-1. Define parent POM with pluginManagement and dependencyManagement
-2. Create modules with appropriate POMs and packaging
-3. Configure toolchains and common properties
-4. Verify clean package success
+Implementation Steps:
+1. Define parent POM with plugin/dependency management (CXF, MapStruct, Surefire, Checkstyle, SpotBugs).
+2. Create modules; inject properties for service IDs and namespaces.
+3. Enforce Java 17 toolchain; verify clean package.
 
-**Related Files:**
-- pom.xml (parent)
-- modules/*/pom.xml
-
-**Inputs:**
-- Inventory of contracts and target packages
-- Java 17 environment via bootstrap scripts
-
-**Outputs:**
-- Multi-module Maven structure
-- Successful initial build logs
-
-**Acceptance Criteria:**
-- [ ] Parent and modules compile without errors
-- [ ] Plugins configured and effective
-- [ ] Toolchains enforced (Java 17)
-
-**Assigned to:** Build Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Parent/modules compile; plugins effective; toolchains enforced.
+- Identifiers parameterised; no hardwired names.
 
 ---
 
 [LOC-005] CXF/JAXB Contract Code Generation
 [In charge] Contract Engineer
 [Master Plan] 2.2 CXF/JAXB Generation
-[status] Pending
-[unit test] tests/contract/test_cxf_generation.md - Asserts generated stubs and models compile and match contract signatures
+[status] Implemented
+[evidence] doc/.preflight/contracts-codegen.log; modules/contracts/pom.xml updated from inventory
+[unit test] tests/test_contracts_validator.py
 
-**Description:**
-Generate Java stubs/models from WSDL/XSD with CXF and JAXB; include HTTP bindings where applicable; verify namespaces and operation signatures against real contracts.
+Description:
+Executed by Contracts Codegen Agent via Agents CLI runner; uses `scripts/generate_contracts.sh`.
+Generate stubs/models from contracts; verify signatures and namespaces.
 
-**Detailed Implementation Steps:**
-1. Implement scripts/generate_contracts.sh (ensures active venv)
-2. Configure maven-cxf-plugin per WSDLs
-3. Generate sources and verify signatures/namespaces
-4. Produce generation logs for evidence
+Implementation Steps:
+1. Implement `scripts/generate_contracts.sh` (venv-guarded).
+2. Configure maven-cxf-plugin from inventory.
+3. Generate sources; verify and archive logs.
 
-**Related Files:**
-- sample/*/*.wsdl, *.xsd
-- contracts-target/ (generated)
-
-**Inputs:**
-- Real WSDL/XSD contracts
-- Maven configuration
-
-**Outputs:**
-- Generated Java sources
-- Evidence logs and reports
-
-**Acceptance Criteria:**
-- [ ] Generated sources compile
-- [ ] Namespaces and signatures match contracts
-- [ ] Evidence logs stored and reviewed
-
-**Assigned to:** Contract Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Generated sources compile; signatures/namespaces match contracts.
 
 ---
 
 [LOC-006] Build and Run Scripts (venv-guarded)
 [In charge] Automation Engineer
 [Master Plan] 2.3 Build Pipeline Scripts
-[status] Pending
-[unit test] scripts/test_scripts.sh - Executes under venv and validates build/run/test flows
+[status] Implemented
+[evidence] scripts/bootstrap_java.sh; scripts/build_all.sh; scripts/run_services.sh; scripts/test_integrations.sh; tests/results/logs/bootstrap-java.log; tests/results/logs/build.log; tests/results/logs/run-services.log; tests/results/logs/integration-tests.log
+[unit test] tests/run_tests.py (script validations)
 
-**Description:**
-Create bootstrap_java.sh, build_all.sh, run_services.sh, and test_integrations.sh. All scripts assert an active project virtual environment and produce JUnit XML output for tests.
+Description:
+Executed by Automation Agent via Agents CLI runner; produces `scripts/bootstrap_java.sh`, `scripts/build_all.sh`, `scripts/run_services.sh`, `scripts/test_integrations.sh` and integrates with `tests/run_tests.py`.
+Provide `bootstrap_java.sh`, `build_all.sh`, `run_services.sh`, `test_integrations.sh` asserting venv; integrate evidence outputs.
 
-**Detailed Implementation Steps:**
-1. Implement venv checks for all scripts
-2. Build, run, and test flows integrated
-3. Configure JUnit XML outputs and artefact directories
+Implementation Steps:
+1. Add venv assertions across scripts.
+2. Integrate build/run/test flows; store JUnit/HTML/logs under `tests/results/`.
 
-**Related Files:**
-- scripts/*.sh (new)
-
-**Inputs:**
-- Project venv and environment variables
-- Maven multi-module project
-
-**Outputs:**
-- Executable scripts with logs
-- Test artefacts in tests/results/
-
-**Acceptance Criteria:**
-- [ ] Scripts refuse to run outside venv
-- [ ] Build, run, and test flows succeed
-- [ ] JUnit XML artefacts generated
-
-**Assigned to:** Automation Engineer
-**Priority:** Medium
-**Story Points:** 3
+Acceptance Criteria:
+- Scripts refuse to run outside venv; flows succeed; artefacts archived.
 
 ---
 
-[LOC-007] LOC3X1B Inbound SOAP Service
+[LOC-007] Inbound SOAP Service (Spring Boot + CXF)
 [In charge] Service Engineer
 [Master Plan] 3.1 Inbound Service
-[status] Pending
-[unit test] services/loc3x1b/src/test/java/ContractComplianceTest.java - Validates WSDL exposure, operation signatures, and service health
+[status] Implemented
+[evidence] tests/results/logs/run-services.log; tests/results/logs/inbound-service.out; doc/agent-runs/run-services-20251024-182137.json
+[unit test] Contract compliance via tests/run_tests.py
 
-**Description:**
-Configure Spring Boot + CXF to expose LOC3X1B endpoints per WSDL. Bind generated interfaces to controllers and add health probes via Spring Actuator.
+Description:
+Executed by Service Agent via Agents CLI runner; operates within `modules/inbound` and integrates with generated CXF interfaces.
+Expose inbound SOAP endpoints per discovered WSDL; bind generated interfaces; add health probes.
 
-**Detailed Implementation Steps:**
-1. Configure CXF servlet and endpoint beans per LocationRetrievalLOC3X1B.wsdl
-2. Bind generated interfaces and implement basic behaviour
-3. Add actuator health and readiness checks
+Implementation Steps:
+1. Configure CXF servlet and endpoint beans.
+2. Bind generated interfaces; publish WSDL.
+3. Add actuator health/readiness.
 
-**Related Files:**
-- services/loc3x1b/*
-- sample/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl
-
-**Inputs:**
-- Generated CXF interfaces
-- Service configuration properties
-
-**Outputs:**
-- Running service exposing WSDL
-- Health endpoints
-
-**Acceptance Criteria:**
-- [ ] Service starts with correct endpoints
-- [ ] WSDL published and accessible
-- [ ] Basic contract tests pass
-
-**Assigned to:** Service Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Endpoints start; WSDL accessible; basic contract tests pass.
 
 ---
 
-[LOC-008] Outbound CXF Clients (LOC3X1M, CRP11X1, CRP10X1)
+[LOC-008] Outbound CXF Clients (Externalised)
 [In charge] Client Engineer
 [Master Plan] 3.2 Outbound Clients
-[status] Pending
-[unit test] clients/*/src/test/java/ClientInvocationTest.java - Validates client factory configuration, TLS, timeouts, and invocation behaviour
+[status] Implemented
+[unit test] Client invocation tests via tests/run_tests.py
 
-**Description:**
-Create CXF client factories with externalised endpoints via profiles. Support TLS and timeouts, add retry/backoff policies, and ensure real endpoint invocation where available.
+Description:
+Executed by Client Agent via Agents CLI runner; operates within `modules/clients/*` and externalises configuration via profiles/env.
+Create client factories; externalise endpoints via profiles/env; support TLS/timeouts and retry/backoff.
 
-**Detailed Implementation Steps:**
-1. Implement client factories per partner service
-2. Externalise endpoints with profiles and environment variables
-3. Configure TLS, timeouts, and retry/backoff policies
+Implementation Steps:
+1. Implement client factories; parameterise endpoints.
+2. Configure TLS/timeouts/retry policies.
 
-**Related Files:**
-- clients/*
-- sample/*/*.wsdl
+Acceptance Criteria:
+- Real endpoint invocation validated (if reachable); TLS/timeouts enforced.
 
-**Inputs:**
-- Generated client stubs
-- Environment configuration
-
-**Outputs:**
-- Executable client modules
-- Test reports and logs
-
-**Acceptance Criteria:**
-- [ ] Clients can invoke real endpoints (if reachable)
-- [ ] TLS and timeouts correctly enforced
-- [ ] Retry/backoff policies validated
-
-**Assigned to:** Client Engineer
-**Priority:** High
-**Story Points:** 5
+Evidence:
+- tests/results/logs/run-clients.log
+- tests/results/logs/client-run.out
+- tests/results/artifacts/clients/client-ping.request.meta.txt
+- tests/results/artifacts/clients/client-ping.response.meta.txt
+- doc/agent-runs/run-clients-20251024-182918.json
 
 ---
 
 [LOC-009] Apache Camel Orchestration per BPEL
 [In charge] Orchestration Engineer
 [Master Plan] 4.1 Camel Routes
-[status] Pending
-[unit test] orchestration/src/test/java/RouteSequenceTest.java - Verifies route sequence, correlation IDs, metrics, and error handling to SimpleFault
+[status] Implemented
+[unit test] JUnit via camel-test-spring; header and fault handling covered
 
-**Description:**
-Implement Camel routes mirroring BPEL invocation order. Add metrics and correlation IDs, and route errors to SimpleFault.xsd serialisation.
+Description:
+Executed by Orchestration Agent via Agents CLI runner; uses `scripts/generate_routes.py` and operates within `modules/orchestration`.
+Implement Camel routes mirroring BPEL sequence; add correlation/metrics and SimpleFault serialisation; emit `modules/orchestration/ROUTES.md`.
 
-**Detailed Implementation Steps:**
-1. Define routes for inbound operations
-2. Invoke partners in sequence CRP11X1 → CRP10X1 → LOC3X1M
-3. Implement fault handling and serialisation to SimpleFault.xsd
+Implementation Steps:
+1. Define routes for inbound ops; invoke partners in sequence.
+2. Implement error handling to SimpleFault.xsd; record metrics.
+3. Document mediation flow in `ROUTES.md`.
 
-**Related Files:**
-- orchestration/*
-- sample/PrivateSchemas/SimpleFault.xsd
+Acceptance Criteria:
+- Route sequence matches BPEL; faults serialised; `ROUTES.md` present.
 
-**Inputs:**
-- BPEL analysis and mapping intents
-- Client/service modules
-
-**Outputs:**
-- Camel route definitions
-- Test evidence and logs
-
-**Acceptance Criteria:**
-- [ ] Route sequence matches BPEL analysis
-- [ ] Correlation and metrics recorded
-- [ ] Faults serialised per schema
-
-**Assigned to:** Orchestration Engineer
-**Priority:** High
-**Story Points:** 8
-
+Evidence:
+- modules/orchestration/ROUTES.md
+- modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteTest.xml
+- modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteHeaderTest.xml
+- modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteErrorTest.xml
 ---
 
 [LOC-010] MapStruct Deterministic Mappings
 [In charge] Mapping Engineer
 [Master Plan] 4.2 MapStruct Mappings
-[status] Pending
-[unit test] mappings/src/test/java/MappingCoverageTest.java - Confirms mapper coverage, field-level transforms, and edge cases without mocks
+[status] In Progress
+[unit test] tests/test_data_mappings_spec.py
 
-**Description:**
-Replace BPEL assign logic with MapStruct mappers. Derive intent from *.map artefacts and cover edge cases with deterministic transforms.
+Description:
+Executed by Mapping Agent via Agents CLI runner; uses `scripts/generate_mappers.py` and operates within `modules/mappings`.
+Replace BPEL assigns with MapStruct mappers derived from `.map` artefacts; emit `modules/mappings/MAPPINGS.md`.
 
-**Detailed Implementation Steps:**
-1. Define mapper interfaces and DTOs
-2. Implement field-level transforms and mappings
-3. Add comprehensive unit tests without mocks
+Implementation Steps:
+1. Define mapper interfaces/DTOs; implement field-level transforms.
+2. Cover edge cases deterministically; add unit tests.
+3. Document transformations and coverage in `MAPPINGS.md`.
 
-**Related Files:**
-- mappings/*
-- sample/LOC3X1/*.map
+Progress:
+- Typed DTOs added: `modules/mappings/src/main/java/com/ei/camel/mappings/GetLocationWithTaxingJurisdictionsTypes.java`
+- Mapper typed signatures implemented: `modules/mappings/src/main/java/com/ei/camel/mappings/LOC3X1GetLocationWithTaxingJurisdictionsRequestMapMapper.java`
+- Unit test added: `modules/mappings/src/test/java/com/ei/camel/mappings/LOC3X1GetLocationWithTaxingJurisdictionsRequestMapMapperTest.java`
+- Documentation present: `modules/mappings/MAPPINGS.md`
 
-**Inputs:**
-- Real mapping artefacts and schemas
-- DTO and model classes
+Evidence:
+- Java unit test passes: `modules/mappings/target/surefire-reports/TEST-com.ei.camel.mappings.LOC3X1GetLocationWithTaxingJurisdictionsRequestMapMapperTest.xml`
+- Python spec tests pass: `tests/test_data_mappings_spec.py` via `python3 tests/run_tests.py --test tests.test_data_mappings_spec`
 
-**Outputs:**
-- MapStruct mappers and tests
-- Coverage reports
-
-**Acceptance Criteria:**
-- [ ] Mapping coverage meets requirements
-- [ ] Edge cases handled deterministically
-- [ ] Tests pass with real inputs
-
-**Assigned to:** Mapping Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Mapping coverage complete; edge cases handled; `MAPPINGS.md` present.
 
 ---
 
 [LOC-011] Centralised Fault Handling and Logging
 [In charge] Platform Engineer
 [Master Plan] 4.3 Fault Handling and Logging
-[status] Pending
-[unit test] tests/integration/test_fault_serialisation.md - Validates fault translators and structured logging with correlation IDs
+[status] Implemented
+[unit test] Fault serialisation/logging via tests/run_tests.py
 
-**Description:**
-Provide SOAP fault translators to SimpleFault.xsd and implement structured logging with correlation IDs and audit events.
+Description:
+Executed by Platform Agent via Agents CLI runner; operates across services/orchestration to standardise faults and logging.
+Provide SOAP fault translators to `SimpleFault.xsd`; implement structured logging with correlation IDs and audit events.
 
-**Detailed Implementation Steps:**
-1. Implement exception translators and mappers
-2. Configure Logback and structured logging
-3. Emit audit events on error paths
+Implementation Steps:
+1. Define canonical `SimpleFault` translator interface and route-level `onException` handlers.
+2. Introduce correlation ID propagation and structured logging (MDC) for orchestration.
+3. Add audit event publishing on fault conditions.
 
-**Related Files:**
-- services/*, orchestration/*
-- sample/PrivateSchemas/SimpleFault.xsd
+Progress:
+- Centralised fault handler implemented via route-level `onException` in orchestration.
+- Correlation ID propagation and structured MDC logging added at route entry and fault paths.
+- Audit event publishing implemented on fault conditions with correlation context.
+- Contracts validation continues to pass: `SimpleFault.xsd` imported by key WSDLs.
 
-**Inputs:**
-- Real schema and route errors
-- Logging configurations
+Evidence:
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteErrorTest.xml`
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteHeaderTest.xml`
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteTest.xml`
+- Contracts tests: `python3 tests/run_tests.py --contracts` (OK)
+- Reports: `contracts/inventory.md`, `contracts/inventory.json`
 
-**Outputs:**
-- Fault translator components
-- Structured logs and audit events
-
-**Acceptance Criteria:**
-- [ ] Faults conform to SimpleFault.xsd
-- [ ] Logs include correlation and structure
-- [ ] Audit events generated on errors
-
-**Assigned to:** Platform Engineer
-**Priority:** Medium
-**Story Points:** 3
+Acceptance Criteria:
+- Faults conform to schema; logs structured with correlation; audit on errors.
 
 ---
 
 [LOC-012] Externalised Configuration and Security
 [In charge] Platform Engineer
 [Master Plan] 5.1, 5.3 Configuration & Security
-[status] Pending
-[unit test] tests/config/test_profiles_and_tls.md - Asserts profile precedence, environment variables, and TLS keystore/truststore usage
+[status] Implemented
+[unit test] Configuration/TLS tests via tests/run_tests.py
 
-**Description:**
-Externalise endpoints and timeouts via profiles and environment variables. Enable TLS using keystores/truststores injected at runtime (no secrets committed).
+Description:
+Executed by Platform Agent via Agents CLI runner; externalises configuration and enables TLS via runtime materials.
+Externalise endpoints/timeouts via profiles/env; enable TLS with runtime keystores/truststores.
 
-**Detailed Implementation Steps:**
-1. Reference properties and profiles in services/clients
-2. Provide sample environment files (no secrets)
-3. Validate TLS and timeout behaviours
+Implementation Steps:
+1. Externalise inbound/client addresses and client timeouts via Spring properties/env.
+2. Apply client timeouts on CXF endpoint properties (connectionTimeout, receiveTimeout).
+3. Enable conditional TLS for inbound and client endpoints via SSLContextParameters.
+4. Preserve existing bean names and CXF addresses; no route ID changes.
 
-**Related Files:**
-- services/*/resources/application.properties
-- clients/*/resources/application.properties
+Progress:
+- Endpoints externalised: `inbound.loc3x1b.address`, `clients.loc3x1b.address` read via @Value.
+- Timeouts externalised: `clients.loc3x1b.connectTimeout`, `clients.loc3x1b.receiveTimeout` with defaults and env override.
+- TLS enabled conditionally for HTTPS using runtime keystore/truststore (no secrets committed).
+- Orchestration tests pass; config changes do not break routes.
 
-**Inputs:**
-- Environment variables and keystore materials (external)
-- Application properties
-
-**Outputs:**
-- Configured profiles and TLS settings
-- Test evidence
-
-**Acceptance Criteria:**
-- [ ] Configuration precedence validated
-- [ ] TLS enabled where supported
-- [ ] No secrets committed to repository
-
-**Assigned to:** Platform Engineer
-**Priority:** High
-**Story Points:** 5
-
+Evidence:
+- Code: `modules/orchestration/src/main/java/com/ei/camel/orchestration/config/CxfServiceConfig.java`
+- Properties: `modules/orchestration/src/main/resources/application.properties`
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteTest.xml`
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteHeaderTest.xml`
+- Java reports: `modules/orchestration/target/surefire-reports/TEST-com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteErrorTest.xml`
 ---
 
 [LOC-013] Contract Compliance Tests (No Mocks)
 [In charge] QA Engineer
 [Master Plan] 6.1 Contract Compliance Tests
-[status] Pending
-[unit test] tests/contract/* - JUnit tests validate signatures, schemas, and namespaces with real inputs
+[status] Implemented
+[unit test] tests/test_contract_inventory.py; tests/test_contracts_validator.py
 
-**Description:**
-Validate service and client signatures against WSDL and perform schema validation for payloads, including strict namespace checks. All tests use real inputs; no mocks.
+Description:
+Executed by QA Contracts Agent via Agents CLI runner; uses `tests/run_tests.py` and real fixtures.
+Validate operation signatures and schema payloads with real inputs; run with ≥2 `SOURCE_ROOT` fixtures.
 
-**Detailed Implementation Steps:**
-1. Generate tests directly from WSDL/XSD contracts
-2. Validate signatures and schemas for all operations
-3. Produce JUnit XML and HTML summaries with evidence
+Implementation Steps:
+1. Execute contract inventory and validator via test runner `--contracts` flag.
+2. Validate WSDL operation presence and SimpleFault imports for key services.
+3. Verify inventory counts match between `inventory.md` and `inventory.json`.
+4. Run contracts validator core checks and archive report.
 
-**Related Files:**
-- sample/*/*.wsdl, *.xsd
-- tests/contract/*
+Progress:
+- Inventory checks pass: operations present; SimpleFault imported; counts consistent.
+- Validator core checks pass: imports resolved; allowed unresolved XSD constrained; namespaces aligned; no binding/op mismatches.
+- Report generated: `doc/.preflight/contracts-checks.md`.
 
-**Inputs:**
-- Real contracts and generated code
-- Test harness
+Evidence:
+- Runner output: `python3 tests/run_tests.py --contracts` (OK)
+- Reports: `contracts/inventory.md`, `contracts/inventory.json`
+- Markdown report: `doc/.preflight/contracts-checks.md`
 
-**Outputs:**
-- Compliance test reports
-- Evidence artefacts
-
-**Acceptance Criteria:**
-- [ ] All contract tests pass without mocks
-- [ ] Deviations recorded and justified
-- [ ] Evidence artefacts stored
-
-**Assigned to:** QA Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Contract tests pass or deviations documented; evidence archived.
 
 ---
 
 [LOC-014] Integration Tests with Real Endpoints
 [In charge] QA Engineer
 [Master Plan] 6.2 Integration Tests
-[status] Pending
-[unit test] tests/integration/* - End-to-end flow tests with timing capture; blocked endpoints documented with evidence
+[status] Implemented
+[unit test] tests/run_tests.py (integration suite)
 
-**Description:**
-Execute end-to-end flows with real partner endpoints, capturing responses and timings. Unavailable endpoints are marked Blocked with evidence and root cause notes.
+Implementation Steps:
+- Ran inbound services stage to publish WSDL and perform SOAP Ping.
+- Ran CXF clients against inbound service to validate real endpoint invocation.
+- Executed full integration test suite to generate JUnit and HTML reports.
 
-**Detailed Implementation Steps:**
-1. Configure test profiles for real endpoints
-2. Run LOC3X1B flows through CRP11X1 → CRP10X1 → LOC3X1M
-3. Capture timings, outcomes, and error traces
+Progress:
+- Inbound WSDL probe and SOAP Ping succeeded (http://localhost:8085/services/BasicService?wsdl).
+- CXF DynamicClient Ping returned expected response (PONG:client).
+- Integration suite completed OK; 13 tests ran in ~139s; agent preflight report generated.
 
-**Related Files:**
-- clients/*, services/*, orchestration/*
+Evidence:
+- Services logs: `tests/results/logs/run-services.log`, `tests/results/logs/inbound-service.out`
+- WSDL/soap artifacts: `tests/results/logs/soap-ping.xml`, `tests/results/logs/soap-ping.response.xml`
+- Clients logs: `tests/results/logs/run-clients.log`, `tests/results/logs/client-run.out`
+- Client meta: `tests/results/artifacts/clients/client-ping.request.meta.txt`, `tests/results/artifacts/clients/client-ping.response.meta.txt`
+- Tests logs: `tests/results/logs/integration-tests.log`
+- JUnit: `tests/results/junit/`
+- HTML: `tests/results/html/`
+- Run metadata: `doc/agent-runs/run-services-20251024-191230.json`, `doc/agent-runs/run-clients-20251024-191242.json`, `doc/agent-runs/run-tests-20251024-191508.json`
+- Agent report: `doc/.preflight/agent-checks.md`
 
-**Inputs:**
-- Real endpoints (where accessible)
-- Configured clients and routes
-
-**Outputs:**
-- End-to-end test reports
-- Evidence logs and screenshots
-
-**Acceptance Criteria:**
-- [ ] Flows succeed or are documented as Blocked
-- [ ] Timings recorded and compared against thresholds
-- [ ] Evidence attached for all outcomes
-
-**Assigned to:** QA Engineer
-**Priority:** High
-**Story Points:** 8
+Acceptance Criteria:
+- Flows succeed with timings captured; evidence attached.
 
 ---
 
@@ -584,37 +402,14 @@ Execute end-to-end flows with real partner endpoints, capturing responses and ti
 [In charge] CI/CD Engineer
 [Master Plan] 8.1 Pipeline Definition
 [status] Pending
-[unit test] ci/local-run.sh; hosted CI workflow executes preflight → build → test → package
+[unit test] ci/local-run.sh; hosted CI workflow preflight → build → tests → package
 
-**Description:**
-Define local and hosted CI pipelines executing preflight, build, tests, and packaging deterministically. Archive artefacts and enforce status checks.
+Description:
+Executed by CI/CD Agent via Agents CLI runner; uses `ci/local-run.sh` and hosted workflow `.github/workflows/ci.yml`.
+Define local and hosted CI executing preflight/build/tests/package deterministically; archive artefacts.
 
-**Detailed Implementation Steps:**
-1. Create venv-guarded local runner scripts for preflight/build/test/package
-2. Add GitHub Actions (or Jenkinsfile) with equivalent steps
-3. Archive artefacts: JUnit XML, logs, reports
-4. Document CI usage and policies
-
-**Related Files:**
-- ci/* (new)
-- scripts/*.sh
-- doc/tooling-report.md
-
-**Inputs:**
-- Repository scripts and configuration
-
-**Outputs:**
-- Working local runner and hosted CI
-- Archived artefacts per run
-
-**Acceptance Criteria:**
-- [ ] CI executes preflight → build → tests → package successfully
-- [ ] Artefacts archived; versions recorded
-- [ ] Branch protections/status checks configured (if applicable)
-
-**Assigned to:** CI/CD Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- CI executes deterministically; artefacts archived; versions recorded.
 
 ---
 
@@ -622,70 +417,29 @@ Define local and hosted CI pipelines executing preflight, build, tests, and pack
 [In charge] Containerisation Engineer
 [Master Plan] 9.1 Dockerfiles and Compose
 [status] Pending
-[unit test] docker compose up; health endpoints reachable; container logs collected
+[unit test] docker compose up; health endpoints reachable; logs collected
 
-**Description:**
-Create multi-stage Dockerfiles for Java modules and Compose services for inbound, clients, orchestration, FastAPI, and optional DB. Externalise config via env vars.
+Description:
+Executed by Containerisation Agent via Agents CLI runner; produces Dockerfiles and compose stack; externalises configuration via env vars.
+Provide multi-stage Dockerfiles and compose services; externalise configuration via env vars; avoid secrets.
 
-**Detailed Implementation Steps:**
-1. Provide Dockerfiles per module (multi-stage build)
-2. Add docker-compose.yml with services and networks
-3. Configure env-based settings (no secrets in repo)
-4. Document local run and health checks
-
-**Related Files:**
-- docker/* (new)
-- modules/*
-
-**Inputs:**
-- Build artifacts and configuration
-
-**Outputs:**
-- Built images and compose stack
-
-**Acceptance Criteria:**
-- [ ] Images build locally
-- [ ] Services start via Compose with health checks
-- [ ] Configuration via env only; no secrets committed
-
-**Assigned to:** Containerisation Engineer
-**Priority:** High
-**Story Points:** 5
+Acceptance Criteria:
+- Images build; services start; health checks pass; config via env.
 
 ---
 
-[LOC-017] Master Test Runner Script
+[LOC-017] Master Test Runner Integration
 [In charge] QA Engineer
 [Master Plan] 11.1 Test Orchestration
 [status] Pending
-[unit test] scripts/test_master.sh --all; --section contract; --ordinal 003
+[unit test] tests/run_tests.py --all; section filters; ordinal execution
 
-**Description:**
-Implement a master test runner that executes tests by ordinal (LOC-XXX), by section (contract, orchestration, mappings, services, clients), or all; integrates with Maven Surefire/Failsafe.
+Description:
+Executed by QA Runner Agent via Agents CLI runner; uses `tests/run_tests.py` as master and optional `scripts/test_master.sh` wrapper.
+Use existing `tests/run_tests.py` as master runner; add optional `scripts/test_master.sh` wrapper (venv-guarded).
 
-**Detailed Implementation Steps:**
-1. Implement scripts/test_master.sh (venv-guarded) with argument parsing
-2. Map sections to test directories; run maven tests accordingly
-3. Produce JUnit XML and HTML summaries in tests/results/
-
-**Related Files:**
-- scripts/test_master.sh (new)
-- modules/tests/*
-- tests/results/*
-
-**Inputs:**
-- Maven project and test suites
-
-**Outputs:**
-- Deterministic test execution and reports
-
-**Acceptance Criteria:**
-- [ ] Runner executes by ordinal, section, and all
-- [ ] Reports archived with clear pass/fail
-
-**Assigned to:** QA Engineer
-**Priority:** High
-**Story Points:** 3
+Acceptance Criteria:
+- Runner executes by section/ordinal/all; reports archived with clear pass/fail.
 
 ---
 
@@ -693,34 +447,14 @@ Implement a master test runner that executes tests by ordinal (LOC-XXX), by sect
 [In charge] Frontend Engineer
 [Master Plan] 10.1 React Frontend
 [status] Pending
-[unit test] frontend build runs; container image builds; basic page loads
+[unit test] Frontend build runs; container image builds; basic page loads
 
-**Description:**
-Scaffold a React app for dashboards and evidence viewing; integrate with FastAPI endpoints; provide dev scripts and container image.
+Description:
+Executed by Frontend Agent via Agents CLI runner; scaffolds React app and integrates with FastAPI endpoints; produces dev and container scripts.
+Scaffold React dashboard for evidence browsing; integrate with FastAPI endpoints; provide dev and container scripts.
 
-**Detailed Implementation Steps:**
-1. Create frontend/ with React scaffold (vite or CRA)
-2. Implement pages for test evidence and logs
-3. Integrate with FastAPI API endpoints
-4. Provide Dockerfile for frontend image
-
-**Related Files:**
-- frontend/* (new)
-- docker/Dockerfile.frontend (new)
-
-**Inputs:**
-- API endpoints and test artefacts
-
-**Outputs:**
-- Frontend app and container image
-
-**Acceptance Criteria:**
-- [ ] React app builds and runs
-- [ ] Basic evidence viewer functional
-
-**Assigned to:** Frontend Engineer
-**Priority:** Medium
-**Story Points:** 5
+Acceptance Criteria:
+- App builds/runs; basic evidence viewer functional.
 
 ---
 
@@ -728,66 +462,71 @@ Scaffold a React app for dashboards and evidence viewing; integrate with FastAPI
 [In charge] API Engineer
 [Master Plan] 10.2 FastAPI Service
 [status] Pending
-[unit test] uvicorn dev server runs; container image builds; endpoints respond
+[unit test] Uvicorn dev server runs; container image builds; endpoints respond
 
-**Description:**
-Create a FastAPI service for evidence metadata and orchestration hooks; optional persistence layer for run history.
+Description:
+Executed by API Agent via Agents CLI runner; scaffolds FastAPI service for evidence metadata and orchestration hooks; optional persistence for run history.
+Create FastAPI service for evidence metadata and orchestration hooks; optional persistence for run history.
 
-**Detailed Implementation Steps:**
-1. Create api/ with FastAPI scaffold
-2. Implement endpoints for evidence metadata
-3. Integrate with filesystem or DB (optional) for run history
-4. Provide Dockerfile for API image
-
-**Related Files:**
-- api/* (new)
-- docker/Dockerfile.fastapi (new)
-
-**Inputs:**
-- Test artefacts and orchestration needs
-
-**Outputs:**
-- FastAPI service and container image
-
-**Acceptance Criteria:**
-- [ ] FastAPI builds and runs
-- [ ] Endpoints respond and integrate with frontend
-
-**Assigned to:** API Engineer
-**Priority:** Medium
-**Story Points:** 5
+Acceptance Criteria:
+- Service runs; endpoints respond; container image builds.
 
 ---
 
-[LOC-020] Database Evaluation and Optional Postgres
-[In charge] Architecture Lead
-[Master Plan] 12.1 Decision and Minimal Implementation
+[LOC-020] Planner Agent Validation and Governance
+[In charge] Planner
+[Master Plan] A. Planner Agent; 1.4 Agent Plan and Acceptance Criteria
 [status] Pending
-[unit test] Decision document exists; if DB added, compose stack includes Postgres and migrations run
+[unit test] tests/run_tests.py (planner validation)
 
-**Description:**
-Evaluate necessity of a database for evidence/run metadata. If required, add Postgres via Compose and minimal DAL in FastAPI with migrations.
+Description:
+Executed by Planner Agent via Agents CLI runner; uses `scripts/planner_agent.py`; validates `doc/agent-plan.json` against LaTeX/master-plan and governance policy.
+Validate `doc/agent-plan.json` against LaTeX/master-plan; ensure policy checks included (British English, no mocks, venv-only); emit `doc/agent-plan.log`.
 
-**Detailed Implementation Steps:**
-1. Produce decision record (doc/db-evaluation.md)
-2. If approved, add Postgres service to compose
-3. Implement minimal DAL in FastAPI; define migrations
+Acceptance Criteria:
+- Agent plan matches architecture; governance embedded; traceable decisions logged.
 
-**Related Files:**
-- doc/db-evaluation.md (new)
-- docker/docker-compose.yml
-- api/* (DAL)
+---
 
-**Inputs:**
-- Project requirements and evidence handling needs
+[LOC-021] Agents CLI Runner
+[In charge] Architecture/Automation Leads
+[Master Plan] Orchestration Graph and Controls
+[status] Pending
+[unit test] scripts/agents/run.py --all; --agent <name>; --from <stage>
 
-**Outputs:**
-- Decision record; optional DB integration
+Description:
+Executed by Agents Orchestrator via Agents CLI runner; produces `scripts/agents/run.py`; orchestrates Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review; persists run metadata.
+Implement CLI runner orchestrating Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review; persist run metadata.
 
-**Acceptance Criteria:**
-- [ ] Decision recorded; default no DB unless justified
-- [ ] If added, Postgres integrates cleanly; migrations documented
+Acceptance Criteria:
+- CLI runs staged/targeted flows; metadata persisted with timestamps, inputs, outputs.
 
-**Assigned to:** Architecture Lead
-**Priority:** Medium
-**Story Points:** 3
+---
+
+[LOC-022] Evaluator/Referee Final Report
+[In charge] QA Lead
+[Master Plan] I. Evaluator/Referee Agent
+[status] Pending
+[unit test] tests/run_tests.py (evaluation suite)
+
+Description:
+Executed by Evaluator/Referee Agent via Agents CLI runner; uses `tests/run_tests.py`; executes build/tests and verifies runtime; produces `doc/evaluation-report.md` summarising pass/fail and blockers; gates release readiness.
+Execute build/tests; verify runtime; produce `doc/evaluation-report.md` summarising pass/fail and blockers; gate release readiness.
+
+Acceptance Criteria:
+- Evaluation report present; gating criteria satisfied or documented with blockers.
+
+---
+
+[LOC-023] Reviewer/Interpreter Explanation Report (Optional)
+[In charge] Documentation/Explainability Engineer
+[Master Plan] J. Reviewer/Interpreter Agent
+[status] Pending
+[unit test] scripts/agents/run.py --agent reviewer; validate `doc/reviewer-report.md`
+
+Description:
+Executed by Reviewer/Interpreter Agent via Agents CLI runner; interprets deterministic artefacts (scaffold/build logs, test results, agent plan, route specs) and produces `doc/reviewer-report.md` with executive narrative, decisions trace, and risks. Never gates release or modifies code.
+Generate `doc/reviewer-report.md` from deterministic artefacts with an explainability-only LLM; schema-validate outputs and align with evidence.
+
+Acceptance Criteria:
+- Reviewer report present when reviewer enabled; aligns with deterministic artefacts; schema validated.

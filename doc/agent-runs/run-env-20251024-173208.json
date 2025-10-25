@@ -1,0 +1,7 @@
+{
+  "stage": "env",
+  "outputs": {
+    "agent_checks_md": "/Users/albertohernandez/Documents/projects/camel-route/doc/.preflight/agent-checks.md"
+  },
+  "ok": true
+}

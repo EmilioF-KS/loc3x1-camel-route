@@ -1,15 +1,15 @@
 # Contract Inventory Report
 
-**Generated:** 2025-10-21T18:33:42.412287
+**Generated:** 2025-10-24T18:05:11.019503
 **Project Root:** /Users/albertohernandez/Documents/projects/camel-route
 **Scan Directory:** /Users/albertohernandez/Documents/projects/camel-route/sample
 
 ## Summary
 
 - **WSDL Files:** 8
-- **XSD Files:** 382
+- **XSD Files:** 383
 - **BPEL Files:** 2
-- **Total Files:** 392
+- **Total Files:** 393
 
 ## Namespaces
 
@@ -386,6 +386,7 @@
 - `http://ei/location/get_location_list_request_loc3x1`
 - `http://ei/location/get_location_list_request_loc3x1b`
 - `http://ei/location/get_location_list_request_loc3x1m`
+- `http://ei/location/location`
 - `http://ei/location/location_list_reply`
 - `http://ei/location/location_list_reply_loc3x1b`
 - `http://ei/location/location_list_reply_loc3x1m`
@@ -466,7 +467,7 @@
 - **Operations:** None
 - **Bindings:**
   - LocationRetrievalLOC3X1HttpBinding (type: Port_0:LocationRetrievalLOC3X1)
-- **File Size:** 2092 bytes
+- **File Size:** 2126 bytes
 
 ### LocationRetrievalLOC3X1.wsdl
 
