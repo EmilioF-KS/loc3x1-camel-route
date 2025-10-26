@@ -44,3 +44,11 @@ site/
 
 # Logs (keep agent evidence under doc/)
 *.log
+
+# Runtime outputs (generated during runs)
+uploads/
+tests/results/
+ci/artifacts/
+frontend/dist/
+doc/agent-runs/
+scripts/doc/agent-runs/

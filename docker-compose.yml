@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  inbound:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.inbound.runtime
+    image: camel-route-inbound:local
+    environment:
+      - INBOUND_LOC3X1B_ADDRESS=http://0.0.0.0:8085/services/BasicService
+      - JAVA_OPTS=-Xms128m -Xmx512m
+    ports:
+      - "8085:8085"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8085/services/BasicService?wsdl"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 15s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    image: camel-route-api:local
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./tests/results:/app/tests/results:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8001/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    image: camel-route-frontend:local
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped

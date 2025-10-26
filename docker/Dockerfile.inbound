@@ -1,0 +1,32 @@
+# syntax=docker/dockerfile:1
+
+# === Build stage ===
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+WORKDIR /workspace
+
+# Copy entire repo to build necessary modules
+COPY . .
+
+# Build only inbound module (and its dependencies)
+RUN mvn -f modules/pom.xml -B -q -DskipTests -DskipITs=false -pl inbound -am clean package
+
+# === Runtime stage ===
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+
+# Install curl for healthchecks
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
+# Default env overrides (can be overridden via compose/env)
+ENV INBOUND_LOC3X1B_ADDRESS="http://0.0.0.0:8085/services/BasicService" \
+    JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+
+# Copy built jar
+COPY --from=builder /workspace/modules/inbound/target/*.jar /app/inbound.jar
+
+EXPOSE 8085
+
+# Healthcheck via WSDL publication
+HEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=10 CMD curl -fsS http://localhost:8085/services/BasicService?wsdl || exit 1
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/inbound.jar"]

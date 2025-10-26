@@ -1,0 +1,7 @@
+# Ordinal mapping for master test runner
+# Format: LOC-### <selector>
+# selectors:
+#   tests_all                -> run tests/run_tests.py --all
+#   tests.<module>.<Class>.<method> -> run specific test via --test
+
+LOC-017 tests_all

@@ -20,6 +20,17 @@ HTML_DIR="$RESULTS_DIR/html"
 
 mkdir -p "$RESULTS_DIR" "$LOG_DIR" "$JUNIT_DIR" "$HTML_DIR"
 
+# Python venv guard for master runner
+if [[ -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
+  source "$PROJECT_ROOT/.venv/bin/activate"
+else
+  python3 -m venv "$PROJECT_ROOT/.venv"
+  source "$PROJECT_ROOT/.venv/bin/activate"
+fi
+# Ensure minimal Python deps
+python -m pip install --upgrade pip >/dev/null 2>&1 || true
+python -m pip install --quiet PyYAML >/dev/null 2>&1 || true
+
 print_help() {
   cat <<'EOF'
 Master Test Runner
@@ -163,12 +174,32 @@ run_ordinal() {
 }
 
 # Main dispatch
+rc=0
 if [[ -n "$SECTION" && "$SECTION" != "all" ]]; then
-  run_section "$SECTION"
+  case "$SECTION" in
+    bpel|preflight|contracts)
+      python3 "$PROJECT_ROOT/tests/run_tests.py" --$SECTION 2>&1 | tee "$LOG_DIR/python-$SECTION.log"; rc=${PIPESTATUS[0]}
+      ;;
+    *)
+      run_section "$SECTION"; rc=$?
+      ;;
+  esac
 elif [[ "$SECTION" == "all" ]]; then
-  run_section all
+  python3 "$PROJECT_ROOT/tests/run_tests.py" --all 2>&1 | tee "$LOG_DIR/python-all.log"; rc=${PIPESTATUS[0]}
 elif [[ -n "$ORDINAL" ]]; then
-  run_ordinal "$ORDINAL"
+  # Prefer python ordinal mapping via tests/ordinal-map.txt
+  if [[ -f "$PROJECT_ROOT/tests/ordinal-map.txt" ]]; then
+    target=$(grep -E "^$ORDINAL\s+" "$PROJECT_ROOT/tests/ordinal-map.txt" | awk '{print $2}')
+    if [[ "$target" == "tests_all" ]]; then
+      python3 "$PROJECT_ROOT/tests/run_tests.py" --all 2>&1 | tee "$LOG_DIR/python-ordinal-$ORDINAL.log"; rc=${PIPESTATUS[0]}
+    elif [[ "$target" =~ ^tests\..* ]]; then
+      python3 "$PROJECT_ROOT/tests/run_tests.py" --test "$target" 2>&1 | tee "$LOG_DIR/python-ordinal-$ORDINAL.log"; rc=${PIPESTATUS[0]}
+    else
+      run_ordinal "$ORDINAL"; rc=$?
+    fi
+  else
+    python3 "$PROJECT_ROOT/tests/run_tests.py" --all 2>&1 | tee "$LOG_DIR/python-ordinal-$ORDINAL.log"; rc=${PIPESTATUS[0]}
+  fi
 fi
 
 # Summarise results: count failures
@@ -179,6 +210,7 @@ SUMMARY_FILE="$HTML_DIR/summary.txt"
   echo "Tests scanned reports: $TESTS"
   echo "Failing suites: $FAILURES"
   echo "Reports dir: $JUNIT_DIR"
+  echo "Python master rc: $rc"
 } > "$SUMMARY_FILE"
 
 echo "Master tests completed. Summary at $SUMMARY_FILE"

@@ -7,8 +7,8 @@ inbound:
     portType: ns3:LocationRetrievalLOC3X1B
     invokes:
       - partnerLink: LocationRetrievalLOC3X1B
-        operation: GetLocationWithTaxingJurisdictions
-        name: Invoke_GetLocationWithTaxingJurisdictions
+        operation: GetLocationWithTaxingJurisdictions3X1B
+        name: Invoke_GetLocationWithTaxingJurisdictions3X1B
     assignments:
     faults:
       catches:
@@ -16,6 +16,2196 @@ inbound:
         - faultName: ns3:SimpleFaultReply
           operation: GetLocationWithTaxingJurisdictions3X1B
 data_mappings:
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: GetLocationListLOC3X1BReplySubMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictionsRequestMsg
+    target_type: GetLocationWithTaxingJurisdictions3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+      - index: 8
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+      - index: 9
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+      - index: 10
+        from: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplyMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1BResponseMsg
+    target_type: GetLocationWithTaxingJurisdictionsResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+        to: GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation
+  - mapper: LOC3X1GetLocationListReplySubMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LocationClassificationCode
+        to: LocationInformation/LocationClassificationCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: HazardousArea
+        to: HazardousArea
+  - mapper: GetLocationListLOC3X1BReplyMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/GetLocationListLOC3X1BReplyMap.map
+    source_type: LocationListReply
+    target_type: LocationListReply_1
+    mappings:
+      - index: 2
+        from: StatusInformation
+        to: StatusInformation
+  - mapper: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+    source_type: GetLocationWithTaxingJurisdictions3X1MRequestMsg
+    target_type: getLocationWithTaxInfoRequest
+    mappings:
+      - index: 1
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+        to: getLocationWithTaxInfo/address/addressLine1
+      - index: 2
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName
+        to: getLocationWithTaxInfo/address/cityName
+      - index: 3
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+        to: getLocationWithTaxInfo/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+        to: getLocationWithTaxInfo/address/countryCode
+      - index: 5
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+        to: getLocationWithTaxInfo/address/postalCode
+      - index: 6
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+        to: getLocationWithTaxInfo/address/locationPlaceCode
+      - index: 7
+        from: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+        to: getLocationWithTaxInfo/asOfDate
+  - mapper: GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 1
+        from: LocationInformation/CityCode
+        to: LocationInformation/CityCode
+      - index: 2
+        from: LocationInformation/CountyCode
+        to: LocationInformation/CountyCode
+      - index: 3
+        from: LocationInformation/LicenseCode
+        to: LocationInformation/LicenseCode
+      - index: 4
+        from: LocationInformation/FireDistrictCode
+        to: LocationInformation/FireDistrictCode
+      - index: 5
+        from: StandardizedAddress/CityName
+        to: StandardizedAddress/CityName
+      - index: 6
+        from: StandardizedAddress/CountyName
+        to: StandardizedAddress/CountyName
+      - index: 7
+        from: StandardizedAddress/StateOrProvinceCode
+        to: StandardizedAddress/StateOrProvinceCode
+      - index: 8
+        from: StandardizedAddress/StateOrProvinceName
+        to: StandardizedAddress/StateOrProvinceName
+      - index: 9
+        from: StandardizedAddress/PostalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 10
+        from: StandardizedAddress/PostalCode
+        to: StandardizedAddress/PostalCode
+      - index: 11
+        from: StandardizedAddress/CountryCode
+        to: StandardizedAddress/CountryCode
+      - index: 12
+        from: StandardizedAddress/CountryName
+        to: StandardizedAddress/CountryName
+      - index: 13
+        from: StandardizedAddress/LocationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 14
+        from: StandardizedAddress/POBoxIndicator
+        to: StandardizedAddress/POBoxIndicator
+      - index: 15
+        from: TaxingJurisdiction
+        to: TaxingJurisdiction
+  - mapper: LOC3X1GetLocationListReplyMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationListReplyMap.map
+    source_type: GetLocationList3X1BResponseMsg
+    target_type: GetLocationListResponseMsg
+    mappings:
+      - index: 2
+        from: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+        to: GetLocationListResponse/GetLocationListReply/StatusInformation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.map
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: RandLocationToCimLocationMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/RandLocationToCimLocationMap.map
+    source_type: Location
+    target_type: Location_1
+    mappings:
+      - index: 5
+        from: postalStateAbbreviation
+        to: StandardizedAddress/PostalStateAbbreviation
+      - index: 9
+        from: locationPlaceCode
+        to: StandardizedAddress/LocationPlaceCode
+      - index: 11
+        from: cityCode
+        to: LocationInformation/CityCode
+      - index: 12
+        from: countyCode
+        to: LocationInformation/CountyCode
+  - mapper: LOC3X1GetLocationListRequestMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1GetLocationListRequestMap.map
+    source_type: GetLocationListRequestMsg
+    target_type: GetLocationList3X1BRequestMsg
+    mappings:
+      - index: 1
+        from: GetLocationList/GetLocationListRequest/AddressLine1
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine1
+      - index: 2
+        from: GetLocationList/GetLocationListRequest/AddressLine2
+        to: GetLocationList3X1B/GetLocationListRequest/AddressLine2
+      - index: 3
+        from: GetLocationList/GetLocationListRequest/CityName
+        to: GetLocationList3X1B/GetLocationListRequest/CityName
+      - index: 4
+        from: GetLocationList/GetLocationListRequest/StateOrProvinceCode
+        to: GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode
+      - index: 5
+        from: GetLocationList/GetLocationListRequest/PostalStateAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation
+      - index: 6
+        from: GetLocationList/GetLocationListRequest/PostalCode
+        to: GetLocationList3X1B/GetLocationListRequest/PostalCode
+      - index: 7
+        from: GetLocationList/GetLocationListRequest/LocationPlaceCode
+        to: GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode
+      - index: 8
+        from: GetLocationList/GetLocationListRequest/CountryCode
+        to: GetLocationList3X1B/GetLocationListRequest/CountryCode
+      - index: 9
+        from: GetLocationList/GetLocationListRequest/CountryAbbreviation
+        to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
   - mapper: GetLocationListLOC3X1BReplySubMap
     source_file: sample/LOC3X1/GetLocationListLOC3X1BReplySubMap.map
     source_type: Location
@@ -381,6 +2571,144 @@ data_mappings:
       - index: 9
         from: GetLocationList/GetLocationListRequest/CountryAbbreviation
         to: GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/4c7676b497cb450998659def21590b2c/src/sample/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/21a27e3c18e9440a85838e5d2dd80bac/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/8459162b264a4814867b194066a0bc0b/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/a4ffb5c2b50e440c8678686ef06b978f/src/sample/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/6c5771347a2d466ea482d9ff6b95d08f/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
+  - mapper: LOC3X1MGetLocationListRequestMap
+    source_file: uploads/8f1e92d8f77649b598001b7629bb1c02/src/Dependencies/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
+    source_type: GetLocationList3X1MRequestMsg
+    target_type: getLocationsRequest
+    mappings:
+      - index: 1
+        from: GetLocationList3X1M/GetLocationListRequest/AddressLine1
+        to: getLocations/address/addressLine1
+      - index: 2
+        from: GetLocationList3X1M/GetLocationListRequest/CityName
+        to: getLocations/address/cityName
+      - index: 3
+        from: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode
+        to: getLocations/address/stateOrProvinceCode
+      - index: 4
+        from: GetLocationList3X1M/GetLocationListRequest/CountryCode
+        to: getLocations/address/countryCode
+      - index: 5
+        from: GetLocationList3X1M/GetLocationListRequest/PostalCode
+        to: getLocations/address/postalCode
+      - index: 6
+        from: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+        to: getLocations/address/locationPlaceCode
   - mapper: LOC3X1MGetLocationListRequestMap
     source_file: sample/LOC3X1/LOC3X1MGetLocationListRequestMap.xml
     source_type: GetLocationList3X1MRequestMsg

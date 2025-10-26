@@ -42,7 +42,8 @@ fi
 
 # 2) Build (Maven)
 log "Building modules with Maven"
-mvn -B -q -DskipITs=false clean verify 2>&1 | tee "$ARTIFACTS_DIR/maven-build.log"
+# Ensure we build from the multi-module aggregator POM
+mvn -f "$PROJECT_ROOT/modules/pom.xml" -B -q -DskipITs=false clean verify 2>&1 | tee "$ARTIFACTS_DIR/maven-build.log"
 
 # 3) Tests (Master Runner)
 log "Running tests via scripts/test_master.sh"

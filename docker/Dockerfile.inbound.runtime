@@ -1,0 +1,22 @@
+# syntax=docker/dockerfile:1
+
+# === Runtime-only image ===
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+
+# Install curl for healthchecks
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
+# Default env overrides
+ENV INBOUND_LOC3X1B_ADDRESS="http://0.0.0.0:8085/services/BasicService" \
+    JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+
+# Expect host-built jar present in modules/inbound/target
+COPY modules/inbound/target/*.jar /app/inbound.jar
+
+EXPOSE 8085
+
+# Healthcheck via WSDL publication
+HEALTHCHECK --interval=10s --timeout=3s --start-period=15s --retries=10 CMD curl -fsS http://localhost:8085/services/BasicService?wsdl || exit 1
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/inbound.jar"]

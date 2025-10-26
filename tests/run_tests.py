@@ -146,6 +146,8 @@ Examples:
     test_group.add_argument("--bpel", action="store_true", help="Run BPEL agent tests only")
     test_group.add_argument("--preflight", action="store_true", help="Run preflight agent tests only")
     test_group.add_argument("--contracts", action="store_true", help="Run contract-related tests (inventory and validator)")
+    test_group.add_argument("--section", help="Run by section: bpel | preflight | contracts | all")
+    test_group.add_argument("--ordinal", help="Run by ordinal LOC-### using tests/ordinal-map.txt")
     test_group.add_argument("--test", help="Run specific test method (e.g., tests.test_bpel_agent.TestBpelAgent.test_analyze_real_bpel_or_skip)")
     test_group.add_argument("--list", action="store_true", help="List available tests")
     test_group.add_argument("--find-bpel", action="store_true", help="Find BPEL files in sample directory")
@@ -189,6 +191,47 @@ Examples:
             if not ok:
                 success = False
                 break
+    elif args.section:
+        name = args.section.strip().lower()
+        if name == "all":
+            success = runner.run_all_tests(verbose)
+        elif name == "bpel":
+            success = runner.run_bpel_tests(verbose, args.custom_bpel)
+        elif name == "preflight":
+            success = runner.run_preflight_tests(verbose)
+        elif name == "contracts":
+            modules = ["tests.test_contract_inventory", "tests.test_contracts_validator"]
+            for mod in modules:
+                ok = runner.run_specific_test(mod, verbose)
+                if not ok:
+                    success = False
+                    break
+        else:
+            print(f"Unknown section: {args.section}")
+            success = False
+    elif args.ordinal:
+        # Read ordinal mapping from tests/ordinal-map.txt
+        mapping_file = PROJECT_ROOT / "tests" / "ordinal-map.txt"
+        target = None
+        if mapping_file.exists():
+            for line in mapping_file.read_text().splitlines():
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                parts = line.split()
+                if len(parts) >= 2 and parts[0] == args.ordinal:
+                    target = parts[1]
+                    break
+        if not target:
+            print(f"Ordinal {args.ordinal} not found; running all.")
+            success = runner.run_all_tests(verbose)
+        elif target == "tests_all":
+            success = runner.run_all_tests(verbose)
+        elif target.startswith("tests."):
+            success = runner.run_specific_test(target, verbose)
+        else:
+            print(f"Unsupported target mapping: {target}")
+            success = False
     elif args.test:
         success = runner.run_specific_test(args.test, verbose)
     
