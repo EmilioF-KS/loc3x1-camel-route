@@ -1,4 +1,0 @@
-Tests scanned reports:        4
-Failing suites:        0
-Reports dir: /Users/albertohernandez/Documents/projects/camel-route/tests/results/junit
-Python master rc: 0

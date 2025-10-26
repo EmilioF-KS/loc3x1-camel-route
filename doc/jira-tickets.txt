@@ -506,7 +506,7 @@ Acceptance Criteria:
 [LOC-019] FastAPI Service Scaffold
 [In charge] API Engineer
 [Master Plan] 10.2 FastAPI Service
-[status] Pending
+[status] Completed
 [unit test] Uvicorn dev server runs; container image builds; endpoints respond
 
 Description:
@@ -516,42 +516,60 @@ Create FastAPI service for evidence metadata and orchestration hooks; optional p
 Acceptance Criteria:
 - Service runs; endpoints respond; container image builds.
 
+Evidence:
+- Runtime: `./scripts/start_api.sh` starts `uvicorn` at `http://localhost:8001`.
+- Endpoints: `curl http://localhost:8001/health` => `{"status":"ok"}`; root lists routes.
+- Container: `docker build -f docker/Dockerfile.api -t camel-route-evidence-api:latest .` succeeds.
+- Healthcheck: Dockerfile probes `/health` on port `8001`.
+
 ---
 
 [LOC-020] Planner Agent Validation and Governance
 [In charge] Planner
 [Master Plan] A. Planner Agent; 1.4 Agent Plan and Acceptance Criteria
-[status] Pending
+[status] Completed
 [unit test] tests/run_tests.py (planner validation)
 
 Description:
-Executed by Planner Agent via Agents CLI runner; uses `scripts/planner_agent.py`; validates `doc/agent-plan.json` against LaTeX/master-plan and governance policy.
-Validate `doc/agent-plan.json` against LaTeX/master-plan; ensure policy checks included (British English, no mocks, venv-only); emit `doc/agent-plan.log`.
+Executed by Planner Agent via Agents CLI runner; uses `scripts/planner_agent.py`; validates `results/meta/agent-plan.json` against LaTeX/master-plan and governance policy.
+Validate `results/meta/agent-plan.json` against LaTeX/master-plan; ensure policy checks included (British English, no mocks, venv-only); emit `results/reports/agent-plan.log`.
 
 Acceptance Criteria:
 - Agent plan matches architecture; governance embedded; traceable decisions logged.
+
+Evidence:
+- Command: `python3 scripts/agents/run.py --agent plan`.
+- Outputs: `results/meta/agent-plan.json`, `results/reports/agent-plan.log` present.
+- Governance: `validation.overall_ok: true`; venv active; British English; no mocks.
+- Metadata: `doc/agent-runs/run-plan-20251025-193113.json` persisted with timestamps, inputs, outputs, rc.
 
 ---
 
 [LOC-021] Agents CLI Runner
 [In charge] Architecture/Automation Leads
 [Master Plan] Orchestration Graph and Controls
-[status] Pending
+[status] Completed
 [unit test] scripts/agents/run.py --all; --agent <name>; --from <stage>
 
 Description:
 Executed by Agents Orchestrator via Agents CLI runner; produces `scripts/agents/run.py`; orchestrates Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review; persists run metadata.
-Implement CLI runner orchestrating Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review; persist run metadata.
+Implement CLI runner orchestrating Env → Plan → Contracts → BPEL → Schema → Integration → Mapping → Tests → Eval → Review; persist run metadata. Env stage verifies tooling and ensures local LLM model availability (Ollama service reachability and model presence/pull) as a precondition for reviewer enrichment.
 
 Acceptance Criteria:
 - CLI runs staged/targeted flows; metadata persisted with timestamps, inputs, outputs.
+
+Evidence:
+- Targeted env: `python3 scripts/agents/run.py --agent env` → `doc/.preflight/agent-checks.md`.
+- Targeted plan: `python3 scripts/agents/run.py --agent plan` → `results/meta/agent-plan.json`, `results/reports/agent-plan.log`.
+- Metadata: `doc/agent-runs/run-env-20251025-193843.json`, `doc/agent-runs/run-plan-20251025-193916.json`.
+- Parser: supports `--all`, `--agent <name>`, `--from <stage>`; stages ordered Env → Plan → Contracts → Schema → Scaffold → BPEL → Build → Services → Clients → Tests.
 
 ---
 
 [LOC-022] Evaluator/Referee Final Report
 [In charge] QA Lead
 [Master Plan] I. Evaluator/Referee Agent
-[status] Pending
+[status] Completed
 [unit test] tests/run_tests.py (evaluation suite)
 
 Description:
@@ -561,17 +579,107 @@ Execute build/tests; verify runtime; produce `doc/evaluation-report.md` summaris
 Acceptance Criteria:
 - Evaluation report present; gating criteria satisfied or documented with blockers.
 
+Evidence:
+- Targeted evaluator: `python3 scripts/agents/run.py --agent evaluate` → `doc/evaluation-report.md`.
+- Metadata: `doc/agent-runs/run-evaluate-20251025-194617.json` persisted.
+- Result: Gating status FAIL; blockers documented (master runner exit code 1; see `tests/results/logs/`).
+- Decision: Use deterministic evaluator stage for gating; local LLM summarisation optional only when available/stable (ollama/langgraph not required).
+
 ---
 
 [LOC-023] Reviewer/Interpreter Explanation Report (Optional)
 [In charge] Documentation/Explainability Engineer
 [Master Plan] J. Reviewer/Interpreter Agent
-[status] Pending
+[status] Completed
 [unit test] scripts/agents/run.py --agent reviewer; validate `doc/reviewer-report.md`
 
 Description:
-Executed by Reviewer/Interpreter Agent via Agents CLI runner; interprets deterministic artefacts (scaffold/build logs, test results, agent plan, route specs) and produces `doc/reviewer-report.md` with executive narrative, decisions trace, and risks. Never gates release or modifies code.
+Executed by Reviewer/Interpreter Agent via Agents CLI runner; interprets deterministic artefacts (scaffold/build logs, test results, agent plan, route specs) and enriches the report using local Ollama LLM models (with robust local model selection and HTTP fallback). Produces `doc/reviewer-report.md` with executive narrative, decisions trace, and risks. Never gates release or modifies code.
 Generate `doc/reviewer-report.md` from deterministic artefacts with an explainability-only LLM; schema-validate outputs and align with evidence.
 
 Acceptance Criteria:
 - Reviewer report present when reviewer enabled; aligns with deterministic artefacts; schema validated.
+
+Evidence:
+- Command: `python3 scripts/agents/run.py --agent reviewer` → `doc/reviewer-report.md`.
+- Metadata: `doc/agent-runs/run-reviewer-20251025-194956.json` persisted.
+- Alignment: Report references `results/reports/evaluation-report.md`, `tests/results/html/summary.txt`, `results/meta/agent-plan.json`, `results/preflight/agent-checks.md`, `results/reports/bpel-analysis.md`, `orchestration/spec.yaml`.
+- Policy: Reviewer is explainability-only; never gates or modifies code.
+
+---
+
+[LOC-024] Preflight Corrections: Python deps and Smoke Build Detection
+[In charge] Automation Engineer
+[Master Plan] 0.1 Tooling Preflight and Environment Installer
+[status] Planned
+[unit test] tests/test_preflight_agent.py (dep check and smoke build)
+
+Description:
+Patch preflight to install missing Python deps and robustly detect a smoke build target. Ensure `pyyaml` presence and prefer aggregator `pom.xml` when present; otherwise fall back to contracts or module POMs.
+
+Implementation Steps:
+1. Ensure `pip install pyyaml` and validate import in venv.
+2. Detect aggregator `pom.xml` at repo root; if present, run `mvn -q -DskipTests package`.
+3. Fallback: detect `modules/contracts/pom.xml` and run `generate-sources` + `compile`.
+4. Update `doc/tooling-report.md` with explicit dep status and smoke build result.
+
+Acceptance Criteria:
+- `pyyaml` installed and reported OK; `lxml` OK.
+- Smoke build discovered deterministically (aggregator preferred); status recorded.
+- `doc/tooling-report.md` reflects updated checks with PASS/FAIL and evidence paths.
+
+Evidence:
+- Agent run: `python3 scripts/agents/run.py --agent env`.
+- Report updated: `doc/tooling-report.md` shows deps and smoke build status.
+
+---
+
+[LOC-025] Orchestration Spec Normalisation
+[In charge] Planner/Orchestration Engineer
+[Master Plan] 1.2 Orchestration Spec
+[status] Planned
+[unit test] tests/test_orchestration_spec.py
+
+Description:
+Regenerate `orchestration/spec.yaml` with deterministic process name, normalized `data_mappings.source_file` paths, and consistent mediation order. Align mapping entries to IBM `.map` XML artefacts relative to `SOURCE_ROOT`.
+
+Implementation Steps:
+1. Update `scripts/analyze_bpel.py` to normalise `process.name` deterministically.
+2. Ensure `data_mappings[*].source_file` are relative to `SOURCE_ROOT`.
+3. Validate mediation order is derived from external invoke partner links only.
+4. Re-run spec generation and update tests to assert normalisation.
+
+Acceptance Criteria:
+- `orchestration/spec.yaml` regenerated; deterministic names and paths.
+- Mapping entries reference `.map` XML deterministically.
+- Unit tests for spec structure and mapping normalisation pass.
+
+Evidence:
+- Agent run: `python3 scripts/agents/run.py --agent bpel`.
+- Outputs: `doc/bpel-analysis.md`, `orchestration/spec.yaml` updated.
+
+---
+
+[LOC-026] SOURCE_ROOT Parameterisation Across Scripts/Tests
+[In charge] Automation/QA Engineer
+[Master Plan] Global Governance & Evidence
+[status] Planned
+[unit test] tests/run_tests.py (parametrised fixtures)
+
+Description:
+Parameterise `SOURCE_ROOT` across scripts and tests to support multiple fixtures. Remove hardcoded paths and accept CLI/env overrides consistently.
+
+Implementation Steps:
+1. Add `--source-root` to applicable scripts; honour `SOURCE_ROOT` env.
+2. Update tests to run against multiple fixtures under `sample/`.
+3. Ensure contract discovery, BPEL analysis, and spec generation respect parameterisation.
+4. Document usage in `doc/jira-alignment-report.md` and master plan notes.
+
+Acceptance Criteria:
+- Scripts/tests operate correctly when switching `SOURCE_ROOT`.
+- Inventory/spec generation reflects selected root; paths normalized.
+- Test suite passes against default and alternative fixtures.
+
+Evidence:
+- Agent runs: `python3 scripts/agents/run.py --contracts --source-root sample/AnotherFixture`.
+- Updated test logs under `tests/results/` for multiple fixtures.

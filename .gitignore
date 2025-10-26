@@ -50,5 +50,4 @@ uploads/
 tests/results/
 ci/artifacts/
 frontend/dist/
-doc/agent-runs/
-scripts/doc/agent-runs/
+results/agent-runs/

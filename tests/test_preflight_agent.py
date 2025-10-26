@@ -38,7 +38,8 @@ class TestPreflightAgent(unittest.TestCase):
                 {"tool": "dummy", "exists": True, "status": True, "details": "ok", "suggest": ""}
             ]
             preflight.write_report(results)
-            report_path = PROJECT_ROOT / "doc" / ".preflight" / "agent-checks.md"
+            from scripts.utils.paths import PREVIEW_DIR
+            report_path = PREVIEW_DIR / "agent-checks.md"
             self.assertTrue(report_path.exists())
             content = report_path.read_text(encoding="utf-8")
             self.assertIn("# Preflight Agent Checks", content)

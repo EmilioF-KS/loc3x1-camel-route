@@ -15,7 +15,7 @@ Use this checklist to verify that Jira tickets and implementation reflect agenti
 - Tests run with ≥2 distinct `SOURCE_ROOT` fixtures to detect hardcoding.
 
 ## Agents and Orchestration
-- Planner agent validates `doc/agent-plan.json` against LaTeX and master plan.
+- Planner agent validates `results/meta/agent-plan.json` against LaTeX and master plan.
 - CLI runner exists: `scripts/agents/run.py` with `--all`, `--agent <name>`, `--from <stage>`.
 - Orchestration spec `orchestration/spec.yaml` generated/validated from BPEL when absent; includes invokes and error paths.
 - Integration Builder and Mapping Builder produce `modules/orchestration/ROUTES.md` and `modules/mappings/MAPPINGS.md`.

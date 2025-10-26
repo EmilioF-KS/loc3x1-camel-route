@@ -1,1 +1,0 @@
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:PingResponse xmlns:ns2="http://ei.com/contracts/basic"><reply>PONG:hello</reply></ns2:PingResponse></soap:Body></soap:Envelope>

@@ -116,6 +116,7 @@ class RegexXmlAnalyzer:
                 invokes=invokes,
                 catches=catches,
                 replyFaults=reply_faults,
+                assigns=[]
             ))
         return BpelAnalysis(process_name=process_name, partner_links=partner_links, inbound_ops=inbound_ops, variables=variables)
 
@@ -337,10 +338,21 @@ class BpelAgent:
     """Professional BPEL analysis agent using local LLM models."""
     
     def __init__(self):
-        self.llm = LlmAgentAnalyzer()
-        # Keep regex analyzer for emergency fallback only (not used by default)
+        # Initialize deterministic analyzer first
         self.regex = RegexXmlAnalyzer()
+        # Initialize LLM analyzer only if Ollama is available
+        self.llm = LlmAgentAnalyzer() if OLLAMA_AVAILABLE else None
 
     def analyze(self, bpel_path: Path) -> BpelAnalysis:
-        """Analyze BPEL file using LLM-based approach."""
-        return self.llm.analyze(bpel_path)
+        """Analyze BPEL file preferring deterministic regex, falling back to LLM if available."""
+        try:
+            result = self.regex.analyze(bpel_path)
+            # Ensure assigns field exists for compatibility
+            for op in result.inbound_ops:
+                if not hasattr(op, 'assigns') or op.assigns is None:
+                    op.assigns = []
+            return result
+        except Exception as regex_err:
+            if self.llm:
+                return self.llm.analyze(bpel_path)
+            raise RuntimeError(f"Regex-based BPEL analysis failed and no LLM available: {regex_err}")

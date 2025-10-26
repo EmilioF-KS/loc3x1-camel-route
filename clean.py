@@ -4,7 +4,7 @@ import os
 import shutil
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 
 def say(msg: str) -> None:
     print(f"[clean] {msg}")
@@ -53,8 +53,8 @@ def main() -> int:
         ROOT / 'tests' / 'results',
         ROOT / 'ci' / 'artifacts',
         ROOT / 'frontend' / 'dist',
+        ROOT / 'results' / 'agent-runs',
         ROOT / 'doc' / 'agent-runs',
-        ROOT / 'scripts' / 'doc' / 'agent-runs',
     ]
 
     if args.full:

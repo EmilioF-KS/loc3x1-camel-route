@@ -23,7 +23,8 @@ import yaml
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 INVENTORY_JSON = PROJECT_ROOT / "contracts" / "inventory.json"
 CANONICAL_MAP = PROJECT_ROOT / "contracts" / "canonical-map.yaml"
-GOVERNANCE_MD = PROJECT_ROOT / "doc" / ".preflight" / "schema-governance.md"
+from scripts.utils.paths import PREVIEW_DIR, ensure_results_dirs
+GOVERNANCE_MD = PREVIEW_DIR / "schema-governance.md"
 
 
 def _normalise_namespace(ns: str) -> str:
@@ -148,7 +149,7 @@ def write_governance_md(groups: List[Dict[str, Any]], summary: Dict[str, Any], o
             lines.append(f"  variants: {', '.join(g['variants'])}\n")
     lines.append("\nNote: Full list is available in `contracts/canonical-map.yaml`.\n")
 
-    out.parent.mkdir(parents=True, exist_ok=True)
+    ensure_results_dirs()
     out.write_text(''.join(lines), encoding='utf-8')
     return out
 

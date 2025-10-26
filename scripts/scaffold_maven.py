@@ -26,7 +26,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MODULES_DIR = PROJECT_ROOT / "modules"
 PARENT_POM = MODULES_DIR / "pom.xml"
 CI_DIR = PROJECT_ROOT / "ci" / "artifacts"
-REPORT_MD = PROJECT_ROOT / "doc" / ".preflight" / "scaffold-report.md"
+from scripts.utils.paths import PREVIEW_DIR, ensure_results_dirs
+REPORT_MD = PREVIEW_DIR / "scaffold-report.md"
 
 
 def discover_modules() -> list[str]:
@@ -96,7 +97,7 @@ def run_maven() -> tuple[int, Path]:
 
 
 def write_report(discovered: list[str], listed: list[str], changed: bool, mvn_rc: int, log_path: Path) -> Path:
-    REPORT_MD.parent.mkdir(parents=True, exist_ok=True)
+    ensure_results_dirs()
     lines: list[str] = []
     lines.append("# Maven Scaffold Report\n\n")
     lines.append(f"Generated: {datetime.now().isoformat()}\n\n")

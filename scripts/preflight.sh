@@ -2,11 +2,14 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-REPORT_PATH="$PROJECT_ROOT/doc/tooling-report.md"
-SMOKE_LOG_DIR="$PROJECT_ROOT/doc/.preflight"
+RESULTS_DIR="${RESULTS_DIR:-$PROJECT_ROOT/results}"
+REPORTS_DIR="$RESULTS_DIR/reports"
+PREVIEW_DIR="$RESULTS_DIR/preflight"
+REPORT_PATH="$REPORTS_DIR/tooling-report.md"
+SMOKE_LOG_DIR="$PREVIEW_DIR"
 SMOKE_LOG="$SMOKE_LOG_DIR/smoke.log"
 
-mkdir -p "$SMOKE_LOG_DIR"
+mkdir -p "$REPORTS_DIR" "$SMOKE_LOG_DIR"
 
 # Colours
 GREEN='\033[0;32m'

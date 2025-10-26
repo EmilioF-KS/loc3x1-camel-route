@@ -40,7 +40,9 @@ def get_external_partners(partner_links):
 
 # Argument parsing for dynamic root/bpel/output paths
 def get_args():
-    default_output = str((SCRIPT_DIR.parent / "doc" / "bpel-analysis.md").resolve())
+    # Default outputs redirected to results/* structure
+    results_dir = PROJECT_ROOT / "results"
+    default_output = str((results_dir / "reports" / "bpel-analysis.md").resolve())
     parser = argparse.ArgumentParser(description="Analyze BPEL orchestration and generate Markdown report")
     parser.add_argument("--root", type=str, default=os.environ.get("CONTRACTS_ROOT", str(PROJECT_ROOT)), help="Root directory to search for BPEL and related files")
     parser.add_argument("--bpel", type=str, default="", help="Explicit BPEL file path to analyze")

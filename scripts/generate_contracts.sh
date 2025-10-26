@@ -10,6 +10,9 @@ fi
 # Generate CXF/JAXB sources from WSDLs in sample/
 MVN_CMD="mvn -f modules/contracts/pom.xml -q generate-sources"
 echo "Running: $MVN_CMD"
-$MVN_CMD | tee doc/.preflight/contracts-codegen.log
+RESULTS_DIR="${RESULTS_DIR:-$(cd "$(dirname "$0")/.." && pwd)/results}"
+PREVIEW_DIR="$RESULTS_DIR/preflight"
+mkdir -p "$PREVIEW_DIR"
+$MVN_CMD | tee "$PREVIEW_DIR/contracts-codegen.log"
 
-echo "Contracts code generation completed. See doc/.preflight/contracts-codegen.log"
+echo "Contracts code generation completed. See $PREVIEW_DIR/contracts-codegen.log"

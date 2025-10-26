@@ -56,7 +56,9 @@ class TestBpelAgent(unittest.TestCase):
             self.skipTest("Default BPEL missing; provide BPEL_TEST_PATH")
         # Run the analysis script to generate artefacts
         script = PROJECT_ROOT / "scripts" / "analyze_bpel.py"
-        out_md = PROJECT_ROOT / "doc" / "bpel-analysis.md"
+        from scripts.utils.paths import REPORTS_DIR, ensure_results_dirs
+        ensure_results_dirs()
+        out_md = REPORTS_DIR / "bpel-analysis.md"
         out_spec = PROJECT_ROOT / "orchestration" / "spec.yaml"
         cmd = ["python3", str(script), "--use-agent", "--bpel", str(self.bpel_path), "--output", str(out_md), "--spec", str(out_spec)]
         rc = subprocess.run(cmd, cwd=PROJECT_ROOT).returncode

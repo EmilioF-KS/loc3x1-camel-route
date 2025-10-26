@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.193 s -- in com.ei.camel.orchestration.GetLocationWithTaxingJurisdictions3X1BRouteTest

@@ -20,10 +20,15 @@ from pathlib import Path
 import importlib.util
 import subprocess
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DOC_DIR = PROJECT_ROOT / "doc"
-RUNS_DIR = DOC_DIR / "agent-runs"
-PREVIEW_DIR = DOC_DIR / ".preflight"
+from scripts.utils.paths import (
+    PROJECT_ROOT,
+    RESULTS_DIR,
+    REPORTS_DIR,
+    RUNS_DIR,
+    PREVIEW_DIR,
+    META_DIR,
+    ensure_results_dirs,
+)
 
 # Ensure project root on sys.path for module imports
 if str(PROJECT_ROOT) not in sys.path:
@@ -33,9 +38,9 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 def ensure_dirs():
-    RUNS_DIR.mkdir(parents=True, exist_ok=True)
-    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    ensure_results_dirs()
 
+# Stage implementations
 
 def venv_guard(strict: bool = False) -> None:
     venv = os.environ.get("VIRTUAL_ENV", "")
@@ -49,9 +54,6 @@ def venv_guard(strict: bool = False) -> None:
     else:
         print(f"✓ Venv active: {venv}")
 
-
-# Stage implementations
-
 def import_module_from_path(name: str, path: Path):
     spec = importlib.util.spec_from_file_location(name, str(path))
     module = importlib.util.module_from_spec(spec)
@@ -63,7 +65,7 @@ def stage_env() -> dict:
     """Run Preflight Agent checks and write agent-checks.md."""
     preflight = import_module_from_path('preflight_agent', PROJECT_ROOT / 'scripts' / 'preflight_agent.py')
     preflight.main()
-    report_path = DOC_DIR / ".preflight" / "agent-checks.md"
+    report_path = PREVIEW_DIR / "agent-checks.md"
     return {
         "stage": "env",
         "outputs": {"agent_checks_md": str(report_path)},
@@ -74,14 +76,21 @@ def stage_env() -> dict:
 def stage_plan() -> dict:
     """Run Planner Agent to emit agent-plan.json and agent-plan.log."""
     planner = import_module_from_path('planner_agent', PROJECT_ROOT / 'scripts' / 'planner_agent.py')
-    planner.main()
+    rc = 0
+    try:
+        planner.main()
+    except SystemExit as e:
+        # Planner enforces governance and may exit non-zero; capture gracefully
+        rc = int(e.code) if isinstance(e.code, int) else 1
+    outputs = {
+        "agent_plan_json": str(META_DIR / "agent-plan.json"),
+        "agent_plan_log": str(REPORTS_DIR / "agent-plan.log"),
+    }
     return {
         "stage": "plan",
-        "outputs": {
-            "agent_plan_json": str(DOC_DIR / "agent-plan.json"),
-            "agent_plan_log": str(DOC_DIR / "agent-plan.log"),
-        },
-        "ok": (DOC_DIR / "agent-plan.json").exists(),
+        "outputs": outputs,
+        "rc": rc,
+        "ok": (META_DIR / "agent-plan.json").exists() and rc == 0,
     }
 
 
@@ -101,7 +110,7 @@ def stage_contracts(source_root: Path | None = None) -> dict:
     # Validate and write report
     validator_mod = import_module_from_path('contracts_validator', PROJECT_ROOT / 'scripts' / 'contracts_validator.py')
     result = validator_mod.validate_contracts(PROJECT_ROOT)
-    report_out = DOC_DIR / ".preflight" / "contracts-checks.md"
+    report_out = PREVIEW_DIR / "contracts-checks.md"
     validator_mod.write_report(result, report_out)
 
     # Perform CXF/JAXB codegen based on inventory
@@ -229,7 +238,7 @@ def stage_scaffold() -> dict:
 def stage_bpel(root: Path | None = None, bpel_file: Path | None = None, use_agent: bool = True) -> dict:
     """Run BPEL analysis to generate Markdown and spec YAML."""
     script = PROJECT_ROOT / "scripts" / "analyze_bpel.py"
-    out_md = DOC_DIR / "bpel-analysis.md"
+    out_md = REPORTS_DIR / "bpel-analysis.md"
     out_spec = PROJECT_ROOT / "orchestration" / "spec.yaml"
 
     cmd = [
@@ -359,6 +368,299 @@ def stage_tests() -> dict:
     }
 
 
+def stage_reviewer() -> dict:
+    """Produce reviewer/interpreter explanation report from deterministic artifacts.
+
+    - Gathers artifacts: evaluation report, agent plan, summary, preflight checks, BPEL analysis.
+    - Writes doc/reviewer-report.md with Executive Narrative, Evidence Alignment, Decisions, Risks.
+    - Never gates; ok=True if report is written and core artifacts exist.
+    """
+    from pathlib import Path as _Path
+    import json as _json
+    import re as _re
+    import datetime as _dt
+
+    report_md = REPORTS_DIR / "reviewer-report.md"
+    eval_md = REPORTS_DIR / "evaluation-report.md"
+    plan_json = META_DIR / "agent-plan.json"
+    summary_txt = PROJECT_ROOT / "tests" / "results" / "html" / "summary.txt"
+    preflight_md = PREVIEW_DIR / "agent-checks.md"
+    bpel_md = REPORTS_DIR / "bpel-analysis.md"
+    spec_yaml = PROJECT_ROOT / "orchestration" / "spec.yaml"
+
+    gating_status = "UNKNOWN"
+    blockers = []
+    tests_scanned = None
+    failing_suites = None
+
+    if eval_md.exists():
+        text = eval_md.read_text(encoding="utf-8")
+        m_gate = _re.search(r"Gating status:\s*(\w+)", text)
+        m_fail = _re.search(r"Failing suites:\s*(\d+)", text)
+        m_scan = _re.search(r"Tests scanned:\s*(\d+)", text)
+        if m_gate: gating_status = m_gate.group(1)
+        if m_fail: failing_suites = int(m_fail.group(1))
+        if m_scan: tests_scanned = int(m_scan.group(1))
+        # Collect blockers section lines
+        blk = _re.findall(r"## Blockers\n([\s\S]*?)\n## ", text)
+        if blk:
+            blockers = [ln.strip() for ln in blk[0].splitlines() if ln.strip() and ln.strip().lower() != "none"]
+
+    plan_ok = None
+    overall_ok = None
+    sources = []
+    if plan_json.exists():
+        try:
+            pj = _json.loads(plan_json.read_text(encoding="utf-8"))
+            overall_ok = pj.get("validation", {}).get("overall_ok")
+            plan_ok = pj.get("validation", {}).get("checks", {}).get("sources_ok")
+            sources = list((pj.get("plan", {}).get("sources", {}) or {}).values())
+        except Exception:
+            pass
+
+    lines = [
+        "# Reviewer/Interpreter Report",
+        f"Generated: {_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        "",
+        "## Executive Narrative",
+        f"Overall gating status from evaluation: {gating_status}.",
+        f"Tests scanned: {tests_scanned if tests_scanned is not None else 'n/a'}; failing suites: {failing_suites if failing_suites is not None else 'n/a' }.",
+        f"Planner governance acceptance: {'ACCEPTED' if overall_ok else 'UNKNOWN'}.",
+        "",
+        "## Evidence Alignment",
+        f"- Evaluation report: `{eval_md}` {'OK' if eval_md.exists() else 'MISSING'}",
+        f"- Summary: `{summary_txt}` {'OK' if summary_txt.exists() else 'MISSING'}",
+        f"- Agent plan: `{plan_json}` {'OK' if plan_json.exists() else 'MISSING'}",
+        f"- Preflight checks: `{preflight_md}` {'OK' if preflight_md.exists() else 'MISSING'}",
+        f"- BPEL analysis: `{bpel_md}` {'OK' if bpel_md.exists() else 'MISSING'}",
+        f"- Orchestration spec: `{spec_yaml}` {'OK' if spec_yaml.exists() else 'MISSING'}",
+        "",
+        "## Decisions Trace",
+        "- Planner sources considered:",
+        *( [f"  - {s}" for s in sources] if sources else ["  - (none) "] ),
+        "- Gating relies on deterministic tests; reviewer does not modify code.",
+        "",
+        "## Risks",
+        *(blockers if blockers else ["None observed beyond evaluation blockers."]),
+        "",
+        "## Appendix",
+        f"Artifacts directory: `{PROJECT_ROOT / 'tests' / 'results'}`",
+    ]
+
+    # Prefer local Ollama client by default; fallback to HTTP endpoint; then deterministic
+    try:
+        import os as _os
+        _use_llm = _os.environ.get("REVIEWER_USE_LLM", "1") == "1"
+        if _use_llm:
+            try:
+                import ollama as _oll
+                def _select_model() -> str:
+                    resp = _oll.list()
+                    models = [m.get('model') or m.get('name') for m in resp.get('models', []) if m.get('model') or m.get('name')]
+                    preferred = [
+                        "qwen3-coder:latest",
+                        "qwen2.5-coder:latest",
+                        "qwen2.5-coder:1.5b-base",
+                    ]
+                    for p in preferred:
+                        if p in models:
+                            return p
+                    # Any qwen2.5-coder variant
+                    for m in models:
+                        if 'qwen2.5-coder' in (m or '').lower():
+                            return m
+                    # Fallback: any qwen model or first available
+                    for m in models:
+                        if 'qwen' in (m or '').lower():
+                            return m
+                    if models:
+                        return models[0]
+                    raise RuntimeError("No local models available via Ollama")
+
+                _model = _select_model()
+                _prompt = (
+                    "You are an explainability-only reviewer. Summarise evaluation status, blockers, and risks from the following context, "
+                    "then provide concise recommendations for remediation.\n"
+                    "Context:\n"
+                    f"- Gating: {gating_status}\n"
+                    f"- Failing suites: {failing_suites}\n"
+                    f"- Tests scanned: {tests_scanned}\n"
+                    f"- Blockers: {', '.join(blockers) if blockers else 'None'}\n"
+                    f"- Planner overall_ok: {overall_ok}\n"
+                    f"- Sources count: {len(sources)}\n\n"
+                    "Output format:\n"
+                    "Observations:\n- <bullet points>\n"
+                    "Recommendations:\n- <bullet points>\n"
+                )
+                _resp = _oll.generate(model=_model, prompt=_prompt, options={"temperature": 0.1, "top_p": 0.9}, stream=False)
+                _text = (_resp.get("response") or "").strip()
+                if _text:
+                    lines.extend(["", "## LLM Narrative", _text])
+                else:
+                    lines.extend(["", "## LLM Narrative", "(LLM responded empty; proceeding with deterministic report)"])
+            except Exception as _e:
+                # Fallback to HTTP call to /api/generate using available qwen coder tags
+                import urllib.request as _urlreq
+                import urllib.error as _urlerr
+                import json as _json2
+                _host = _os.environ.get("OLLAMA_HOST", "http://localhost:11434").rstrip("/")
+                # Try listing tags to select model
+                _model = _os.environ.get("REVIEWER_MODEL", "")
+                try:
+                    _tags_req = _urlreq.Request(f"{_host}/api/tags")
+                    with _urlreq.urlopen(_tags_req, timeout=10) as _tags_resp:
+                        _tags = _json2.loads(_tags_resp.read().decode("utf-8")).get("models", [])
+                        _names = [t.get("model") or t.get("name") for t in _tags]
+                        for cand in ["qwen3-coder:latest", "qwen2.5-coder:latest", "qwen2.5-coder:1.5b-base"]:
+                            if cand in _names:
+                                _model = cand
+                                break
+                        if not _model:
+                            for n in _names:
+                                if "qwen2.5-coder" in (n or "").lower():
+                                    _model = n
+                                    break
+                        if not _model and _names:
+                            _model = _names[0]
+                except Exception:
+                    if not _model:
+                        _model = "qwen2.5-coder:latest"
+                _endpoint = f"{_host}/api/generate"
+                _prompt = (
+                    "You are an explainability-only reviewer. Summarise evaluation status, blockers, and risks from the following context, "
+                    "then provide concise recommendations for remediation.\n"
+                    "Context:\n"
+                    f"- Gating: {gating_status}\n"
+                    f"- Failing suites: {failing_suites}\n"
+                    f"- Tests scanned: {tests_scanned}\n"
+                    f"- Blockers: {', '.join(blockers) if blockers else 'None'}\n"
+                    f"- Planner overall_ok: {overall_ok}\n"
+                    f"- Sources count: {len(sources)}\n\n"
+                    "Output format:\n"
+                    "Observations:\n- <bullet points>\n"
+                    "Recommendations:\n- <bullet points>\n"
+                )
+                _payload = _json2.dumps({"model": _model, "prompt": _prompt, "stream": False, "options": {"temperature": 0.1}}).encode("utf-8")
+                _req = _urlreq.Request(_endpoint, data=_payload, headers={"Content-Type": "application/json"})
+                try:
+                    with _urlreq.urlopen(_req, timeout=60) as _resp:
+                        _data = _json2.loads(_resp.read().decode("utf-8"))
+                        _text = (_data.get("response") or "").strip()
+                        if _text:
+                            lines.extend(["", "## LLM Narrative", _text])
+                        else:
+                            lines.extend(["", "## LLM Narrative", "(LLM responded empty; proceeding with deterministic report)"])
+                except Exception:
+                    lines.extend(["", "## LLM Narrative", "(LLM enrichment unavailable: proceeding with deterministic report)"])
+    except Exception:
+        # Do not block report generation
+        pass
+
+    try:
+        report_md.write_text("\n".join(lines), encoding="utf-8")
+    except Exception as e:
+        print(f"WARN: Failed to write reviewer report: {e}")
+
+    ok = report_md.exists()
+
+    return {
+        "stage": "reviewer",
+        "outputs": {
+            "reviewer_report_md": str(report_md),
+            "evaluation_report_md": str(eval_md),
+            "agent_plan_json": str(plan_json),
+            "summary_txt": str(summary_txt),
+        },
+        "ok": ok,
+    }
+
+
+def stage_evaluate() -> dict:
+    """Execute full test suite via master runner and produce evaluation report.
+
+    - Runs scripts/test_master.sh --all to generate JUnit and summary artifacts.
+    - Writes doc/evaluation-report.md summarising pass/fail counts and blockers.
+    - Returns gating status based on exit code and failure counts.
+    """
+    from pathlib import Path as _Path
+    import subprocess as _subprocess
+    import os as _os
+    import datetime as _dt
+
+    project_root = PROJECT_ROOT
+    results_dir = project_root / "tests" / "results"
+    html_dir = results_dir / "html"
+    junit_dir = results_dir / "junit"
+    logs_dir = results_dir / "logs"
+    summary_file = html_dir / "summary.txt"
+    report_md = REPORTS_DIR / "evaluation-report.md"
+
+    run_cmd = ["bash", str(project_root / "scripts" / "test_master.sh"), "--all"]
+    proc = _subprocess.run(run_cmd, cwd=str(project_root))
+
+    failures = 0
+    tests_scanned = 0
+    if summary_file.exists():
+        text = summary_file.read_text(encoding="utf-8")
+        import re as _re
+        m_fail = _re.search(r"Failing suites:\s*(\d+)", text)
+        m_scan = _re.search(r"Tests scanned reports:\s*(\d+)", text)
+        if m_fail:
+            failures = int(m_fail.group(1))
+        if m_scan:
+            tests_scanned = int(m_scan.group(1))
+
+    gating_ok = (proc.returncode == 0) and (failures == 0)
+
+    # Build Markdown report
+    ts = _dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    blockers = []
+    if not gating_ok:
+        blockers.append(f"Failing suites: {failures}")
+        if proc.returncode != 0:
+            blockers.append(f"Master runner exit code: {proc.returncode}")
+        if not summary_file.exists():
+            blockers.append("Missing summary.txt artifact")
+
+    report_lines = [
+        "# Evaluation Report",
+        f"Generated: {ts}",
+        "",
+        "## Inputs",
+        f"Run command: `{run_cmd}`",
+        f"JUnit dir: `{junit_dir}`",
+        f"Summary: `{summary_file}`",
+        "",
+        "## Results",
+        f"Tests scanned: {tests_scanned}",
+        f"Failing suites: {failures}",
+        f"Runner exit code: {proc.returncode}",
+        f"Gating status: {'PASS' if gating_ok else 'FAIL'}",
+        "",
+        "## Blockers",
+        *(blockers if blockers else ["None"]),
+        "",
+        "## Logs",
+        f"Master log dir: `{logs_dir}`",
+    ]
+    try:
+        report_md.write_text("\n".join(report_lines), encoding="utf-8")
+    except Exception as e:
+        print(f"WARN: Failed to write evaluation report: {e}")
+
+    return {
+        "stage": "evaluate",
+        "outputs": {
+            "evaluation_report_md": str(report_md),
+            "summary_txt": str(summary_file),
+            "junit_dir": str(junit_dir),
+            "logs_dir": str(logs_dir),
+        },
+        "rc": proc.returncode,
+        "ok": gating_ok and report_md.exists(),
+    }
+
+
 def persist_run(metadata: dict) -> Path:
     ensure_dirs()
     ts = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -379,6 +681,11 @@ Examples:
   %(prog)s --schema                       # Run schema governance stage only
   %(prog)s --scaffold                     # Run Maven scaffold stage only
   %(prog)s --bpel                         # Run bpel analysis stage only
+  %(prog)s --build                        # Run build (bootstrap + package) stage only
+  %(prog)s --tests                        # Run integration tests stage only
+  %(prog)s --services                     # Run inbound services stage only
+  %(prog)s --clients                      # Run clients stage only
+  %(prog)s --agent plan                   # Run specific agent stage by name
   %(prog)s --from contracts --all         # Start from contracts, then continue
   %(prog)s --contracts --source-root sample/AnotherFixture
         """,
@@ -393,12 +700,18 @@ Examples:
     group.add_argument("--tests", action="store_true", help="Run integration tests stage only")
     group.add_argument("--services", action="store_true", help="Run inbound services stage only")
     group.add_argument("--clients", action="store_true", help="Run clients stage only")
-
+    # Move --agent into the mutually exclusive group so it satisfies required
+    group.add_argument("--agent", choices=[
+        "env","plan","contracts","schema","scaffold","bpel","build","services","clients","tests","evaluate","reviewer"
+    ], help="Run a specific stage by name")
+    
     parser.add_argument("--from", dest="from_stage", choices=["env", "plan", "contracts", "schema", "scaffold", "bpel", "build", "services", "clients", "tests"], help="Start from a specific stage for --all")
     parser.add_argument("--source-root", help="Override contract discovery root (defaults to sample/)")
     parser.add_argument("--bpel-file", help="Explicit BPEL file to analyze")
     parser.add_argument("--strict-venv", action="store_true", help="Exit if venv not active")
     parser.add_argument("--no-agent", action="store_true", help="Disable agent use for BPEL analysis")
+    parser.add_argument("--evaluate", action="store_true", help="Run evaluator/referee stage to produce evaluation report")
+    parser.add_argument("--reviewer", action="store_true", help="Run reviewer/interpreter stage to produce explanation report")
 
     args = parser.parse_args()
 
@@ -409,20 +722,35 @@ Examples:
     bpel_path = Path(args.bpel_file).resolve() if args.bpel_file else None
 
     runs = []
-    if args.contracts:
-        r = stage_contracts(source_root)
-        persist_run(r)
-        runs.append(r)
-    elif args.schema:
-        r = stage_schema()
-        persist_run(r)
-        runs.append(r)
-    elif args.scaffold:
-        r = stage_scaffold()
-        persist_run(r)
-        runs.append(r)
-    elif args.bpel:
-        r = stage_bpel(root=source_root or PROJECT_ROOT, bpel_file=bpel_path, use_agent=not args.no_agent)
+    # Handle --agent generic selector
+    if args.agent:
+        st = args.agent
+        if st == "env":
+            r = stage_env()
+        elif st == "plan":
+            r = stage_plan()
+        elif st == "contracts":
+            r = stage_contracts(source_root)
+        elif st == "schema":
+            r = stage_schema()
+        elif st == "scaffold":
+            r = stage_scaffold()
+        elif st == "bpel":
+            r = stage_bpel(root=source_root or PROJECT_ROOT, bpel_file=bpel_path, use_agent=not args.no_agent)
+        elif st == "build":
+            r = stage_build()
+        elif st == "services":
+            r = stage_services()
+        elif st == "clients":
+            r = stage_clients()
+        elif st == "tests":
+            r = stage_tests()
+        elif st == "evaluate":
+            r = stage_evaluate()
+        elif st == "reviewer":
+            r = stage_reviewer()
+        else:
+            raise SystemExit(f"Unknown agent stage: {st}")
         persist_run(r)
         runs.append(r)
     elif args.build:
