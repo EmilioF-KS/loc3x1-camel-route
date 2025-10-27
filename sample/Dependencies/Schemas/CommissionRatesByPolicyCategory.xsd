@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/commission_rates_by_policy_category"
+	xmlns:bons1="http://ei/core/producer_commission_rate">
+	<xsd:import schemaLocation="ProducerCommissionRate.xsd"
+		namespace="http://ei/core/producer_commission_rate">
+	</xsd:import>
+	<xsd:complexType name="CommissionRatesByPolicyCategory">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ProducerCommissionRate"
+				type="bons1:ProducerCommissionRate" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LineOfBusinessName"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the name of the line of business.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LineOfBusinessTypeCode"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates if this transaction is on behalf of a Commercial or Personal Policy.
+Valid values are: "C" or "P".</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnterpriseOwnershipCode"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the regulatory system under which a  company is organized and operated (e.g. PUBLIC, PRIVATE, NON-PROFIT).
+The E1T00291 Corporate Table contains valid values for this element in the "ENTRPRS_OWNER_C" column. 
+					</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyTypeCode"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the type of insurance contract with a code.
+The Corporate table E1T00221 contain the valid values for this element in the "POL_TY_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyTypeSubCode"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          <xsd:documentation>The element is used to divide Policy Type Code in order to provide more categories for some insurance contracts.  (This is also known as PolicySubTypeCode.)
+The Corporate table E1T00221 contain the valid values for this element if the "POL_SUB_TY_C" column.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MarketingProgramCode"
+				type="xsd:string" maxOccurs="1">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies policies written as part of a specific marketing program. 
+The Corporate table E1T00091 contains valid values for this element in the "MRKTG_PGM_C" column.
+				</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

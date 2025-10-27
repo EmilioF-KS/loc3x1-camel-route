@@ -1,0 +1,71 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\LOC3X1MGetLocationListRequestMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: LOC3X1MGetLocationListRequestMap
+Target Namespace: http://Location2MediationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: GetLocationList3X1MRequestMsg:GetLocationList3X1MRequestMsg
+Namespace: 
+Properties: GetLocationList3X1M/GetLocationListRequest/AddressLine1, GetLocationList3X1M/GetLocationListRequest/CityName, GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode, GetLocationList3X1M/GetLocationListRequest/CountryCode, GetLocationList3X1M/GetLocationListRequest/PostalCode, GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode
+
+TARGET INFORMATION:
+-------------------
+Business Object: getLocationsRequest:getLocationsRequest
+Namespace: 
+Properties: getLocations/address/addressLine1, getLocations/address/cityName, getLocations/address/stateOrProvinceCode, getLocations/address/countryCode, getLocations/address/postalCode, getLocations/address/locationPlaceCode
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/AddressLine1 ()
+  Target: getLocations/address/addressLine1 ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/AddressLine1 to getLocations/address/addressLine1
+
+Mapping 2:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/CityName ()
+  Target: getLocations/address/cityName ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/CityName to getLocations/address/cityName
+
+Mapping 3:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode ()
+  Target: getLocations/address/stateOrProvinceCode ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/StateOrProvinceCode to getLocations/address/stateOrProvinceCode
+
+Mapping 4:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/CountryCode ()
+  Target: getLocations/address/countryCode ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/CountryCode to getLocations/address/countryCode
+
+Mapping 5:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/PostalCode ()
+  Target: getLocations/address/postalCode ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/PostalCode to getLocations/address/postalCode
+
+Mapping 6:
+  Type: move
+  Source: GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode ()
+  Target: getLocations/address/locationPlaceCode ()
+  Description: Move mapping from GetLocationList3X1M/GetLocationListRequest/LocationPlaceCode to getLocations/address/locationPlaceCode
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 6
+Move Mappings: 6
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

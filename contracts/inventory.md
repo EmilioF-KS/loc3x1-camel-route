@@ -1,15 +1,15 @@
 # Contract Inventory Report
 
-**Generated:** 2025-10-26T16:15:21.548920
+**Generated:** 2025-10-26T18:05:11.920381
 **Project Root:** /Users/albertohernandez/Documents/projects/camel-route
 **Scan Directory:** /Users/albertohernandez/Documents/projects/camel-route/sample
 
 ## Summary
 
-- **WSDL Files:** 8
-- **XSD Files:** 383
-- **BPEL Files:** 2
-- **Total Files:** 393
+- **WSDL Files:** 16
+- **XSD Files:** 765
+- **BPEL Files:** 3
+- **Total Files:** 784
 
 ## Namespaces
 
@@ -459,6 +459,76 @@
 - **Operations:** GetCountry, GetCountryList
 - **File Size:** 4396 bytes
 
+### StateOrProvinceRetrievalCRP11X1.wsdl
+
+- **Path:** `sample/Dependencies/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl`
+- **Target Namespace:** `http://ei/corporate/state_or_province_retrieval_crp11x1`
+- **Services:** None
+- **Operations:** GetStateOrProvince, GetStateOrProvinceList
+- **File Size:** 4786 bytes
+
+### StateOrProvinceRetrievalCRP11X1Http.wsdl
+
+- **Path:** `sample/Dependencies/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1Http.wsdl`
+- **Target Namespace:** `http://ei/corporate/state_or_province_retrieval_crp11x1_http`
+- **Services:** StateOrProvinceRetrievalCRP11X1HttpService
+- **Operations:** None
+- **Bindings:**
+  - StateOrProvinceRetrievalCRP11X1HttpBinding (type: Port_0:StateOrProvinceRetrievalCRP11X1)
+- **File Size:** 2207 bytes
+
+### LocationRetrievalLOC3X1M.wsdl
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl`
+- **Target Namespace:** `http://ei/location/location_retrieval_loc3x1m`
+- **Services:** None
+- **Operations:** GetLocationList3X1M, GetLocationWithTaxingJurisdictions3X1M
+- **File Size:** 4842 bytes
+
+### LocationRetrievalLOC3X1B.wsdl
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl`
+- **Target Namespace:** `http://ei/location/location_retrieval_loc3x1b`
+- **Services:** None
+- **Operations:** GetLocationList3X1B, GetLocationWithTaxingJurisdictions3X1B
+- **File Size:** 4846 bytes
+
+### CountryRetrievalCRP10X1Http.wsdl
+
+- **Path:** `sample/Dependencies/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1Http.wsdl`
+- **Target Namespace:** `http://ei/country/country_retrieval_crp10X1_http`
+- **Services:** CountryRetrievalCRP10X1HttpService
+- **Operations:** None
+- **Bindings:**
+  - CountryRetrievalCRP10X1HttpBinding (type: Port_0:CountryRetrievalCRP10X1)
+- **File Size:** 2023 bytes
+
+### CountryRetrievalCRP10X1.wsdl
+
+- **Path:** `sample/Dependencies/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl`
+- **Target Namespace:** `http://ei/country/country_retrieval_crp10X1`
+- **Services:** None
+- **Operations:** GetCountry, GetCountryList
+- **File Size:** 4396 bytes
+
+### LocationRetrievalLOC3X1Http.wsdl
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl`
+- **Target Namespace:** `http://ei/location/location_retrieval_loc3x1_http`
+- **Services:** LocationRetrievalLOC3X1HttpService
+- **Operations:** None
+- **Bindings:**
+  - LocationRetrievalLOC3X1HttpBinding (type: Port_0:LocationRetrievalLOC3X1)
+- **File Size:** 2092 bytes
+
+### LocationRetrievalLOC3X1.wsdl
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl`
+- **Target Namespace:** `http://ei/location/location_retrieval_loc3x1`
+- **Services:** None
+- **Operations:** GetLocationList, GetLocationWithTaxingJurisdictions
+- **File Size:** 4687 bytes
+
 ### LocationRetrievalLOC3X1Http.wsdl
 
 - **Path:** `sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl`
@@ -557,6 +627,129 @@
 
 ### LocationListReply.xsd
 
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1M/LocationListReply.xsd`
+- **Target Namespace:** `http://ei/location/location_list_reply_loc3x1m`
+- **Elements:**
+  - Location (bons0:Location)
+  - StatusInformation (bons1:StatusInformation)
+- **Complex Types:** 1
+- **File Size:** 857 bytes
+
+### LocationRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1M/LocationRequest.xsd`
+- **Target Namespace:** `http://ei/location/location_request_loc3x1m`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 5 more
+- **Complex Types:** 1
+- **File Size:** 3109 bytes
+
+### GetLocationListRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1M/GetLocationListRequest.xsd`
+- **Target Namespace:** `http://ei/location/get_location_list_request_loc3x1m`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 4 more
+- **Complex Types:** 1
+- **File Size:** 2957 bytes
+
+### LocationListReply.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1B/LocationListReply.xsd`
+- **Target Namespace:** `http://ei/location/location_list_reply_loc3x1b`
+- **Elements:**
+  - Location (bons0:Location)
+  - StatusInformation (bons1:StatusInformation)
+- **Complex Types:** 1
+- **File Size:** 857 bytes
+
+### LocationRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1B/LocationRequest.xsd`
+- **Target Namespace:** `http://ei/location/location_request_loc3x1b`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 5 more
+- **Complex Types:** 1
+- **File Size:** 3109 bytes
+
+### GetLocationListRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd`
+- **Target Namespace:** `http://ei/location/get_location_list_request_loc3x1b`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 4 more
+- **Complex Types:** 1
+- **File Size:** 2945 bytes
+
+### LocationListReply.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1/LocationListReply.xsd`
+- **Target Namespace:** `http://ei/location/location_list_reply`
+- **Elements:**
+  - Location (bons0:Location)
+  - StatusInformation (bons1:StatusInformation)
+- **Complex Types:** 1
+- **File Size:** 849 bytes
+
+### LocationRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1/LocationRequest.xsd`
+- **Target Namespace:** `http://ei/location/location_request`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 5 more
+- **Complex Types:** 1
+- **File Size:** 3161 bytes
+
+### GetLocationListRequest.xsd
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1/GetLocationListRequest.xsd`
+- **Target Namespace:** `http://ei/location/get_location_list_request_loc3x1`
+- **Elements:**
+  - AddressLine1 (xsd:string)
+  - AddressLine2 (xsd:string)
+  - CityName (xsd:string)
+  - StateOrProvinceCode (xsd:string)
+  - PostalStateAbbreviation (xsd:string)
+  - ... and 4 more
+- **Complex Types:** 1
+- **File Size:** 2949 bytes
+
+### SimpleFault.xsd
+
+- **Path:** `sample/Dependencies/PrivateSchemas/SimpleFault.xsd`
+- **Target Namespace:** `http://ei/core/simplefault`
+- **Elements:**
+  - FaultMessageText (xsd:string)
+- **Complex Types:** 1
+- **File Size:** 356 bytes
+
+### LocationListReply.xsd
+
 - **Path:** `sample/LocationRetrievalLOC3X1/LocationListReply.xsd`
 - **Target Namespace:** `http://ei/location/location_list_reply`
 - **Elements:**
@@ -607,6 +800,20 @@
 ### LocationRetrievalLOC3X1Process.bpel
 
 - **Path:** `sample/LocationRetrievalLOC3X1Process.bpel`
+- **Process Name:** `LocationRetrievalLOC3X1Process`
+- **Target Namespace:** `http://LocationServices`
+- **Partner Links:**
+  - LocationRetrievalLOC3X1B (type: ns:LocationRetrievalLOC3X1BPLT)
+  - LocationRetrievalLOC3X1MPartner (type: ns:LocationRetrievalLOC3X1MPLT)
+  - StateOrProvinceRetrievalCRP11X1Partner (type: ns:StateOrProvinceRetrievalCRP11X1PLT)
+  - CountryRetrievalCRP10X1Partner (type: ns:CountryRetrievalCRP10X1PLT)
+- **Variables:** 13
+- **Imports:** 21
+- **File Size:** 417023 bytes
+
+### LocationRetrievalLOC3X1Process.bpel
+
+- **Path:** `sample/Dependencies/LocationRetrievalLOC3X1Process.bpel`
 - **Process Name:** `LocationRetrievalLOC3X1Process`
 - **Target Namespace:** `http://LocationServices`
 - **Partner Links:**

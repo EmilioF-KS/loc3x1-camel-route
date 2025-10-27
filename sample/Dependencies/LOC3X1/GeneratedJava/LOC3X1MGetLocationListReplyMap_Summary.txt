@@ -1,0 +1,60 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\LOC3X1MGetLocationListReplyMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: LOC3X1MGetLocationListReplyMap
+Target Namespace: http://Location2MediationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: getLocationsResponse:getLocationsResponse
+Namespace: 
+Properties: getLocationsResponse/locations, getLocationsResponse/locations
+
+TARGET INFORMATION:
+-------------------
+Business Object: GetLocationList3X1MResponseMsg:GetLocationList3X1MResponseMsg
+Namespace: 
+Properties: GetLocationList3X1MResponse/GetLocationListReply/Location, GetLocationList3X1MResponse/GetLocationListReply/Location, GetLocationList3X1MResponse/GetLocationListReply/StatusInformation
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: 
+  Source:  ()
+  Target:  ()
+  Description: 
+
+Mapping 2:
+  Type: 
+  Source:  ()
+  Target:  ()
+  Description: 
+
+Mapping 3:
+  Type: 
+  Source:  ()
+  Target:  ()
+  Description: 
+
+JAVA CODE BLOCKS:
+-----------------
+Block 1:
+  Name: JavaCode_1
+  Method Name: createBusinessObject
+  Context: MAP Custom Mapping
+  Code Length: 2277 characters
+  Line Count: 58
+
+STATISTICS:
+-----------
+Total Property Mappings: 3
+Move Mappings: 0
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 1
+Total Java Code Characters: 2277

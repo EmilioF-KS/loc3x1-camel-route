@@ -1,0 +1,95 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: LOC3X1GetLocationWithTaxingJurisdictionsRequestMap
+Target Namespace: http://Location2MediationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: GetLocationWithTaxingJurisdictionsRequestMsg:GetLocationWithTaxingJurisdictionsRequestMsg
+Namespace: 
+Properties: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode, GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+
+TARGET INFORMATION:
+-------------------
+Business Object: GetLocationWithTaxingJurisdictions3X1BRequestMsg:GetLocationWithTaxingJurisdictions3X1BRequestMsg
+Namespace: 
+Properties: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode, GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1 ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1 ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine1 to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine1
+
+Mapping 2:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2 ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2 ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AddressLine2 to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AddressLine2
+
+Mapping 3:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CityName to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CityName
+
+Mapping 4:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode
+
+Mapping 5:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalStateAbbreviation
+
+Mapping 6:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/PostalCode to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/PostalCode
+
+Mapping 7:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryCode to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryCode
+
+Mapping 8:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/CountryAbbreviation
+
+Mapping 9:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode
+
+Mapping 10:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate ()
+  Target: GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions/GetLocationWithTaxingJurisdictionsRequest/AsOfDate to GetLocationWithTaxingJurisdictions3X1B/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 10
+Move Mappings: 10
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

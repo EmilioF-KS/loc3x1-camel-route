@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/payment_option"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PaymentOption">
+		<xsd:annotation>
+      <xsd:documentation>This object contains information related to the technique available to make payments, such as phone, online, and mail.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="PaymentOptionCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code about what technique could be used to pay the bill, such as phone, online, or mail.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PaymentOptionName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains a name describing the technique that could be used to pay the bill, such as phone, online, or mail.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

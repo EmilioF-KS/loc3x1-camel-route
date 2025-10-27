@@ -16,10 +16,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.ei.camel.orchestration.config.CxfServiceConfig;
+import com.ei.camel.orchestration.config.TestCxfInboundStubConfig;
+import com.ei.camel.orchestration.testconfig.TestAutoConfig;
 
 @CamelSpringBootTest
 @UseAdviceWith
-@SpringBootTest(classes = {OrchestrationApplication.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class})
+@SpringBootTest(classes = {TestAutoConfig.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class, TestCxfInboundStubConfig.class})
 @TestPropertySource(properties = {
     "inbound.loc3x1b.address=http://localhost:8080/services/loc3x1b",
     "clients.loc3x1b.address=http://localhost:8081/services/loc3x1b",
@@ -40,7 +42,7 @@ class GetLocationWithTaxingJurisdictions3X1BRouteErrorTest {
         try {
             AdviceWith.adviceWith(camelContext, "getlocationwithtaxingjurisdictions3x1b-route", advice -> {
                 advice.replaceFromWith("direct:start");
-                advice.weaveByToUri("direct:mapLocationRetrievalLOC3X1BRequest").replace().throwException(new RuntimeException("boom"));
+                advice.weaveByToUri("direct:mapLocationRetrievalLOC3X1MPartnerRequest").replace().throwException(new RuntimeException("boom"));
             });
         } catch (IllegalArgumentException ignored) {
         }

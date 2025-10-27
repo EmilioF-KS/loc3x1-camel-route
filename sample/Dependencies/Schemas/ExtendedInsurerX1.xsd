@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/insurerx1"
+	targetNamespace="http://ei/core/extended_insurerx1"
+	xmlns:bons1="http://ei/core/language">
+	<xsd:import namespace="http://ei/core/insurerx1"
+		schemaLocation="InsurerX1.xsd" />
+	<xsd:import schemaLocation="Language.xsd"
+		namespace="http://ei/core/language">
+	</xsd:import>
+	<xsd:complexType name="ExtendedInsurer">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:Insurer">
+				<xsd:sequence>
+					<xsd:element minOccurs="0"
+						name="InsurerIncorporatedDate" type="xsd:date">
+						<xsd:annotation><xsd:documentation>This element contains the date the Insurer was first established.
+
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="InsurerCommencementDate" type="xsd:date">
+						<xsd:annotation><xsd:documentation>This element contains the date that Chubb begins to manage the Insurer.
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="InsurerCancellationDate" type="xsd:date">
+						<xsd:annotation><xsd:documentation>This element contains the date that Chubb ceases to manage the Insurer.
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="ActiveInsurerIndicator" type="xsd:string"><xsd:annotation><xsd:documentation>This specifies whether the Insurer is active, which means the Insurer is still included in Chubb Systems.
+Valid values for this element are 'Y' or 'N'.  </xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="LicenseInsurerIndicator" type="xsd:string"><xsd:annotation><xsd:documentation>This element indentifies if the company is now or was ever licensed to issue policies.
+Valid values for this element are 'Y' or 'N'.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="InsurerDomicileCountryCode" type="xsd:string">
+						<xsd:annotation><xsd:documentation>This element contains the country the company is registered or incorporated.
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="InsurerDomicileStateOrProvinceCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the state within the United States the Insurer is incorporated.
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="InsurerReportingCurrencyCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the currency in which a Chubb Insurer (Writing Company) does it's reporting to regulatory bureaus.
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="NAICCompanyNumber"
+						type="xsd:string"><xsd:annotation><xsd:documentation>This element is the symbol assigned by the National Association of Insurance Commisioners to identify a reporting company.  The E1T00011 Corporate Table contains valid values for this element in the &quot;NAIC_CO_N&quot; column.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="NAICGroupNumber"
+						type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies the numeric value for the Chubb companies assigned to a common group code for reporting to the National Association of Insurance Commissioners. 
+The E1T00011 Corporate Table contains valid values for this element in the &quot;NAIC_GRP_N&quot; column.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="Language"
+						type="bons1:Language">
+					</xsd:element>
+				</xsd:sequence>
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

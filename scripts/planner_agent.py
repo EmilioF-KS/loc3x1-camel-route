@@ -18,6 +18,10 @@ import re
 from pathlib import Path
 from datetime import datetime
 
+import sys
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 from scripts.utils.paths import PROJECT_ROOT, REPORTS_DIR, META_DIR, ensure_results_dirs
 AGENT_PLAN_JSON = META_DIR / "agent-plan.json"
 AGENT_PLAN_LOG = REPORTS_DIR / "agent-plan.log"

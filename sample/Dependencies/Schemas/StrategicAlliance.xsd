@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/strategic_alliance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/branchx1"
+	xmlns:bons1="http://ei/core/strategic_alliance_sbu">
+
+
+
+
+
+
+
+	<xsd:import schemaLocation="StrategicAllianceSBU.xsd"
+		namespace="http://ei/core/strategic_alliance_sbu">
+	</xsd:import>
+	<xsd:import schemaLocation="BranchX1.xsd"
+		namespace="http://ei/core/branchx1">
+	</xsd:import>
+	<xsd:complexType name="StrategicAlliance">
+		<xsd:sequence>
+
+
+
+
+
+
+
+			<xsd:element minOccurs="0" name="StrategicAllicanceSBU"
+				type="bons1:StrategicAllianceSBU" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Branch" type="bons0:Branch"
+				maxOccurs="1">
+			</xsd:element>
+			<xsd:element name="AllianceTypeCode" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies a type of alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceTypeName" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the name associated to an alliance type code.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RenewalDate" type="xsd:date"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the date when alliance terms should be reviewed and updated by the alliance owner.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaunchDate" type="xsd:date"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the date that an alliance became active for Chubb.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyPartnerName" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the name of the organization partnering with Chubb in this alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceGeographicReachCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element identifies a geographic area applicable for an alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceGeographicReachDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element describes a geographic area applicable for an alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceStatusCode" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element  uniquely identifies the status of an alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceStatusDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the description of the status of an alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusDate" type="xsd:date"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the effective date of the current status.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceStatusReasonText"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the extended description of current status.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

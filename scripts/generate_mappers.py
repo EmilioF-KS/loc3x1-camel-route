@@ -27,6 +27,34 @@ public interface {mapper_name} {{
 }}
 """
 
+JAVA_TYPED_TEMPLATE = """package com.ei.camel.mappings;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+@Mapper
+public interface {mapper_name} {{
+    @Mappings({{{mappings}}})
+    {target_type} map({source_type} source);
+}}
+"""
+
+
+def camel(s: str) -> str:
+    if not s:
+        return s
+    return s[0].lower() + s[1:]
+
+
+def make_mapping_lines(entries: list[dict[str, Any]]) -> str:
+    lines: list[str] = []
+    for e in entries:
+        src = e.get("from", "").split("/")[-1]
+        dst = e.get("to", "").split("/")[-1]
+        lines.append(f"@Mapping(source = \"{camel(src)}\", target = \"{camel(dst)}\")")
+    return ",\n        ".join(lines)
+
 
 def main() -> int:
     if not SPEC_PATH.exists():
@@ -46,7 +74,23 @@ def main() -> int:
             continue
         mapper_name = ''.join(ch if ch.isalnum() else '_' for ch in mapper)
         java_name = mapper_name if mapper_name.endswith("Mapper") else f"{mapper_name}Mapper"
-        content = JAVA_TEMPLATE.format(mapper_name=java_name)
+        entries = dm.get("mappings") or []
+        # Special-case: typed LOC3X1 TaxingJurisdictions request mapper using local DTOs
+        if mapper == "LOC3X1GetLocationWithTaxingJurisdictionsRequestMap":
+            source_type = "GetLocationWithTaxingJurisdictionsTypes.GetLocationWithTaxingJurisdictionsRequestMsg"
+            target_type = "GetLocationWithTaxingJurisdictionsTypes.GetLocationWithTaxingJurisdictions3X1BRequestMsg"
+            mapping_lines = make_mapping_lines(entries)
+            content = JAVA_TYPED_TEMPLATE.format(
+                mapper_name=java_name,
+                source_type=source_type,
+                target_type=target_type,
+                mappings=mapping_lines
+            ).replace(
+                "package com.ei.camel.mappings;\n\nimport org.mapstruct.Mapper;",
+                "package com.ei.camel.mappings;\n\nimport org.mapstruct.Mapper;\nimport com.ei.camel.mappings.GetLocationWithTaxingJurisdictionsTypes;"
+            )
+        else:
+            content = JAVA_TEMPLATE.format(mapper_name=java_name)
         out_path = OUT_DIR / f"{java_name}.java"
         out_path.write_text(content, encoding="utf-8")
         generated_names.append(java_name)

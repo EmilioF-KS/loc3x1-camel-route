@@ -1,0 +1,47 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\LOC3X1GetLocationListReplyMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: LOC3X1GetLocationListReplyMap
+Target Namespace: http://Location2MediationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: GetLocationList3X1BResponseMsg:GetLocationList3X1BResponseMsg
+Namespace: 
+Properties: GetLocationList3X1BResponse/GetLocationListReply/Location, GetLocationList3X1BResponse/GetLocationListReply/StatusInformation
+
+TARGET INFORMATION:
+-------------------
+Business Object: GetLocationListResponseMsg:GetLocationListResponseMsg
+Namespace: 
+Properties: GetLocationListResponse/GetLocationListReply/Location, GetLocationListResponse/GetLocationListReply/StatusInformation
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: 
+  Source:  ()
+  Target:  ()
+  Description: 
+
+Mapping 2:
+  Type: move
+  Source: GetLocationList3X1BResponse/GetLocationListReply/StatusInformation ()
+  Target: GetLocationListResponse/GetLocationListReply/StatusInformation ()
+  Description: Move mapping from GetLocationList3X1BResponse/GetLocationListReply/StatusInformation to GetLocationListResponse/GetLocationListReply/StatusInformation
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 2
+Move Mappings: 1
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

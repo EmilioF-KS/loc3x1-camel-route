@@ -28,6 +28,14 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                            <wsdlRoot>/Users/albertohernandez/Documents/projects/camel-route/sample</wsdlRoot>
+                            <!-- Apply common options to all WSDLs -->
+                            <defaultOptions>
+                                <extraargs>
+                                    <extraarg>-catalog</extraarg>
+                                    <extraarg>${project.basedir}/src/main/resources/catalog.xml</extraarg>
+                                </extraargs>
+                            </defaultOptions>
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>/Users/albertohernandez/Documents/projects/camel-route/sample/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1Http.wsdl</wsdl>
@@ -35,6 +43,7 @@
                                 <wsdlOption>
                                     <wsdl>/Users/albertohernandez/Documents/projects/camel-route/sample/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1Http.wsdl</wsdl>
                                 </wsdlOption>
+                                <!-- Removed duplicate WSDLs under Dependencies to avoid import path issues -->>
                                 <wsdlOption>
                                     <wsdl>/Users/albertohernandez/Documents/projects/camel-route/sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl</wsdl>
                                 </wsdlOption>

@@ -20,8 +20,13 @@ from pathlib import Path
 import importlib.util
 import subprocess
 
+# Ensure project root is on sys.path before importing internal modules
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 from scripts.utils.paths import (
-    PROJECT_ROOT,
+    PROJECT_ROOT as _PROJECT_ROOT,
     RESULTS_DIR,
     REPORTS_DIR,
     RUNS_DIR,
@@ -29,13 +34,6 @@ from scripts.utils.paths import (
     META_DIR,
     ensure_results_dirs,
 )
-
-# Ensure project root on sys.path for module imports
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-# Imports handled via dynamic import in stage implementations
-
 
 def ensure_dirs():
     ensure_results_dirs()

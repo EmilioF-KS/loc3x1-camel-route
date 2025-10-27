@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/salesforce_contact_notification_preferences">
+
+
+
+	<xsd:complexType name="SalesforceContactNotificationPreferences">
+		<xsd:sequence>
+
+
+			<xsd:element minOccurs="0"
+				name="ContactNotificationCategoryDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>&lt;p&gt;
+    This element contains what you are contacting someone&amp;nbsp;in reference to.&amp;nbsp; &lt;span
+    style='FONT-SIZE: 10pt; FONT-FAMILY: "Segoe UI",sans-serif; COLOR: black'&gt;For example, Billing, Claim, or Policy
+    Change.&lt;/span&gt;
+&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="EmailCCRecipientAddress" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains an email addresses for additional recipients that should be included on the carbon copy of an email.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="ElectronicDeliveryOptionName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of an electronic delivery option, such as email or SMS.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

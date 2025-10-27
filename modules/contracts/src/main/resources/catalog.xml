@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <!-- Map relative schema imports to the top-level sample Schemas directory -->
+  <rewriteURI uriStartString="../Schemas/" rewritePrefix="file:/Users/albertohernandez/Documents/projects/camel-route/sample/Schemas/"/>
+  <rewriteSystem systemIdStartString="../Schemas/" rewritePrefix="file:/Users/albertohernandez/Documents/projects/camel-route/sample/Schemas/"/>
+  <!-- Private schemas -->
+  <rewriteURI uriStartString="../PrivateSchemas/" rewritePrefix="file:/Users/albertohernandez/Documents/projects/camel-route/sample/PrivateSchemas/"/>
+  <rewriteSystem systemIdStartString="../PrivateSchemas/" rewritePrefix="file:/Users/albertohernandez/Documents/projects/camel-route/sample/PrivateSchemas/"/>
+</catalog>

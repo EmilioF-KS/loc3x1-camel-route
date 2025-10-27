@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/web_focus_log_on_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons1="http://ei/core/web_application_cookie">
+	<xsd:import schemaLocation="WebApplicationCookie.xsd"
+		namespace="http://ei/core/web_application_cookie">
+	</xsd:import>
+	<xsd:complexType name="WebFocusLogOnInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="WebFocusCookie"
+				type="bons1:WebApplicationCookie" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WebFocusRunTime"
+				type="xsd:long"><xsd:annotation><xsd:documentation>This element contain the time of run in milliseconds since January 1, 1970.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="WebFocusLogonSuccessIndicator" type="xsd:boolean"><xsd:annotation><xsd:documentation>This element indicates if the Web Focus logon is successful.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="WebFocusMRCookieText"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains Web Focus Managed Reporting cookie.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WebFocusLogonCookieText"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the Web Focus logon cookie.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WebFocusSessionCookieText"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the Web Focus session cookie.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserId"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is used to sign on to an application.  
+This is also known as RACFId.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PasswordCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is a string of characters that is used for authentication to prove identity or gain access to a resource.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WebFocusMRUserId"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the Web Focus Managed Reporting UserId.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WebFocusMRPasswordCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the Web Focus Managed Reporting password.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+
+			<xsd:element minOccurs="0"
+				name="WebFocusReportingServerNodeName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the Web Focus Reporting Server node.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ServiceCallAuthenticationIndicator" type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>This element indicates if authentication is required for each service call.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="WebFocusServerSessionByte"
+				type="xsd:base64Binary">
+				<xsd:annotation><xsd:documentation>This element contains the Web Focus Server Session.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

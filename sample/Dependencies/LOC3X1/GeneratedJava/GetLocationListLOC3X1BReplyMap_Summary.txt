@@ -1,0 +1,47 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\GetLocationListLOC3X1BReplyMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: GetLocationListLOC3X1BReplyMap
+Target Namespace: http://LocationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: location_list_reply_loc3x1m:LocationListReply
+Namespace: 
+Properties: Location, StatusInformation
+
+TARGET INFORMATION:
+-------------------
+Business Object: LocationListReply:LocationListReply
+Namespace: 
+Properties: Location, StatusInformation
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: 
+  Source:  ()
+  Target:  ()
+  Description: 
+
+Mapping 2:
+  Type: move
+  Source: StatusInformation ()
+  Target: StatusInformation ()
+  Description: Move mapping from StatusInformation to StatusInformation
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 2
+Move Mappings: 1
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

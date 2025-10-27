@@ -1,0 +1,77 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap
+Target Namespace: http://Location2MediationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: GetLocationWithTaxingJurisdictions3X1MRequestMsg:GetLocationWithTaxingJurisdictions3X1MRequestMsg
+Namespace: 
+Properties: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode, GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate
+
+TARGET INFORMATION:
+-------------------
+Business Object: getLocationWithTaxInfoRequest:getLocationWithTaxInfoRequest
+Namespace: 
+Properties: getLocationWithTaxInfo/address/addressLine1, getLocationWithTaxInfo/address/cityName, getLocationWithTaxInfo/address/stateOrProvinceCode, getLocationWithTaxInfo/address/countryCode, getLocationWithTaxInfo/address/postalCode, getLocationWithTaxInfo/address/locationPlaceCode, getLocationWithTaxInfo/asOfDate
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1 ()
+  Target: getLocationWithTaxInfo/address/addressLine1 ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1 to getLocationWithTaxInfo/address/addressLine1
+
+Mapping 2:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName ()
+  Target: getLocationWithTaxInfo/address/cityName ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName to getLocationWithTaxInfo/address/cityName
+
+Mapping 3:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode ()
+  Target: getLocationWithTaxInfo/address/stateOrProvinceCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode to getLocationWithTaxInfo/address/stateOrProvinceCode
+
+Mapping 4:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode ()
+  Target: getLocationWithTaxInfo/address/countryCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode to getLocationWithTaxInfo/address/countryCode
+
+Mapping 5:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode ()
+  Target: getLocationWithTaxInfo/address/postalCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode to getLocationWithTaxInfo/address/postalCode
+
+Mapping 6:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode ()
+  Target: getLocationWithTaxInfo/address/locationPlaceCode ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode to getLocationWithTaxInfo/address/locationPlaceCode
+
+Mapping 7:
+  Type: move
+  Source: GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate ()
+  Target: getLocationWithTaxInfo/asOfDate ()
+  Description: Move mapping from GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate to getLocationWithTaxInfo/asOfDate
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 7
+Move Mappings: 7
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

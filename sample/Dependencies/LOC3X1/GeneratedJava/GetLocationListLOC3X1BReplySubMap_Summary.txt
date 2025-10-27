@@ -1,0 +1,125 @@
+﻿MAP File Parsing Summary Report
+===============================
+
+Source MAP File: C:\CHUBB\LocationServices\LOC3X1\GetLocationListLOC3X1BReplySubMap.map
+Parsing Date: 2025-08-25 16:52:07
+
+MAP INFORMATION:
+----------------
+Map Name: GetLocationListLOC3X1BReplySubMap
+Target Namespace: http://LocationModule
+
+SOURCE INFORMATION:
+-------------------
+Business Object: Location:Location
+Namespace: 
+Properties: LocationInformation/CityCode, LocationInformation/CountyCode, LocationInformation/LocationClassificationCode, LocationInformation/FireDistrictCode, StandardizedAddress/CityName, StandardizedAddress/CountyName, StandardizedAddress/StateOrProvinceCode, StandardizedAddress/StateOrProvinceName, StandardizedAddress/PostalStateAbbreviation, StandardizedAddress/PostalCode, StandardizedAddress/CountryCode, StandardizedAddress/CountryName, StandardizedAddress/LocationPlaceCode, StandardizedAddress/POBoxIndicator, HazardousArea
+
+TARGET INFORMATION:
+-------------------
+Business Object: Location:Location
+Namespace: 
+Properties: LocationInformation/CityCode, LocationInformation/CountyCode, LocationInformation/LocationClassificationCode, LocationInformation/FireDistrictCode, StandardizedAddress/CityName, StandardizedAddress/CountyName, StandardizedAddress/StateOrProvinceCode, StandardizedAddress/StateOrProvinceName, StandardizedAddress/PostalStateAbbreviation, StandardizedAddress/PostalCode, StandardizedAddress/CountryCode, StandardizedAddress/CountryName, StandardizedAddress/LocationPlaceCode, StandardizedAddress/POBoxIndicator, HazardousArea
+
+PROPERTY MAPPINGS:
+------------------
+Mapping 1:
+  Type: move
+  Source: LocationInformation/CityCode ()
+  Target: LocationInformation/CityCode ()
+  Description: Move mapping from LocationInformation/CityCode to LocationInformation/CityCode
+
+Mapping 2:
+  Type: move
+  Source: LocationInformation/CountyCode ()
+  Target: LocationInformation/CountyCode ()
+  Description: Move mapping from LocationInformation/CountyCode to LocationInformation/CountyCode
+
+Mapping 3:
+  Type: move
+  Source: LocationInformation/LocationClassificationCode ()
+  Target: LocationInformation/LocationClassificationCode ()
+  Description: Move mapping from LocationInformation/LocationClassificationCode to LocationInformation/LocationClassificationCode
+
+Mapping 4:
+  Type: move
+  Source: LocationInformation/FireDistrictCode ()
+  Target: LocationInformation/FireDistrictCode ()
+  Description: Move mapping from LocationInformation/FireDistrictCode to LocationInformation/FireDistrictCode
+
+Mapping 5:
+  Type: move
+  Source: StandardizedAddress/CityName ()
+  Target: StandardizedAddress/CityName ()
+  Description: Move mapping from StandardizedAddress/CityName to StandardizedAddress/CityName
+
+Mapping 6:
+  Type: move
+  Source: StandardizedAddress/CountyName ()
+  Target: StandardizedAddress/CountyName ()
+  Description: Move mapping from StandardizedAddress/CountyName to StandardizedAddress/CountyName
+
+Mapping 7:
+  Type: move
+  Source: StandardizedAddress/StateOrProvinceCode ()
+  Target: StandardizedAddress/StateOrProvinceCode ()
+  Description: Move mapping from StandardizedAddress/StateOrProvinceCode to StandardizedAddress/StateOrProvinceCode
+
+Mapping 8:
+  Type: move
+  Source: StandardizedAddress/StateOrProvinceName ()
+  Target: StandardizedAddress/StateOrProvinceName ()
+  Description: Move mapping from StandardizedAddress/StateOrProvinceName to StandardizedAddress/StateOrProvinceName
+
+Mapping 9:
+  Type: move
+  Source: StandardizedAddress/PostalStateAbbreviation ()
+  Target: StandardizedAddress/PostalStateAbbreviation ()
+  Description: Move mapping from StandardizedAddress/PostalStateAbbreviation to StandardizedAddress/PostalStateAbbreviation
+
+Mapping 10:
+  Type: move
+  Source: StandardizedAddress/PostalCode ()
+  Target: StandardizedAddress/PostalCode ()
+  Description: Move mapping from StandardizedAddress/PostalCode to StandardizedAddress/PostalCode
+
+Mapping 11:
+  Type: move
+  Source: StandardizedAddress/CountryCode ()
+  Target: StandardizedAddress/CountryCode ()
+  Description: Move mapping from StandardizedAddress/CountryCode to StandardizedAddress/CountryCode
+
+Mapping 12:
+  Type: move
+  Source: StandardizedAddress/CountryName ()
+  Target: StandardizedAddress/CountryName ()
+  Description: Move mapping from StandardizedAddress/CountryName to StandardizedAddress/CountryName
+
+Mapping 13:
+  Type: move
+  Source: StandardizedAddress/LocationPlaceCode ()
+  Target: StandardizedAddress/LocationPlaceCode ()
+  Description: Move mapping from StandardizedAddress/LocationPlaceCode to StandardizedAddress/LocationPlaceCode
+
+Mapping 14:
+  Type: move
+  Source: StandardizedAddress/POBoxIndicator ()
+  Target: StandardizedAddress/POBoxIndicator ()
+  Description: Move mapping from StandardizedAddress/POBoxIndicator to StandardizedAddress/POBoxIndicator
+
+Mapping 15:
+  Type: move
+  Source: HazardousArea ()
+  Target: HazardousArea ()
+  Description: Move mapping from HazardousArea to HazardousArea
+
+JAVA CODE BLOCKS:
+-----------------
+STATISTICS:
+-----------
+Total Property Mappings: 15
+Move Mappings: 15
+Custom Mappings: 0
+Transform Mappings: 0
+Total Java Code Blocks: 0
+Total Java Code Characters: 0

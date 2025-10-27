@@ -51,3 +51,5 @@ tests/results/
 ci/artifacts/
 frontend/dist/
 results/agent-runs/
+results/reports/
+results/preflight/

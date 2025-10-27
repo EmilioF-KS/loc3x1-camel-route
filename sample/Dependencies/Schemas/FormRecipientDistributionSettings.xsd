@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/form_recipient_distribution_settings" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="FormRecipientDistributionSettings">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="RecipientPrintCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element indicates if the recipient copy should be printed.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="NumberOfRecipientCopies" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the number of copies to be printed for a recipient.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RecipientPageCount" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the number of form pages that are printed for a recipient for personal and commercial policies.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

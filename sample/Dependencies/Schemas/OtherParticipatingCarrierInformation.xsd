@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/other_participating_carrier_information">
+	<xsd:complexType name="OtherParticipatingCarrierInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="OthParCarrierName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is the name of the other carrier participating in the policy.
+This is also known as 'Other Participating Carrier Name'
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OthParCarrierNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is the value that identifies the other carrier participating in the policy.
+This is also known as 'Other Participating Carrier Number'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OthParCarrierGroupName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is the name of the other carriers participating in the policy that serves as the group.
+This is also known as 'Other Participating Carrier Group Name'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OthParCarrierGroupNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is the value that identifies a group association among the other carriers participating in the policy.
+This is also known as 'Other Participating Carrier Group Number'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OthParCarrierRatingCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element identifies the rating the other carrier participating in the policy assigns to a particular insurance company.
+This is also known as 'Other Participating Carrier Rating Code'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="OthParCarrierQuotaSharePercent" type="xsd:decimal">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element represents the other participants percent of risk exposure when multiple carriers are writing the policy.
+This is also known as 'Other Participating Carrier Quota Share Percent'.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

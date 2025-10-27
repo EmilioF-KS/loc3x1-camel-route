@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http:/ei/core/claim_note_set" xmlns:bons0="http://ei/core/claim_note">
+    <xsd:import namespace="http://ei/core/claim_note" schemaLocation="ClaimNote.xsd"/>
+	<xsd:complexType name="ClaimNoteSet">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="ClaimNote" type="bons0:ClaimNote">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ComponentName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of a component such as application name or service name. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPRoleName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the role of the business party.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

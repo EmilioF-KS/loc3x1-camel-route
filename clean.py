@@ -42,7 +42,7 @@ def find_py_caches() -> list[Path]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description='Clean runtime-generated artifacts for a fresh restart.')
-    parser.add_argument('--full', action='store_true', help='Perform total cleaning, including heavy caches like node_modules and virtualenvs.')
+    parser.add_argument('--full', action='store_true', help='Perform total cleaning, including heavy caches like node_modules, virtualenvs, and results.')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be removed without deleting.')
     args = parser.parse_args()
 
@@ -54,11 +54,17 @@ def main() -> int:
         ROOT / 'ci' / 'artifacts',
         ROOT / 'frontend' / 'dist',
         ROOT / 'results' / 'agent-runs',
+        ROOT / 'results' / 'reports',
+        ROOT / 'results' / 'preflight',
         ROOT / 'doc' / 'agent-runs',
     ]
 
     if args.full:
         paths.extend([
+            # wipe tooling outputs wholesale
+            ROOT / 'results',
+            ROOT / 'doc' / '.preflight',
+            # heavy caches
             ROOT / 'frontend' / 'node_modules',
             ROOT / '.venv',
             ROOT / 'venv',

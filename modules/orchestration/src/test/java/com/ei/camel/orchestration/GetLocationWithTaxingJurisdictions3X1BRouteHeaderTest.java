@@ -19,10 +19,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.ei.camel.orchestration.config.CxfServiceConfig;
+import com.ei.camel.orchestration.config.TestCxfInboundStubConfig;
+import com.ei.camel.orchestration.testconfig.TestAutoConfig;
 
 @CamelSpringBootTest
 @UseAdviceWith
-@SpringBootTest(classes = {OrchestrationApplication.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class})
+@SpringBootTest(classes = {TestAutoConfig.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class, TestCxfInboundStubConfig.class})
 @TestPropertySource(properties = {
     "inbound.loc3x1b.address=http://localhost:8080/services/loc3x1b",
     "clients.loc3x1b.address=http://localhost:8081/services/loc3x1b",
@@ -44,7 +46,9 @@ class GetLocationWithTaxingJurisdictions3X1BRouteHeaderTest {
         try {
             AdviceWith.adviceWith(camelContext, "getlocationwithtaxingjurisdictions3x1b-route", advice -> {
                 advice.replaceFromWith("direct:start");
-                advice.weaveByToUri("cxf:bean:locationretrievalloc3x1bClient*").replace().to("direct:capture-outbound");
+                advice.weaveByToUri("cxf:bean:stateorprovinceretrievalcrp11x1partnerClient*").replace().to("direct:capture-outbound");
+                advice.weaveByToUri("cxf:bean:countryretrievalcrp10x1partnerClient*").replace().to("direct:capture-outbound");
+                advice.weaveByToUri("cxf:bean:locationretrievalloc3x1mpartnerClient*").replace().to("direct:capture-outbound");
             });
         } catch (IllegalArgumentException ignored) {
         }
@@ -71,6 +75,7 @@ class GetLocationWithTaxingJurisdictions3X1BRouteHeaderTest {
     void routeSetsOperationNameHeaderBeforeOutbound() {
         String request = "<req/>";
         template.sendBody("direct:start", request);
-        assertEquals("GetLocationWithTaxingJurisdictions", capturedOperationName.get(), "CXF operation header should be set");
+        // Match operation name set by route before LOC3X1M partner call
+        assertEquals("GetLocationWithTaxingJurisdictions3X1M", capturedOperationName.get(), "CXF operation header should be set");
     }
 }

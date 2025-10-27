@@ -15,10 +15,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.ei.camel.orchestration.config.CxfServiceConfig;
+import com.ei.camel.orchestration.config.TestCxfInboundStubConfig;
+import com.ei.camel.orchestration.testconfig.TestAutoConfig;
 
 @CamelSpringBootTest
 @UseAdviceWith
-@SpringBootTest(classes = {OrchestrationApplication.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class})
+@SpringBootTest(classes = {TestAutoConfig.class, GetLocationWithTaxingJurisdictions3X1BRoute.class, CxfServiceConfig.class, TestCxfInboundStubConfig.class})
 @TestPropertySource(properties = {
     "inbound.loc3x1b.address=http://localhost:8080/services/loc3x1b",
     "clients.loc3x1b.address=http://localhost:8081/services/loc3x1b",
@@ -39,7 +41,9 @@ class GetLocationWithTaxingJurisdictions3X1BRouteTest {
         try {
             org.apache.camel.builder.AdviceWith.adviceWith(camelContext, "getlocationwithtaxingjurisdictions3x1b-route", advice -> {
                 advice.replaceFromWith("direct:start");
-                advice.weaveByToUri("cxf:bean:locationretrievalloc3x1bClient*").replace().to("direct:stub-outbound");
+                advice.weaveByToUri("cxf:bean:stateorprovinceretrievalcrp11x1partnerClient*").replace().to("direct:stub-outbound");
+                advice.weaveByToUri("cxf:bean:countryretrievalcrp10x1partnerClient*").replace().to("direct:stub-outbound");
+                advice.weaveByToUri("cxf:bean:locationretrievalloc3x1mpartnerClient*").replace().to("direct:stub-outbound");
             });
         } catch (IllegalArgumentException ignored) {
             // Route may have been advised already in a previous test run

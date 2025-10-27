@@ -1,7 +1,7 @@
 # Apache Camel Routes Documentation
 
-**Generated:** 2025-10-23T16:54:16.255033
-**Process:** LocationRetrievalLOC3X1BProcess
+**Generated:** 2025-10-26T17:38:52.838623
+**Process:** LocationRetrievalLOC3X1Process
 **Source:** orchestration/spec.yaml
 
 ## Overview
@@ -17,6 +17,28 @@ This module contains Apache Camel routes that implement the mediation logic deri
 
 ## Generated Routes
 
+### GetLocationList3X1BRoute
+
+- **Operation:** `GetLocationList3X1B`
+- **Partner Link:** `LocationRetrievalLOC3X1B`
+- **Route ID:** `getlocationlist3x1b-route`
+
+#### Mediation Flow
+
+1. **Inbound:** CXF endpoint receives SOAP request
+2. **Validation:** Request structure validation
+3. **Mediation Steps:**
+   - Step 1: Invoke StateOrProvinceRetrievalCRP11X1Partner.GetStateOrProvince
+   - Step 2: Invoke CountryRetrievalCRP10X1Partner.GetCountry
+   - Step 3: Invoke LocationRetrievalLOC3X1MPartner.GetLocationList3X1M
+4. **Response Mapping:** Final response transformation
+5. **Error Handling:** SimpleFault generation on exceptions
+
+#### Endpoints
+
+- **Inbound:** `cxf:bean:locationretrievalloc3x1bEndpoint`
+- **Outbound:** CXF client beans with `operationName` set via `CxfConstants.OPERATION_NAME`
+
 ### GetLocationWithTaxingJurisdictions3X1BRoute
 
 - **Operation:** `GetLocationWithTaxingJurisdictions3X1B`
@@ -28,7 +50,9 @@ This module contains Apache Camel routes that implement the mediation logic deri
 1. **Inbound:** CXF endpoint receives SOAP request
 2. **Validation:** Request structure validation
 3. **Mediation Steps:**
-   - Step 1: Invoke LocationRetrievalLOC3X1B.GetLocationWithTaxingJurisdictions
+   - Step 1: Invoke StateOrProvinceRetrievalCRP11X1Partner.GetStateOrProvince
+   - Step 2: Invoke CountryRetrievalCRP10X1Partner.GetCountry
+   - Step 3: Invoke LocationRetrievalLOC3X1MPartner.GetLocationWithTaxingJurisdictions3X1M
 4. **Response Mapping:** Final response transformation
 5. **Error Handling:** SimpleFault generation on exceptions
 
@@ -56,10 +80,10 @@ All routes implement centralised error handling:
 
 ## Testing
 
-Route testing follows Apache Camel testing patterns aligned with governance:
+Route testing follows Apache Camel testing patterns:
 
-- **Unit Tests:** Route logic testing using AdviceWith and real Camel routes; no mocks
-- **Integration Tests:** End-to-end testing with real services or deterministic local routes
+- **Unit Tests:** Route logic testing with mock endpoints
+- **Integration Tests:** End-to-end testing with real services
 - **Contract Tests:** Schema validation and compliance
 
 ## Deployment
