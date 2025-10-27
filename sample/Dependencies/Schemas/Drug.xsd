@@ -1,18 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://ei/core/drug">
-	<xsd:complexType name="Drug">
-		<xsd:sequence>
-			<xsd:element minOccurs="0" name="DrugId"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>This element contains an identification numbe used to identify a drug.</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="DrugNameSequenceNumber"
-				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the sequence number assigned to a particular drug name.</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="DrugName"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>This element contains the name of a drug.</xsd:documentation></xsd:annotation>
-			</xsd:element>		</xsd:sequence>
-	</xsd:complexType>
-</xsd:schema>

@@ -6,6 +6,8 @@
 \usepackage{hyperref}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 % Remove duplicated tikz package
 % \usepackage{tikz}
 \usetikzlibrary{positioning,calc}
@@ -223,7 +225,7 @@ Evaluator/Referee & Verify builds, runtime, tests; produce final audit & Build o
 
 
 \subsection{Expected Results}
-A runnable Spring Boot application exposing LOC3X1B operations; generated CXF clients for partners; mappings that mirror BPEL assignments; centralised fault handling producing SimpleFault; contract validations passing; integration tests either passing against live endpoints or clearly reported as blocked.
+A runnable inbound BasicService (Spring Boot + CXF) with SOAP Ping; Camel routes for LOC3X1B consuming via CXF PAYLOAD; outbound partner endpoints configured as CXF PAYLOAD clients; typed mappings implemented where available with stubs elsewhere; centralised error handling using a placeholder SimpleFault (JSON body) with plans to map to schema; contract code generation available; integration tests capture evidence and mark external calls blocked without live endpoints.
 
 \textit{Note: The orchestration specification includes a \texttt{data\_mappings} section derived deterministically by parsing original IBM \texttt{.map} XML artefacts (e.g., \texttt{map:businessObjectMap} and \texttt{map:propertyMap}). This reflects IBM BPEL script-based transformations rather than \texttt{bpws:assign} elements.}
 
@@ -235,9 +237,9 @@ project-root/
 |-- doc/                # LaTeX, tickets, plans, reports
 |-- scripts/            # Automation (preflight, build, run, tests, test_master)
 |-- contracts/          # Inventories, canonical maps, generated artefacts
-|-- modules/            # Maven multi-module: contracts, services/loc3x1b, clients/{loc3x1m,crp11x1,crp10x1}, mappings, orchestration, tests
+|-- modules/            # Maven multi-module: contracts, inbound, clients/{loc3x1m,crp11x1,crp10x1}, mappings, orchestration, routes (placeholder), services (placeholder)
 |-- docker/             # Dockerfiles and docker-compose.yml
-|-- api/                # FastAPI service (evidence, orchestration endpoints)
+|-- server/             # FastAPI evidence API (pipeline runs, logs, summaries)
 `-- tests/              # Test artefacts and JUnit XML outputs (mirrors sections)
 \end{verbatim}
 
@@ -247,7 +249,7 @@ project-root/
   \item \texttt{scripts/bootstrap\_java.sh} – Installs JDK and Maven locally so the build toolchain is ready.
   \item \texttt{scripts/generate\_contracts.sh} – Runs JAXB/CXF codegen to create Java models and service stubs from WSDL/XSD.
   \item \texttt{scripts/build\_all.sh} – Executes Maven compile, test and package for the entire project.
-  \item \texttt{scripts/run\_services.sh} – Starts the Spring-Boot inbound application exposing the LOC3X1B service.
+  \item \texttt{scripts/run\_services.sh} – Starts inbound BasicService (CXF `/services/BasicService`), runs SOAP Ping, and captures evidence.
   \item \texttt{scripts/test\_integrations.sh} – Runs integration tests against live partner endpoints (no mocks).
   \item \texttt{scripts/test\_master.sh} – Master test runner to execute unit tests by ordinal (LOC-XXX), by section, or all.
 \end{itemize}
@@ -497,6 +499,230 @@ The agentic approach delivers several key operational benefits:
 
 This agentic strategy represents a fundamental shift from reactive maintenance to proactive adaptation, enabling integration architectures that evolve gracefully with their operational environments whilst maintaining the reliability and auditability required for enterprise systems.
 
+\section{End-to-End Pseudocode Workflow}\label{sec:pseudocode-workflow}
+
+\begin{algorithm}[H]
+\caption{End-to-End Project Workflow (Steps 1–8)}\label{alg:pseudocode-workflow-1}
+\begin{algorithmic}[1]
+\State \textbf{Step 1:} User provides source path; initialise run state
+\Statex Inputs: ZIP upload or filesystem path
+\Statex Outputs: Run ID, prepared source directory
+\Statex Agent/Code: FastAPI \texttt{server/main.py} (\texttt{/api/run})
+
+\State \textbf{Step 2:} Preflight tooling and smoke build
+\Statex Inputs: System environment, \texttt{scripts/preflight.sh}
+\Statex Outputs: Tooling report, preflight logs
+\Statex Agent/Code: Preflight Agent (\texttt{tests/run\_tests.py --preflight})
+
+\State \textbf{Step 3:} Discover contracts (WSDL/XSD)
+\Statex Inputs: \texttt{contracts/inventory.json}, \texttt{contracts/inventory.md}
+\Statex Outputs: Contract inventory, canonical map
+\Statex Agent/Code: \texttt{scripts/contracts\_validator.py}, \texttt{contracts/canonical-map.yaml}
+
+\State \textbf{Step 4:} Scaffold Maven modules
+\Statex Inputs: Repository structure
+\Statex Outputs: Updated parent \texttt{modules/pom.xml}
+\Statex Agent/Code: \texttt{scripts/scaffold\_maven.py}
+
+\State \textbf{Step 5:} Generate contract code (CXF/JAXB)
+\Statex Inputs: \texttt{sample/} WSDL/XSD
+\Statex Outputs: Generated sources, codegen log
+\Statex Agent/Code: \texttt{scripts/generate\_contracts.sh}, Maven \texttt{generate-sources}
+
+\State \textbf{Step 6:} Analyse BPEL for orchestration
+\Statex Inputs: \texttt{sample/LocationRetrievalLOC3X1/...bpel}
+\Statex Outputs: \texttt{orchestration/spec.yaml}
+\Statex Agent/Code: \texttt{scripts/analyze\_bpel.py}, BPEL Agent
+
+\State \textbf{Step 7:} Generate Camel route skeletons
+\Statex Inputs: Orchestration spec
+\Statex Outputs: \texttt{modules/orchestration/src/...Route.java}
+\Statex Agent/Code: \texttt{scripts/generate\_routes.py}
+
+\State \textbf{Step 8:} Configure CXF endpoints (PAYLOAD)
+\Statex Inputs: \texttt{application.properties}
+\Statex Outputs: CXF beans (\texttt{locationretrievalloc3x1bEndpoint}, partner clients)
+\Statex Agent/Code: \texttt{CxfServiceConfig.java}, \texttt{modules/inbound/CxfConfig.java}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{End-to-End Project Workflow (Steps 9–16)}\label{alg:pseudocode-workflow-2}
+\begin{algorithmic}[1]
+\State \textbf{Step 9:} Implement mappings (MapStruct)
+\Statex Inputs: DTOs, schema-derived types
+\Statex Outputs: Mapper interfaces and unit tests
+\Statex Agent/Code: \texttt{modules/mappings/src/...MapMapper.java}, \texttt{...MapperTest.java}
+
+\State \textbf{Step 10:} Build all modules
+\Statex Inputs: Maven project
+\Statex Outputs: Build artefacts, test reports
+\Statex Agent/Code: \texttt{scripts/build\_all.sh}, Maven
+
+\State \textbf{Step 11:} Run inbound service and SOAP Ping
+\Statex Inputs: Inbound module JAR
+\Statex Outputs: Runtime logs, ping request/response files
+\Statex Agent/Code: \texttt{scripts/run\_services.sh}
+
+\State \textbf{Step 12:} Run client demo against inbound WSDL
+\Statex Inputs: WSDL URL, timeouts
+\Statex Outputs: Client run log, ping meta
+\Statex Agent/Code: \texttt{scripts/run\_clients.sh}
+
+\State \textbf{Step 13:} Integration tests and evidence aggregation
+\Statex Inputs: \texttt{tests/run\_tests.py}
+\Statex Outputs: JUnit XML, \texttt{tests/results/html/summary.txt}
+\Statex Agent/Code: Master Test Runner (\texttt{scripts/test\_master.sh})
+
+\State \textbf{Step 14:} Evidence API exposure
+\Statex Inputs: Test outputs in \texttt{tests/results/*}
+\Statex Outputs: \texttt{/api/summary}, \texttt{/api/logs/*}, \texttt{/api/run/*}
+\Statex Agent/Code: FastAPI \texttt{server/main.py}
+
+\State \textbf{Step 15:} Package/runtime (optional)
+\Statex Inputs: Dockerfiles, compose
+\Statex Outputs: Containers, local endpoints
+\Statex Agent/Code: \texttt{docker/*}, \texttt{docker-compose.yml}
+
+\State \textbf{Step 16:} Finalise and persist artefacts
+\Statex Inputs: All previous outputs
+\Statex Outputs: Results under \texttt{tests/results/}; per-run copy under \texttt{uploads/\textless run\_id\textgreater/results/}
+\Statex Agent/Code: Pipeline orchestrated by API and scripts
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Beginner's Guide: Purpose, Inputs, BPEL, Translation, and Validation}\label{sec:beginner-guide}
+\paragraph*{Purpose in plain terms}
+This project takes an \textbf{IBM-style BPEL} orchestration and turns it into a \textbf{modern Java implementation} using Spring Boot, Maven, Apache Camel, Apache CXF, and MapStruct. In human terms: we read the original service contracts (WSDL/XSD) and the orchestration logic (BPEL), then generate Java code and routes that behave like the original process, with tests and evidence so you can trust what runs locally.
+
+\paragraph*{What is the input?}
+The input is the \texttt{sample/} folder containing:
+\begin{itemize}
+  \item BPEL: \texttt{sample/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Process.bpel}
+  \item Public WSDL: \texttt{sample/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl}
+  \item Internal/Partner WSDLs: \texttt{sample/LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl}, \texttt{sample/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl}, \texttt{sample/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl}
+  \item Shared XSDs: \texttt{sample/Schemas/*} and faults in \texttt{sample/PrivateSchemas/SimpleFault.xsd}
+\end{itemize}
+\textbf{How we dissect it}: we list all WSDL/XSDs (contract inventory), parse the BPEL to extract the inbound operations, partner calls and fault paths, and record types and namespaces referenced by messages.
+
+\paragraph*{Essential BPEL concepts (for novices) with a micro-example}
+BPEL is an \textbf{orchestration language} that describes how a service should \textit{receive} a message, \textit{transform} parts of it, \textit{invoke} other services, and \textit{return} a reply or a fault.  
+Below is a \textbf{5-line} excerpt from the real LOC3X1 BPEL file (trimmed for clarity) followed by the matching Java/Camel translation so you can see the same intent in both worlds.
+
+\begin{verbatim}
+<!-- 1. BPEL fragment -->
+<receive name="receiveLOC3X1B"
+         partnerLink="LOC3X1B"
+         operation="getLocation"
+         variable="locRequest" />
+<invoke   name="callCRP11X1"
+         partnerLink="CRP11X1"
+         operation="getState"
+         inputVariable="stateReq"
+         outputVariable="stateResp" />
+
+// 2. Camel route fragment
+from("cxf:/LOC3X1B?serviceClass=LOC3X1B_Service")
+  .to("direct:getLocation")
+from("direct:getLocation")
+  .bean(StateRequestMapper.class)   // maps locRequest → stateReq
+  .to("cxf://http://crp11x1host/crp11x1?serviceClass=CRP11X1_Service")
+  .bean(StateResponseMapper.class)  // maps stateResp → next form
+\end{verbatim}
+
+\paragraph*{What the nouns mean}
+\begin{itemize}
+  \item \textbf{Contract (WSDL/XSD)} – an XML file that promises “if you POST \emph{this} XML shape to \emph{this} URL you will get back \emph{that} XML shape”.  
+  \item \textbf{Java model} – the POJOs that CXF generates from the XSD; they hold the data so Java code can manipulate it without hand-parsing XML.  
+  \item \textbf{CXF} – the library that turns the WSDL contract into a living HTTP endpoint (inbound) or a typed client (outbound).  
+  \item \textbf{Configure endpoints} – writing \texttt{application.properties} lines such as\\
+  \texttt{loc.camel.cxf.client.crp11x1.address=http://crp11x1host/crp11x1} so the route above knows where to send the request.  
+  \item \textbf{Implement mappings} – writing a 3-line MapStruct interface like\\
+  \texttt{@Mapper public interface StateRequestMapper \{\\
+  \hphantom{....}CRP11X1StateRequest toStateRequest(LOC3X1BLocationRequest src); \}}\\
+  which the build turns into Java code that copies \texttt{src.getLocationId()} into \texttt{dest.setStateCode()}.  
+\end{itemize}
+
+\paragraph*{In one sentence}  
+The BPEL “receive-then-invoke” becomes a Camel “from-then-to” route; the WSDL/XSD contract becomes CXF endpoints plus generated Java models; the BPEL assignment becomes a MapStruct mapper; and you configure the actual partner URL in a properties file instead of hard-coding it in XML.
+\textit{How files connect}: the BPEL references partner links bound to WSDL ports; each WSDL references XSD types; the public interface (LOC3X1B) maps to internal (LOC3X1M) via field-level assignments. Dependencies are \textbf{contract-first}: types and operations in WSDL/XSD guide all message shapes.
+
+\paragraph*{Translation at a glance (why and how)}
+We translate BPEL intent to \textbf{Camel routes + CXF endpoints} and \textbf{MapStruct mappings}. The sequence:
+\begin{enumerate}
+  \item \textbf{Discover contracts}: read WSDL/XSD to know operations and message types.\
+  \item \textbf{Generate Java models}: use CXF/JAXB to create Java classes/stubs from WSDL/XSD.\
+  \item \textbf{Parse BPEL}: derive an orchestration spec (who we call, when, and how faults bubble).\
+  \item \textbf{Generate routes}: create Camel routes that mirror receive \textrightarrow{} map \textrightarrow{} invoke partners \textrightarrow{} aggregate reply.\
+  \item \textbf{Configure endpoints}: CXF inbound consumer (PAYLOAD) and CXF partner clients (PAYLOAD), with properties for addresses/timeouts/TLS.\
+  \item \textbf{Implement mappings}: MapStruct interfaces to convert LOC3X1B request types to LOC3X1M and partner formats; stubs where incomplete.\
+  \item \textbf{Build and run}: Maven compiles; Spring Boot exposes inbound BasicService; scripts drive SOAP Ping and capture evidence.\
+  \item \textbf{Validate}: unit/integration tests check headers (e.g., \texttt{CxfConstants.OPERATION\_NAME}), route flow, and mapping presence; evidence logged.\
+\end{enumerate}
+This works because \textbf{Camel} implements enterprise integration patterns (routing, transformation, error handling), \textbf{CXF} binds Java code to SOAP contracts, and \textbf{MapStruct} generates safe, fast field mappings from types — together reproducing the BPEL mediation in maintainable Java.
+
+\paragraph*{Technologies in simple words}
+\begin{itemize}
+  \item \textbf{Java}: the programming language used for services, clients, routes, and mappers.\
+  \item \textbf{Maven}: the build tool; compiles code, runs tests, manages dependencies, and packages JARs.\
+  \item \textbf{Spring Boot}: a framework for running services; it starts the inbound CXF service (BasicService).\
+  \item \textbf{Apache CXF}: connects Java to SOAP; defines endpoints and clients, marshals/unmarshals XML.\
+  \item \textbf{Apache Camel}: the routing engine; defines the orchestration as code (receive, call partners, handle errors).\
+  \item \textbf{MapStruct}: auto-generates mapping code between Java types (from WSDL-derived classes).\
+  \item \textbf{Python/FastAPI}: small API used to trigger runs and collect evidence for builds/tests/logs.\
+\end{itemize}
+
+\paragraph*{Why this translation makes sense}
+BPEL describes \textit{intent} (how messages flow). Camel+Cxf+MapStruct describe \textit{implementation} with the same contracts. Using PAYLOAD mode in CXF keeps XML processing efficient and flexible while we incrementally add typed mappers. The outcome is \textbf{transparent, testable}, and \textbf{contract-aligned}.
+
+\paragraph*{Limitations, expectations, realities}
+\begin{itemize}
+  \item \textbf{Mappings are partial}: some MapStruct mappers are stubs; PAYLOAD routes still work but types may be \texttt{Object} until mappings grow.\
+  \item \textbf{Partner endpoints}: addresses/timeouts can be placeholders; live invocation may be blocked in tests without real endpoints.\
+  \item \textbf{Faults}: SimpleFault mapping is planned; current placeholder serialises JSON and should be replaced by schema-conformant mapping.\
+  \item \textbf{TLS}: optional; configure keystores and truststores in \texttt{application.properties} for secure partners.\
+\end{itemize}
+\textbf{Expectation}: inbound service runs with SOAP Ping; routes set correct operation headers; tests and evidence report status; partner calls can be stubbed.
+
+\paragraph*{What is needed for success}
+\begin{itemize}
+  \item A working JDK + Maven; scripts runnable in the virtual environment (\texttt{venv/}).\
+  \item Valid WSDL/XSDs under \texttt{sample/}; properties set in \texttt{modules/*/src/main/resources/application.properties}.\
+  \item Free local ports and correct CXF servlet mappings; optional TLS configured when required.\
+  \item Incremental completion of MapStruct mappers for business-critical fields.\
+\end{itemize}
+
+\paragraph*{What is the output and where}
+\begin{itemize}
+  \item Java sources and compiled JARs for modules (contracts, inbound, orchestration, clients, mappings).\
+  \item Generated contract code under \texttt{modules/contracts/target/generated-sources/*}.\
+  \item Evidence: logs and summaries under \texttt{tests/results/} and per-run copies under \texttt{uploads/\textless{}run\_id\textgreater{}/results/}.\
+\end{itemize}
+Outputs are organised by module and by test run so you can trace failures and artefacts.
+
+\paragraph*{How it is validated}
+\begin{itemize}
+  \item \textbf{Unit tests}: mapper interfaces, header settings, small route fragments.\
+  \item \textbf{Integration tests}: end-to-end route execution with partner calls marked blocked when endpoints are unavailable.\
+  \item \textbf{Runtime evidence}: SOAP Ping request/response files, inbound logs, client logs.\
+  \item \textbf{Codegen logs}: CXF/JAXB output confirming contract coverage.\
+\end{itemize}
+\textbf{Confidence}: high for inbound service bring-up and route wiring; medium for mapping completeness until stubs are replaced. Users should review outputs for critical fields and configure partners before relying on live calls.
+
+ \paragraph{Where results are saved}
+\begin{itemize}
+  \item Primary evidence: \texttt{tests/results/logs/*.log},\\
+        \texttt{tests/results/html/summary.txt}, mapper and unit test outputs.
+  \item Generated contracts codegen: \texttt{modules/contracts/target/\\
+        generated-sources/*} with preview logs at \texttt{tests/results/\\
+        preflight/contracts-codegen.log}.
+  \item Client and inbound evidence: \texttt{tests/results/logs/\\
+        inbound-service.out}, \texttt{tests/results/logs/soap-ping.xml},\\
+        \texttt{tests/results/logs/soap-ping.response.xml}, and client meta\\
+        under \texttt{tests/results/artifacts/clients/}.
+  \item Per-run copies when triggered via API: \texttt{uploads/\\
+        \textless run\_id\textgreater/results/}.
+\end{itemize}
 \section{Conclusion}
 The transformation is feasible and valuable. With disciplined agentic automation and strict adherence to the original contracts and BPEL intent, the resulting project will be maintainable, verifiable, and aligned with modern Java integration practices.
 \end{document}
