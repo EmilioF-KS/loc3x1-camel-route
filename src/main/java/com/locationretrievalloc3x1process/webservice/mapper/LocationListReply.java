@@ -86,7 +86,7 @@ public class LocationListReply implements CommandLineRunner {
     }
     
     public static String getLoc3x1xmlFromRand(String xmlInput) throws Exception {
-    	String xslStylesheetPath = "C:\\CHUBB\\IA\\TO_XSLT\\WithSubmappers\\Complex\\main_mapper_with_submaps.xsl";
+    	String xslStylesheetPath = "C:\\CHUBB\\main_mapper_with_submaps.xsl";
     	Path xlsFilePath = Paths.get(xslStylesheetPath); // Replace with your file path
 
     	String xslStylesheet = null;
@@ -100,7 +100,7 @@ public class LocationListReply implements CommandLineRunner {
     	
         String outputWriterRes = XsltDemoApplication2.transformXml(xmlInput, xslStylesheet);
         
-        System.out.println("Transformed XML Result:");
+        System.out.println("::::::::::::::::::::::::::::::::::::: Transformed XML Result:");
         System.out.println(outputWriterRes);
         
         return outputWriterRes;
