@@ -6,11 +6,12 @@
 \usepackage{hyperref}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{float}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 % Remove duplicated tikz package
 % \usepackage{tikz}
-\usetikzlibrary{positioning,calc}
+\usetikzlibrary{positioning,calc,arrows.meta}
 \title{Loc-Camel-Route}
 \author{Alberto Espinosa (KS-Group)}
 \date{Oct 19th, 2025}
@@ -501,97 +502,10 @@ This agentic strategy represents a fundamental shift from reactive maintenance t
 
 \section{End-to-End Pseudocode Workflow}\label{sec:pseudocode-workflow}
 
-\begin{algorithm}[H]
-\caption{End-to-End Project Workflow (Steps 1–8)}\label{alg:pseudocode-workflow-1}
-\begin{algorithmic}[1]
-\State \textbf{Step 1:} User provides source path; initialise run state
-\Statex Inputs: ZIP upload or filesystem path
-\Statex Outputs: Run ID, prepared source directory
-\Statex Agent/Code: FastAPI \texttt{server/main.py} (\texttt{/api/run})
 
-\State \textbf{Step 2:} Preflight tooling and smoke build
-\Statex Inputs: System environment, \texttt{scripts/preflight.sh}
-\Statex Outputs: Tooling report, preflight logs
-\Statex Agent/Code: Preflight Agent (\texttt{tests/run\_tests.py --preflight})
 
-\State \textbf{Step 3:} Discover contracts (WSDL/XSD)
-\Statex Inputs: \texttt{contracts/inventory.json}, \texttt{contracts/inventory.md}
-\Statex Outputs: Contract inventory, canonical map
-\Statex Agent/Code: \texttt{scripts/contracts\_validator.py}, \texttt{contracts/canonical-map.yaml}
 
-\State \textbf{Step 4:} Scaffold Maven modules
-\Statex Inputs: Repository structure
-\Statex Outputs: Updated parent \texttt{modules/pom.xml}
-\Statex Agent/Code: \texttt{scripts/scaffold\_maven.py}
-
-\State \textbf{Step 5:} Generate contract code (CXF/JAXB)
-\Statex Inputs: \texttt{sample/} WSDL/XSD
-\Statex Outputs: Generated sources, codegen log
-\Statex Agent/Code: \texttt{scripts/generate\_contracts.sh}, Maven \texttt{generate-sources}
-
-\State \textbf{Step 6:} Analyse BPEL for orchestration
-\Statex Inputs: \texttt{sample/LocationRetrievalLOC3X1/...bpel}
-\Statex Outputs: \texttt{orchestration/spec.yaml}
-\Statex Agent/Code: \texttt{scripts/analyze\_bpel.py}, BPEL Agent
-
-\State \textbf{Step 7:} Generate Camel route skeletons
-\Statex Inputs: Orchestration spec
-\Statex Outputs: \texttt{modules/orchestration/src/...Route.java}
-\Statex Agent/Code: \texttt{scripts/generate\_routes.py}
-
-\State \textbf{Step 8:} Configure CXF endpoints (PAYLOAD)
-\Statex Inputs: \texttt{application.properties}
-\Statex Outputs: CXF beans (\texttt{locationretrievalloc3x1bEndpoint}, partner clients)
-\Statex Agent/Code: \texttt{CxfServiceConfig.java}, \texttt{modules/inbound/CxfConfig.java}
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}[H]
-\caption{End-to-End Project Workflow (Steps 9–16)}\label{alg:pseudocode-workflow-2}
-\begin{algorithmic}[1]
-\State \textbf{Step 9:} Implement mappings (MapStruct)
-\Statex Inputs: DTOs, schema-derived types
-\Statex Outputs: Mapper interfaces and unit tests
-\Statex Agent/Code: \texttt{modules/mappings/src/...MapMapper.java}, \texttt{...MapperTest.java}
-
-\State \textbf{Step 10:} Build all modules
-\Statex Inputs: Maven project
-\Statex Outputs: Build artefacts, test reports
-\Statex Agent/Code: \texttt{scripts/build\_all.sh}, Maven
-
-\State \textbf{Step 11:} Run inbound service and SOAP Ping
-\Statex Inputs: Inbound module JAR
-\Statex Outputs: Runtime logs, ping request/response files
-\Statex Agent/Code: \texttt{scripts/run\_services.sh}
-
-\State \textbf{Step 12:} Run client demo against inbound WSDL
-\Statex Inputs: WSDL URL, timeouts
-\Statex Outputs: Client run log, ping meta
-\Statex Agent/Code: \texttt{scripts/run\_clients.sh}
-
-\State \textbf{Step 13:} Integration tests and evidence aggregation
-\Statex Inputs: \texttt{tests/run\_tests.py}
-\Statex Outputs: JUnit XML, \texttt{tests/results/html/summary.txt}
-\Statex Agent/Code: Master Test Runner (\texttt{scripts/test\_master.sh})
-
-\State \textbf{Step 14:} Evidence API exposure
-\Statex Inputs: Test outputs in \texttt{tests/results/*}
-\Statex Outputs: \texttt{/api/summary}, \texttt{/api/logs/*}, \texttt{/api/run/*}
-\Statex Agent/Code: FastAPI \texttt{server/main.py}
-
-\State \textbf{Step 15:} Package/runtime (optional)
-\Statex Inputs: Dockerfiles, compose
-\Statex Outputs: Containers, local endpoints
-\Statex Agent/Code: \texttt{docker/*}, \texttt{docker-compose.yml}
-
-\State \textbf{Step 16:} Finalise and persist artefacts
-\Statex Inputs: All previous outputs
-\Statex Outputs: Results under \texttt{tests/results/}; per-run copy under \texttt{uploads/\textless run\_id\textgreater/results/}
-\Statex Agent/Code: Pipeline orchestrated by API and scripts
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{Beginner's Guide: Purpose, Inputs, BPEL, Translation, and Validation}\label{sec:beginner-guide}
+\subsection{Guide: Purpose, Inputs, BPEL, Translation, and Validation}\label{sec:beginner-guide}
 \paragraph*{Purpose in plain terms}
 This project takes an \textbf{IBM-style BPEL} orchestration and turns it into a \textbf{modern Java implementation} using Spring Boot, Maven, Apache Camel, Apache CXF, and MapStruct. In human terms: we read the original service contracts (WSDL/XSD) and the orchestration logic (BPEL), then generate Java code and routes that behave like the original process, with tests and evidence so you can trust what runs locally.
 
@@ -605,7 +519,7 @@ The input is the \texttt{sample/} folder containing:
 \end{itemize}
 \textbf{How we dissect it}: we list all WSDL/XSDs (contract inventory), parse the BPEL to extract the inbound operations, partner calls and fault paths, and record types and namespaces referenced by messages.
 
-\paragraph*{Essential BPEL concepts (for novices) with a micro-example}
+\paragraph*{Essential BPEL concepts with a micro-example}
 BPEL is an \textbf{orchestration language} that describes how a service should \textit{receive} a message, \textit{transform} parts of it, \textit{invoke} other services, and \textit{return} a reply or a fault.  
 Below is a \textbf{5-line} excerpt from the real LOC3X1 BPEL file (trimmed for clarity) followed by the matching Java/Camel translation so you can see the same intent in both worlds.
 
@@ -723,6 +637,274 @@ Outputs are organised by module and by test run so you can trace failures and ar
   \item Per-run copies when triggered via API: \texttt{uploads/\\
         \textless run\_id\textgreater/results/}.
 \end{itemize}
+
+
+\section{Disection step-by-step}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+node distance=1.4cm,
+every node/.style={draw, rectangle, rounded corners, align=center, font=\small, text width=3.6cm, minimum height=1.0cm},
+>={Stealth[length=8pt,width=6pt]} % bigger arrowheads
+]
+% Left column: Steps 1–8
+\node (s1) [fill=green!20] {\textbf{Step 1:} User provides source path; initialise run state};
+\node (s2) [below=of s1, fill=orange!20] {\textbf{Step 2:} Preflight tooling and smoke build};
+\node (s3) [below=of s2, fill=orange!20] {\textbf{Step 3:} Discover contracts (WSDL/XSD)};
+\node (s4) [below=of s3, fill=orange!20] {\textbf{Step 4:} Scaffold Maven modules};
+\node (s5) [below=of s4, fill=orange!20] {\textbf{Step 5:} Generate contract code (CXF/JAXB)};
+\node (s6) [below=of s5, fill=orange!20] {\textbf{Step 6:} Analyse BPEL for orchestration};
+\node (s7) [below=of s6, fill=orange!20] {\textbf{Step 7:} Generate Camel route skeletons};
+\node (s8) [below=of s7, fill=orange!20] {\textbf{Step 8:} Configure CXF endpoints (PAYLOAD)};
+
+% Right column: Steps 9–16
+\node (s9) [right=4.0cm of s1, fill=orange!20] {\textbf{Step 9:} Implement mappings (MapStruct)};
+\node (s10) [below=of s9, fill=orange!20] {\textbf{Step 10:} Build all modules};
+\node (s11) [below=of s10, fill=orange!20] {\textbf{Step 11:} Run inbound service and SOAP Ping};
+\node (s12) [below=of s11, fill=orange!20] {\textbf{Step 12:} Run client demo against inbound WSDL};
+\node (s13) [below=of s12, fill=orange!20] {\textbf{Step 13:} Integration tests and evidence aggregation};
+\node (s14) [below=of s13, fill=orange!20] {\textbf{Step 14:} Evidence API exposure};
+\node (s15) [below=of s14, fill=orange!20] {\textbf{Step 15:} Package/runtime (optional)};
+\node (s16) [below=of s15, fill=orange!20] {\textbf{Step 16:} Finalise and persist artefacts};
+
+% Arrows
+\foreach \i [evaluate=\i as \j using int(\i+1)] in {1,...,7}{
+  \draw[->] (s\i) -- (s\j);
+}
+% stylish curved arrow from s8 to s9
+\draw[->,thick,out=0,in=180,looseness=1.2] (s8.east) to (s9.west);
+\foreach \i [evaluate=\i as \j using int(\i+1)] in {9,...,15}{
+  \draw[->] (s\i) -- (s\j);
+}
+\end{tikzpicture}
+\caption{End-to-End Project Workflow: Steps 1–8 (left) and 9–16 (right).}\label{fig:workflow-steps}
+\end{figure}
+
+\begin{algorithm}[H]
+\caption{End-to-End Project Workflow (Steps 1–8)}\label{alg:pseudocode-workflow-1}
+\begin{algorithmic}[1]
+\State \textbf{Step 1:} User provides source path; initialise run state
+\Statex Inputs: ZIP upload or filesystem path
+\Statex Outputs: Run ID, prepared source directory
+\Statex Agent/Code: FastAPI \texttt{server/main.py} (\texttt{/api/run})
+
+\State \textbf{Step 2:} Preflight tooling and smoke build
+\Statex Inputs: System environment, \texttt{scripts/preflight.sh}
+\Statex Outputs: Tooling report, preflight logs
+\Statex Agent/Code: Preflight Agent (\texttt{tests/run\_tests.py --preflight})
+
+\State \textbf{Step 3:} Discover contracts (WSDL/XSD)
+\Statex Inputs: \texttt{contracts/inventory.json}, \texttt{contracts/inventory.md}
+\Statex Outputs: Contract inventory, canonical map
+\Statex Agent/Code: \texttt{scripts/contracts\_validator.py}, \texttt{contracts/canonical-map.yaml}
+
+\State \textbf{Step 4:} Scaffold Maven modules
+\Statex Inputs: Repository structure
+\Statex Outputs: Updated parent \texttt{modules/pom.xml}
+\Statex Agent/Code: \texttt{scripts/scaffold\_maven.py}
+
+\State \textbf{Step 5:} Generate contract code (CXF/JAXB)
+\Statex Inputs: \texttt{sample/} WSDL/XSD
+\Statex Outputs: Generated sources, codegen log
+\Statex Agent/Code: \texttt{scripts/generate\_contracts.sh}, Maven \texttt{generate-sources}
+
+\State \textbf{Step 6:} Analyse BPEL for orchestration
+\Statex Inputs: \texttt{sample/LocationRetrievalLOC3X1/...bpel}
+\Statex Outputs: \texttt{orchestration/spec.yaml}
+\Statex Agent/Code: \texttt{scripts/analyze\_bpel.py}, BPEL Agent
+
+\State \textbf{Step 7:} Generate Camel route skeletons
+\Statex Inputs: Orchestration spec
+\Statex Outputs: \texttt{modules/orchestration/src/...Route.java}
+\Statex Agent/Code: \texttt{scripts/generate\_routes.py}
+
+\State \textbf{Step 8:} Configure CXF endpoints (PAYLOAD)
+\Statex Inputs: \texttt{application.properties}
+\Statex Outputs: CXF beans (\texttt{locationretrievalloc3x1bEndpoint}, partner clients)
+\Statex Agent/Code: \texttt{CxfServiceConfig.java}, \texttt{modules/inbound/CxfConfig.java}
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection*{Fine-Grained Dissection of Steps 1--16}
+
+\paragraph{Step 1: Initialise Run State and Source} \hfill\\
+\textbf{What it does:} Accepts a source tree or ZIP upload, prepares a working directory, and seeds pipeline metadata.\\
+\textbf{Agent/Script:} FastAPI (\texttt{server/main.py}) via \texttt{/api/run}, optional CLI \texttt{start.py}.\\
+\textbf{Inputs:} Uploaded ZIP or existing repo under \texttt{PROJECT\_ROOT}; env \texttt{ENABLE\_PIPELINE\_RUNS}.\\
+\textbf{Process:} Creates a run ID (UUID), sets up \texttt{uploads/\textless run\_id\textgreater{}}, records initial metadata in in-memory \texttt{RUNS}.\\
+\textbf{Outputs:} Run metadata (state, progress); upon completion, copies evidence to \texttt{uploads/\textless run\_id\textgreater{}/results}.\\
+\textbf{Technology:} FastAPI, Python threads, filesystem IO.
+
+\paragraph{Step 2: Preflight Tooling and Smoke Build} \hfill\\
+\textbf{What it does:} Verifies JDK/Maven and required CLIs; can attempt a smoke build.\\
+\textbf{Agent/Script:} \texttt{scripts/preflight\_agent.py} (agentic checks), \texttt{scripts/preflight.sh} (shell preflight), and \texttt{tests/run\_tests.py --preflight}.\\
+\textbf{Inputs:} Local environment; project POMs; optional virtualenv \texttt{.venv}.\\
+\textbf{Process:} Agent writes a concise report and optionally the shell preflight performs a smoke Maven build.\\
+\textbf{Outputs:} \texttt{results/preflight/agent-checks.md}; when using shell preflight also \texttt{results/preflight/smoke.log} and \texttt{results/reports/tooling-report.md}.\\
+\textbf{Technology:} Python (Fast checks), Bash (smoke build), Maven.
+
+\paragraph{Step 3: Discover and Validate Contracts} \hfill\\
+\textbf{What it does:} Scans WSDL/XSD/BPEL to build a canonical inventory and validates structure/consistency.\\
+\textbf{Agent/Script:} \texttt{scripts/generate\_contract\_inventory.py}, \texttt{scripts/contracts\_validator.py}; orchestrated by \texttt{scripts/agents/run.py} (\texttt{stage\_contracts}).\\
+\textbf{Inputs:} \texttt{sample/} WSDL/XSD/BPEL files.\\
+\textbf{Process:} Generates \texttt{contracts/inventory.json} and \texttt{contracts/inventory.md}; cross-checks bindings, imports, namespaces against files.\\
+\textbf{Outputs:} \texttt{contracts/inventory.json}, \texttt{contracts/inventory.md}, \texttt{contracts/canonical-map.yaml}; validator report \texttt{results/preflight/contracts-checks.md}.\\
+\textbf{Technology:} Python, lxml/xml parsing, filesystem traversal.
+
+\paragraph{Step 4: Scaffold Maven Modules} \hfill\\
+\textbf{What it does:} Ensures parent and client submodules are listed and structured correctly.\\
+\textbf{Agent/Script:} \texttt{scripts/scaffold\_maven.py}.\\
+\textbf{Inputs:} \texttt{modules/} directory layout (\texttt{contracts}, \texttt{inbound}, \texttt{clients/*}, \texttt{mappings}, \texttt{orchestration}).\\
+\textbf{Process:} Discovers \texttt{pom.xml} files and updates \texttt{modules/pom.xml} module list accordingly.\\
+\textbf{Outputs:} Corrected parent POM with client submodules (e.g., \texttt{clients/locationretrievalloc3x1mpartner}).\\
+\textbf{Technology:} Python, XML/POM manipulation, filesystem.
+
+\paragraph{Step 5: Generate Contract Code (CXF/JAXB)} \hfill\\
+\textbf{What it does:} Generates Java model classes and service stubs from WSDL/XSD.\\
+\textbf{Agent/Script:} \texttt{scripts/generate\_contracts.sh}; Maven \texttt{generate-sources}.\\
+\textbf{Inputs:} \texttt{sample/} contracts; CXF/JAXB plugin configs.\\
+\textbf{Process:} Invokes CXF/JAXB to emit classes under \texttt{modules/contracts/target/generated-sources/*}.\\
+\textbf{Outputs:} Generated sources; codegen logs (e.g., \texttt{results/preflight/contracts-codegen.log}).\\
+\textbf{Technology:} Apache CXF, JAXB, Maven plugins.
+
+\paragraph{Step 6: Analyse BPEL for Orchestration} \hfill\\
+\textbf{What it does:} Interprets BPEL partner links and operations to derive mediation steps.\\
+\textbf{Agent/Script:} \texttt{agents/bpel\_agent.py}, \texttt{scripts/analyze\_bpel.py}.\\
+\textbf{Inputs:} BPEL files under \texttt{sample/LocationRetrievalLOC3X1/}.\\
+\textbf{Process:} Extracts partner links, operations, and message shapes; emits \texttt{orchestration/spec.yaml}.\\
+\textbf{Outputs:} \texttt{orchestration/spec.yaml} capturing flow and invocations.\\
+\textbf{Technology:} Python, XML parsing, domain mapping.
+
+\paragraph{Step 7: Generate Camel Route Skeletons} \hfill\\
+\textbf{What it does:} Produces Apache Camel routes aligned with the orchestration spec.\\
+\textbf{Agent/Script:} \texttt{scripts/generate\_routes.py}.\\
+\textbf{Inputs:} \texttt{orchestration/spec.yaml}, contract inventory.\\
+\textbf{Process:} Generates Java DSL routes (e.g., \texttt{GetLocationList3X1BRoute.java}) and documentation (\texttt{modules/orchestration/ROUTES.md}); optional YAML routes for Gradle subproject (\texttt{loc3x1-camel-route/src/main/resources/loc3x1-routes.yaml}).\\
+\textbf{Outputs:} Route classes and mapping stubs (\texttt{direct:map*} routes).\\
+\textbf{Technology:} Apache Camel (Java DSL and YAML), Spring Boot integration.
+
+\paragraph{Step 8: Configure CXF Endpoints (PAYLOAD)} \hfill\\
+\textbf{What it does:} Wires inbound CXF consumer and partner CXF clients in PAYLOAD mode.\\
+\textbf{Agent/Script:} \texttt{modules/orchestration/.../CxfServiceConfig.java}, \texttt{modules/inbound/.../CxfConfig.java}.\\
+\textbf{Inputs:} \texttt{modules/orchestration/src/main/resources/application.properties} for addresses and timeouts; optional TLS envs.\\
+\textbf{Process:} Defines beans like \texttt{locationretrievalloc3x1bEndpoint} and partner clients (\texttt{stateorprovinceretrievalcrp11x1partnerClient}, etc.), sets \texttt{DataFormat=PAYLOAD}, \texttt{serviceClass=Object.class}, applies \texttt{receiveTimeout}/\texttt{connectionTimeout}.\\
+\textbf{Outputs:} Active CXF endpoints in the Camel context; inbound CXF servlet published at \texttt{/services/*} with \texttt{/BasicService}.\\
+\textbf{Technology:} Apache CXF, Spring Boot auto-config (servlet), Camel CXF component.
+
+\paragraph{Step 9: Implement Mappings (MapStruct)} \hfill\\
+\textbf{What it does:} Defines transformation mappers between request/reply schemas and internal DTOs.\\
+\textbf{Agent/Script:} MapStruct interfaces under \texttt{modules/mappings/src/main/java/com/ei/camel/*MapMapper.java}; summary in \texttt{MAPPINGS.md}.\\
+\textbf{Inputs:} Schema-derived classes (from Codegen) and domain DTOs.\\
+\textbf{Process:} Author \texttt{@Mapper} interfaces with methods like \texttt{Object map(Object source)} (stubs) and targeted field mappings; add unit tests under \texttt{modules/mappings/src/test}.\\
+\textbf{Outputs:} Compiled mapper implementations via MapStruct; tests verifying basic mapping expectations.\\
+\textbf{Technology:} MapStruct, JUnit, Maven Surefire.
+
+\paragraph{Step 10: Build All Modules} \hfill\\
+\textbf{What it does:} Compiles and packages contracts, inbound, orchestration, clients, mappings.\\
+\textbf{Agent/Script:} \texttt{scripts/build\_all.sh}; Maven multi-module build via \texttt{modules/pom.xml}.\\
+\textbf{Inputs:} Source code and POM hierarchy.\\
+\textbf{Process:} Runs \texttt{mvn clean package} across modules; emits JARs under \texttt{modules/*/target}.\\
+\textbf{Outputs:} Build artefacts and test reports under \texttt{modules/*/target/surefire-reports}.\\
+\textbf{Technology:} Maven, Java 17.
+
+\paragraph{Step 11: Run Inbound Service and SOAP Ping} \hfill\\
+\textbf{What it does:} Launches Spring Boot + CXF inbound service and probes WSDL + SOAP Ping.\\
+\textbf{Agent/Script:} \texttt{scripts/run\_services.sh}; also exposed via \texttt{scripts/agents/run.py} (\texttt{stage\_services}).\\
+\textbf{Inputs:} Inbound JAR (\texttt{modules/inbound/target/inbound-*.jar}); env \texttt{INBOUND\_PORT}.\\
+\textbf{Process:} Starts the service, waits for WSDL at \texttt{/services/BasicService?wsdl}, posts a SOAP \texttt{Ping} request via \texttt{curl}.\\
+\textbf{Outputs:} \texttt{tests/results/logs/inbound-service.out}, \texttt{soap-ping.xml}, \texttt{soap-ping.response.xml}; log summary.\\
+\textbf{Technology:} Spring Boot, CXF servlet, curl.
+
+\paragraph{Step 12: Run Client Demo Against Inbound WSDL} \hfill\\
+\textbf{What it does:} Builds and runs a CXF client that invokes \texttt{BasicService.Ping}.\\
+\textbf{Agent/Script:} \texttt{scripts/run\_clients.sh}; CXF runner \texttt{com.ei.clients.BasicServiceSoapClientRunner}.\\
+\textbf{Inputs:} WSDL URL \texttt{BASIC\_SERVICE\_WSDL}, timeouts \texttt{CLIENT\_CONNECT\_TIMEOUT\_MS}/\texttt{CLIENT\_RECEIVE\_TIMEOUT\_MS}.\\
+\textbf{Process:} Builds \texttt{modules/clients/locationretrievalloc3x1b}, ensures inbound service is running, executes \texttt{mvn exec:java} with env overrides.\\
+\textbf{Outputs:} \texttt{tests/results/logs/client-run.out}, and meta files under \texttt{tests/results/artifacts/clients/} (request parameters and extracted \texttt{Ping reply}).\\
+\textbf{Technology:} Apache CXF dynamic client, Maven Exec Plugin.
+
+\paragraph{Step 13: Integration Tests and Evidence Aggregation} \hfill\\
+\textbf{What it does:} Runs integration/unit tests, collects logs and HTML summary.\\
+\textbf{Agent/Script:} \texttt{scripts/test\_integrations.sh} (requires \texttt{.venv}); Python \texttt{tests/run\_tests.py --all}.\\
+\textbf{Inputs:} Test modules (\texttt{tests/test\_*.py}); optional ordinal map \texttt{tests/ordinal-map.txt}.\\
+\textbf{Process:} Discovers tests, executes with verbosity; writes logs to \texttt{tests/results/logs/integration-tests.log}; creates \texttt{tests/results/junit} and \texttt{tests/results/html}.\\
+\textbf{Outputs:} JUnit XMLs (when configured), \texttt{summary.txt}, and aggregated logs under \texttt{tests/results/}.\\
+\textbf{Technology:} Python unittest, file-based reporting.
+
+\paragraph{Step 14: Evidence API Exposure} \hfill\\
+\textbf{What it does:} Serves health/status, evidence summaries, logs, and orchestrates pipeline runs.\\
+\textbf{Agent/Script:} FastAPI (\texttt{server/main.py}); helper \texttt{scripts/start\_api.sh}.\\
+\textbf{Inputs:} \texttt{tests/results/} directory; env \texttt{ENABLE\_PIPELINE\_RUNS}.\\
+\textbf{Process:} Exposes \texttt{/api/summary}, \texttt{/api/logs}, \texttt{/api/logs/\{name\}}, and run endpoints \texttt{/api/run}, \texttt{/api/runs}, \texttt{/api/run/\{id\}/status}, copying run outputs under \texttt{uploads/\textless run\_id\textgreater{}/results}.\\
+\textbf{Outputs:} JSON responses containing file tails and summary content; run metadata with metrics.\\
+\textbf{Technology:} FastAPI, Uvicorn, CORS, simple run tracking.
+
+\paragraph{Step 15: Packaging and Runtime (Optional)} \hfill\\
+\textbf{What it does:} Builds containers for inbound CXF service, Evidence API, and frontend; composes them locally.\\
+\textbf{Agent/Script:} \texttt{docker-compose.yml}; \texttt{docker/Dockerfile.inbound} or \texttt{docker/Dockerfile.inbound.runtime}, \texttt{docker/Dockerfile.api}, \texttt{docker/Dockerfile.frontend}.\\
+\textbf{Inputs:} Built JARs (host-built or in-image), API server code, frontend bundle; env for addresses/timeouts.\\
+\textbf{Process:} Builds images and starts services; healthchecks hit \texttt{/services/BasicService?wsdl} and \texttt{/health}; frontend proxies \texttt{/api/*} to \texttt{api:8001}.\\
+\textbf{Outputs:} Running containers: \texttt{camel-route-inbound}, \texttt{camel-route-api}, \texttt{camel-route-frontend}; exposed ports \texttt{8085}, \texttt{8001}, \texttt{8080}.\\
+\textbf{Technology:} Docker, Compose, Nginx for static frontend and API proxy.
+
+\paragraph{Step 16: Finalise and Persist Artefacts} \hfill\\
+\textbf{What it does:} Consolidates outputs per module and per run, ensuring traceability.\\
+\textbf{Agent/Script:} FastAPI run pipeline; \texttt{scripts/agents/run.py} stages (env, plan, contracts, schema, scaffold, bpel, build, services, clients, tests).\\
+\textbf{Inputs:} All prior stage outputs.\\
+\textbf{Process:} Writes canonical evidence to \texttt{tests/results/}; mirrors into \texttt{uploads/\textless run\_id\textgreater{}/results} for API-served runs; updates run status and metrics.\\
+\textbf{Outputs:} Deterministic directory layout with logs, summaries, artefacts, and JARs.\\
+\textbf{Technology:} Python orchestration, filesystem IO, Spring Boot/CXF runtime artefacts.
+
+\begin{algorithm}[H]
+\caption{End-to-End Project Workflow (Steps 9–16)}\label{alg:pseudocode-workflow-2}
+\begin{algorithmic}[1]
+\State \textbf{Step 9:} Implement mappings (MapStruct)
+\Statex Inputs: DTOs, schema-derived types
+\Statex Outputs: Mapper interfaces and unit tests
+\Statex Agent/Code: \texttt{modules/mappings/src/...MapMapper.java}, \texttt{...MapperTest.java}
+
+\State \textbf{Step 10:} Build all modules
+\Statex Inputs: Maven project
+\Statex Outputs: Build artefacts, test reports
+\Statex Agent/Code: \texttt{scripts/build\_all.sh}, Maven
+
+\State \textbf{Step 11:} Run inbound service and SOAP Ping
+\Statex Inputs: Inbound module JAR
+\Statex Outputs: Runtime logs, ping request/response files
+\Statex Agent/Code: \texttt{scripts/run\_services.sh}
+
+\State \textbf{Step 12:} Run client demo against inbound WSDL
+\Statex Inputs: WSDL URL, timeouts
+\Statex Outputs: Client run log, ping meta
+\Statex Agent/Code: \texttt{scripts/run\_clients.sh}
+
+\State \textbf{Step 13:} Integration tests and evidence aggregation
+\Statex Inputs: \texttt{tests/run\_tests.py}
+\Statex Outputs: JUnit XML, \texttt{tests/results/html/summary.txt}
+\Statex Agent/Code: Master Test Runner (\texttt{scripts/test\_master.sh})
+
+\State \textbf{Step 14:} Evidence API exposure
+\Statex Inputs: Test outputs in \texttt{tests/results/*}
+\Statex Outputs: \texttt{/api/summary}, \texttt{/api/logs/*}, \texttt{/api/run/*}
+\Statex Agent/Code: FastAPI \texttt{server/main.py}
+
+\State \textbf{Step 15:} Package/runtime (optional)
+\Statex Inputs: Dockerfiles, compose
+\Statex Outputs: Containers, local endpoints
+\Statex Agent/Code: \texttt{docker/*}, \texttt{docker-compose.yml}
+
+\State \textbf{Step 16:} Finalise and persist artefacts
+\Statex Inputs: All previous outputs
+\Statex Outputs: Results under \texttt{tests/results/}; per-run copy under \texttt{uploads/\textless run\_id\textgreater/results/}
+\Statex Agent/Code: Pipeline orchestrated by API and scripts
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
 \section{Conclusion}
 The transformation is feasible and valuable. With disciplined agentic automation and strict adherence to the original contracts and BPEL intent, the resulting project will be maintainable, verifiable, and aligned with modern Java integration practices.
 \end{document}
