@@ -77,11 +77,43 @@ Before examining the code samples, it is crucial to understand what each technol
 \begin{itemize}
   \item \textbf{WSDL (Web Services Description Language)}: A WSDL document functions as a formal contract between service provider and consumer. It answers three essential questions: \emph{What operations are available?} (e.g., \texttt{GetLocationList}), \emph{What data structures do they accept and return?} (messages with typed parts), and \emph{How do I communicate?} (protocol bindings, typically SOAP over HTTP). If you have encountered OpenAPI (formerly Swagger) specifications for RESTful APIs, WSDL serves an analogous purpose for SOAP-based web services: it provides machine-readable metadata enabling automated client generation, compile-time validation, and runtime introspection. The WSDL vocabulary includes \texttt{types} (data schemas), \texttt{messages} (operation parameters), \texttt{portType} (abstract operations), \texttt{binding} (concrete protocol mapping), and \texttt{service} (network endpoints). For a modern developer, understanding WSDL is essential because many enterprise systems still expose SOAP interfaces, and tools like Apache CXF or JAX-WS can generate Java or Python client code directly from WSDL, eliminating manual serialisation logic.
 
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 1: Generate stubs from WSDL (wsdl2java/wsimport)}}\\
+  \emph{Implemented}: WSDLs in \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1*/} produce client stubs packaged in \texttt{libs/soap-clients-0.0.1-SNAPSHOT.jar}; these types are referenced by routes/controllers (e.g., demo client at \texttt{GET /api/index}).\\
+  \emph{Enhance}: Move stub generation into the build (Maven/Gradle) with locked plugin versions, generate sources to \texttt{target/generated-sources}, and include smoke tests that call mocked SOAP endpoints to ensure stubs align with WSDL changes.
+  }}
+  \vspace{0.5em}
+
   \item \textbf{XSD (XML Schema Definition)}: An XSD file defines the permissible structure, data types, constraints, and cardinality of XML documents. Whereas WSDL describes \emph{what you can do}, XSD describes \emph{what shape the data must have}. Think of XSD as a formal grammar or type system for XML: it specifies that a \texttt{StatusInformation} element must contain exactly one \texttt{StatusCode} (a string) and zero or one \texttt{StatusMessage} elements, enforced via \texttt{minOccurs} and \texttt{maxOccurs} attributes. XSD supports complex types (structured elements with child nodes), simple types (atomic values with restrictions like patterns or enumerations), and inheritance-like mechanisms (extension and restriction). Schema validation occurs before business logic executes, ensuring malformed or incomplete data never enters the system. From a modern perspective, XSD is analogous to JSON Schema or Protocol Buffers: it provides a contract that tooling can enforce, enabling automated validation, code generation (e.g., JAXB in Java, \texttt{xsData} in Python), and documentation. When you see an XSD, you are looking at the authoritative definition of message formats—deviating from it will cause integration failures.
+
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 2: Locate and govern XSDs (Schemas)}}\\
+  \emph{Implemented}: XSDs live under \texttt{CHUBB/Dependencies/Schemas/}; JAXB-derived POJOs are provided by \texttt{libs/xsd-javapojos-0.0.3-SNAPSHOT.jar} and used across validation/mapping.\\
+  \emph{Enhance}: Establish a schema registry (project-level ownership, versioning), generate POJOs via build plugins (\texttt{maven-jaxb2-plugin}/\texttt{cxf-codegen-plugin}) with version pinning, and add CI checks that validate all XML artefacts against authoritative XSDs. Maintain a coverage table linking XSD elements to consumers (routes, mappers).
+  }}
+  \vspace{0.5em}
 
   \item \textbf{.map Specifications}: The client's \texttt{.map} files are tabular specifications documenting field-level transformation rules: ``Copy \texttt{Address/City} from the incoming message to \texttt{Location/Municipality} in the outgoing message,'' or ``If \texttt{StatusCode} is \texttt{SUCCESS}, map it to \texttt{0}; otherwise map to \texttt{1}.'' These specifications originate from proprietary mapping tools (e.g., Oracle ESB Mapper, IBM WebSphere Transformation Extender) where business analysts could define transformations visually or in spreadsheets without writing code. However, \texttt{.map} files themselves are not executable—they are documentation. To operationalise them, we translate every row into XSLT code (or equivalent logic), which becomes part of the version-controlled codebase. This translation is critical: XSLT is a standard, testable, and portable transformation language, whereas \texttt{.map} files are vendor-specific. For a novice developer, the key insight is that \texttt{.map} files encode \emph{business knowledge}—which fields matter, which transformations are legally required, which defaults apply—and this knowledge must be faithfully preserved during modernisation.
 
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 3: Translate .map specifications into XSL/XSLT}}\\
+  \emph{Implemented}: \texttt{CHUBB/main\_mapper\_with\_submaps.xsl} encodes field-level rules from \texttt{.map} specifications and is applied in the mapping stage.\\
+  \emph{Enhance}: Maintain a mapping coverage matrix (each \texttt{.map} row \(\to\) XSLT template), add golden-file tests for inputs/outputs, enable XSLT 2.0 features where helpful, and log mapping decisions for auditability.
+  }}
+  \vspace{0.5em}
+
   \item \textbf{BPEL (Business Process Execution Language)}: BPEL is an XML-based language for orchestrating web service invocations into workflows. A BPEL process reads like an imperative programme: ``Receive a request from the client, invoke Service~A with certain parameters, wait for its response, then conditionally invoke Service~B or Service~C based on the outcome, finally merge results and reply.'' BPEL supports constructs familiar to programmers—sequence, conditional branches (\texttt{if}), loops (\texttt{while}, \texttt{forEach}), parallel execution (\texttt{flow}), exception handling (\texttt{catch})—but expressed in verbose XML rather than a general-purpose language. BPEL processes execute within a BPEL engine (e.g., Oracle BPEL Process Manager, IBM WebSphere Process Server), which manages state, transactions, and long-running interactions. For modernisation, we extract the control flow and business logic from the BPEL XML and re-implement it as a Camel route in YAML: the \emph{semantics} remain identical (same sequence of calls, same conditionals), but the execution substrate changes from a proprietary engine to an open-source integration framework. Understanding BPEL is essential because it documents the \emph{intended behaviour}—the BPEL file is the canonical source of truth for ``what should happen when.''
+
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 4: Evaluate BPEL/Mediate files and translate to routes}}\\
+  \emph{Implemented}: \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel} is the orchestration-of-record; its sequence and decisions are re-expressed as Camel YAML routes.\\
+  \emph{Enhance}: Keep a spec-of-record document that explicitly maps BPEL constructs to route steps, include parity tests (legacy vs. modern outputs), and document any divergence with justification.
+  }}
+  \vspace{0.5em}
 \end{itemize}
 
 \paragraph{Legacy Understanding (Pseudocode)}
@@ -244,6 +276,14 @@ Understanding how these three artefacts interlock is essential for correct moder
 
   \item \textbf{BPEL invocations target WSDL operations}: In Listing~\ref{lst:bpel}, line~5 invokes the \texttt{GetLocationList} operation on partner link \texttt{LOC3X1M}. This operation is defined in Listing~\ref{lst:wsdl}, lines~16--19, which specify input and output messages. The BPEL engine resolves \texttt{LOC3X1M} to a WSDL endpoint (via deployment configuration), reads the WSDL to determine message formats, serialises the \texttt{req} variable into a SOAP envelope conforming to \texttt{GetLocationListRequest}, transmits it over HTTP, deserialises the response into the \texttt{res} variable (conforming to \texttt{GetLocationListResponse}), and validates both payloads against their schemas. If the response violates the schema—say, \texttt{StatusCode} is missing—the engine raises a fault, which BPEL can catch and handle. Our Camel implementation must replicate this end-to-end flow: build the request, invoke the service, validate the response, and handle errors.
 
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 5: Wire WSDL stubs into SOAP clients (runtime integration)}}\\
+  \emph{Implemented}: SOAP clients for \texttt{LOC3X1M}, \texttt{CRP11X1}, and \texttt{CRP10X1} are invoked from the Spring Boot application and Camel routes; endpoints are configurable via \texttt{application.yml}.\\
+  \emph{Enhance}: Use Apache CXF bean configuration for timeouts, WS-Security, and consistent error handling; add WireMock-based integration tests; enforce retries/backoff at the route level; and publish client metrics (latency, error rates) via Actuator.
+  }}
+  \vspace{0.5em}
+
   \item \textbf{Optional fields propagate through the entire pipeline}: In Listing~\ref{lst:xsd}, line~7 declares \texttt{StatusMessage} as optional (\texttt{minOccurs="0"}). This seemingly minor detail has profound implications. When this element appears within \texttt{GetLocationListResult} (referenced by Listing~\ref{lst:wsdl}, line~13), the WSDL contract permits responses where \texttt{StatusMessage} is absent. The BPEL process (Listing~\ref{lst:bpel}, line~5) stores such responses in the \texttt{res} variable, which may or may not contain \texttt{StatusMessage}. Subsequently, when mapping logic transforms the LOC3X1M response to the LOC3X1B format (Section~5), the XSLT or Java code must test for \texttt{StatusMessage} presence before attempting to copy it. Failing to handle optionality correctly leads to null pointer exceptions, malformed XML, or silent data loss. This illustrates why XSD is authoritative: optional fields in the schema mandate defensive coding throughout the entire stack.
 
   \item \textbf{Cross-cutting validation ensures data integrity}: The interplay of these artefacts creates multiple validation checkpoints. (1) When the client sends a request to the BPEL process (Listing~\ref{lst:bpel}, line~4), the engine validates it against the process's input schema. (2) Before invoking \texttt{LOC3X1M} (line~5), the engine validates the \texttt{req} variable against \texttt{GetLocationListRequest} (Listing~\ref{lst:wsdl}, line~10). (3) The \texttt{LOC3X1M} service itself validates the incoming SOAP envelope against its schema. (4) The service's response is validated against \texttt{GetLocationListResponse} (Listing~\ref{lst:wsdl}, line~13) before being stored in \texttt{res}. (5) Finally, the BPEL reply (line~6) is validated against the process's output schema. This defence-in-depth strategy ensures malformed data never propagates. Our modern implementation must preserve these validation stages, using JAXB unmarshalling (which throws exceptions on schema violations) and explicit validator invocations where necessary.
@@ -253,7 +293,15 @@ Understanding how these three artefacts interlock is essential for correct moder
 
 \subsection{Level 2: Combined Flow (Legacy + Modern Translation)}
 
-This second level shows how the original specifications drive the modern translation pipeline (Spring Boot + Apache Camel), resulting in a deterministic XML artifact. Whereas Subsection~\ref{subsec:client-legacy-landscape} focused on understanding the legacy artefacts in isolation, this section illustrates their \emph{operational integration}—how they collectively define a data processing workflow, and how that workflow is re-implemented using contemporary technologies.
+This second level shows how the original specifications drive the modern translation pipeline (Spring Boot + Apache Camel), resulting in a deterministic XML artefact. Whereas Subsection~\ref{subsec:client-legacy-landscape} focused on understanding the legacy artefacts in isolation, this section illustrates their \emph{operational integration}—how they collectively define a data processing workflow, and how that workflow is re-implemented using contemporary technologies.
+
+\vspace{0.5em}
+\noindent\fbox{\parbox{0.95\textwidth}{%
+\textbf{\textcolor{red}{Step 6: Spring Boot scaffolding (runtime, config, health)}}\\
+\emph{Implemented}: The project is a Spring Boot app with Camel YAML routes, externalised configuration in \texttt{src/main/resources/application.yml}, and controllers/services wired under \texttt{com.locationretrievalloc3x1process.webservice.*}.\\
+\emph{Enhance}: Add Actuator health/metrics, centralise configuration (profiles/secrets), apply structured logging, and document operational runbooks (deploy, observe, roll back).
+}}
+\vspace{0.5em}
 
 \paragraph{Combined Diagram}
 \begin{figure}[ht]
@@ -289,6 +337,9 @@ This second level shows how the original specifications drive the modern transla
 \caption{Legacy-to-modern translation pipeline. Client artefacts (top cluster) feed the PoC (bottom cluster): WSDL/XSD drive POJO generation via \texttt{wsdl2java}/\texttt{xjc}; BPEL flow is manually translated into Camel route logic; \texttt{.map} specifications become XSLT stylesheets invoked by the route to transform LOC3X1M responses into LOC3X1B format; final XML is written to \texttt{CHUBB/output/loc3x1\_result.xml} for regression testing.}
 \label{fig:translation-pipeline}
 \end{figure}
+
+
+
 \paragraph{Translation Workflow (Pseudocode)}
 
 Algorithm~\ref{alg:translate-produce} formalises the end-to-end translation and execution process. This is not merely pseudocode for pedagogical purposes—it directly corresponds to the Camel route implementation described in Section~4.
@@ -329,6 +380,14 @@ Algorithm~\ref{alg:translate-produce} formalises the end-to-end translation and 
 
   \item \textbf{Line 13 (Persist output)}: The final \texttt{mapped} XML document is serialised to \texttt{CHUBB/output/loc3x1\_result.xml}. This file serves multiple purposes: (1) it provides a human-readable audit trail, (2) it enables regression testing (comparing current output against golden files), and (3) it can be used for downstream processing or manual review. Writing to disk replicates the BPEL engine's behaviour, where process instances often persist intermediate and final results for observability.
 
+  \vspace{0.5em}
+  \noindent\fbox{\parbox{0.95\textwidth}{%
+  \textbf{\textcolor{red}{Step 7: Generate services for XML/JSON inputs/outputs}}\\
+  \emph{Implemented}: XML output is produced deterministically to \texttt{CHUBB/output/loc3x1\_result.xml}; REST endpoints accept JSON/XML requests and orchestrate the flow.\\
+  \emph{Enhance}: Provide content negotiation for responses, validate JSON payloads against a canonical schema, and ensure both XML/JSON outputs align with the same domain model (DTOs) to avoid drift.
+  }}
+  \vspace{0.5em}
+
   \item \textbf{Line 14 (Return)}: The function returns the \texttt{mapped} XML, which the Camel route can optionally send to additional endpoints (e.g., a message queue, a REST endpoint, or an archival system).
 \end{itemize}
 
@@ -357,7 +416,7 @@ To ground the abstract flow in tangible artefacts, we enumerate the actual files
 Having understood the legacy artefacts (Section~1.2) and their integration (Section~1.3), we now articulate the modernisation goals. These objectives guide all technical decisions and serve as acceptance criteria for the PoC.
 
 \begin{itemize}
-  \item \textbf{Replace legacy orchestration (BPEL, proprietary mappers) with Spring Boot + Apache Camel} \cite{camel-docs}: The client's existing system relies on vendor-specific BPEL engines (Oracle SOA Suite, IBM WebSphere Process Server) and proprietary mapping tools. These platforms incur licensing costs, require specialised skills, and resist modern DevOps practices (e.g., Git-based version control, Docker containerisation, CI/CD pipelines). By re-implementing orchestration in Apache Camel—a vendor-neutral, open-source integration framework—we eliminate vendor lock-in. Camel routes are expressed in YAML or Java DSL, making them readable, testable, and versionable. Spring Boot provides the application runtime, offering autoconfiguration, embedded servers (Tomcat, Jetty), and production-ready features (health checks, metrics, externalized configuration). This combination is cloud-native: the PoC can be packaged as a Docker image, deployed to Kubernetes, and scaled horizontally.
+  \item \textbf{Replace legacy orchestration (BPEL, proprietary mappers) with Spring Boot + Apache Camel} \cite{camel-docs}: The client's existing system relies on vendor-specific BPEL engines (Oracle SOA Suite, IBM WebSphere Process Server) and proprietary mapping tools. These platforms incur licensing costs, require specialised skills, and resist modern DevOps practices (e.g., Git-based version control, Docker containerisation, CI/CD pipelines). By re-implementing orchestration in Apache Camel—a vendor-neutral, open-source integration framework—we eliminate vendor lock-in. Camel routes are expressed in YAML or Java DSL, making them readable, testable, and versionable. Spring Boot provides the application runtime, offering autoconfiguration, embedded servers (Tomcat, Jetty), and production-ready features (health checks, metrics, externalised configuration). This combination is cloud-native: the PoC can be packaged as a Docker image, deployed to Kubernetes, and scaled horizontally.
 
   \item \textbf{Implement data mapping using XSLT and lightweight processors} \cite{xslt-spec}: The client's \texttt{.map} files were authored in proprietary mapping tools (drag-and-drop graphical interfaces). These tools generate artefacts (e.g., Oracle Service Bus \texttt{.xqy} files, IBM \texttt{.mxl} files) that are opaque, difficult to version, and impossible to unit-test in isolation. By translating \texttt{.map} rules into XSLT stylesheets, we gain portability (XSLT processors are ubiquitous), testability (XSLT transformations can be unit-tested with XML input/output fixtures), and transparency (developers can read and modify \texttt{.xsl} files). For transformations too complex for XSLT (e.g., invoking external APIs, applying stateful business rules), we use lightweight Java processors or Groovy scripts within the Camel route. This hybrid approach balances declarative simplicity (XSLT) with procedural expressiveness (Java/Groovy).
 
@@ -366,42 +425,7 @@ Having understood the legacy artefacts (Section~1.2) and their integration (Sect
   \item \textbf{Deliver a PoC that writes a verifiable XML artefact to \texttt{CHUBB/output/loc3x1\_result.xml}}: The PoC's success criterion is producing deterministic, correct output. For every sample input (e.g., \texttt{sample\_input\_with\_submaps.xml}), the Camel route must generate an XML file that (1) validates against the LOC3X1B schema, (2) contains all mandatory fields populated correctly, (3) matches the expected output (golden file) byte-for-byte or semantically (ignoring whitespace/comments). This output serves as a regression test baseline: any code change must continue producing identical output for the same input. Writing to a file (\texttt{loc3x1\_result.xml}) provides an audit trail and simplifies comparison (tools like \texttt{xmldiff} or custom validators can assert equivalence). In production, this output would be sent to downstream systems (message queues, databases, REST endpoints), but file-based validation is sufficient for the PoC.
 \end{itemize}
 
-\subsection{Boss Steps: Implementation Status and Enhancements}
-
-The following consolidates the project boss’s seven steps within the context of Section~1, highlighting what is implemented today and how to enhance each item. Implemented items are shown in bold red.
-
-\begin{itemize}
-  \item \textbf{\textcolor{red}{Locate and govern XSDs (Schemas)}}\\
-  \emph{Implemented}: XSDs live under \texttt{CHUBB/Dependencies/Schemas/}; JAXB-derived POJOs are provided by \texttt{libs/xsd-javapojos-0.0.3-SNAPSHOT.jar} and used across validation/mapping (see Section~1.2 and the Concrete Example).\\
-  \emph{Enhance}: Establish a schema registry (project-level ownership, versioning), generate POJOs via build plugins (\texttt{maven-jaxb2-plugin}/\texttt{cxf-codegen-plugin}) with version pinning, and add CI checks that validate all XML artefacts against authoritative XSDs. Maintain a coverage table linking XSD elements to consumers (routes, mappers).
-
-  \item \textbf{\textcolor{red}{Generate stubs from WSDL (wsdl2java/wsimport)}}\\
-  \emph{Implemented}: WSDLs in \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1*/} produce client stubs packaged in \texttt{libs/soap-clients-0.0.1-SNAPSHOT.jar}; these types are referenced by routes/controllers (e.g., demo client at \texttt{GET /api/index}).\\
-  \emph{Enhance}: Move stub generation into the build (Maven/Gradle) with locked plugin versions, generate sources to \texttt{target/generated-sources}, and include smoke tests that call mocked SOAP endpoints to ensure stubs align with WSDL changes.
-
-  \item \textbf{\textcolor{red}{Wire WSDL stubs into SOAP clients (runtime integration)}}\\
-  \emph{Implemented}: SOAP clients for \texttt{LOC3X1M}, \texttt{CRP11X1}, and \texttt{CRP10X1} are invoked from the Spring Boot application and Camel routes (see Section~1.3 and the Orchestration Flow); endpoints are configurable via \texttt{application.yml}.\\
-  \emph{Enhance}: Use Apache CXF bean configuration for timeouts, WS-Security, and consistent error handling; add WireMock-based integration tests; enforce retries/backoff at the route level; and publish client metrics (latency, error rates) via Actuator.
-
-  \item \textbf{\textcolor{red}{Translate .map specifications into XSL/XSLT}}\\
-  \emph{Implemented}: \texttt{CHUBB/main\_mapper\_with\_submaps.xsl} encodes field-level rules from \texttt{.map} specifications and is applied in the mapping stage (Section~1.2 and Algorithm~\ref{alg:translate-produce}).\\
-  \emph{Enhance}: Maintain a mapping coverage matrix (each \texttt{.map} row \(\to\) XSLT template), add golden-file tests for inputs/outputs, enable XSLT 2.0 features where helpful, and log mapping decisions for auditability.
-
-  \item \textbf{\textcolor{red}{Evaluate BPEL/Mediate files and translate to routes}}\\
-  \emph{Implemented}: \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel} is the orchestration-of-record; its sequence and decisions are re-expressed as Camel YAML routes (Section~1.3, Relationship/Flow diagrams).\\
-  \emph{Enhance}: Keep a spec-of-record document that explicitly maps BPEL constructs to route steps, include parity tests (legacy vs. modern outputs), and document any divergence with justification.
-
-  \item \textbf{\textcolor{red}{Spring Boot scaffolding (runtime, config, health)}}\\
-  \emph{Implemented}: The project is a Spring Boot app with Camel YAML routes, externalised configuration in \texttt{src/main/resources/application.yml}, and controllers/services wired under \texttt{com.locationretrievalloc3x1process.webservice.*}.\\
-  \emph{Enhance}: Add Actuator health/metrics, centralise configuration (profiles/secrets), apply structured logging, and document operational runbooks (deploy, observe, roll back).
-
-  \item \textbf{\textcolor{red}{Generate services for XML/JSON inputs/outputs}}\\
-  \emph{Implemented}: XML output is produced deterministically to \texttt{CHUBB/output/loc3x1\_result.xml}; REST endpoints accept JSON/XML requests and orchestrate the flow (Section~1.3).\\
-  \emph{Enhance}: Provide content negotiation for responses, validate JSON payloads against a canonical schema, and ensure both XML/JSON outputs align with the same domain model (DTOs) to avoid drift.
-\end{itemize}
-
-
-\noindent\emph{Why these objectives?} They address the client's pain points: high licensing costs (vendor lock-in), inflexible deployment (monolithic platforms), opaque logic (proprietary mappers), and difficult testing (no CI/CD integration). By targeting open-source, cloud-native technologies, we enable the client to deploy on any infrastructure (AWS, Azure, on-premises Kubernetes), reduce operational costs (no vendor licenses), and accelerate development (Git workflows, automated testing, faster iteration). The PoC demonstrates feasibility: ``Can we re-implement this workflow in Camel without changing behaviour?'' If the PoC succeeds, the client gains confidence to modernise additional workflows using the same approach.
+\noindent\emph{Why these objectives?} They address the client's pain points: high licensing costs (vendor lock-in), inflexible deployment (monolithic platforms), opaque logic (proprietary mappers), and difficult testing (no CI/CD integration). By targeting open-source, cloud-native technologies, we enable the client to deploy on any infrastructure (AWS, Azure, on-premises Kubernetes), reduce operational costs (no vendor licences), and accelerate development (Git workflows, automated testing, faster iteration). The PoC demonstrates feasibility: ``Can we re-implement this workflow in Camel without changing behaviour?'' If the PoC succeeds, the client gains confidence to modernise additional workflows using the same approach.
 
 \section{Technology Primer}
 \subsection{Java and Maven}
