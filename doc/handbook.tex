@@ -366,6 +366,41 @@ Having understood the legacy artefacts (Section~1.2) and their integration (Sect
   \item \textbf{Deliver a PoC that writes a verifiable XML artefact to \texttt{CHUBB/output/loc3x1\_result.xml}}: The PoC's success criterion is producing deterministic, correct output. For every sample input (e.g., \texttt{sample\_input\_with\_submaps.xml}), the Camel route must generate an XML file that (1) validates against the LOC3X1B schema, (2) contains all mandatory fields populated correctly, (3) matches the expected output (golden file) byte-for-byte or semantically (ignoring whitespace/comments). This output serves as a regression test baseline: any code change must continue producing identical output for the same input. Writing to a file (\texttt{loc3x1\_result.xml}) provides an audit trail and simplifies comparison (tools like \texttt{xmldiff} or custom validators can assert equivalence). In production, this output would be sent to downstream systems (message queues, databases, REST endpoints), but file-based validation is sufficient for the PoC.
 \end{itemize}
 
+\subsection{Boss Steps: Implementation Status and Enhancements}
+
+The following consolidates the project boss’s seven steps within the context of Section~1, highlighting what is implemented today and how to enhance each item. Implemented items are shown in bold red.
+
+\begin{itemize}
+  \item \textbf{\textcolor{red}{Locate and govern XSDs (Schemas)}}\\
+  \emph{Implemented}: XSDs live under \texttt{CHUBB/Dependencies/Schemas/}; JAXB-derived POJOs are provided by \texttt{libs/xsd-javapojos-0.0.3-SNAPSHOT.jar} and used across validation/mapping (see Section~1.2 and the Concrete Example).\\
+  \emph{Enhance}: Establish a schema registry (project-level ownership, versioning), generate POJOs via build plugins (\texttt{maven-jaxb2-plugin}/\texttt{cxf-codegen-plugin}) with version pinning, and add CI checks that validate all XML artefacts against authoritative XSDs. Maintain a coverage table linking XSD elements to consumers (routes, mappers).
+
+  \item \textbf{\textcolor{red}{Generate stubs from WSDL (wsdl2java/wsimport)}}\\
+  \emph{Implemented}: WSDLs in \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1*/} produce client stubs packaged in \texttt{libs/soap-clients-0.0.1-SNAPSHOT.jar}; these types are referenced by routes/controllers (e.g., demo client at \texttt{GET /api/index}).\\
+  \emph{Enhance}: Move stub generation into the build (Maven/Gradle) with locked plugin versions, generate sources to \texttt{target/generated-sources}, and include smoke tests that call mocked SOAP endpoints to ensure stubs align with WSDL changes.
+
+  \item \textbf{\textcolor{red}{Wire WSDL stubs into SOAP clients (runtime integration)}}\\
+  \emph{Implemented}: SOAP clients for \texttt{LOC3X1M}, \texttt{CRP11X1}, and \texttt{CRP10X1} are invoked from the Spring Boot application and Camel routes (see Section~1.3 and the Orchestration Flow); endpoints are configurable via \texttt{application.yml}.\\
+  \emph{Enhance}: Use Apache CXF bean configuration for timeouts, WS-Security, and consistent error handling; add WireMock-based integration tests; enforce retries/backoff at the route level; and publish client metrics (latency, error rates) via Actuator.
+
+  \item \textbf{\textcolor{red}{Translate .map specifications into XSL/XSLT}}\\
+  \emph{Implemented}: \texttt{CHUBB/main\_mapper\_with\_submaps.xsl} encodes field-level rules from \texttt{.map} specifications and is applied in the mapping stage (Section~1.2 and Algorithm~\ref{alg:translate-produce}).\\
+  \emph{Enhance}: Maintain a mapping coverage matrix (each \texttt{.map} row \(\to\) XSLT template), add golden-file tests for inputs/outputs, enable XSLT 2.0 features where helpful, and log mapping decisions for auditability.
+
+  \item \textbf{\textcolor{red}{Evaluate BPEL/Mediate files and translate to routes}}\\
+  \emph{Implemented}: \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel} is the orchestration-of-record; its sequence and decisions are re-expressed as Camel YAML routes (Section~1.3, Relationship/Flow diagrams).\\
+  \emph{Enhance}: Keep a spec-of-record document that explicitly maps BPEL constructs to route steps, include parity tests (legacy vs. modern outputs), and document any divergence with justification.
+
+  \item \textbf{\textcolor{red}{Spring Boot scaffolding (runtime, config, health)}}\\
+  \emph{Implemented}: The project is a Spring Boot app with Camel YAML routes, externalised configuration in \texttt{src/main/resources/application.yml}, and controllers/services wired under \texttt{com.locationretrievalloc3x1process.webservice.*}.\\
+  \emph{Enhance}: Add Actuator health/metrics, centralise configuration (profiles/secrets), apply structured logging, and document operational runbooks (deploy, observe, roll back).
+
+  \item \textbf{\textcolor{red}{Generate services for XML/JSON inputs/outputs}}\\
+  \emph{Implemented}: XML output is produced deterministically to \texttt{CHUBB/output/loc3x1\_result.xml}; REST endpoints accept JSON/XML requests and orchestrate the flow (Section~1.3).\\
+  \emph{Enhance}: Provide content negotiation for responses, validate JSON payloads against a canonical schema, and ensure both XML/JSON outputs align with the same domain model (DTOs) to avoid drift.
+\end{itemize}
+
+
 \noindent\emph{Why these objectives?} They address the client's pain points: high licensing costs (vendor lock-in), inflexible deployment (monolithic platforms), opaque logic (proprietary mappers), and difficult testing (no CI/CD integration). By targeting open-source, cloud-native technologies, we enable the client to deploy on any infrastructure (AWS, Azure, on-premises Kubernetes), reduce operational costs (no vendor licenses), and accelerate development (Git workflows, automated testing, faster iteration). The PoC demonstrates feasibility: ``Can we re-implement this workflow in Camel without changing behaviour?'' If the PoC succeeds, the client gains confidence to modernise additional workflows using the same approach.
 
 \section{Technology Primer}
