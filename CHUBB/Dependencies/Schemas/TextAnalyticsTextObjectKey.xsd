@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/text_analytics_text_object_key"
+	xmlns:bons1="http://ei/core/text_analytics_text_object_key_component"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import
+		namespace="http://ei/core/text_analytics_text_object_key_component"
+		schemaLocation="TextAnalyticsTextObjectKeyComponent.xsd" />
+	<xsd:complexType name="TextAnalyticsTextObjectKey">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="TextAnalyticsTextObjectKeyComponent"
+				type="bons1:TextAnalyticsTextObjectKeyComponent">
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="SourceSystemName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the data entry application (Policy, Claim, other) which originated the transaction or other data feed.  The application would be the source of detailed information and history about the policy, claim, etc.
+The E1T00871 Corporate Table contains valid values for this element in the "SYS_SRC_NAME" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="TextAnalyticsTextObjectTypeCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a type code for a text object as defined by Text Analytics.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

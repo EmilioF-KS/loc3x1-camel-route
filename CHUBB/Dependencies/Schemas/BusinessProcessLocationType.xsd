@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/business_process_location_type"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="BusinessProcessLocationType">
+		<xsd:sequence>
+			<xsd:element name="BusinessProcessLocationTypeCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies a specific business processing location type.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BusinessProcessLocationTypeDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the name associated with a business processing location type code.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BusinessProcessNewOrRenewalCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element indicates whether the use is for new or renewal business processing.  Valid value include 'N'- New and 'R'-Renewal.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

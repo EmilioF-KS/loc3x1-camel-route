@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/individual_name"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="IndividualName">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="PrefixName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the prefix placed before a person's name.
+Some valid options for this element include 'Mr.', 'Mrs.', 'Dr.'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GivenName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's first name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MiddleName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains a person's middle name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Surname"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's last name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NameSuffix"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the suffix that follows a person’s full name and provides additional information about the person. There are academic, honorary, professional, and social name suffixes.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessPartyNameCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies the category of business party name, which may be primary name, alias name, or foreign name.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="NameCategoryCodeDescription" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element describes the different category types of names, such as primary name, alias name, mailing name, maiden name, filing name.
+The E1T00761 Corporate Table contains valid values for this element in the &quot;NAME_CAT_DE &quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

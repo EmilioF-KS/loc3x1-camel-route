@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/typed_addressx2"	xmlns:bons0="http://ei/core/standardized_addressx4"	xmlns:xsd="http://www.w3.org/2001/XMLSchema">	<xsd:import schemaLocation="StandardizedAddressX4.xsd"		namespace="http://ei/core/standardized_addressx4">	</xsd:import>	<xsd:complexType name="TypedAddress">		<xsd:sequence>			<xsd:element minOccurs="0" name="SourceSystemAddressId"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains the id of an address as it is known by the source system.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="AddressTypeName"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains a name to identify the type of address. Valid values for this will be corporately defined and used company wide.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressTypeDescription"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains a description to identify the type of  address.  Some potential address types may include home, business, billing.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PreferredAddressIndicator"				type="xsd:boolean">				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if this address is the preferred address.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="AddressDefaultIndicator"				type="xsd:boolean">				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if this address is the default address.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressValidatedIndicator"				type="xsd:boolean">				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if an address has been validated. 
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<xsd:element minOccurs="0" name="StandardizedAddress"				type="bons0:StandardizedAddress">			</xsd:element>			<xsd:element minOccurs="0" name="PrimaryResidenceIndicator"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element indicates if the the home is the primary residence listed on the policy.  This is used as a rating parameter when a rate deviates by primary home versus each additional home listed on the policy.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"				name="PrimaryAddressMemberIndicator" type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element indicates if an address member is the primary address.
+
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressTypeCode"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains a code to identify the type of address. 
+The E1T00721 Corporate Table contains valid values for this element in the "ADDR_CAT_C" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressTypeAbbreviation"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains an abbreviation to identify the type of address. 
+The E1T00721 Corporate Table contains valid values for this element in the "ADDR_CAT_AB" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContactUsageTypeCode"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies how the contact information is to be used, such as business, billing, emergency, or personal.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContactUsageTypeName"				type="xsd:string">				<xsd:annotation>
+          <xsd:documentation>This element describes how the contact information is to be used, such as business, billing, emergency, or personal.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/special_arrangement_fee"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:complexType name="SpecialArrangementFee">
+		<xsd:sequence>
+
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementFeeSegmentTypeDescription"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the categorization which governs the details of a special arrangement i.e.,The license status of a 
+producer in the risk location:   Resident, Non-resident, No license</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementFeeBasisDescription" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation> This element describes the basis for the monetary amount connected with a policy that is used for calculation of the commission 
+associated with a fee arrangement i.e., Risk location premium, Risk location commission</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementFeeTypeDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the type of fee given to a producer for a special arrangement e.g., FLAT, PCT, PCT-MINMAX</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SpecialArrangementFeeValue"
+				type="xsd:decimal">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the amount or percent of the fee.   The Special Arrangement Fee Type Description identifies whether this 
+value contains a percent or an amount.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementMinimumFeePercent" type="xsd:decimal">
+				<xsd:annotation>
+          
+        <xsd:documentation>The element contains the minimum percentage that would be used for the calculation of the fee to be awarded to a producer 
+that provides services required to satisfy the special arrangement.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementMaximumFeePercent" type="xsd:decimal">
+				<xsd:annotation>
+          
+        <xsd:documentation>The element contains the maximum percentage that would be used for the calculation of the fee to be awarded to a producer 
+that provides services required to satisfy the special arrangement.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementMinimumFeeAmount" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the minimum fee amount for a special arrangement that is percentage based.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SpecialArrangementMaximumFeeAmount" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the maximum fee amount for a special arrangement that is percentage based.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

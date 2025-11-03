@@ -1,0 +1,336 @@
+- route:
+    id: "GetLocationList3X1B"
+    from:
+      uri: "direct:getLocationList"
+      steps:
+        - log:
+            message: "Start Process - GetLocationList3X1B"
+            logging-level: INFO
+        - log:
+            message: "Request: ${body}"
+            logging-level: DEBUG
+        
+        # Request validation
+        - choice:
+            when:
+              - simple: "${body.postalCode} != null || ${body.stateOrProvinceCode} != null || ${body.postalStateAbbreviation} != null || ${body.locationPlaceCode} != null"
+                steps:
+                  - to: "direct:processLocationList"
+            otherwise:
+              steps:
+                - log:
+                    message: "Invalid request - missing required fields"
+                    logging-level: INFO
+                - set-body:
+                    simple: '{"faultMessageText": "EIRV0010E Required service request data fields are missing: one of PostalCode, LocationPlaceCode, StateOrProvinceCode, PostalStateAbbreviation."}'
+                - set-header:
+                    name: "CamelHttpResponseCode"
+                    constant: "400"
+                - marshal:
+                    json:
+                      library: Jackson
+                - stop: {}
+
+- route:
+    id: "ProcessLocationList"
+    from:
+      uri: "direct:processLocationList"
+      steps:
+        - set-property:
+            name: "originalRequest"
+            simple: "${body}"
+        
+        # Check if State/Province lookup needed
+        - choice:
+            when:
+              - method:
+                  bean: "validationService"
+                  method: "needsStateProvinceLookup"
+                steps:
+                  - to: "direct:stateProvinceLookup"
+        
+        # Check if Country lookup needed
+        - choice:
+            when:
+              - method:
+                  bean: "validationService"
+                  method: "needsCountryLookup"
+                steps:
+                  - to: "direct:countryLookup"
+        
+        # Create LOC3X1M Request
+        - process:
+            ref: "createLOC3X1MRequestProcessor"
+        
+        # Invoke LOC3X1M Service
+        - doTry:
+            steps:
+              - log:
+                  message: "Invoking LOC3X1M.GetLocationList"
+                  logging-level: INFO
+              - marshal:
+                  json:
+                    library: Jackson
+              - to: "http://{{loc3x1m.host}}:{{loc3x1m.port}}/location/getLocationList?bridgeEndpoint=true"
+              - unmarshal:
+                  json:
+                    library: Jackson
+                    unmarshal-type: "com.chubb.location.m.LocationListReply"
+              
+              # Map LOC3X1M response to LOC3X1B format
+              - process:
+                  ref: "mapLOC3X1MToLOC3X1BProcessor"
+              
+              # Check Fire District Codes
+              - process:
+                  ref: "checkFireDistrictCodesProcessor"
+              
+              - log:
+                  message: "Log LOC3X1B Reply"
+                  logging-level: INFO
+              - log:
+                  message: "Response: ${body}"
+                  logging-level: DEBUG
+              - log:
+                  message: "End Process"
+                  logging-level: INFO
+            
+            doCatch:
+              - exception: "java.lang.Exception"
+                steps:
+                  - log:
+                      message: "LOC3X1M Service error: ${exception.message}"
+                      logging-level: ERROR
+                  - set-body:
+                      simple: '{"faultMessageText": "Error calling LOC3X1M service: ${exception.message}"}'
+                  - set-header:
+                      name: "CamelHttpResponseCode"
+                      constant: "500"
+                  - marshal:
+                      json:
+                        library: Jackson
+                  - stop: {}
+
+- route:
+    id: "GetLocationWithTaxingJurisdictions3X1B"
+    from:
+      uri: "direct:getLocationWithTaxingJurisdictions"
+      steps:
+        - log:
+            message: "Start Process - GetLocationWithTaxingJurisdictions3X1B"
+            logging-level: INFO
+        - log:
+            message: "Request: ${body}"
+            logging-level: DEBUG
+        
+        # Stricter validation for taxing jurisdictions
+        - choice:
+            when:
+              - simple: "${body.postalCode} != null && (${body.stateOrProvinceCode} != null || ${body.postalStateAbbreviation} != null)"
+                steps:
+                  - to: "direct:processTaxingJurisdictions"
+            otherwise:
+              steps:
+                - log:
+                    message: "Invalid request - missing required fields"
+                    logging-level: INFO
+                - set-body:
+                    simple: '{"faultMessageText": "EIRV0010E Required service request data fields are missing: PostalCode and, either StateOrProvinceCode or PostalStateAbbreviation."}'
+                - set-header:
+                    name: "CamelHttpResponseCode"
+                    constant: "400"
+                - marshal:
+                    json:
+                      library: Jackson
+                - stop: {}
+
+- route:
+    id: "ProcessTaxingJurisdictions"
+    from:
+      uri: "direct:processTaxingJurisdictions"
+      steps:
+        - set-property:
+            name: "originalRequest"
+            simple: "${body}"
+        
+        # Check if State/Province lookup needed
+        - choice:
+            when:
+              - method:
+                  bean: "validationService"
+                  method: "needsStateProvinceLookup"
+                steps:
+                  - to: "direct:stateProvinceLookup"
+        
+        # Check if Country lookup needed
+        - choice:
+            when:
+              - method:
+                  bean: "validationService"
+                  method: "needsCountryLookup"
+                steps:
+                  - to: "direct:countryLookup"
+        
+        # Create LOC3X1M Request
+        - process:
+            ref: "createLOC3X1MTaxingJurisdictionsRequestProcessor"
+        
+        # Invoke LOC3X1M Service
+        - doTry:
+            steps:
+              - log:
+                  message: "Invoking LOC3X1M.GetLocationWithTaxingJurisdictions"
+                  logging-level: INFO
+              - marshal:
+                  json:
+                    library: Jackson
+              - to: "http://{{loc3x1m.host}}:{{loc3x1m.port}}/location/getLocationWithTaxingJurisdictions?bridgeEndpoint=true"
+              - unmarshal:
+                  json:
+                    library: Jackson
+                    unmarshal-type: "com.chubb.location.m.LocationListReply"
+              
+              # Map LOC3X1M response to LOC3X1B format
+              - process:
+                  ref: "mapLOC3X1MToLOC3X1BProcessor"
+              
+              # Check Fire District Codes and remove from TaxingJurisdiction
+              - process:
+                  ref: "checkFireDistrictWithTaxingJurisdictionProcessor"
+              
+              - log:
+                  message: "Log LOC3X1B Reply"
+                  logging-level: INFO
+              - log:
+                  message: "Response: ${body}"
+                  logging-level: DEBUG
+              - log:
+                  message: "End Process"
+                  logging-level: INFO
+            
+            doCatch:
+              - exception: "java.lang.Exception"
+                steps:
+                  - log:
+                      message: "LOC3X1M Service error: ${exception.message}"
+                      logging-level: ERROR
+                  - set-body:
+                      simple: '{"faultMessageText": "Error calling LOC3X1M service: ${exception.message}"}'
+                  - set-header:
+                      name: "CamelHttpResponseCode"
+                      constant: "500"
+                  - marshal:
+                      json:
+                        library: Jackson
+                  - stop: {}
+
+- route:
+    id: "StateProvinceLookup"
+    from:
+      uri: "direct:stateProvinceLookup"
+      steps:
+        - log:
+            message: "Invoking CRP11X1.GetStateOrProvince"
+            logging-level: INFO
+        - process:
+            ref: "createStateOrProvinceRequestProcessor"
+        - log:
+            message: "CRP11X1 Request: ${body}"
+            logging-level: DEBUG
+        
+        - doTry:
+            steps:
+              - marshal:
+                  json:
+                    library: Jackson
+              - to: "http://{{crp11x1.host}}:{{crp11x1.port}}/corporate/getStateOrProvince?bridgeEndpoint=true"
+              - unmarshal:
+                  json:
+                    library: Jackson
+                    unmarshal-type: "com.chubb.corporate.StateOrProvince"
+              
+              # Augment original request with state/province data
+              - process:
+                  ref: "augmentWithStateProvinceProcessor"
+            
+            doCatch:
+              - exception: "java.lang.Exception"
+                steps:
+                  - log:
+                      message: "CRP11X1 Service error: ${exception.message}"
+                      logging-level: ERROR
+                  - set-body:
+                      simple: '{"faultMessageText": "Error calling CRP11X1 service: ${exception.message}"}'
+                  - set-header:
+                      name: "CamelHttpResponseCode"
+                      constant: "500"
+                  - marshal:
+                      json:
+                        library: Jackson
+                  - stop: {}
+
+- route:
+    id: "CountryLookup"
+    from:
+      uri: "direct:countryLookup"
+      steps:
+        - log:
+            message: "Invoking CRP10X1.GetCountry"
+            logging-level: INFO
+        - process:
+            ref: "createCountryRequestProcessor"
+        - log:
+            message: "CRP10X1 Request: ${body}"
+            logging-level: DEBUG
+        
+        - doTry:
+            steps:
+              - marshal:
+                  json:
+                    library: Jackson
+              - to: "http://{{crp10x1.host}}:{{crp10x1.port}}/corporate/getCountry?bridgeEndpoint=true"
+              - unmarshal:
+                  json:
+                    library: Jackson
+                    unmarshal-type: "com.chubb.corporate.Country"
+              
+              # Augment original request with country data
+              - process:
+                  ref: "augmentWithCountryProcessor"
+            
+            doCatch:
+              - exception: "java.lang.Exception"
+                steps:
+                  - log:
+                      message: "CRP10X1 Service error: ${exception.message}"
+                      logging-level: ERROR
+                  - set-body:
+                      simple: '{"faultMessageText": "Error calling CRP10X1 service: ${exception.message}"}'
+                  - set-header:
+                      name: "CamelHttpResponseCode"
+                      constant: "500"
+                  - marshal:
+                      json:
+                        library: Jackson
+                  - stop: {}
+
+# Global Exception Handler
+- route:
+    id: "GlobalExceptionHandler"
+    on-exception:
+      - exception: "java.lang.Exception"
+        handled:
+          constant: "true"
+        steps:
+          - log:
+              message: "EISP0001E Service Processing Exception: ${exception.message}"
+              logging-level: ERROR
+          - set-body:
+              simple: '{"faultMessageText": "EISP0001E Service Processing Exception: ${exception.message}"}'
+          - set-header:
+              name: "CamelHttpResponseCode"
+              constant: "500"
+          - marshal:
+              json:
+                library: Jackson
+          - stop: {}

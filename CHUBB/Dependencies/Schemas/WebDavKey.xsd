@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/webdav_key">
+	<xsd:complexType name="WebDavKey">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="SystemId" type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TransactionId" type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProcessClassificationName" type="xsd:string">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

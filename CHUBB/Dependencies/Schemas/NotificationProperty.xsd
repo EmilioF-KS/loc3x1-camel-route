@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/notification_property">
+	<xsd:complexType name="NotificationProperty">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="NotificationPropertyName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the name of a business property for a document.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="NotificationPropertyValue" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the value associated to a specific business property for a document.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

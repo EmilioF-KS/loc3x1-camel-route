@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><LocationListReply>
+    <Location>
+        <LocationInformation>
+            <CityCode>016</CityCode>
+            <CountyCode>024</CountyCode>
+            <LocationClassificationCode>P</LocationClassificationCode>
+            <FireDistrictCode/>
+        </LocationInformation>
+        <StandardizedAddress>
+            <CityName>BROOKLYN                                </CityName>
+            <CountyName>KINGS                              </CountyName>
+            <StateOrProvinceCode>31 </StateOrProvinceCode>
+            <StateOrProvinceName>NEW YORK                 </StateOrProvinceName>
+            <PostalStateAbbreviation>NY</PostalStateAbbreviation>
+            <PostalCode>11242    </PostalCode>
+            <CountryCode>8A </CountryCode>
+            <CountryName>UNITED STATES      </CountryName>
+            <LocationPlaceCode>10022</LocationPlaceCode>
+            <POBoxIndicator>N</POBoxIndicator>
+        </StandardizedAddress>
+        <TaxingJurisdiction>
+            <TaxingJurisdictionTypeName>FireDistrict</TaxingJurisdictionTypeName>
+            <TaxingJurisdictionCode>9999  </TaxingJurisdictionCode>
+        </TaxingJurisdiction>
+        <TaxingJurisdiction>
+            <TaxingJurisdictionTypeName>TaxingTerritory</TaxingJurisdictionTypeName>
+            <TaxingJurisdictionCode/>
+            <TaxingJurisdictionName>NEW YORK                 </TaxingJurisdictionName>
+        </TaxingJurisdiction>
+    </Location>
+    <StatusInformation>
+        <StatusCode>W</StatusCode>
+        <Error>
+            <ErrorDescription>Missing Address Line 1 for FireDistrictCode</ErrorDescription>
+            <ErrorSourceIdentifier/>
+            <ErrorCode>W</ErrorCode>
+            <ErrorSeverityLevel/>
+        </Error>
+    </StatusInformation>
+</LocationListReply>

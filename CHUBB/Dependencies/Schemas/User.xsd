@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/user"
+	xmlns:bons1="http://ei/core/business_partyx1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:import namespace="http://ei/core/business_partyx1"
+		schemaLocation="BusinessPartyX1.xsd">
+	</xsd:import>
+
+
+
+	<xsd:complexType name="User">
+		<xsd:annotation>
+      <xsd:documentation>A user is a specific resource that is given access to computer systems.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="bons1:BusinessParty">
+				<xsd:sequence>
+
+					<xsd:element minOccurs="0" name="UserId"
+						type="xsd:string">
+						<xsd:annotation>
+          <xsd:documentation>This element is used to sign on to an application.  
+This is also known as RACFId.</xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+
+
+
+
+
+					<xsd:element minOccurs="0" name="UserTypeCode"
+						type="xsd:string">
+						<xsd:annotation>
+          
+        <xsd:documentation>This element represents the possible type user. </xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+
+
+					<xsd:element minOccurs="0"
+						name="UserTypeDescription" type="xsd:string">
+						<xsd:annotation>
+          
+        <xsd:documentation>This element describes the specifc user type.   </xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+
+
+
+
+
+
+
+
+
+
+					<xsd:element minOccurs="0" name="BusinessName"
+						type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains the name of a business.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="UserOrganizationRoleName" type="xsd:string">
+						<xsd:annotation><xsd:documentation>This element is the name of the role the user has within an organization.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

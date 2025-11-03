@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+
+% Flat, minimal setup (no fancy packages)
+\title{Location Retrieval LOC3X1 Process: Camel Route Handbook}
+\author{Alberto Espinosa \\ KSquare Group}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document presents a comprehensive technical overview and developer handbook for the ``loc3x1-camel-route'' project. It explains the technology stack, architecture, components, configuration, and data flows implemented with Spring Boot and Apache Camel (YAML DSL). It also covers the runtime requirements, how to build and run the application, how to validate core functionality, and the interactions with external services used for enrichment and mapping. The objective is to enable any technical developer to understand, maintain, and extend the project at any time.
+\end{abstract}
+
+\section{Introduction}
+The project implements the Location Retrieval LOC3X1 business process and related capabilities using Apache Camel integrated in a Spring Boot application. Routes are primarily authored in YAML DSL and exposed via Spring REST controllers that orchestrate ``direct:'' endpoints. Additional services perform validation, data enrichment against external SOAP endpoints, mapping to canonical XSD-based DTOs, and rule-based transformations (e.g., Fire District handling).
+
+\section{Technology Stack and Requirements}
+\subsection{Languages and Runtimes}
+\begin{itemize}
+  \item Java 17 (source compatibility). Tested running on Java 25 runtime.
+  \item Spring Boot 3.3.0.
+  \item Apache Camel 4.14.0 with YAML DSL, timer, and log components.
+\end{itemize}
+
+\subsection{Libraries and Frameworks}
+\begin{itemize}
+  \item Camel Spring Boot Starter and YAML DSL for route definitions.
+  \item Jakarta XML Bind (JAXB) and JAX-WS APIs; Glassfish JAXB runtime.
+  \item Jackson XML; Freemarker for templating (support utilities).
+  \item Apache HttpClient for HTTP/SOAP calls to external services.
+  \item MapStruct (mapping support) and Lombok (data classes).
+  \item Local JARs: \texttt{libs/xsd-javapojos-0.0.3-SNAPSHOT.jar}, \texttt{libs/soap-clients-0.0.1-SNAPSHOT.jar}.
+\end{itemize}
+
+\subsection{Build Systems}
+Both Gradle and Maven files are present. In environments where the Gradle wrapper is incomplete or fails due to JDK compatibility, Maven can be used. The project pom is configured with all required dependencies, including the local JARs (system scope).
+
+\subsection{External Services and Ports}
+Several enrichment and mapping steps call local mock SOAP endpoints at \texttt{http://localhost:8085}. Configuration for service calls in the YAML routes also references hosts/ports for \texttt{LOC3X1M}, \texttt{CRP11X1}, and \texttt{CRP10X1}. These should be available when running full end-to-end flows.
+
+\section{Project Structure}
+\subsection{Top-Level}
+\begin{itemize}
+  \item \texttt{src/main/java}: Java sources (controllers, services, model, processors).
+  \item \texttt{src/main/resources}: \texttt{application.yml}, YAML route files, templates.
+  \item \texttt{libs}: local binary dependencies required by business logic.
+  \item \texttt{build.gradle}, \texttt{pom.xml}: Gradle/Maven build descriptors.
+\end{itemize}
+
+\subsection{Key Packages}
+\begin{itemize}
+  \item \texttt{com.locationretrievalloc3x1process.webservice.controller}: Spring MVC controllers exposing REST endpoints and bridging to Camel ``direct:'' routes.
+  \item \texttt{com.locationretrievalloc3x1process.webservice.service}: Validation, enrichment (state/country), mapping, RAND integration, fire district rules, and XML parsing utilities.
+  \item \texttt{com.locationretrievalloc3x1process.webservice.locationretrievalloc3x1process.config}: Camel processors and route configuration helpers.
+  \item \texttt{com.chubb.converter.util} and \texttt{com.chubb.mappers.xmldto}: XML/XPath parsing and DTO classes from local JARs.
+\end{itemize}
+
+\section{Configuration}
+\subsection{Application Configuration}
+\texttt{src/main/resources/application.yml}:
+\begin{itemize}
+  \item Camel YAML routes enabled with locations: \texttt{classpath:camel/*.yaml, classpath:*.yaml} to load both root-level and \texttt{camel/} folder YAML routes.
+  \item Camel servlet mapping: \texttt{/api/*} (for potential REST DSL usage).
+  \item Host/port placeholders: \texttt{loc3x1m.host/port}, \texttt{crp11x1.host/port}, \texttt{crp10x1.host/port}.
+\end{itemize}
+
+\section{Runtime Architecture}
+\subsection{Entry Points}
+The Spring Boot application main class is \texttt{LocationRetrievalApplication}. It scans the \texttt{com.locationretrievalloc3x1process.webservice} base package, wiring controllers and services.
+
+\subsection{Controllers and Endpoints}
+\begin{itemize}
+  \item \texttt{GET /api/index}: simple health-style endpoint executing a dynamic client from \texttt{soap-clients} (returns a greeting string).
+  \item \texttt{POST /location/retrieveList3x1}: accepts a JSON \texttt{LocationRequest}, sends to Camel \texttt{direct:locationProcess}.
+  \item \texttt{POST /location/retrieveWithTaxingJurisdictions}: accepts a JSON \texttt{LocationRequest}, sends to Camel \texttt{direct:locationWithTaxingJurisdictionsProcess}.
+  \item \texttt{POST /location/loc3x1}: accepts XML, parses to \texttt{LocationRequest}, and returns LOC3X1 XML transformed from RAND response.
+\end{itemize}
+
+\subsection{Camel Routes (YAML DSL)}
+Key route files:
+\begin{itemize}
+  \item \texttt{camel/loc3x1-rest.yaml}: Defines \texttt{direct:locationProcess}, \texttt{direct:locationWithTaxingJurisdictionsProcess}, and \texttt{direct:createSimpleFault} routes. Implements validation via \texttt{ValidationService}, optional enrichment via \texttt{EnrichmentService}, mapping via \texttt{MappingService}, and Fire District checks via \texttt{FireDistrictService}. Faults are produced by \texttt{SimpleFaultService}.
+  \item \texttt{loc3x1-routes.yaml}: Alternative route set that orchestrates calls to \texttt{LOC3X1M} and corporate services (CRP11X1, CRP10X1), including doTry/doCatch blocks and global exception handling.
+  \item \texttt{routes.yaml}: A simple timer-based ``Hello World'' example route.
+\end{itemize}
+
+\subsection{Services and Processing}
+\begin{itemize}
+  \item \textbf{ValidationService}: Validates request fields. Taxing jurisdictions flow requires \texttt{postalCode} and state/province indicators.
+  \item \textbf{EnrichmentService}: Optionally queries mock SOAP services to enrich state or country data using XPath/XML parsing helpers.
+  \item \textbf{MappingService}: Produces \texttt{LocationListReply} via \texttt{LocationListReplyService} and RAND integration in \texttt{RansService}.
+  \item \textbf{FireDistrictService}: Normalizes and warns on invalid FireDistrict codes (e.g., ``9999'') by updating reply status and error list.
+  \item \textbf{XmlParsingService}: JAXB-based XML to object conversion utility.
+  \item \textbf{MyCustomProcessor}: Example processor used in the hello/timer route.
+\end{itemize}
+
+\section{Data Flow}
+\subsection{Retrieve List (3x1)}
+\begin{enumerate}
+  \item Controller receives \texttt{LocationRequest} JSON and sends to \texttt{direct:locationProcess}.
+  \item Route validates the request; on success, may enrich missing state/country values.
+  \item Mapping service transforms the request to a canonical reply, optionally calling RAND and XML mappers.
+  \item Fire District checks apply business rules; response is returned to the controller as JSON.
+  \item On invalid input, route returns a \texttt{SimpleFault} JSON payload.
+\end{enumerate}
+
+\subsection{Retrieve With Taxing Jurisdictions}
+Similar to the list flow but requires stricter validation and produces a reply including jurisdiction data. Faults are returned when required fields are missing.
+
+\section{How to Build and Run}
+\subsection{Prerequisites}
+\begin{itemize}
+  \item Java 17+ (tested with Java 25 runtime).
+  \item Maven \texttt{3.9+} installed. Gradle can be used when properly configured, but Maven is recommended in this environment.
+  \item Optional: local mock services running on \texttt{localhost:8085} for full enrichment and mapping flows.
+\end{itemize}
+
+\subsection{Run}
+From the project root:
+\begin{verbatim}
+mvn -DskipTests spring-boot:run
+\end{verbatim}
+The application starts on port \texttt{8080}. Camel reports started routes, including \texttt{direct:locationProcess}, \texttt{direct:locationWithTaxingJurisdictionsProcess}, and \texttt{direct:createSimpleFault}.
+
+\subsection{Quick Verification}
+\begin{itemize}
+  \item Health-style endpoint:
+\begin{verbatim}
+curl http://localhost:8080/api/index
+\end{verbatim}
+  \item Invalid request (fault path):
+\begin{verbatim}
+curl -X POST http://localhost:8080/location/retrieveList3x1 \
+  -H 'Content-Type: application/json' \
+  -d '{"addressLine1":"123 Main St","cityName":"Dallas"}'
+\end{verbatim}
+\end{itemize}
+
+\section{Configuration Notes}
+\begin{itemize}
+  \item Update \texttt{application.yml} \texttt{camel.springboot.yaml-routes.locations} if routes are moved or new folders are added.
+  \item Set \texttt{loc3x1m}, \texttt{crp11x1}, and \texttt{crp10x1} host/port values to point at real services when not using local mocks.
+  \item Ensure \texttt{libs/} JARs are present; Maven includes them with system scope.
+\end{itemize}
+
+\section{Testing and Validation}
+\begin{itemize}
+  \item Unit tests can be added around service methods (validation, enrichment decisions, mapping logic, Fire District rules).
+  \item Integration tests can use WireMock (already a test dependency in Gradle) to simulate external SOAP endpoints.
+  \item For XML flows, validate XPath parsing and marshalling/unmarshalling against sample payloads in \texttt{templates/}.
+\end{itemize}
+
+\section{Maintenance and Extension}
+\begin{itemize}
+  \item New routes: author in YAML under \texttt{src/main/resources/camel/} and include in locations.
+  \item Add processors/services for transformations; prefer small, cohesive classes.
+  \item Keep external service contracts in local JARs or Maven artifacts; document expected endpoints and payloads.
+  \item Monitor Camel and Spring Boot versions for compatibility with your runtime JDK.
+\end{itemize}
+
+\section{Conclusion}
+This project demonstrates a clean integration of Apache Camel YAML routes within a Spring Boot service exposing REST endpoints. The controllers bridge HTTP APIs to Camel ``direct:'' routes, enabling validation, enrichment, mapping, and business rule application. With this handbook, developers can quickly run, verify, and extend the service for LOC3X1 and related processes.
+
+\end{document}

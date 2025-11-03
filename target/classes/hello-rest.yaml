@@ -1,0 +1,9 @@
+- from:
+    uri: "timer:myTimer?period=5000" # Triggers every 2 seconds
+    steps:
+      - process:
+          ref: "myCustomProcessor"
+      - log: 
+          message: "Passato attraverso myFirstProcessor"
+      - to: 
+          uri: "log:myLog"

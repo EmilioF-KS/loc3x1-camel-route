@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/location_adjacency_aggregation"
+	xmlns:bons0="http://ei/core/location_adjacency_calculation"
+	xmlns:bons1="http://ei/core/limitx2"
+	xmlns:bons2="http://ei/core/premiumx5"
+	xmlns:bons3="http://ei/core/exposurex1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import schemaLocation="Exposurex1.xsd"
+		namespace="http://ei/core/exposurex1">
+	</xsd:import>
+	<xsd:import
+		namespace="http://ei/core/location_adjacency_calculation"
+		schemaLocation="LocationAdjacencyCalculation.xsd">
+	</xsd:import>
+
+	<xsd:import namespace="http://ei/core/premiumx5"
+		schemaLocation="PremiumX5.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/limitx2"
+		schemaLocation="LimitX2.xsd">
+	</xsd:import>
+
+	<xsd:complexType name="LocationAdjacencyAggregation">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Exposure" type="bons3:Exposure">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Limit" type="bons1:Limit">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Premium" type="bons2:Premium">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="LocationAdjacencyCalculation"
+				type="bons0:LocationAdjacencyCalculation">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

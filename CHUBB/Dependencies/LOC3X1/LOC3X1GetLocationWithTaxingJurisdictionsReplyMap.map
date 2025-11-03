@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationWithTaxingJurisdictions3X1BResponseMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x1b%257DGetLocationWithTaxingJurisdictions3X1BResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:GetLocationWithTaxingJurisdictionsResponseMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x1%257DGetLocationWithTaxingJurisdictionsResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X1GetLocationWithTaxingJurisdictionsReplyMap="http://Location2MediationModule" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location2MediationModule">
+  <map:name>LOC3X1GetLocationWithTaxingJurisdictionsReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationWithTaxingJurisdictions3X1BResponseMsg:GetLocationWithTaxingJurisdictions3X1BResponseMsg" name="GetLocationWithTaxingJurisdictions3X1BResponseMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationWithTaxingJurisdictionsResponseMsg:GetLocationWithTaxingJurisdictionsResponseMsg" name="GetLocationWithTaxingJurisdictionsResponseMsg"/>
+  <map:propertyMap executionOrder="1">
+    <map:submap submapName="LOC3X1GetLocationWithTaxingJurisdictionsReplyMap:LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap">
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1BResponseMsg" property="GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/Location" variableName="Location"/>
+      <map:output businessObjectVariableRef="GetLocationWithTaxingJurisdictionsResponseMsg" property="GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/Location" variableName="Location_1"/>
+    </map:submap>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1BResponseMsg" property="GetLocationWithTaxingJurisdictions3X1BResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation"/>
+      <map:output businessObjectVariableRef="GetLocationWithTaxingJurisdictionsResponseMsg" property="GetLocationWithTaxingJurisdictionsResponse/GetLocationWithTaxingJurisdictionsReply/StatusInformation"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>
