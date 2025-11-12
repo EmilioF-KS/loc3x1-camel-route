@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/corporate/get_country_list_reply_crp10x2"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons1="http://ei/core/countryx1">
+	<xsd:import schemaLocation="../Schemas/CountryX1.xsd"
+		namespace="http://ei/core/countryx1">
+	</xsd:import>
+	<xsd:complexType name="GetCountryListReply">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Country" type="bons1:Country">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

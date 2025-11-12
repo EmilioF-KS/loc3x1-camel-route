@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.Data; @Data public class LocationRequest { public String addressLine1,addressLine2,cityName; public String stateOrProvinceCode,postalStateAbbreviation,postalCode,locationPlaceCode; public String countryCode,countryAbbreviation; }

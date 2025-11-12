@@ -1,0 +1,11 @@
+package com.example.location.external.dto.crp10x1;
+
+import lombok.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class GetCountryResponseDto {
+	private String countryCode;
+	private String countryAbbreviation;
+}

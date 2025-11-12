@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:Location="http://ei/location/location" xmlns:RandLocationToCimLocationMap="http://Location2MediationModule" xmlns:dto.rand.chubb.com="http://dto.rand.chubb.com" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location2MediationModule">
+  <map:name>RandLocationToCimLocationMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="dto.rand.chubb.com:Location" name="Location"/>
+  <map:outputBusinessObjectVariable businessObjectRef="Location:Location" name="Location_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="cityName"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CityName"/>
+      <map:javaCode>java.lang.String __Location_cityName = (java.lang.String)Location_cityName;&#xD;
+java.lang.String __Location_1_StandardizedAddress_CityName = (java.lang.String)Location_1_StandardizedAddress_CityName;&#xD;
+boolean __result__1 = __Location_cityName != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_cityName.trim();&#xD;
+	__Location_1_StandardizedAddress_CityName = __result__5;&#xD;
+	Location_1_StandardizedAddress_CityName = __Location_1_StandardizedAddress_CityName;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_cityName&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_cityName != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_cityName&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_CityName&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="countyName"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountyName"/>
+      <map:javaCode>java.lang.String __Location_countyName = (java.lang.String)Location_countyName;&#xD;
+java.lang.String __Location_1_StandardizedAddress_CountyName = (java.lang.String)Location_1_StandardizedAddress_CountyName;&#xD;
+boolean __result__1 = __Location_countyName != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_countyName.trim();&#xD;
+	__Location_1_StandardizedAddress_CountyName = __result__5;&#xD;
+	Location_1_StandardizedAddress_CountyName = __Location_1_StandardizedAddress_CountyName;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_countyName&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countyName != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countyName&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_CountyName&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="stateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/StateOrProvinceCode"/>
+      <map:javaCode>java.lang.String __Location_stateOrProvinceCode = (java.lang.String)Location_stateOrProvinceCode;&#xD;
+java.lang.String __Location_1_StandardizedAddress_StateOrProvinceCode = (java.lang.String)Location_1_StandardizedAddress_StateOrProvinceCode;&#xD;
+boolean __result__1 = __Location_stateOrProvinceCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_stateOrProvinceCode.trim();&#xD;
+	__Location_1_StandardizedAddress_StateOrProvinceCode = __result__5;&#xD;
+	Location_1_StandardizedAddress_StateOrProvinceCode = __Location_1_StandardizedAddress_StateOrProvinceCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_stateOrProvinceCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_stateOrProvinceCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_stateOrProvinceCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_StateOrProvinceCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="stateOrProvinceName"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/StateOrProvinceName"/>
+      <map:javaCode>java.lang.String __Location_stateOrProvinceName = (java.lang.String)Location_stateOrProvinceName;&#xD;
+java.lang.String __Location_1_StandardizedAddress_StateOrProvinceName = (java.lang.String)Location_1_StandardizedAddress_StateOrProvinceName;&#xD;
+boolean __result__1 = __Location_stateOrProvinceName != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_stateOrProvinceName.trim();&#xD;
+	__Location_1_StandardizedAddress_StateOrProvinceName = __result__5;&#xD;
+	Location_1_StandardizedAddress_StateOrProvinceName = __Location_1_StandardizedAddress_StateOrProvinceName;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_stateOrProvinceName&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_stateOrProvinceName != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_stateOrProvinceName&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_StateOrProvinceName&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="Location" property="postalStateAbbreviation"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/PostalStateAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="postalCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/PostalCode"/>
+      <map:javaCode>java.lang.String __Location_postalCode = (java.lang.String)Location_postalCode;&#xD;
+java.lang.String __Location_1_StandardizedAddress_PostalCode = (java.lang.String)Location_1_StandardizedAddress_PostalCode;&#xD;
+boolean __result__1 = __Location_postalCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_postalCode.trim();&#xD;
+	__Location_1_StandardizedAddress_PostalCode = __result__5;&#xD;
+	Location_1_StandardizedAddress_PostalCode = __Location_1_StandardizedAddress_PostalCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_postalCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_postalCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_postalCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_PostalCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="countryCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountryCode"/>
+      <map:javaCode>java.lang.String __Location_countryCode = (java.lang.String)Location_countryCode;&#xD;
+java.lang.String __Location_1_StandardizedAddress_CountryCode = (java.lang.String)Location_1_StandardizedAddress_CountryCode;&#xD;
+boolean __result__1 = __Location_countryCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_countryCode.trim();&#xD;
+	__Location_1_StandardizedAddress_CountryCode = __result__5;&#xD;
+	Location_1_StandardizedAddress_CountryCode = __Location_1_StandardizedAddress_CountryCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_countryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countryCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="countryName"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountryName"/>
+      <map:javaCode>java.lang.String __Location_countryName = (java.lang.String)Location_countryName;&#xD;
+java.lang.String __Location_1_StandardizedAddress_CountryName = (java.lang.String)Location_1_StandardizedAddress_CountryName;&#xD;
+boolean __result__1 = __Location_countryName != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_countryName.trim();&#xD;
+	__Location_1_StandardizedAddress_CountryName = __result__5;&#xD;
+	Location_1_StandardizedAddress_CountryName = __Location_1_StandardizedAddress_CountryName;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_countryName&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countryName != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_countryName&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_CountryName&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="Location" property="locationPlaceCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/LocationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="poBoxIndicator"/>
+      <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/POBoxIndicator"/>
+      <map:javaCode>java.lang.String __Location_poBoxIndicator = (java.lang.String)Location_poBoxIndicator;&#xD;
+java.lang.Boolean __Location_1_StandardizedAddress_POBoxIndicator = (java.lang.Boolean)Location_1_StandardizedAddress_POBoxIndicator;&#xD;
+java.lang.String source = __Location_poBoxIndicator;&#xD;
+boolean __result__3 = &quot;Y&quot;.equalsIgnoreCase(source);&#xD;
+__Location_1_StandardizedAddress_POBoxIndicator = new java.lang.Boolean(__result__3);&#xD;
+Location_1_StandardizedAddress_POBoxIndicator = __Location_1_StandardizedAddress_POBoxIndicator;&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_poBoxIndicator&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_poBoxIndicator&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot; value=&quot;source&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;Y&amp;quot;.equalsIgnoreCase( source)&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.3&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@dataOutputs.0&quot; value=&quot;Location_1_StandardizedAddress_POBoxIndicator&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;boolean&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;localVariables name=&quot;source&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.2 //@executableElements.3&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!2:3,1&#xD;
+//!SMAP!3:4,1&#xD;
+//!SMAP!4:5,2&#xD;
+//!SMAP!1000000:44,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="Location" property="cityCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="LocationInformation/CityCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="Location" property="countyCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="LocationInformation/CountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="13">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="fireDistrictCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="LocationInformation/FireDistrictCode"/>
+      <map:javaCode>java.lang.String __Location_fireDistrictCode = (java.lang.String)Location_fireDistrictCode;&#xD;
+java.lang.String __Location_1_LocationInformation_FireDistrictCode = (java.lang.String)Location_1_LocationInformation_FireDistrictCode;&#xD;
+boolean __result__1 = __Location_fireDistrictCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_fireDistrictCode.trim();&#xD;
+	__Location_1_LocationInformation_FireDistrictCode = __result__5;&#xD;
+	Location_1_LocationInformation_FireDistrictCode = __Location_1_LocationInformation_FireDistrictCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_fireDistrictCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_fireDistrictCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_fireDistrictCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_LocationInformation_FireDistrictCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="14">
+    <map:custom>
+      <map:input businessObjectVariableRef="Location" property="taxInfo/licenseCode"/>
+      <map:output businessObjectVariableRef="Location_1" property="LocationInformation/LicenseCode"/>
+      <map:javaCode>java.lang.String __Location_taxInfo_licenseCode = (java.lang.String)Location_taxInfo_licenseCode;&#xD;
+java.lang.String __Location_1_LocationInformation_LicenseCode = (java.lang.String)Location_1_LocationInformation_LicenseCode;&#xD;
+boolean __result__1 = __Location_taxInfo_licenseCode != null;&#xD;
+if (__result__1){&#xD;
+	java.lang.String __result__5 = __Location_taxInfo_licenseCode.trim();&#xD;
+	__Location_1_LocationInformation_LicenseCode = __result__5;&#xD;
+	Location_1_LocationInformation_LicenseCode = __Location_1_LocationInformation_LicenseCode;&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;Location_taxInfo_licenseCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_taxInfo_licenseCode != null&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;Location_taxInfo_licenseCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;trim&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;trim&quot;>
+//        &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;Location_1_LocationInformation_LicenseCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1 //@executableElements.1/@conditionalActivities.0/@executableElements.2&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:3,1&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!5:5,1&#xD;
+//!SMAP!6:6,2&#xD;
+//!SMAP!1000000:60,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+</map:businessObjectMap>

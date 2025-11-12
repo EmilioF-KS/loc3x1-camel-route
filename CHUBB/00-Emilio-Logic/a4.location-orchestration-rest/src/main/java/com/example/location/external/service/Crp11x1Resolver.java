@@ -1,0 +1,1 @@
+package com.example.location.external.service; import com.example.location.external.dto.crp11x1.*; import java.util.Optional; public interface Crp11x1Resolver{ Optional<GetStateOrProvinceResponseDto> resolve(GetStateOrProvinceRequestDto request); }

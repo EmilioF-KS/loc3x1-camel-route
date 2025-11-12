@@ -1,0 +1,1 @@
+package com.example.location.support; public class ValidationException extends RuntimeException{ public ValidationException(String m){super(m);} }

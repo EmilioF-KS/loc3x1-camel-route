@@ -1,0 +1,22 @@
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.location: DEBUG
+
+endpoints:
+  crp10x1:
+    getCountry: "http://replace-with-crp10x1/GetCountry"   # TODO: real SOAP/HTTP endpoint
+  crp11x1:
+    getStateOrProvince: "http://replace-with-crp11x1/GetStateOrProvince"  # TODO
+  loc3x1m:
+    getLocationList: "http://replace-with-loc3x1m/GetLocationList"        # TODO
+
+camel:
+  component:
+    servlet:
+      mapping:
+        contextPath: /api/*

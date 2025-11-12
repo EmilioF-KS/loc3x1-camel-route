@@ -1,0 +1,31 @@
+package com.example.location.external;
+
+import com.example.location.external.dto.crp10x1.*;
+import com.example.location.external.service.Crp10x1Resolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import java.util.*;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/crp10x1")
+public class Crp10x1Controller {
+	@Autowired(required = false)
+	private Crp10x1Resolver resolver;
+
+	@PostMapping("/getCountry")
+	public ResponseEntity<?> getCountry(@RequestBody GetCountryRequestDto body) {
+		boolean hasCode = body != null && body.getCountryCode() != null;
+		boolean hasAbbr = body != null && body.getCountryAbbreviation() != null;
+		if (!hasCode && !hasAbbr)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body(Map.of("faultMessageText", "EIRV0010E CountryCode or CountryAbbreviation is required"));
+		if (resolver == null)
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED)
+					.body(Map.of("faultMessageText", "CRP10X1 resolver not configured"));
+		Optional<GetCountryResponseDto> out = resolver.resolve(body);
+		return out.<ResponseEntity<?>>map(ResponseEntity::ok).orElseGet(() -> ResponseEntity
+				.status(HttpStatus.NOT_FOUND).body(Map.of("faultMessageText", "CRP10X1 country not found")));
+	}
+}

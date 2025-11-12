@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.Data; import java.util.*; @Data public class StatusInformation{ private String statusCode; private List<ErrorItem> error=new ArrayList<>(); }

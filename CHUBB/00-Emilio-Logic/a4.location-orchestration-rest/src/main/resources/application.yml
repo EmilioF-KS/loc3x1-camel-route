@@ -1,0 +1,22 @@
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.location: DEBUG
+
+endpoints:
+  crp10x1:
+    getCountry: "http://localhost:8080/api/crp10x1/getCountry"
+  crp11x1:
+    getStateOrProvince: "http://localhost:8080/api/crp11x1/getStateOrProvince"
+  loc3x1m:
+    getLocationList: "http://localhost:8080/api/loc3x1m/getLocationList"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,188 @@
+
+- restConfiguration:
+    component: platform-http
+    contextPath: /api
+    dataFormatProperty:
+      prettyPrint: 'true'
+
+- rests:
+  - rest:
+      path: /locations
+      post:
+        - post:
+            uri: /list
+            consumes: application/json
+            produces: application/json
+            to: direct:getLocationList
+        - post:
+            uri: /with-jurisdictions
+            consumes: application/json
+            produces: application/json
+            to: direct:getLocationWithTaxing
+
+- routes:
+  - route:
+      id: getLocationList
+      from:
+        uri: direct:getLocationList
+        steps:
+          - log: "Start Process - GET_LOCATION_LIST_LOC3X1B"
+          - unmarshal:
+              json:
+                library: Jackson
+                unmarshalType: com.example.location.model.LocationRequest
+          - setProperty:
+              name: currentRequest
+              simple: "${body}"
+          - log: "Log LOC3X1B Request: ${body}"
+          - doTry:
+              steps:
+                - bean: { ref: ValidateGetLocationListRequestProcessor }
+                - bean: { ref: EnrichStateFromCRP11X1Processor }
+                - choice:
+                    when:
+                      - simple: "${header.call.crp11x1} == true"
+                        steps:
+                          - bean: { ref: BuildCrp11X1PayloadProcessor }
+                          - marshal: { json: { library: Jackson } }
+                          - setHeader: { name: Content-Type, constant: application/json }
+                          - setHeader: { name: CamelHttpMethod, constant: POST }
+                          - choice:
+                              when:
+                                - simple: "${exchangeProperty.crp11x1OverrideUri} != null"
+                                  steps:
+                                    - toD: "${exchangeProperty.crp11x1OverrideUri}"
+                              otherwise:
+                                steps:
+                                  - toD: "{{endpoints.crp11x1.getStateOrProvince}}"
+                          - unmarshal: { json: { library: Jackson } }
+                          - bean: { ref: ApplyCRP11X1EnrichmentProcessor }
+                - bean: { ref: EnrichCountryFromCRP10X1Processor }
+                - choice:
+                    when:
+                      - simple: "${header.call.crp10x1} == true"
+                        steps:
+                          - bean: { ref: BuildCrp10X1PayloadProcessor }
+                          - marshal: { json: { library: Jackson } }
+                          - setHeader: { name: Content-Type, constant: application/json }
+                          - setHeader: { name: CamelHttpMethod, constant: POST }
+                          - choice:
+                              when:
+                                - simple: "${exchangeProperty.crp10x1OverrideUri} != null"
+                                  steps:
+                                    - toD: "${exchangeProperty.crp10x1OverrideUri}"
+                              otherwise:
+                                steps:
+                                  - toD: "{{endpoints.crp10x1.getCountry}}"
+                          - unmarshal: { json: { library: Jackson } }
+                          - bean: { ref: ApplyCRP10X1EnrichmentProcessor }
+                - bean: { ref: MapToModuleRequestProcessor }
+                - marshal: { json: { library: Jackson } }
+                - setHeader: { name: Content-Type, constant: application/json }
+                - setHeader: { name: CamelHttpMethod, constant: POST }
+                - choice:
+                    when:
+                      - simple: "${exchangeProperty.loc3x1mOverrideUri} != null"
+                        steps:
+                          - toD: "${exchangeProperty.loc3x1mOverrideUri}"
+                    otherwise:
+                      steps:
+                        - toD: "{{endpoints.loc3x1m.getLocationList}}"
+                - unmarshal: { json: { library: Jackson } }
+                - bean: { ref: MapModuleReplyToApiReplyProcessor }
+                - bean: { ref: PostProcessFireDistrictProcessor }
+                - log: "Log LOC3X1B Reply: ${body}"
+                - log: "End Process - GET_LOCATION_LIST_LOC3X1B"
+                - marshal: { json: { library: Jackson, useList: false } }
+            doCatch:
+              - exception: com.example.location.support.ValidationException
+                steps:
+                  - setBody: { simple: '{"faultMessageText":"EIRV0010E ${exception.message}"}' }
+                  - setHeader: { name: Content-Type, constant: application/json }
+              - exception: java.lang.Exception
+                steps:
+                  - setBody: { simple: '{"faultMessageText":"EISP0001E Service Processing Exception: ${exception.message}"}' }
+                  - setHeader: { name: Content-Type, constant: application/json }
+
+  - route:
+      id: getLocationWithTaxing
+      from:
+        uri: direct:getLocationWithTaxing
+        steps:
+          - log: "Start Process - GET_LOCATION_WITH_TAXING_LOC3X1B"
+          - unmarshal:
+              json:
+                library: Jackson
+                unmarshalType: com.example.location.model.LocationRequest
+          - setProperty:
+              name: currentRequest
+              simple: "${body}"
+          - log: "Log LOC3X1B WithTaxing Request: ${body}"
+          - doTry:
+              steps:
+                - bean: { ref: ValidateGetLocationWithTaxingRequestProcessor }
+                - bean: { ref: EnrichStateFromCRP11X1Processor }
+                - choice:
+                    when:
+                      - simple: "${header.call.crp11x1} == true"
+                        steps:
+                          - bean: { ref: BuildCrp11X1PayloadProcessor }
+                          - marshal: { json: { library: Jackson } }
+                          - setHeader: { name: Content-Type, constant: application/json }
+                          - setHeader: { name: CamelHttpMethod, constant: POST }
+                          - choice:
+                              when:
+                                - simple: "${exchangeProperty.crp11x1OverrideUri} != null"
+                                  steps:
+                                    - toD: "${exchangeProperty.crp11x1OverrideUri}"
+                              otherwise:
+                                steps:
+                                  - toD: "{{endpoints.crp11x1.getStateOrProvince}}"
+                          - unmarshal: { json: { library: Jackson } }
+                          - bean: { ref: ApplyCRP11X1EnrichmentProcessor }
+                - bean: { ref: EnrichCountryFromCRP10X1Processor }
+                - choice:
+                    when:
+                      - simple: "${header.call.crp10x1} == true"
+                        steps:
+                          - bean: { ref: BuildCrp10X1PayloadProcessor }
+                          - marshal: { json: { library: Jackson } }
+                          - setHeader: { name: Content-Type, constant: application/json }
+                          - setHeader: { name: CamelHttpMethod, constant: POST }
+                          - choice:
+                              when:
+                                - simple: "${exchangeProperty.crp10x1OverrideUri} != null"
+                                  steps:
+                                    - toD: "${exchangeProperty.crp10x1OverrideUri}"
+                              otherwise:
+                                steps:
+                                  - toD: "{{endpoints.crp10x1.getCountry}}"
+                          - unmarshal: { json: { library: Jackson } }
+                          - bean: { ref: ApplyCRP10X1EnrichmentProcessor }
+                - bean: { ref: MapToModuleRequestProcessor }
+                - marshal: { json: { library: Jackson } }
+                - setHeader: { name: Content-Type, constant: application/json }
+                - setHeader: { name: CamelHttpMethod, constant: POST }
+                - choice:
+                    when:
+                      - simple: "${exchangeProperty.loc3x1mOverrideUri} != null"
+                        steps:
+                          - toD: "${exchangeProperty.loc3x1mOverrideUri}"
+                    otherwise:
+                      steps:
+                        - toD: "{{endpoints.loc3x1m.getLocationList}}"
+                - unmarshal: { json: { library: Jackson } }
+                - bean: { ref: MapModuleReplyToApiReplyProcessor }
+                - bean: { ref: PostProcessFireDistrictProcessor }
+                - log: "Log LOC3X1B WithTaxing Reply: ${body}"
+                - log: "End Process - GET_LOCATION_WITH_TAXING_LOC3X1B"
+                - marshal: { json: { library: Jackson, useList: false } }
+            doCatch:
+              - exception: com.example.location.support.ValidationException
+                steps:
+                  - setBody: { simple: '{"faultMessageText":"EIRV0010E ${exception.message}"}' }
+                  - setHeader: { name: Content-Type, constant: application/json }
+              - exception: java.lang.Exception
+                steps:
+                  - setBody: { simple: '{"faultMessageText":"EISP0001E Service Processing Exception: ${exception.message}"}' }
+                  - setHeader: { name: Content-Type, constant: application/json }

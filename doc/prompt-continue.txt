@@ -1,0 +1,49 @@
+Project continuation prompt (for tomorrow):
+
+You are resuming the LOC3X1 Camel YAML synthesis project from the current state. Start with ticket AGENT-030 and preserve the established constraints:
+
+Current state and artifacts:
+- All tests pass (`pytest -q` → 29 tests green) across synthesis and validation modules.
+- Route Skeleton Synthesis present: `agent/src/route_synthesis.py` with `synthesize_routes`, `synthesize_routes_split`, and `validate_route_yaml`.
+- Tests: `agent/tests/test_route_synthesis.py` covers single-file, split-per-operation generation, placeholder validator (unresolved/resolved), and filled placeholder generation.
+- Orchestration plan inputs: `agent/orchestration_plan.json` (YAML mirror may exist later; JSON is authoritative for code).
+- Documentation: `agent/README.md` includes usage for route generation (single-file and split-per-operation) and placeholder validation.
+- JIRA status updated: acceptance checkboxes marked for AGENT-021 (plan completeness), AGENT-022 (deterministic mapping + XSLT validation), AGENT-024 (heuristic coverage and explainability). AGENT-023 acceptance criteria remain open (schema validation, a9 structure mirroring, build-free generation).
+
+Key constraints to keep:
+- Maintain client-agnostic behavior and avoid hardcoded paths; use placeholders that can be optionally filled via CLI.
+- Preserve deterministic mapping baseline and formal tests; add new tests rather than weakening existing ones.
+- Prefer schema and structural validations over ad-hoc checks.
+
+Useful commands and examples:
+- Run tests: `pytest -q`.
+- Generate routes (single file): `python -m agent.src.route_synthesis --plan agent/orchestration_plan.json --output agent/output/routes/service-name.yaml`.
+- Generate routes (split per operation): `python -m agent.src.route_synthesis --plan agent/orchestration_plan.json --split-per-operation --output-dir agent/output/routes`.
+- Validate placeholders:
+  - Unresolved mode: `python -m agent.src.route_synthesis --validate agent/output/routes/service-name.yaml --validator-mode unresolved`.
+  - Resolved mode: `python -m agent.src.route_synthesis --validate agent/output/routes/service-name.yaml --validator-mode resolved`.
+- Fill placeholders at generation time (single file example):
+  `python -m agent.src.route_synthesis --plan agent/orchestration_plan.json --output agent/output/routes/service-name.yaml --controller-path api/location --request-xslt xslt/request.xsl --reply-xslt xslt/reply.xsl --provider-uri http://provider.example/endpoint`
+
+Open items to remember:
+- AGENT-023 acceptance gaps: add YAML schema validation, mirror `a9` route structure (controllers, helper routes, provider wiring), and ensure generated routes build without manual edits.
+- AGENT-022 remaining acceptance: report coverage metrics (mapped vs. unmapped) for the deterministic baseline.
+
+Next ticket to start: AGENT-030 — Translate IBM `map:custom` Java blocks to processors
+Plan of action:
+1) Discover IBM `map:custom` blocks in available maps; define a minimal corpus for unit tests.
+2) Design Java processor templates for common patterns (string trimming, conditional assignment, type conversions) with side-effect-free logic.
+3) Implement processor generation (code + rationale) and place outputs under `agent/output/java_processors/` and `docs/processors.md`.
+4) Add unit tests to compare processor outputs to expected XML, including golden tests.
+5) Ensure processors compile (if a Java build exists) or use a lightweight Java syntax checker; otherwise mock compile step and focus on unit tests.
+6) Keep client-agnostic placeholders where applicable; do not introduce secrets or hardcoded paths.
+
+Reference files and directories:
+- `agent/src/route_synthesis.py`
+- `agent/tests/test_route_synthesis.py`
+- `agent/README.md`
+- `doc/jira-tickets.md`
+- `agent/orchestration_plan.json`
+
+Goal for tomorrow:
+- Implement AGENT-030 end-to-end with tests and documentation, while preserving the green test suite and project constraints.

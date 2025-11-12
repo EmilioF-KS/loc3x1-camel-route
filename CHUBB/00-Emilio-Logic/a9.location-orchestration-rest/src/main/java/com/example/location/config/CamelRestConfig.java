@@ -1,0 +1,1 @@
+package com.example.location.config; import org.apache.camel.builder.RouteBuilder; import org.springframework.stereotype.Component; @Component public class CamelRestConfig extends RouteBuilder{ public void configure(){ restConfiguration().component("platform-http").contextPath("/api").dataFormatProperty("prettyPrint","true"); } }

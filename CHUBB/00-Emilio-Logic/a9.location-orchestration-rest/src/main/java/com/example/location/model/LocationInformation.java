@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.Data; @Data public class LocationInformation{ private String fireDistrictCode; }

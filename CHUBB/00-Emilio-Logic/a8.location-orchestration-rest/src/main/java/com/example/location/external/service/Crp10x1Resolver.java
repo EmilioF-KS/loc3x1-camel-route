@@ -1,0 +1,8 @@
+package com.example.location.external.service;
+
+import com.example.location.external.dto.crp10x1.*;
+import java.util.Optional;
+
+public interface Crp10x1Resolver {
+	Optional<GetCountryResponseDto> resolve(GetCountryRequestDto request);
+}

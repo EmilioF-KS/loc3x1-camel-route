@@ -1,0 +1,19 @@
+package com.example.location.processor;
+
+import com.example.location.model.LocationRequest;
+import org.apache.camel.*;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EnrichCountryFromCRP10X1Processor implements Processor {
+	public void process(Exchange ex) {
+		LocationRequest r = ex.getMessage().getBody(LocationRequest.class);
+		boolean hasCode = is(r.countryCode), hasAbbr = is(r.countryAbbreviation);
+		boolean needs = !(hasCode && hasAbbr) && (hasCode || hasAbbr);
+		ex.getMessage().setHeader("call.crp10x1", needs);
+	}
+
+	boolean is(String s) {
+		return s != null && !s.isBlank();
+	}
+}

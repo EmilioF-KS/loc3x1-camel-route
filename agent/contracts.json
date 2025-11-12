@@ -1,0 +1,4366 @@
+{
+  "contracts": [
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "targetNamespace": "http://ei/corporate/state_or_province_retrieval_crp11x1",
+      "portTypes": [
+        {
+          "name": "StateOrProvinceRetrievalCRP11X1",
+          "operations": [
+            {
+              "name": "GetStateOrProvince",
+              "input_message": "tns:GetStateOrProvinceRequestMsg",
+              "output_message": "tns:GetStateOrProvinceResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            },
+            {
+              "name": "GetStateOrProvinceList",
+              "input_message": "tns:GetStateOrProvinceListRequestMsg",
+              "output_message": "tns:GetStateOrProvinceListResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            }
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "name": "GetStateOrProvinceListRequestMsg",
+          "parts": [
+            {
+              "name": "GetStateOrProvinceListParameters",
+              "element": "tns:GetStateOrProvinceList",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetStateOrProvinceListResponseMsg",
+          "parts": [
+            {
+              "name": "GetStateOrProvinceListResult",
+              "element": "tns:GetStateOrProvinceListResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetStateOrProvinceRequestMsg",
+          "parts": [
+            {
+              "name": "GetStateOrProvinceParameters",
+              "element": "tns:GetStateOrProvince",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetStateOrProvinceResponseMsg",
+          "parts": [
+            {
+              "name": "GetStateOrProvinceResult",
+              "element": "tns:GetStateOrProvinceResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetStateOrProvinceList_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetStateOrProvince_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        }
+      ],
+      "embeddedTypesRaw": [
+        "<wsdl:types xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n    <xs:schema targetNamespace=\"http://ei/corporate/state_or_province_retrieval_crp11x1\">\n            <xs:import namespace=\"http://ei/core/state_or_province\" schemaLocation=\"../Schemas/StateOrProvince.xsd\" />\n            <xs:import namespace=\"http://ei/corporate/get_state_or_province_request_crp11x1\" schemaLocation=\"GetStateOrProvinceRequest.xsd\" />\n            <xs:import namespace=\"http://ei/corporate/get_state_or_province_list_reply_crp11x1\" schemaLocation=\"GetStateOrProvinceListReply.xsd\" />\n            <xs:import namespace=\"http://ei/core/simplefault\" schemaLocation=\"../PrivateSchemas/SimpleFault.xsd\" />\n      <xs:element name=\"GetStateOrProvinceList\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"AsOfDate\" nillable=\"true\" type=\"xsd:date\">\n              <xs:annotation>\n                <xs:documentation>This element contains the search start date.</xs:documentation>\n              </xs:annotation>\n            </xs:element>\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetStateOrProvinceListResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetStateOrProvinceListReply\" nillable=\"true\" type=\"bons0:GetStateOrProvinceListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetStateOrProvince\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetStateOrProvinceRequest\" nillable=\"true\" type=\"bons2:GetStateOrProvinceRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetStateOrProvinceResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"StateOrProvince\" nillable=\"true\" type=\"bons4:StateOrProvince\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"SimpleFault\" nillable=\"true\" type=\"bons1:SimpleFault\" />\n    </xs:schema>\n  </wsdl:types>\n    "
+      ],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1Http.wsdl",
+      "targetNamespace": "http://ei/corporate/state_or_province_retrieval_crp11x1_http",
+      "portTypes": [],
+      "messages": [],
+      "embeddedTypesRaw": [],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "targetNamespace": "http://ei/location/location_retrieval_loc3x1m",
+      "portTypes": [
+        {
+          "name": "LocationRetrievalLOC3X1M",
+          "operations": [
+            {
+              "name": "GetLocationList3X1M",
+              "input_message": "tns:GetLocationList3X1MRequestMsg",
+              "output_message": "tns:GetLocationList3X1MResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            },
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1M",
+              "input_message": "tns:GetLocationWithTaxingJurisdictions3X1MRequestMsg",
+              "output_message": "tns:GetLocationWithTaxingJurisdictions3X1MResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            }
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "name": "GetLocationList3X1MRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationList3X1MParameters",
+              "element": "tns:GetLocationList3X1M",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationList3X1MResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationList3X1MResult",
+              "element": "tns:GetLocationList3X1MResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationList3X1M_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1MRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1MParameters",
+              "element": "tns:GetLocationWithTaxingJurisdictions3X1M",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1MResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1MResult",
+              "element": "tns:GetLocationWithTaxingJurisdictions3X1MResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1M_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        }
+      ],
+      "embeddedTypesRaw": [
+        "<wsdl:types xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n    <xs:schema targetNamespace=\"http://ei/location/location_retrieval_loc3x1m\">\n      <xs:import namespace=\"http://ei/location/location_request_loc3x1m\" schemaLocation=\"LocationRequest.xsd\" />\n      <xs:import namespace=\"http://ei/core/simplefault\" schemaLocation=\"../PrivateSchemas/SimpleFault.xsd\" />\n      <xs:import namespace=\"http://ei/location/location_list_reply_loc3x1m\" schemaLocation=\"LocationListReply.xsd\" />\n      <xs:import namespace=\"http://ei/location/get_location_list_request_loc3x1m\" schemaLocation=\"GetLocationListRequest.xsd\" />\n      <xs:element name=\"GetLocationList3X1M\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListRequest\" nillable=\"true\" type=\"bons1:GetLocationListRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationList3X1MResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListReply\" nillable=\"true\" type=\"bons2:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"SimpleFault\" nillable=\"true\" type=\"bons3:SimpleFault\" />\n      <xs:element name=\"GetLocationWithTaxingJurisdictions3X1M\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsRequest\" nillable=\"true\" type=\"bons4:LocationRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationWithTaxingJurisdictions3X1MResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsReply\" nillable=\"true\" type=\"bons2:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n\n    </xs:schema>\n  </wsdl:types>\n    "
+      ],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "targetNamespace": "http://ei/location/location_retrieval_loc3x1b",
+      "portTypes": [
+        {
+          "name": "LocationRetrievalLOC3X1B",
+          "operations": [
+            {
+              "name": "GetLocationList3X1B",
+              "input_message": "tns:GetLocationList3X1BRequestMsg",
+              "output_message": "tns:GetLocationList3X1BResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            },
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1B",
+              "input_message": "tns:GetLocationWithTaxingJurisdictions3X1BRequestMsg",
+              "output_message": "tns:GetLocationWithTaxingJurisdictions3X1BResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            }
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "name": "GetLocationList3X1BRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationList3X1BParameters",
+              "element": "tns:GetLocationList3X1B",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationList3X1BResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationList3X1BResult",
+              "element": "tns:GetLocationList3X1BResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationList3X1B_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1BRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1BParameters",
+              "element": "tns:GetLocationWithTaxingJurisdictions3X1B",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1BResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictions3X1BResult",
+              "element": "tns:GetLocationWithTaxingJurisdictions3X1BResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions3X1B_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        }
+      ],
+      "embeddedTypesRaw": [
+        "<wsdl:types xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n    <xs:schema targetNamespace=\"http://ei/location/location_retrieval_loc3x1b\">\n      <xs:import namespace=\"http://ei/location/location_request_loc3x1b\" schemaLocation=\"LocationRequest.xsd\" />\n      <xs:import namespace=\"http://ei/core/simplefault\" schemaLocation=\"../PrivateSchemas/SimpleFault.xsd\" />\n      <xs:import namespace=\"http://ei/location/location_list_reply_loc3x1b\" schemaLocation=\"LocationListReply.xsd\" />\n      <xs:import namespace=\"http://ei/location/get_location_list_request_loc3x1b\" schemaLocation=\"GetLocationListRequest.xsd\" />\n      <xs:element name=\"GetLocationList3X1B\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListRequest\" nillable=\"true\" type=\"bons1:GetLocationListRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationList3X1BResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListReply\" nillable=\"true\" type=\"bons2:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"SimpleFault\" nillable=\"true\" type=\"bons3:SimpleFault\" />\n      <xs:element name=\"GetLocationWithTaxingJurisdictions3X1B\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsRequest\" nillable=\"true\" type=\"bons4:LocationRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationWithTaxingJurisdictions3X1BResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsReply\" nillable=\"true\" type=\"bons2:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n    \n    </xs:schema>\n  </wsdl:types>\n    "
+      ],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1Http.wsdl",
+      "targetNamespace": "http://ei/country/country_retrieval_crp10X1_http",
+      "portTypes": [],
+      "messages": [],
+      "embeddedTypesRaw": [],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "targetNamespace": "http://ei/country/country_retrieval_crp10X1",
+      "portTypes": [
+        {
+          "name": "CountryRetrievalCRP10X1",
+          "operations": [
+            {
+              "name": "GetCountry",
+              "input_message": "tns:GetCountryRequestMsg",
+              "output_message": "tns:GetCountryResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            },
+            {
+              "name": "GetCountryList",
+              "input_message": "tns:GetCountryListRequestMsg",
+              "output_message": "tns:GetCountryListResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            }
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "name": "GetCountryListRequestMsg",
+          "parts": [
+            {
+              "name": "GetCountryListParameters",
+              "element": "tns:GetCountryList",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetCountryListResponseMsg",
+          "parts": [
+            {
+              "name": "GetCountryListResult",
+              "element": "tns:GetCountryListResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetCountryRequestMsg",
+          "parts": [
+            {
+              "name": "GetCountryParameters",
+              "element": "tns:GetCountry",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetCountryResponseMsg",
+          "parts": [
+            {
+              "name": "GetCountryResult",
+              "element": "tns:GetCountryResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetCountryList_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetCountry_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault",
+              "type": null
+            }
+          ]
+        }
+      ],
+      "embeddedTypesRaw": [
+        "<wsdl:types xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n    <xs:schema targetNamespace=\"http://ei/country/country_retrieval_crp10X1\">\n            <xs:import namespace=\"http://ei/core/country\" schemaLocation=\"../Schemas/Country.xsd\" />\n            <xs:import namespace=\"http://ei/corporate/get_country_list_reply_crp10x1\" schemaLocation=\"GetCountryListReply.xsd\" />\n            <xs:import namespace=\"http://ei/corporate/get_country_request_crp10x1\" schemaLocation=\"GetCountryRequest.xsd\" />\n            <xs:import namespace=\"http://ei/core/simplefault\" schemaLocation=\"../PrivateSchemas/SimpleFault.xsd\" />\n      <xs:element name=\"GetCountryList\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"AsOfDate\" nillable=\"true\" type=\"xsd:date\">\n              <xs:annotation>\n                <xs:documentation>This element contains the search start date.</xs:documentation>\n              </xs:annotation>\n            </xs:element>\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetCountryListResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetCountryListReply\" nillable=\"true\" type=\"bons3:GetCountryListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetCountry\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetCountryRequest\" nillable=\"true\" type=\"bons2:GetCountryRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetCountryResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"Country\" nillable=\"true\" type=\"bons5:Country\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"SimpleFault\" nillable=\"true\" type=\"bons1:SimpleFault\" />\n    </xs:schema>\n  </wsdl:types>\n    "
+      ],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl",
+      "targetNamespace": "http://ei/location/location_retrieval_loc3x1_http",
+      "portTypes": [],
+      "messages": [],
+      "embeddedTypesRaw": [],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "targetNamespace": "http://ei/location/location_retrieval_loc3x1",
+      "portTypes": [
+        {
+          "name": "LocationRetrievalLOC3X1",
+          "operations": [
+            {
+              "name": "GetLocationList",
+              "input_message": "tns:GetLocationListRequestMsg",
+              "output_message": "tns:GetLocationListResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            },
+            {
+              "name": "GetLocationWithTaxingJurisdictions",
+              "input_message": "tns:GetLocationWithTaxingJurisdictionsRequestMsg",
+              "output_message": "tns:GetLocationWithTaxingJurisdictionsResponseMsg",
+              "faults": [
+                "SimpleFaultReply"
+              ]
+            }
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "name": "GetLocationListRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationListParameters",
+              "element": "tns:GetLocationList",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationListResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationListResult",
+              "element": "tns:GetLocationListResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictionsRequestMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictionsParameters",
+              "element": "tns:GetLocationWithTaxingJurisdictions",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictionsResponseMsg",
+          "parts": [
+            {
+              "name": "GetLocationWithTaxingJurisdictionsResult",
+              "element": "tns:GetLocationWithTaxingJurisdictionsResponse",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationList_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault_element",
+              "type": null
+            }
+          ]
+        },
+        {
+          "name": "GetLocationWithTaxingJurisdictions_SimpleFaultReplyMsg",
+          "parts": [
+            {
+              "name": "SimpleFaultReply",
+              "element": "tns:SimpleFault_element",
+              "type": null
+            }
+          ]
+        }
+      ],
+      "embeddedTypesRaw": [
+        "<wsdl:types xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n    <xs:schema targetNamespace=\"http://ei/location/location_retrieval_loc3x1\">\n      <xs:import namespace=\"http://ei/location/location_request\" schemaLocation=\"LocationRequest.xsd\" />\n      <xs:import namespace=\"http://ei/location/location_list_reply\" schemaLocation=\"LocationListReply.xsd\" />\n      <xs:import namespace=\"http://ei/location/get_location_list_request_loc3x1\" schemaLocation=\"GetLocationListRequest.xsd\" />\n      <xs:import namespace=\"http://ei/core/simplefault\" schemaLocation=\"../PrivateSchemas/SimpleFault.xsd\" />\n      <xs:element name=\"GetLocationList\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListRequest\" nillable=\"true\" type=\"bons2:GetLocationListRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationListResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationListReply\" nillable=\"true\" type=\"bons3:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationWithTaxingJurisdictions\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsRequest\" nillable=\"true\" type=\"bons4:LocationRequest\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"GetLocationWithTaxingJurisdictionsResponse\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element name=\"GetLocationWithTaxingJurisdictionsReply\" nillable=\"true\" type=\"bons3:LocationListReply\" />\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element name=\"SimpleFault_element\" nillable=\"true\" type=\"bons1:SimpleFault\" />\n    </xs:schema>\n  </wsdl:types>\n    "
+      ],
+      "types": {
+        "complexTypes": [],
+        "elements": []
+      }
+    }
+  ],
+  "types": [
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceListReply.xsd",
+      "targetNamespace": "http://ei/corporate/get_state_or_province_list_reply_crp11x1",
+      "complexTypes": [
+        {
+          "name": "GetStateOrProvinceListReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceRequest.xsd",
+      "targetNamespace": "http://ei/corporate/get_state_or_province_request_crp11x1",
+      "complexTypes": [
+        {
+          "name": "GetStateOrProvinceRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1M/LocationListReply.xsd",
+      "targetNamespace": "http://ei/location/location_list_reply_loc3x1m",
+      "complexTypes": [
+        {
+          "name": "LocationListReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1M/LocationRequest.xsd",
+      "targetNamespace": "http://ei/location/location_request_loc3x1m",
+      "complexTypes": [
+        {
+          "name": "LocationRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1M/GetLocationListRequest.xsd",
+      "targetNamespace": "http://ei/location/get_location_list_request_loc3x1m",
+      "complexTypes": [
+        {
+          "name": "GetLocationListRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1B/LocationListReply.xsd",
+      "targetNamespace": "http://ei/location/location_list_reply_loc3x1b",
+      "complexTypes": [
+        {
+          "name": "LocationListReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1B/LocationRequest.xsd",
+      "targetNamespace": "http://ei/location/location_request_loc3x1b",
+      "complexTypes": [
+        {
+          "name": "LocationRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd",
+      "targetNamespace": "http://ei/location/get_location_list_request_loc3x1b",
+      "complexTypes": [
+        {
+          "name": "GetLocationListRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/CountryRetrievalCRP10X1/GetCountryRequest.xsd",
+      "targetNamespace": "http://ei/corporate/get_country_request_crp10x1",
+      "complexTypes": [
+        {
+          "name": "GetCountryRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/CountryRetrievalCRP10X1/GetCountryReply.xsd",
+      "targetNamespace": "http://ei/corporate/get_country_reply_crp10x1",
+      "complexTypes": [
+        {
+          "name": "GetCountryReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/CountryRetrievalCRP10X1/GetCountryListReply.xsd",
+      "targetNamespace": "http://ei/corporate/get_country_list_reply_crp10x1",
+      "complexTypes": [
+        {
+          "name": "GetCountryListReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyIdentifierX1.xsd",
+      "targetNamespace": "http://ei/core/policy_identifierx1",
+      "complexTypes": [
+        {
+          "name": "PolicyIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/OrganizationInformation.xsd",
+      "targetNamespace": "http://ei/core/organization_information",
+      "complexTypes": [
+        {
+          "name": "OrganizationInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Currency.xsd",
+      "targetNamespace": "http://ei/core/currency",
+      "complexTypes": [
+        {
+          "name": "Currency"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BirthDateInformation.xsd",
+      "targetNamespace": "http://ei/core/birth_date_information",
+      "complexTypes": [
+        {
+          "name": "BirthDateInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TimeZone.xsd",
+      "targetNamespace": "http://ei/core/time_zone",
+      "complexTypes": [
+        {
+          "name": "TimeZone"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInstitution.xsd",
+      "targetNamespace": "http://ei/core/medical_institution",
+      "complexTypes": [
+        {
+          "name": "MedicalInstitution"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AllianceSBUMonthlyFinancial.xsd",
+      "targetNamespace": "http://ei/core/alliance_sbu_monthly_financial",
+      "complexTypes": [
+        {
+          "name": "AllianceSBUMonthlyFinancial"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactX3.xsd",
+      "targetNamespace": "http://ei/core/business_contactx3",
+      "complexTypes": [
+        {
+          "name": "BusinessContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TaxingJurisdiction.xsd",
+      "targetNamespace": "http://ei/core/taxing_jurisdiction",
+      "complexTypes": [
+        {
+          "name": "TaxingJurisdiction"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualIdentifier.xsd",
+      "targetNamespace": "http://ei/core/individual_identifier",
+      "complexTypes": [
+        {
+          "name": "IndividualIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LegalRepresentative.xsd",
+      "targetNamespace": "http://ei/core/legal_representative",
+      "complexTypes": [
+        {
+          "name": "LegalRepresentative"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationOccupancyAggregationX1.xsd",
+      "targetNamespace": "http://ei/core/location_occupancy_aggregationx1",
+      "complexTypes": [
+        {
+          "name": "LocationOccupancyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessEventKey.xsd",
+      "targetNamespace": "http://ei/core/business_event_key",
+      "complexTypes": [
+        {
+          "name": "BusinessEventKey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProductIdentifier.xsd",
+      "targetNamespace": "http://ei/core/product_identifier",
+      "complexTypes": [
+        {
+          "name": "ProductIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Item.xsd",
+      "targetNamespace": "http://ei/core/item",
+      "complexTypes": [
+        {
+          "name": "Item"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/OfferingStatusInformation.xsd",
+      "targetNamespace": "http://ei/core/offering_status_information",
+      "complexTypes": [
+        {
+          "name": "OfferingStatusInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactX2.xsd",
+      "targetNamespace": "http://ei/core/business_contactx2",
+      "complexTypes": [
+        {
+          "name": "BusinessContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StrategicAllianceSBU.xsd",
+      "targetNamespace": "http://ei/core/strategic_alliance_sbu",
+      "complexTypes": [
+        {
+          "name": "StrategicAllianceSBU"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Competitor.xsd",
+      "targetNamespace": "http://ei/core/competitor",
+      "complexTypes": [
+        {
+          "name": "Competitor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PublicProtectionInformation.xsd",
+      "targetNamespace": "http://ei/core/public_protection_information",
+      "complexTypes": [
+        {
+          "name": "PublicProtectionInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentBusinessType.xsd",
+      "targetNamespace": "http://ei/core/document_business_type",
+      "complexTypes": [
+        {
+          "name": "DocumentBusinessType"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BillPayor.xsd",
+      "targetNamespace": "http://ei/core/bill_payor",
+      "complexTypes": [
+        {
+          "name": "BillPayor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentProperty.xsd",
+      "targetNamespace": "http://ei/core/document_property",
+      "complexTypes": [
+        {
+          "name": "DocumentProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedInsuranceAdminRole.xsd",
+      "targetNamespace": "http://ei/core/extended_insurance_admin_role",
+      "complexTypes": [
+        {
+          "name": "ExtendedInsuranceAdminRole"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EntityAliasName.xsd",
+      "targetNamespace": "http://ei/core/entity_alias_name",
+      "complexTypes": [
+        {
+          "name": "EntityAliasName"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Language.xsd",
+      "targetNamespace": "http://ei/core/language",
+      "complexTypes": [
+        {
+          "name": "Language"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PerformanceMetric.xsd",
+      "targetNamespace": "http://ei/core/performance_metric",
+      "complexTypes": [
+        {
+          "name": "PerformanceMetric"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Exposurex2.xsd",
+      "targetNamespace": "http://ei/core/exposurex2",
+      "complexTypes": [
+        {
+          "name": "Exposure"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AssignedResourceIdByRole.xsd",
+      "targetNamespace": "http://ei/core/assigned_resource_id_by_role",
+      "complexTypes": [
+        {
+          "name": "AssignedResourceIdByRole"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocuSignEnvelope.xsd",
+      "targetNamespace": "http://ei/core/docusign_envelope",
+      "complexTypes": [
+        {
+          "name": "DocuSignEnvelope"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PayrollReport.xsd",
+      "targetNamespace": "http://ei/core/payroll_report",
+      "complexTypes": [
+        {
+          "name": "PayrollReport"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/HouseholdX1.xsd",
+      "targetNamespace": "http://ei/core/householdx1",
+      "complexTypes": [
+        {
+          "name": "Household"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/UserAuthorization.xsd",
+      "targetNamespace": "http://ei/core/user_authorization",
+      "complexTypes": [
+        {
+          "name": "UserAuthorization"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessInformation.xsd",
+      "targetNamespace": "http://ei/core/businessinformation",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "BusinessInformation",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyProcessingInformation.xsd",
+      "targetNamespace": "http://ei/core/policy_processing_information",
+      "complexTypes": [
+        {
+          "name": "PolicyProcessingInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualName.xsd",
+      "targetNamespace": "http://ei/core/individual_name",
+      "complexTypes": [
+        {
+          "name": "IndividualName"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CommissionRatesByPolicyCategory.xsd",
+      "targetNamespace": "http://ei/core/commission_rates_by_policy_category",
+      "complexTypes": [
+        {
+          "name": "CommissionRatesByPolicyCategory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntExclusionVariation.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_exclusion_variation",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntExclusionVariation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationOccupancyAggregationX2.xsd",
+      "targetNamespace": "http://ei/core/location_occupancy_aggregationx2",
+      "complexTypes": [
+        {
+          "name": "LocationOccupancyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactX1.xsd",
+      "targetNamespace": "http://ei/core/business_contactx1",
+      "complexTypes": [
+        {
+          "name": "BusinessContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/NotificationProperty.xsd",
+      "targetNamespace": "http://ei/core/notification_property",
+      "complexTypes": [
+        {
+          "name": "NotificationProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PriorCarrier.xsd",
+      "targetNamespace": "http://ei/core/prior_carrier",
+      "complexTypes": [
+        {
+          "name": "PriorCarrier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentReferenceInformation.xsd",
+      "targetNamespace": "http://ei/core/document_reference_information",
+      "complexTypes": [
+        {
+          "name": "DocumentReferenceInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyTypeInformation.xsd",
+      "targetNamespace": "http://ei/core/policy_type_information",
+      "complexTypes": [
+        {
+          "name": "PolicyTypeInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IssuedPolicyForm.xsd",
+      "targetNamespace": "http://ei/core/issued_policy_form",
+      "complexTypes": [
+        {
+          "name": "IssuedPolicyForm"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyTransactionIdentifier.xsd",
+      "targetNamespace": "http://ei/core/policy_transaction_identifier",
+      "complexTypes": [
+        {
+          "name": "PolicyTransactionIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Exposurex1.xsd",
+      "targetNamespace": "http://ei/core/exposurex1",
+      "complexTypes": [
+        {
+          "name": "Exposure"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Header.xsd",
+      "targetNamespace": "http://ei/core/header",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "Header",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CampaignContactAllianceSBUAssociation.xsd",
+      "targetNamespace": "http://ei/core/campaign_contact_alliance_sbu_association",
+      "complexTypes": [
+        {
+          "name": "CampaignContactAllianceSBUAssociation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PhoneInformation.xsd",
+      "targetNamespace": "http://ei/core/phone_information",
+      "complexTypes": [
+        {
+          "name": "PhoneInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EntityAliasNameX1.xsd",
+      "targetNamespace": "http://ei/core/entity_alias_namex1",
+      "complexTypes": [
+        {
+          "name": "EntityAliasName"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EndpointInformation.xsd",
+      "targetNamespace": "http://ei/core/endpoint_information",
+      "complexTypes": [
+        {
+          "name": "EndpointInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AccountingPeriod.xsd",
+      "targetNamespace": "http://ei/core/accounting_period",
+      "complexTypes": [
+        {
+          "name": "AccountingPeriod"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessPartyX1.xsd",
+      "targetNamespace": "http://ei/core/business_partyx1",
+      "complexTypes": [
+        {
+          "name": "BusinessParty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Territory.xsd",
+      "targetNamespace": "http://ei/core/territory",
+      "complexTypes": [
+        {
+          "name": "Territory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RatingTerritoryX1.xsd",
+      "targetNamespace": "http://ei/core/rating_territoryx1",
+      "complexTypes": [
+        {
+          "name": "RatingTerritory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessPartyCoveredRiskInterest.xsd",
+      "targetNamespace": "http://ei/core/business_party_covered_risk_interest",
+      "complexTypes": [
+        {
+          "name": "BusinessPartyCoveredRiskInterest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessProcessLocationType.xsd",
+      "targetNamespace": "http://ei/core/business_process_location_type",
+      "complexTypes": [
+        {
+          "name": "BusinessProcessLocationType"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RiskClassGradeInformation.xsd",
+      "targetNamespace": "http://ei/core/risk_class_grade_information",
+      "complexTypes": [
+        {
+          "name": "RiskClassGradeInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/UWIndustrySegment.xsd",
+      "targetNamespace": "http://ei/core/uw_industry_segment",
+      "complexTypes": [
+        {
+          "name": "UWIndustrySegment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MessageInformation.xsd",
+      "targetNamespace": "http://ei/core/messageinformation",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "MessageInformation",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactX4.xsd",
+      "targetNamespace": "http://ei/core/business_contactx4",
+      "complexTypes": [
+        {
+          "name": "BusinessContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/UserProfileIdentifier.xsd",
+      "targetNamespace": "http://ei/core/user_profile_identifier",
+      "complexTypes": [
+        {
+          "name": "UserProfileIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StatusInformationX2.xsd",
+      "targetNamespace": "http://ei/core/status_informationx2",
+      "complexTypes": [
+        {
+          "name": "StatusInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactType.xsd",
+      "targetNamespace": "http://ei/core/business_contact_type",
+      "complexTypes": [
+        {
+          "name": "BusinessContactType"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AccessAttribute.xsd",
+      "targetNamespace": "http://ei/core/access_attribute",
+      "complexTypes": [
+        {
+          "name": "AccessAttribute"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualInformationX1.xsd",
+      "targetNamespace": "http://ei/core/individual_informationx1",
+      "complexTypes": [
+        {
+          "name": "IndividualInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Error.xsd",
+      "targetNamespace": "http://ei/core/error",
+      "complexTypes": [
+        {
+          "name": "Error"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessPartyCharacteristic.xsd",
+      "targetNamespace": "http://ei/core/business_party_characteristic",
+      "complexTypes": [
+        {
+          "name": "BusinessPartyCharacteristic"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsConcept.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_concept",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsConcept"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PremiumApportionment.xsd",
+      "targetNamespace": "http://ei/core/premium_apportionment",
+      "complexTypes": [
+        {
+          "name": "PremiumApportionment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FormDestinationReceiver.xsd",
+      "targetNamespace": "http://ei/core/form_destination_receiver",
+      "complexTypes": [
+        {
+          "name": "FormDestinationReceiver"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedInsurer.xsd",
+      "targetNamespace": "http://ei/core/extended_insurer",
+      "complexTypes": [
+        {
+          "name": "ExtendedInsurer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomerSegment.xsd",
+      "targetNamespace": "http://ei/core/customer_segment",
+      "complexTypes": [
+        {
+          "name": "CustomerSegment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProcessingOption.xsd",
+      "targetNamespace": "http://ei/core/processing_option",
+      "complexTypes": [
+        {
+          "name": "ProcessingOption"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CacheKey.xsd",
+      "targetNamespace": "http://ei/core/cache_key",
+      "complexTypes": [
+        {
+          "name": "CacheKey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TelecommElectronicAddress.xsd",
+      "targetNamespace": "http://ei/core/telecomm_electronic_address",
+      "complexTypes": [
+        {
+          "name": "TelecommElectronicAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/VehicleRegistrantX1.xsd",
+      "targetNamespace": "http://ei/core/vehicle_registrantx1",
+      "complexTypes": [
+        {
+          "name": "VehicleRegistrant"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DFIAccount.xsd",
+      "targetNamespace": "http://ei/core/dfi_account",
+      "complexTypes": [
+        {
+          "name": "DFIAccount"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyTermIdentifier.xsd",
+      "targetNamespace": "http://ei/core/policy_term_identifier",
+      "complexTypes": [
+        {
+          "name": "PolicyTermIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyEvaluationInformation.xsd",
+      "targetNamespace": "http://ei/core/survey_evaluation_information",
+      "complexTypes": [
+        {
+          "name": "SurveyEvaluationInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MarketingCampaign.xsd",
+      "targetNamespace": "http://ei/core/marketing_campaign",
+      "complexTypes": [
+        {
+          "name": "MarketingCampaign"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MortgageeInvoiceDocument.xsd",
+      "targetNamespace": "http://ei/core/mortgagee_invoice_document",
+      "complexTypes": [
+        {
+          "name": "MortgageeInvoiceDocument"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedBranch.xsd",
+      "targetNamespace": "http://ei/core/extendedbranch",
+      "complexTypes": [
+        {
+          "name": "ExtendedBranch"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ISOSymbolInformation.xsd",
+      "targetNamespace": "http://ei/core/iso_symbol_information",
+      "complexTypes": [
+        {
+          "name": "ISOSymbolInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PhysicalAddress.xsd",
+      "targetNamespace": "http://ei/core/physicaladdress",
+      "complexTypes": [
+        {
+          "name": "PhysicalAddressType"
+        }
+      ],
+      "elements": [
+        {
+          "name": "PhysicalAddress",
+          "type": "PhysicalAddressType"
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TaxX2.xsd",
+      "targetNamespace": "http://ei/core/taxx2",
+      "complexTypes": [
+        {
+          "name": "Tax"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossPayee.xsd",
+      "targetNamespace": "http://ei/core/loss_payee",
+      "complexTypes": [
+        {
+          "name": "LossPayee"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StatusInformationX1.xsd",
+      "targetNamespace": "http://ei/core/status_informationx1",
+      "complexTypes": [
+        {
+          "name": "StatusInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MarketingProgram.xsd",
+      "targetNamespace": "http://ei/core/marketing_program",
+      "complexTypes": [
+        {
+          "name": "MarketingProgram"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PPCAggregatedSummaryX1.xsd",
+      "targetNamespace": "http://ei/core/ppc_aggregated_summaryx1",
+      "complexTypes": [
+        {
+          "name": "PPCAggregatedSummary"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualInformationX2.xsd",
+      "targetNamespace": "http://ei/core/individual_informationx2",
+      "complexTypes": [
+        {
+          "name": "IndividualInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyTypeIdentifierX1.xsd",
+      "targetNamespace": "http://ei/core/policy_type_identifierx1",
+      "complexTypes": [
+        {
+          "name": "PolicyTypeIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DriverX2.xsd",
+      "targetNamespace": "http://ei/core/driverx2",
+      "complexTypes": [
+        {
+          "name": "Driver"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RiskRatingGroup.xsd",
+      "targetNamespace": "http://ei/core/risk_rating_group",
+      "complexTypes": [
+        {
+          "name": "RiskRatingGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ParentActivityStatusInformation.xsd",
+      "targetNamespace": "http://ei/core/parent_activity_status_information",
+      "complexTypes": [
+        {
+          "name": "ParentActivityStatusInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BankVault.xsd",
+      "targetNamespace": "http://ei/core/bank_vault",
+      "complexTypes": [
+        {
+          "name": "BankVault"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossControlLocation.xsd",
+      "targetNamespace": "http://ei/core/loss_control_location",
+      "complexTypes": [
+        {
+          "name": "LossControlLocation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationOccupancyAggregation.xsd",
+      "targetNamespace": "http://ei/core/location_occupancy_aggregation",
+      "complexTypes": [
+        {
+          "name": "LocationOccupancyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SectionPolicyTypeCrossReference.xsd",
+      "targetNamespace": "http://ei/core/section_policy_type_cross_reference",
+      "complexTypes": [
+        {
+          "name": "SectionPolicyTypeCrossReference"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyTermRuleBasedStatus.xsd",
+      "targetNamespace": "http://ei/core/policy_term_rule_based_status",
+      "complexTypes": [
+        {
+          "name": "PolicyTermRuleBasedStatus"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CoverageCategoryInformation.xsd",
+      "targetNamespace": "http://ei/core/coverage_category_information",
+      "complexTypes": [
+        {
+          "name": "CoverageCategoryInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SalesforceContactNotificationPreferences.xsd",
+      "targetNamespace": "http://ei/core/salesforce_contact_notification_preferences",
+      "complexTypes": [
+        {
+          "name": "SalesforceContactNotificationPreferences"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInvestigatorX3.xsd",
+      "targetNamespace": "http://ei/core/medical_investigatorx3",
+      "complexTypes": [
+        {
+          "name": "MedicalInvestigator"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ClientUpdateProcessInformation.xsd",
+      "targetNamespace": "http://ei/core/client_update_process_information",
+      "complexTypes": [
+        {
+          "name": "ClientUpdateProcessInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomBusinessData.xsd",
+      "targetNamespace": "http://ei/core/custom_business_data",
+      "complexTypes": [
+        {
+          "name": "CustomBusinessData"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomBusinessDataGroup.xsd",
+      "targetNamespace": "http:/core/custom_business_data_group",
+      "complexTypes": [
+        {
+          "name": "CustomBusinessDataGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AllianceMarketSegment.xsd",
+      "targetNamespace": "http://ei/core/alliance_market_segment",
+      "complexTypes": [
+        {
+          "name": "AllianceMarketSegment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInvestigatorX2.xsd",
+      "targetNamespace": "http://ei/core/medical_investigatorx2",
+      "complexTypes": [
+        {
+          "name": "MedicalInvestigator"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessParty.xsd",
+      "targetNamespace": "http://ei/core/business_party",
+      "complexTypes": [
+        {
+          "name": "BusinessParty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ApplicationUserProfileProperty.xsd",
+      "targetNamespace": "http://ei/core/application_user_profile_property",
+      "complexTypes": [
+        {
+          "name": "ApplicationUserProfileProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StatusInformation.xsd",
+      "targetNamespace": "http://ei/corelibrary/statusinformation",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "StatusInformation",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossControlLocationWithSurvey.xsd",
+      "targetNamespace": "http://ei/core/loss_control_location_with_survey",
+      "complexTypes": [
+        {
+          "name": "LossControlLocationWithSurvey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomizationX2.xsd",
+      "targetNamespace": "http://ei/core/customizationx2",
+      "complexTypes": [
+        {
+          "name": "Customization"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInvestigator.xsd",
+      "targetNamespace": "http://ei/core/medical_investigator",
+      "complexTypes": [
+        {
+          "name": "MedicalInvestigator"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EventProperty.xsd",
+      "targetNamespace": "http://ei/core/event_property",
+      "complexTypes": [
+        {
+          "name": "EventProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DriverX3.xsd",
+      "targetNamespace": "http://ei/core/driverx3",
+      "complexTypes": [
+        {
+          "name": "Driver"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DriverX1.xsd",
+      "targetNamespace": "http://ei/core/driverx1",
+      "complexTypes": [
+        {
+          "name": "Driver"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossHistory.xsd",
+      "targetNamespace": "http://ei/core/loss_history",
+      "complexTypes": [
+        {
+          "name": "LossHistory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TypedAddressX3.xsd",
+      "targetNamespace": "http://ei/core/typed_addressx3",
+      "complexTypes": [
+        {
+          "name": "TypedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CUWDocumentFiling.xsd",
+      "targetNamespace": "http://ei/core/CUWDocumentFiling",
+      "complexTypes": [
+        {
+          "name": "CUWDocumentFiling"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationAdjacencyCalculation.xsd",
+      "targetNamespace": "http://ei/core/location_adjacency_calculation",
+      "complexTypes": [
+        {
+          "name": "LocationAdjacencyCalculation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProducerIdentifierX2.xsd",
+      "targetNamespace": "http://ei/core/producer_identifierx2",
+      "complexTypes": [
+        {
+          "name": "ProducerIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/HazardousAreaX1.xsd",
+      "targetNamespace": "http://ei/core/hazardous_areax1",
+      "complexTypes": [
+        {
+          "name": "HazardousArea"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RelatedBusinessParty.xsd",
+      "targetNamespace": "http://ei/core/related_business_party",
+      "complexTypes": [
+        {
+          "name": "RelatedBusinessParty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInvestigatorX1.xsd",
+      "targetNamespace": "http://ei/core/medical_investigatorx1",
+      "complexTypes": [
+        {
+          "name": "MedicalInvestigator"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyMessageInformation.xsd",
+      "targetNamespace": "http://ei/risk/survey_message_information",
+      "complexTypes": [
+        {
+          "name": "SurveyMessageInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AliasInformation.xsd",
+      "targetNamespace": "http://ei/core/alias_information",
+      "complexTypes": [
+        {
+          "name": "AliasInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/WeatherStationInformation.xsd",
+      "targetNamespace": "http://ei/core/weather_station_information",
+      "complexTypes": [
+        {
+          "name": "WeatherStationInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CountryX1.xsd",
+      "targetNamespace": "http://ei/core/countryx1",
+      "complexTypes": [
+        {
+          "name": "Country"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AllianceProductCategory.xsd",
+      "targetNamespace": "http://ei/core/alliance_product_category",
+      "complexTypes": [
+        {
+          "name": "AllianceProductCategory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProducerIdentifierX3.xsd",
+      "targetNamespace": "http://ei/producer/producer_identifierx3",
+      "complexTypes": [
+        {
+          "name": "ProducerIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomizationX1.xsd",
+      "targetNamespace": "http://ei/core/customizationx1",
+      "complexTypes": [
+        {
+          "name": "Customization"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TypedAddressX2.xsd",
+      "targetNamespace": "http://ei/core/typed_addressx2",
+      "complexTypes": [
+        {
+          "name": "TypedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentURLInformation.xsd",
+      "targetNamespace": "http://ei/core/document_url_information",
+      "complexTypes": [
+        {
+          "name": "DocumentURLInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalDevice.xsd",
+      "targetNamespace": "http://ei/core/medical_device",
+      "complexTypes": [
+        {
+          "name": "MedicalDevice"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/QuestionAndAnswer.xsd",
+      "targetNamespace": "http://ei/core/QuestionAndAnswer",
+      "complexTypes": [
+        {
+          "name": "QuestionAndAnswer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DailyWeatherData.xsd",
+      "targetNamespace": "http://ei/core/daily_weather_data",
+      "complexTypes": [
+        {
+          "name": "DailyWeatherData"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContactRole.xsd",
+      "targetNamespace": "http://ei/core/business_contact_role",
+      "complexTypes": [
+        {
+          "name": "BusinessContactRole"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SpecialArrangementFee.xsd",
+      "targetNamespace": "http://ei/core/special_arrangement_fee",
+      "complexTypes": [
+        {
+          "name": "SpecialArrangementFee"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PerilInformation.xsd",
+      "targetNamespace": "http://ei/core/peril_information",
+      "complexTypes": [
+        {
+          "name": "PerilInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FormX1.xsd",
+      "targetNamespace": "http://ei/core/formx1",
+      "complexTypes": [
+        {
+          "name": "Form"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Form.xsd",
+      "targetNamespace": "http://ei/core/form",
+      "complexTypes": [
+        {
+          "name": "Form"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessEventInformation.xsd",
+      "targetNamespace": "http://ei/core/business_event_information",
+      "complexTypes": [
+        {
+          "name": "BusinessEventInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/NationalityInformation.xsd",
+      "targetNamespace": "http://ei/core/nationality_information",
+      "complexTypes": [
+        {
+          "name": "NationalityInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BillingAccount.xsd",
+      "targetNamespace": "http://ei/core/billing_account",
+      "complexTypes": [
+        {
+          "name": "BillingAccount"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProducerCommissionRate.xsd",
+      "targetNamespace": "http://ei/core/producer_commission_rate",
+      "complexTypes": [
+        {
+          "name": "ProducerCommissionRate"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FormRecipientDistributionSettings.xsd",
+      "targetNamespace": "http://ei/core/form_recipient_distribution_settings",
+      "complexTypes": [
+        {
+          "name": "FormRecipientDistributionSettings"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessPartyWithRelationshipX1.xsd",
+      "targetNamespace": "http://ei/core/business_party_with_relationshipx1",
+      "complexTypes": [
+        {
+          "name": "BusinessPartyWithRelationship"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ComponentProperty.xsd",
+      "targetNamespace": "http://ei/core/component_property",
+      "complexTypes": [
+        {
+          "name": "ComponentProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AdditionalInterest.xsd",
+      "targetNamespace": "http://ei/core/additional_interest",
+      "complexTypes": [
+        {
+          "name": "AdditionalInterest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ReinsuranceInformation.xsd",
+      "targetNamespace": "http://ei/core/reinsurance_information",
+      "complexTypes": [
+        {
+          "name": "ReinsuranceInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/GeniusSection.xsd",
+      "targetNamespace": "http://ei/core/genius_section",
+      "complexTypes": [
+        {
+          "name": "GeniusSection"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Performer.xsd",
+      "targetNamespace": "http://ei/core/performer",
+      "complexTypes": [
+        {
+          "name": "Performer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FormX2.xsd",
+      "targetNamespace": "http://ei/core/formx2",
+      "complexTypes": [
+        {
+          "name": "Form"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/WebFocusLogOnInformation.xsd",
+      "targetNamespace": "http://ei/core/web_focus_log_on_information",
+      "complexTypes": [
+        {
+          "name": "WebFocusLogOnInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyProcessingNote.xsd",
+      "targetNamespace": "http://ei/core/policy_processing_note",
+      "complexTypes": [
+        {
+          "name": "PolicyProcessingNote"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProducerIdentifierX4.xsd",
+      "targetNamespace": "http://ei/core/producer_identifierx4",
+      "complexTypes": [
+        {
+          "name": "ProducerIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AffiliateCompany.xsd",
+      "targetNamespace": "http://ei/core/affiliate_company",
+      "complexTypes": [
+        {
+          "name": "AffiliateCompany"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExternalVendorSystem.xsd",
+      "targetNamespace": "http://ei/core/external_vendor_system",
+      "complexTypes": [
+        {
+          "name": "ExternalVendorSystem"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessContact.xsd",
+      "targetNamespace": "http://ei/core/business_contact",
+      "complexTypes": [
+        {
+          "name": "BusinessContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualInformation.xsd",
+      "targetNamespace": "http://ei/core/individual_information",
+      "complexTypes": [
+        {
+          "name": "IndividualInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntRestrictionOption.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_restriction_option",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntRestrictionOption"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MarketingCampaignAccreditation.xsd",
+      "targetNamespace": "http://ei/core/marketing_campaign_accreditation",
+      "complexTypes": [
+        {
+          "name": "MarketingCampaignAccreditation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Household.xsd",
+      "targetNamespace": "http://ei/core/household",
+      "complexTypes": [
+        {
+          "name": "Household"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RoutingCodeInformation.xsd",
+      "targetNamespace": "http://ei/core/routing_code_information",
+      "complexTypes": [
+        {
+          "name": "RoutingCodeInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ApplicationUserProfile.xsd",
+      "targetNamespace": "http://ei/core/application_user_profile",
+      "complexTypes": [
+        {
+          "name": "ApplicationUserProfile"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FormDistributionRecipientGroup.xsd",
+      "targetNamespace": "http://ei/core/form_distribution_recipient_group",
+      "complexTypes": [
+        {
+          "name": "FormDistributionRecipientGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CCMCategory.xsd",
+      "targetNamespace": "http://ei/core/ccm_category",
+      "complexTypes": [
+        {
+          "name": "CCMCategory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossType.xsd",
+      "targetNamespace": "http://ei/core/loss_type",
+      "complexTypes": [
+        {
+          "name": "LossType"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/HashMap.xsd",
+      "targetNamespace": "http://ei/core/hash_map",
+      "complexTypes": [
+        {
+          "name": "HashMap"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PaymentOption.xsd",
+      "targetNamespace": "http://ei/core/payment_option",
+      "complexTypes": [
+        {
+          "name": "PaymentOption"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BMCertificateJurisdictionFeeSummary.xsd",
+      "targetNamespace": "http://ei/core/bm_certificate_jurisdiction_fee_summary",
+      "complexTypes": [
+        {
+          "name": "BMCertificateJurisdictionFeeSummary"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentSet.xsd",
+      "targetNamespace": "http://ei/core/document_set",
+      "complexTypes": [
+        {
+          "name": "DocumentSet"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntRuleGroup.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_rule_group",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntRuleGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BillingActivity.xsd",
+      "targetNamespace": "http://ei/core/billing_activity",
+      "complexTypes": [
+        {
+          "name": "BillingActivity"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AllianceCustomerGroup.xsd",
+      "targetNamespace": "http://ei/core/alliance_customer_group",
+      "complexTypes": [
+        {
+          "name": "AllianceCustomerGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MarketingCampaignNote.xsd",
+      "targetNamespace": "http://ei/core/marketing_campaign_note",
+      "complexTypes": [
+        {
+          "name": "MarketingCampaignNote"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Product.xsd",
+      "targetNamespace": "http://ei/core/product",
+      "complexTypes": [
+        {
+          "name": "Product"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/GetAccessSourceInformation.xsd",
+      "targetNamespace": "http://ei/core/get_access_source_information",
+      "complexTypes": [
+        {
+          "name": "GetAccessSourceInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LimitX2.xsd",
+      "targetNamespace": "http://ei/core/limitx2",
+      "complexTypes": [
+        {
+          "name": "Limit"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/NAICSInformation.xsd",
+      "targetNamespace": "http://ei/core/naics_information",
+      "complexTypes": [
+        {
+          "name": "NAICSInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EntryTypeInformation.xsd",
+      "targetNamespace": "http://ei/core/entry_type_information",
+      "complexTypes": [
+        {
+          "name": "EntryTypeInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/GetAccessUserInformation.xsd",
+      "targetNamespace": "http://ei/core/get_access_user_information",
+      "complexTypes": [
+        {
+          "name": "GetAccessUserInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurchargeX1.xsd",
+      "targetNamespace": "http://ei/core/surchargex1",
+      "complexTypes": [
+        {
+          "name": "Surcharge"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DriverViolation.xsd",
+      "targetNamespace": "http://ei/core/driver_violation",
+      "complexTypes": [
+        {
+          "name": "DriverViolation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LimitX3.xsd",
+      "targetNamespace": "http://ei/core/limitx3",
+      "complexTypes": [
+        {
+          "name": "Limit"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/OrganizationUnits.xsd",
+      "targetNamespace": "http://ei/core/organizationunits",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "OrganizationUnits",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInstitutionX1.xsd",
+      "targetNamespace": "http://ei/core/medical_institutionx1",
+      "complexTypes": [
+        {
+          "name": "MedicalInstitution"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentSearchCriteria.xsd",
+      "targetNamespace": "http://ei/core/document_search_criteria",
+      "complexTypes": [
+        {
+          "name": "DocumentSearchCriteria"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RelatedHouseholdX1.xsd",
+      "targetNamespace": "http://ei/core/related_householdx1",
+      "complexTypes": [
+        {
+          "name": "RelatedHousehold"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProgramInformation.xsd",
+      "targetNamespace": "http://ei/core/program_information",
+      "complexTypes": [
+        {
+          "name": "ProgramInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EmailInformation.xsd",
+      "targetNamespace": "http://ei/core/email_information",
+      "complexTypes": [
+        {
+          "name": "EmailInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PayrollReportingTransaction.xsd",
+      "targetNamespace": "http://ei/core/payroll_reporting_transaction",
+      "complexTypes": [
+        {
+          "name": "PayrollReportingTransaction"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsTextObjectKey.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_text_object_key",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsTextObjectKey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StandardizedAddressX4.xsd",
+      "targetNamespace": "http://ei/core/standardized_addressx4",
+      "complexTypes": [
+        {
+          "name": "StandardizedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntSubjectTypePart.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_subject_type_part",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntSubjectTypePart"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/OtherParticipatingCarrierInformation.xsd",
+      "targetNamespace": "http://ei/core/other_participating_carrier_information",
+      "complexTypes": [
+        {
+          "name": "OtherParticipatingCarrierInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ServiceProcessClassification.xsd",
+      "targetNamespace": "http://ei/core/service_process_classification",
+      "complexTypes": [
+        {
+          "name": "ServiceProcessClassification"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyRecommendationResponse.xsd",
+      "targetNamespace": "http://ei/core/survey_recommendation_response",
+      "complexTypes": [
+        {
+          "name": "SurveyRecommendationResponse"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/WritingCompany.xsd",
+      "targetNamespace": "http://ei/core/writing_company",
+      "complexTypes": [
+        {
+          "name": "WritingCompany"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInstitutionX3.xsd",
+      "targetNamespace": "http://ei/core/medical_institutionx3",
+      "complexTypes": [
+        {
+          "name": "MedicalInstitution"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CapturableX1.xsd",
+      "targetNamespace": "http://ei/core/capturablex1",
+      "complexTypes": [
+        {
+          "name": "Capturable"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MessageLoggingInformation.xsd",
+      "targetNamespace": "http://ei/core/message_logging_information",
+      "complexTypes": [
+        {
+          "name": "MessageLoggingInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurchargeX2.xsd",
+      "targetNamespace": "http://ei/core/surchargex2",
+      "complexTypes": [
+        {
+          "name": "Surcharge"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ResumeActivityInputData.xsd",
+      "targetNamespace": "http://ei/core/resume_activity_input_data",
+      "complexTypes": [
+        {
+          "name": "ResumeActivityInputData"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyContactX1.xsd",
+      "targetNamespace": "http://ei/core/survey_contactx1",
+      "complexTypes": [
+        {
+          "name": "SurveyContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossControlSurvey.xsd",
+      "targetNamespace": "http://ei/core/loss_control_survey",
+      "complexTypes": [
+        {
+          "name": "LossControlSurvey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BillingAccountPaymentSummary.xsd",
+      "targetNamespace": "http://ei/core/billing_account_payment_summary",
+      "complexTypes": [
+        {
+          "name": "BillingAccountPaymentSummary"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MedicalInstitutionX2.xsd",
+      "targetNamespace": "http://ei/core/medical_institutionx2",
+      "complexTypes": [
+        {
+          "name": "MedicalInstitution"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ManagedDocument.xsd",
+      "targetNamespace": "http://ei/core/managed_document",
+      "complexTypes": [
+        {
+          "name": "ManagedDocument"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsConceptTermResult.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_concept_term_result",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsConceptTermResult"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsTextObjectKeyComponent.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_text_object_key_component",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsTextObjectKeyComponent"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EmailInformationX1.xsd",
+      "targetNamespace": "http://ei/core/email_informationx1",
+      "complexTypes": [
+        {
+          "name": "EmailInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentIndexingInputGroup.xsd",
+      "targetNamespace": "http://ei/core/document_indexing_input_group",
+      "complexTypes": [
+        {
+          "name": "DocumentIndexingInputGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ManagementOrientedCodes.xsd",
+      "targetNamespace": "http://ei/core/management_oriented_codes",
+      "complexTypes": [
+        {
+          "name": "ManagementOrientedCodes"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyProcessingNoteSet.xsd",
+      "targetNamespace": "http:/ei/core/policy_processing_note_set",
+      "complexTypes": [
+        {
+          "name": "PolicyProcessingNoteSet"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ErrorInformation.xsd",
+      "targetNamespace": "http://ei/core/error_information",
+      "complexTypes": [
+        {
+          "name": "ErrorInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StandardizedAddressX5.xsd",
+      "targetNamespace": "http://ei/core/standardized_addressx5",
+      "complexTypes": [
+        {
+          "name": "StandardizedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessEventInformationX1.xsd",
+      "targetNamespace": "http://ei/core/business_event_informationx1",
+      "complexTypes": [
+        {
+          "name": "BusinessEventInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsConceptResult.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_concept_result",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsConceptResult"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ISOCategorySymbolInformation.xsd",
+      "targetNamespace": "http://ei/core/iso_category_symbol_information",
+      "complexTypes": [
+        {
+          "name": "ISOCategorySymbolInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SourceSystemUserProfileId.xsd",
+      "targetNamespace": "http://ei/core/source_system_user_profile_id",
+      "complexTypes": [
+        {
+          "name": "SourceSystemUserProfileId"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ClaimLifeCycleStageProperty.xsd",
+      "targetNamespace": "http://ei/core/claim_life_cycle_stage_property",
+      "complexTypes": [
+        {
+          "name": "ClaimLifeCycleStageProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PremiumX5.xsd",
+      "targetNamespace": "http://ei/core/premiumx5",
+      "complexTypes": [
+        {
+          "name": "Premium"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyRecommendation.xsd",
+      "targetNamespace": "http://ei/core/survey_recommendation",
+      "complexTypes": [
+        {
+          "name": "SurveyRecommendation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ManagedDocumentX1.xsd",
+      "targetNamespace": "http://ei/core/managed_documentx1",
+      "complexTypes": [
+        {
+          "name": "ManagedDocument"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ModifiersX1.xsd",
+      "targetNamespace": "http://ei/core/modifier",
+      "complexTypes": [
+        {
+          "name": "Modifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AffiliateCompanyInformation.xsd",
+      "targetNamespace": "http://ei/core/affiliate_company_information",
+      "complexTypes": [
+        {
+          "name": "AffiliateCompanyInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RegionAndLanguageSettings.xsd",
+      "targetNamespace": "http://ei/core/region_and_language_settings",
+      "complexTypes": [
+        {
+          "name": "RegionAndLanguageSettings"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ClaimNoteSet.xsd",
+      "targetNamespace": "http:/ei/core/claim_note_set",
+      "complexTypes": [
+        {
+          "name": "ClaimNoteSet"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RelatedHousehold.xsd",
+      "targetNamespace": "http://ei/core/related_household",
+      "complexTypes": [
+        {
+          "name": "RelatedHousehold"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AdditionalInsuredX1.xsd",
+      "targetNamespace": "http://ei/core/additional_insuredx1",
+      "complexTypes": [
+        {
+          "name": "AdditionalInsured"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntCrossReference.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_cross_reference",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntCrossReference"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SourceSystemData.xsd",
+      "targetNamespace": "http://ei/core/source_system_data",
+      "complexTypes": [
+        {
+          "name": "SourceSystemData"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntProductPart.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_product_part",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntProductPart"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StrategicAlliance.xsd",
+      "targetNamespace": "http://ei/core/strategic_alliance",
+      "complexTypes": [
+        {
+          "name": "StrategicAlliance"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentBusinessProperty.xsd",
+      "targetNamespace": "http://ei/core/document_business_property",
+      "complexTypes": [
+        {
+          "name": "DocumentBusinessProperty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PerformerX1.xsd",
+      "targetNamespace": "http://ei/core/performerx1",
+      "complexTypes": [
+        {
+          "name": "Performer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Mortgagee.xsd",
+      "targetNamespace": "http://ei/core/mortgagee",
+      "complexTypes": [
+        {
+          "name": "Mortgagee"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TypedAddress.xsd",
+      "targetNamespace": "http://ei/core/typed_address",
+      "complexTypes": [
+        {
+          "name": "TypedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/HazardousArea.xsd",
+      "targetNamespace": "http://ei/core/hazardous_area",
+      "complexTypes": [
+        {
+          "name": "HazardousArea"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyEvent.xsd",
+      "targetNamespace": "http://ei/core/policy_event",
+      "complexTypes": [
+        {
+          "name": "PolicyEvent"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ReferralZone.xsd",
+      "targetNamespace": "http://ei/core/referral_zone",
+      "complexTypes": [
+        {
+          "name": "ReferralZone"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ISOStateException.xsd",
+      "targetNamespace": "http://ei/core/iso_state_exception",
+      "complexTypes": [
+        {
+          "name": "ISOStateException"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/MarketingCampaignContact.xsd",
+      "targetNamespace": "http://ei/core/marketing_campaign_contact",
+      "complexTypes": [
+        {
+          "name": "MarketingCampaignContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PremiumX6.xsd",
+      "targetNamespace": "http://ei/core/premiumx6",
+      "complexTypes": [
+        {
+          "name": "Premium"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Sponsor.xsd",
+      "targetNamespace": "http://ei/core/sponsor",
+      "complexTypes": [
+        {
+          "name": "Sponsor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PaymentMethod.xsd",
+      "targetNamespace": "http://ei/core/payment_method",
+      "complexTypes": [
+        {
+          "name": "PaymentMethod"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IdentificationInformation.xsd",
+      "targetNamespace": "http://ei/core/identification_information",
+      "complexTypes": [
+        {
+          "name": "IdentificationInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ClaimNote.xsd",
+      "targetNamespace": "http://ei/core/claim_note",
+      "complexTypes": [
+        {
+          "name": "ClaimNote"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ProductPolicyTypeCrossReference.xsd",
+      "targetNamespace": "http://ei/core/product_policy_type_cross_reference",
+      "complexTypes": [
+        {
+          "name": "ProductPolicyTypeCrossReference"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CurrencyExchangeRates.xsd",
+      "targetNamespace": "http://ei/core/currency_exchange_rates",
+      "complexTypes": [
+        {
+          "name": "CurrencyExchangeRates"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ModifiersX2.xsd",
+      "targetNamespace": "http://ei/core/modifierx2",
+      "complexTypes": [
+        {
+          "name": "Modifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomBusinessDataGroups.xsd",
+      "targetNamespace": "http:/core/custom_business_data_groups",
+      "complexTypes": [
+        {
+          "name": "CustomBusinessDataGroups"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ResourceX1.xsd",
+      "targetNamespace": "http://ei/core/resourcex1",
+      "complexTypes": [
+        {
+          "name": "Resource"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SpecialArrangementProducer.xsd",
+      "targetNamespace": "http://ei/core/special_arrangement_producer",
+      "complexTypes": [
+        {
+          "name": "SpecialArrangementProducer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/UserProfile.xsd",
+      "targetNamespace": "http://ei/core/user_profile",
+      "complexTypes": [
+        {
+          "name": "UserProfile"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PerformerX2.xsd",
+      "targetNamespace": "http://ei/core/performerx2",
+      "complexTypes": [
+        {
+          "name": "Performer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DepartmentX1.xsd",
+      "targetNamespace": "http://ei/core/departmentx1",
+      "complexTypes": [
+        {
+          "name": "Department"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentIndexingGroup.xsd",
+      "targetNamespace": "http://ei/core/document_indexing_group",
+      "complexTypes": [
+        {
+          "name": "DocumentIndexingGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Document.xsd",
+      "targetNamespace": "http://ei/core/document",
+      "complexTypes": [
+        {
+          "name": "Document"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PPCAggregatedSummary.xsd",
+      "targetNamespace": "http://ei/core/ppc_aggregated_summary",
+      "complexTypes": [
+        {
+          "name": "PPCAggregatedSummary"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ServiceInformation.xsd",
+      "targetNamespace": "http://ei/core/service_information",
+      "complexTypes": [
+        {
+          "name": "ServiceInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessUnitInformation.xsd",
+      "targetNamespace": "http://ei/core/business_unit_information",
+      "complexTypes": [
+        {
+          "name": "BusinessUnitInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ResidentialStructureWildfireEnrollment.xsd",
+      "targetNamespace": "http://ei/core/residential_structure_wildfire_enrollment",
+      "complexTypes": [
+        {
+          "name": "ResidentialStructureWildfireEnrollment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PremiumX7.xsd",
+      "targetNamespace": "http://ei/core/premiumx7",
+      "complexTypes": [
+        {
+          "name": "Premium"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntStatisticalInstruction.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_statistical_instruction",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntStatisticalInstruction"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessEventDetail.xsd",
+      "targetNamespace": "http://ei/core/business_event_detail",
+      "complexTypes": [
+        {
+          "name": "BusinessEventDetail"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TaxingJurisdictionX1.xsd",
+      "targetNamespace": "http://ei/core/taxing_jurisdictionx1",
+      "complexTypes": [
+        {
+          "name": "TaxingJurisdiction"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessEventLevelInformation.xsd",
+      "targetNamespace": "http://ei/core/business_event_level_information",
+      "complexTypes": [
+        {
+          "name": "BusinessEventLevelInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StandardizedAddressX3.xsd",
+      "targetNamespace": "http://ei/core/standardized_addressx3",
+      "complexTypes": [
+        {
+          "name": "StandardizedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/NativeLanguageInformation.xsd",
+      "targetNamespace": "http://ei/core/native_language_information",
+      "complexTypes": [
+        {
+          "name": "NativeLanguageInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Insurer.xsd",
+      "targetNamespace": "http://ei/core/insurer",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "Insurer",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StateMandatedInformation.xsd",
+      "targetNamespace": "http://ei/core/state_mandated_information",
+      "complexTypes": [
+        {
+          "name": "StateMandatedInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/WebDavKey.xsd",
+      "targetNamespace": "http://ei/core/webdav_key",
+      "complexTypes": [
+        {
+          "name": "WebDavKey"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CurrencyExchangeRate.xsd",
+      "targetNamespace": "http://ei/core/currency_exchange_rate",
+      "complexTypes": [
+        {
+          "name": "CurrencyExchangeRate"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LineOfBusinessInformation.xsd",
+      "targetNamespace": "http://ei/core/line_of_business_information",
+      "complexTypes": [
+        {
+          "name": "LineOfBusinessInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationAdjacencyAggregationX1.xsd",
+      "targetNamespace": "http://ei/core/location_adjacency_aggregationx1",
+      "complexTypes": [
+        {
+          "name": "LocationAdjacencyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyLocation.xsd",
+      "targetNamespace": "http://ei/core/survey_location",
+      "complexTypes": [
+        {
+          "name": "SurveyLocation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DeductibleX2.xsd",
+      "targetNamespace": "http://ei/core/deductiblex2",
+      "complexTypes": [
+        {
+          "name": "Deductible"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AddressX5.xsd",
+      "targetNamespace": "http://ei/core/addressx5",
+      "complexTypes": [
+        {
+          "name": "Address"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LegalRepresentativeX3.xsd",
+      "targetNamespace": "http://ei/core/legal_representativex3",
+      "complexTypes": [
+        {
+          "name": "LegalRepresentative"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RiskAdjustmentProgram.xsd",
+      "targetNamespace": "http://ei/core/risk_adjustment_program",
+      "complexTypes": [
+        {
+          "name": "RiskAdjustmentProgram"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/InsurerX2.xsd",
+      "targetNamespace": "http://ei/core/insurerx2",
+      "complexTypes": [
+        {
+          "name": "Insurer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyContact.xsd",
+      "targetNamespace": "http://ei/core/survey_contact",
+      "complexTypes": [
+        {
+          "name": "SurveyContact"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SponsorX3.xsd",
+      "targetNamespace": "http://ei/core/sponsorx3",
+      "complexTypes": [
+        {
+          "name": "Sponsor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedAddressX2.xsd",
+      "targetNamespace": "http://ei/core/extended_addressx2",
+      "complexTypes": [
+        {
+          "name": "ExtendedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CatastropheEventInformation.xsd",
+      "targetNamespace": "http://ei/core/catastrophe_event_information",
+      "complexTypes": [
+        {
+          "name": "CatastropheEventInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessInformationX2.xsd",
+      "targetNamespace": "http://ei/core/business_informationx2",
+      "complexTypes": [
+        {
+          "name": "BusinessInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessInformationX3.xsd",
+      "targetNamespace": "http://ei/core/business_informationx3",
+      "complexTypes": [
+        {
+          "name": "BusinessInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedAddressX3.xsd",
+      "targetNamespace": "http://ei/core/extended_addressx3",
+      "complexTypes": [
+        {
+          "name": "ExtendedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SponsorX2.xsd",
+      "targetNamespace": "http://ei/core/sponsorx2",
+      "complexTypes": [
+        {
+          "name": "Sponsor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ClaimLifeCycleStage.xsd",
+      "targetNamespace": "http://ei/core/claim_life_cycle_stage",
+      "complexTypes": [
+        {
+          "name": "ClaimLifeCycleStage"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Capturable.xsd",
+      "targetNamespace": "http://ei/core/capturable",
+      "complexTypes": [
+        {
+          "name": "Capturable"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationOccupancyCalculation.xsd",
+      "targetNamespace": "http://ei/core/location_occupancy_calculation",
+      "complexTypes": [
+        {
+          "name": "LocationOccupancyCalculation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LegalRepresentativeX2.xsd",
+      "targetNamespace": "http://ei/core/legal_representativex2",
+      "complexTypes": [
+        {
+          "name": "LegalRepresentative"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DeductibleX3.xsd",
+      "targetNamespace": "http://ei/core/deductiblex3",
+      "complexTypes": [
+        {
+          "name": "Deductible"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AddressX4.xsd",
+      "targetNamespace": "http://ei/core/addressx4",
+      "complexTypes": [
+        {
+          "name": "Address"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LineOfBusinessTaxRateX1.xsd",
+      "targetNamespace": "http://ei/core/line_of_business_tax_ratex1",
+      "complexTypes": [
+        {
+          "name": "LineOfBusinessTaxRate"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/TextAnalyticsConceptGroupResult.xsd",
+      "targetNamespace": "http://ei/core/text_analytics_concept_group_result",
+      "complexTypes": [
+        {
+          "name": "TextAnalyticsConceptGroupResult"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Driver.xsd",
+      "targetNamespace": "http://ei/core/driver",
+      "complexTypes": [
+        {
+          "name": "Driver"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Drug.xsd",
+      "targetNamespace": "http://ei/core/drug",
+      "complexTypes": [
+        {
+          "name": "Drug"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntHazard.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_hazard",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntHazard"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationAdjacencyAggregationX2.xsd",
+      "targetNamespace": "http://ei/core/location_adjacency_aggregationx2",
+      "complexTypes": [
+        {
+          "name": "LocationAdjacencyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/InputParameter.xsd",
+      "targetNamespace": "http://ei/core/input_parameter",
+      "complexTypes": [
+        {
+          "name": "InputParameter"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LanguageX1.xsd",
+      "targetNamespace": "http://ei/core/languagex1",
+      "complexTypes": [
+        {
+          "name": "Language"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CitizenshipInformation.xsd",
+      "targetNamespace": "http://ei/core/citizenship_information",
+      "complexTypes": [
+        {
+          "name": "CitizenshipInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/InsurerX1.xsd",
+      "targetNamespace": "http://ei/core/insurerx1",
+      "complexTypes": [
+        {
+          "name": "Insurer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedAddressX1.xsd",
+      "targetNamespace": "http://ei/core/extended_addressx1",
+      "complexTypes": [
+        {
+          "name": "ExtendedAddress"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/User.xsd",
+      "targetNamespace": "http://ei/core/user",
+      "complexTypes": [
+        {
+          "name": "User"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AdditionalInsured.xsd",
+      "targetNamespace": "http://ei/core/additional_insured",
+      "complexTypes": [
+        {
+          "name": "AdditionalInsured"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessInformationX1.xsd",
+      "targetNamespace": "http://ei/core/business_informationx1",
+      "complexTypes": [
+        {
+          "name": "BusinessInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SponsorX1.xsd",
+      "targetNamespace": "http://ei/core/sponsorx1",
+      "complexTypes": [
+        {
+          "name": "Sponsor"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LocationAdjacencyAggregation.xsd",
+      "targetNamespace": "http://ei/core/location_adjacency_aggregation",
+      "complexTypes": [
+        {
+          "name": "LocationAdjacencyAggregation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/IndividualIdentifierX1.xsd",
+      "targetNamespace": "http://ei/core/individual_identifierx1",
+      "complexTypes": [
+        {
+          "name": "IndividualIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EventDateTime.xsd",
+      "targetNamespace": "http://ei/core/event_date_time",
+      "complexTypes": [
+        {
+          "name": "EventDateTime"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ActivityStatusInformation.xsd",
+      "targetNamespace": "http://ei/core/activity_status_information",
+      "complexTypes": [
+        {
+          "name": "ActivityStatusInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LegalRepresentativeX1.xsd",
+      "targetNamespace": "http://ei/core/legal_representativex1",
+      "complexTypes": [
+        {
+          "name": "LegalRepresentative"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/LossHistoryCauseOfLossPayment.xsd",
+      "targetNamespace": "http://ei/core/loss_history_cause_of_loss_payment",
+      "complexTypes": [
+        {
+          "name": "LossHistoryCauseOfLossPayment"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SurveyPeril.xsd",
+      "targetNamespace": "http://ei/risk/survey_peril",
+      "complexTypes": [
+        {
+          "name": "SurveyPeril"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/WebApplicationCookie.xsd",
+      "targetNamespace": "http://ei/core/web_application_cookie",
+      "complexTypes": [
+        {
+          "name": "WebApplicationCookie"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StateOrProvince.xsd",
+      "targetNamespace": "http://ei/core/state_or_province",
+      "complexTypes": [
+        {
+          "name": "StateOrProvince"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ContractResearchOrganization.xsd",
+      "targetNamespace": "http://ei/core/contract_research_organization",
+      "complexTypes": [
+        {
+          "name": "ContractResearchOrganization"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AddressX3.xsd",
+      "targetNamespace": "http://ei/core/addressx3",
+      "complexTypes": [
+        {
+          "name": "Address"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/EndpointInformationX1.xsd",
+      "targetNamespace": "http://ei/core/endpoint_informationx1",
+      "complexTypes": [
+        {
+          "name": "EndpointInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/FamilyOffice.xsd",
+      "targetNamespace": "http://ei/core/family_office",
+      "complexTypes": [
+        {
+          "name": "FamilyOffice"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RiskRatingParameter.xsd",
+      "targetNamespace": "http://ei/core/risk_rating_parameter",
+      "complexTypes": [
+        {
+          "name": "RiskRatingParameter"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/VINInformation.xsd",
+      "targetNamespace": "http://ei/core/vin_information",
+      "complexTypes": [
+        {
+          "name": "VINInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomerGroupX1.xsd",
+      "targetNamespace": "http://ei/core/customer_groupx1",
+      "complexTypes": [
+        {
+          "name": "CustomerGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RecipientPolicyFormReference.xsd",
+      "targetNamespace": "http://ei/core/recipient_policy_form_reference",
+      "complexTypes": [
+        {
+          "name": "RecipientPolicyFormReference"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/GetAccessRoleInformation.xsd",
+      "targetNamespace": "http://ei/core/get_access_role_information",
+      "complexTypes": [
+        {
+          "name": "GetAccessRoleInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RelatedBusinessPartyX1.xsd",
+      "targetNamespace": "http://ei/core/related_business_partyx1",
+      "complexTypes": [
+        {
+          "name": "RelatedBusinessParty"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AddressX2.xsd",
+      "targetNamespace": "http://ei/core/addressx2",
+      "complexTypes": [
+        {
+          "name": "Address"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedInsurerX2.xsd",
+      "targetNamespace": "http://ei/core/extended_insurerx2",
+      "complexTypes": [
+        {
+          "name": "ExtendedInsurer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/InsuranceAdminRole.xsd",
+      "targetNamespace": "http://ei/core/insurance_admin_role",
+      "complexTypes": [
+        {
+          "name": "InsuranceAdminRole"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/RatingTerritory.xsd",
+      "targetNamespace": "http://ei/core/rating_territory",
+      "complexTypes": [
+        {
+          "name": "RatingTerritory"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyIdentifier.xsd",
+      "targetNamespace": "http://ei/core/policy_identifier",
+      "complexTypes": [
+        {
+          "name": "PolicyIdentifier"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/VehicleRegistrant.xsd",
+      "targetNamespace": "http://ei/core/vehicle_registrant",
+      "complexTypes": [
+        {
+          "name": "VehicleRegistrant"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyProcessingData.xsd",
+      "targetNamespace": "http://ei/core/policy_processing_data",
+      "complexTypes": [
+        {
+          "name": "PolicyProcessingData"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Fee.xsd",
+      "targetNamespace": "http://ei/core/fee",
+      "complexTypes": [
+        {
+          "name": "Fee"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessPartyWithRelationship.xsd",
+      "targetNamespace": "http://ei/core/business_party_with_relationship",
+      "complexTypes": [
+        {
+          "name": "BusinessPartyWithRelationship"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Address.xsd",
+      "targetNamespace": "http://ei/core/address",
+      "complexTypes": [
+        {
+          "name": "AddressType"
+        }
+      ],
+      "elements": [
+        {
+          "name": "Address",
+          "type": "AddressType"
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Country.xsd",
+      "targetNamespace": "http://ei/core/country",
+      "complexTypes": [
+        {
+          "name": "Country"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AccessControlGroup.xsd",
+      "targetNamespace": "http://ei/core/access_control_group",
+      "complexTypes": [
+        {
+          "name": "AccessControlGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/QuestionAndAnswerX1.xsd",
+      "targetNamespace": "http://ei/core/question_and_answerx1",
+      "complexTypes": [
+        {
+          "name": "QuestionAndAnswer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DetailedError.xsd",
+      "targetNamespace": "http://ei/crm/detailed_error",
+      "complexTypes": [
+        {
+          "name": "DetailedError"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/StateMandatedParameter.xsd",
+      "targetNamespace": "http://ei/core/state_mandated_parameter",
+      "complexTypes": [
+        {
+          "name": "StateMandatedParameter"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BusinessSourceInformation.xsd",
+      "targetNamespace": "http://ei/core/business_source_information",
+      "complexTypes": [
+        {
+          "name": "BusinessSourceInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AllianceSBUYearlyFinancial.xsd",
+      "targetNamespace": "http://ei/core/alliance_sbu_yearly_financial",
+      "complexTypes": [
+        {
+          "name": "AllianceSBUYearlyFinancial"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyKeyParameter.xsd",
+      "targetNamespace": "http://ei/core/policy_key_parameter",
+      "complexTypes": [
+        {
+          "name": "PolicyKeyParameter"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/SICInformation.xsd",
+      "targetNamespace": "http://ei/core/sic_information",
+      "complexTypes": [
+        {
+          "name": "SICInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/File.xsd",
+      "targetNamespace": "http://ei/core/file",
+      "complexTypes": [
+        {
+          "name": "File"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/CustomerGroupX2.xsd",
+      "targetNamespace": "http://ei/core/customer_groupx2",
+      "complexTypes": [
+        {
+          "name": "CustomerGroup"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/DocumentSearchSubcriteria.xsd",
+      "targetNamespace": "http://ei/core/document_search_subcriteria",
+      "complexTypes": [
+        {
+          "name": "DocumentSearchSubcriteria"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PrdctCompntLossValueOption.xsd",
+      "targetNamespace": "http://ei/core/prdct_compnt_loss_value_option",
+      "complexTypes": [
+        {
+          "name": "PrdctCompntLossValueOption"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/BranchX1.xsd",
+      "targetNamespace": "http://ei/core/branchx1",
+      "complexTypes": [
+        {
+          "name": "Branch"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/AddressX1.xsd",
+      "targetNamespace": "http://ei/core/addressx1",
+      "complexTypes": [
+        {
+          "name": "Address"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/ExtendedInsurerX1.xsd",
+      "targetNamespace": "http://ei/core/extended_insurerx1",
+      "complexTypes": [
+        {
+          "name": "ExtendedInsurer"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/Customization.xsd",
+      "targetNamespace": "http://ei/core/customization",
+      "complexTypes": [
+        {
+          "name": "Customization"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/Schemas/PolicyContactInformation.xsd",
+      "targetNamespace": "http://ei/core/policy_contact_information",
+      "complexTypes": [
+        {
+          "name": "PolicyContactInformation"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1/LocationListReply.xsd",
+      "targetNamespace": "http://ei/location/location_list_reply",
+      "complexTypes": [
+        {
+          "name": "LocationListReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1/LocationRequest.xsd",
+      "targetNamespace": "http://ei/location/location_request",
+      "complexTypes": [
+        {
+          "name": "LocationRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1/GetLocationListRequest.xsd",
+      "targetNamespace": "http://ei/location/get_location_list_request_loc3x1",
+      "complexTypes": [
+        {
+          "name": "GetLocationListRequest"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/GetBytesReply.xsd",
+      "targetNamespace": "http://ei/core/get_bytes_reply",
+      "complexTypes": [
+        {
+          "name": "GetBytesReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/EndpointMapping.xsd",
+      "targetNamespace": "http://ei/core/properties",
+      "complexTypes": [
+        {
+          "name": "EndpointMapping"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/CoreSupportProperties.xsd",
+      "targetNamespace": "http://ei/core/properties",
+      "complexTypes": [
+        {
+          "name": "CoreSupportProperties"
+        }
+      ],
+      "elements": [
+        {
+          "name": "CoreSupportProperties",
+          "type": "bons1:CoreSupportProperties"
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/GetStringReply.xsd",
+      "targetNamespace": "http://ei/core/get_string_reply",
+      "complexTypes": [
+        {
+          "name": "GetStringReply"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/SourceTranslation.xsd",
+      "targetNamespace": "http://ei/core/source_translation",
+      "complexTypes": [],
+      "elements": [
+        {
+          "name": "TranslationEntries",
+          "type": null
+        }
+      ]
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/ProductSupportProperties.xsd",
+      "targetNamespace": "http://ei/core/product_support_properties_pdt804x1",
+      "complexTypes": [
+        {
+          "name": "ProductSupportProperties"
+        }
+      ],
+      "elements": []
+    },
+    {
+      "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/PrivateSchemas/SimpleFault.xsd",
+      "targetNamespace": "http://ei/core/simplefault",
+      "complexTypes": [
+        {
+          "name": "SimpleFault"
+        }
+      ],
+      "elements": []
+    }
+  ],
+  "summary": {
+    "wsdl_count": 8,
+    "xsd_count": 382,
+    "operations_count": 10
+  }
+}

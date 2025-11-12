@@ -1,0 +1,1 @@
+package com.example.location.external.dto.crp11x1; import lombok.Data; @Data public class GetStateOrProvinceRequestDto{ private String StateOrProvinceCode; private String PostalStateAbbreviation; }

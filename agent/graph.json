@@ -1,0 +1,6612 @@
+{
+  "nodes": [
+    {
+      "id": ".DS_Store",
+      "type": "unknown"
+    },
+    {
+      "id": "LocationRetrievalLOC3X1Process.bpel",
+      "type": "bpel"
+    },
+    {
+      "id": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/state_or_province_retrieval_crp11x1",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "bons1": "http://ei/core/simplefault",
+          "bons2": "http://ei/corporate/get_state_or_province_request_crp11x1",
+          "bons4": "http://ei/core/state_or_province",
+          "tns": "http://ei/corporate/state_or_province_retrieval_crp11x1",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/corporate/get_state_or_province_list_reply_crp11x1"
+        }
+      }
+    },
+    {
+      "id": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1Http.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/state_or_province_retrieval_crp11x1_http",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "Port_0": "http://ei/corporate/state_or_province_retrieval_crp11x1",
+          "soap": "http://schemas.xmlsoap.org/wsdl/soap/",
+          "soapenc": "http://schemas.xmlsoap.org/soap/encoding/",
+          "this": "http://ei/corporate/state_or_province_retrieval_crp11x1_http"
+        }
+      }
+    },
+    {
+      "id": "StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceListReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/get_state_or_province_list_reply_crp11x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/state_or_province"
+        }
+      }
+    },
+    {
+      "id": "StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/get_state_or_province_request_crp11x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1M/LocationListReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_list_reply_loc3x1m",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/location/location",
+          "bons1": "http://ei/core/status_informationx1"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_retrieval_loc3x1m",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "bons1": "http://ei/location/get_location_list_request_loc3x1m",
+          "bons2": "http://ei/location/location_list_reply_loc3x1m",
+          "bons3": "http://ei/core/simplefault",
+          "bons4": "http://ei/location/location_request_loc3x1m",
+          "tns": "http://ei/location/location_retrieval_loc3x1m",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1M/LocationRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_request_loc3x1m",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1M/GetLocationListRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/get_location_list_request_loc3x1m",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_retrieval_loc3x1b",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "bons1": "http://ei/location/get_location_list_request_loc3x1b",
+          "bons2": "http://ei/location/location_list_reply_loc3x1b",
+          "bons3": "http://ei/core/simplefault",
+          "bons4": "http://ei/location/location_request_loc3x1b",
+          "tns": "http://ei/location/location_retrieval_loc3x1b",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1B/LocationListReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_list_reply_loc3x1b",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/location/location",
+          "bons1": "http://ei/core/status_informationx1"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1B/LocationRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_request_loc3x1b",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1B/GetLocationListRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/get_location_list_request_loc3x1b",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "CountryRetrievalCRP10X1/GetCountryRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/get_country_request_crp10x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1Http.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/country/country_retrieval_crp10X1_http",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "Port_0": "http://ei/country/country_retrieval_crp10X1",
+          "soap": "http://schemas.xmlsoap.org/wsdl/soap/",
+          "soapenc": "http://schemas.xmlsoap.org/soap/encoding/",
+          "this": "http://ei/country/country_retrieval_crp10X1_http"
+        }
+      }
+    },
+    {
+      "id": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/country/country_retrieval_crp10X1",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "bons1": "http://ei/core/simplefault",
+          "bons2": "http://ei/corporate/get_country_request_crp10x1",
+          "bons3": "http://ei/corporate/get_country_list_reply_crp10x1",
+          "bons5": "http://ei/core/country",
+          "tns": "http://ei/country/country_retrieval_crp10X1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "CountryRetrievalCRP10X1/GetCountryReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/get_country_reply_crp10x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/country"
+        }
+      }
+    },
+    {
+      "id": "CountryRetrievalCRP10X1/GetCountryListReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corporate/get_country_list_reply_crp10x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/country"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyIdentifierX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_identifierx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/OrganizationInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/organization_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Currency.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/currency",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BirthDateInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/birth_date_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TimeZone.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/time_zone",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInstitution.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_institution",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AllianceSBUMonthlyFinancial.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alliance_sbu_monthly_financial",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contactx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/typed_address",
+          "bons1": "http://ei/core/phone_information",
+          "bons3": "http://ei/core/email_informationx1",
+          "bons4": "http://ei/core/individual_informationx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TaxingJurisdiction.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/taxing_jurisdiction",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/line_of_business_tax_ratex1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LegalRepresentative.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/legal_representative",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationOccupancyAggregationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_occupancy_aggregationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/location_occupancy_calculation",
+          "bons1": "http://ei/core/limitx2",
+          "bons3": "http://ei/core/exposurex1",
+          "bons4": "http://ei/core/premiumx6"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessEventKey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_event_key",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProductIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/product_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Item.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/item",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/OfferingStatusInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/offering_status_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contactx2",
+        "prefixes": {
+          "bons0": "http://ei/core/typed_address",
+          "bons1": "http://ei/core/phone_information",
+          "bons2": "http://ei/core/email_information",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StrategicAllianceSBU.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/strategic_alliance_sbu",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/marketing_program",
+          "bons1": "http://ei/core/alliance_market_segment",
+          "bons2": "http://ei/core/business_process_location_type",
+          "bons3": "http://ei/core/alliance_product_category",
+          "bons4": "http://ei/core/alliance_customer_group",
+          "bons5": "http://ei/core/alliance_sbu_monthly_financial",
+          "bons6": "http://ei/core/alliance_sbu_yearly_financial"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Competitor.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/competitor",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PublicProtectionInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/public_protection_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentBusinessType.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_business_type",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BillPayor.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/bill_payor",
+        "prefixes": {
+          "bons0": "http://ei/core/business_partyx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedInsuranceAdminRole.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_insurance_admin_role",
+        "prefixes": {
+          "bons1": "http://ei/core/insurance_admin_role",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EntityAliasName.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/entity_alias_name",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/individual_informationx1",
+          "bons1": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Language.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/language",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PerformanceMetric.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/performance_metric",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Exposurex2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/exposurex2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AssignedResourceIdByRole.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/assigned_resource_id_by_role",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocuSignEnvelope.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/docusign_envelope",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PayrollReport.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/payroll_report",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/premiumx7",
+          "bons1": "http://ei/core/surchargex2",
+          "bons2": "http://ei/core/taxx2",
+          "bons3": "http://ei/core/fee",
+          "bons4": "http://ei/core/exposurex2",
+          "bons5": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/HouseholdX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/householdx1",
+        "prefixes": {
+          "bons2": "http://ei/core/customer_segment",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/UserAuthorization.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/user_authorization",
+        "prefixes": {
+          "bons1": "http://ei/core/access_attribute",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/businessinformation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyProcessingInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_processing_information",
+        "prefixes": {
+          "bons0": "http://ei/core/risk_rating_group",
+          "bons2": "http:/ei/core/policy_processing_note_set",
+          "bons3": "http://ei/core/policy_processing_data",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualName.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_name",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CommissionRatesByPolicyCategory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/commission_rates_by_policy_category",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/producer_commission_rate"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntExclusionVariation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_exclusion_variation",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_rule_group",
+          "bons1": "http://ei/core/prdct_compnt_cross_reference",
+          "bons3": "http://ei/core/prdct_compnt_subject_type_part",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationOccupancyAggregationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_occupancy_aggregationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/location_occupancy_calculation",
+          "bons2": "http://ei/core/exposurex2",
+          "bons3": "http://ei/core/limitx3",
+          "bons1": "http://ei/core/premiumx7"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contactx1",
+        "prefixes": {
+          "bons0": "http://ei/core/typed_address",
+          "bons1": "http://ei/core/phone_information",
+          "bons2": "http://ei/core/email_information",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons3": "http://ei/core/individual_informationx2",
+          "bons4": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/NotificationProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/notification_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PriorCarrier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prior_carrier",
+        "prefixes": {
+          "bons1": "http://ei/core/competitor",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentReferenceInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_reference_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/document_reference_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyTypeInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_type_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IssuedPolicyForm.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/issued_policy_form",
+        "prefixes": {
+          "bons1": "http://ei/core/managed_document",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyTransactionIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_transaction_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Exposurex1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/exposurex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Header.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/header",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CampaignContactAllianceSBUAssociation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/campaign_contact_alliance_sbu_association",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PhoneInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/phone_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EntityAliasNameX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/entity_alias_namex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/business_party_characteristic",
+          "bons2": "http://ei/core/individual_informationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EndpointInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/endpoint_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AccountingPeriod.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/accounting_period",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessPartyX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_partyx1",
+        "prefixes": {
+          "bons0": "http://ei/core/individual_identifierx1",
+          "bons1": "http://ei/core/telecomm_electronic_address",
+          "bons2": "http://ei/core/individual_name",
+          "bons4": "http://ei/core/business_party_characteristic",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons5": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Territory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/territory",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RatingTerritoryX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/rating_territoryx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessPartyCoveredRiskInterest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_party_covered_risk_interest",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessProcessLocationType.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_process_location_type",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RiskClassGradeInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/risk_class_grade_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/UWIndustrySegment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/uw_industry_segment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MessageInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/messageinformation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/messageinformation"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactX4.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contactx4",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/phone_information",
+          "bons3": "http://ei/core/email_informationx1",
+          "bons2": "http://ei/core/business_party_characteristic",
+          "bons5": "http://ei/core/individual_informationx2",
+          "bons4": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/UserProfileIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/user_profile_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/source_system_user_profile_id"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StatusInformationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/status_informationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/error_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactType.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contact_type",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AccessAttribute.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/access_attribute",
+        "prefixes": {
+          "bons0": "http://ei/core/access_attribute",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_informationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Error.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/error",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessPartyCharacteristic.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_party_characteristic",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsConcept.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_concept",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PremiumApportionment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/premium_apportionment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FormDestinationReceiver.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/form_destination_receiver",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/business_partyx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedInsurer.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_insurer",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/insurerx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomerSegment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customer_segment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProcessingOption.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/processing_option",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CacheKey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/cache_key",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TelecommElectronicAddress.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/telecomm_electronic_address",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/VehicleRegistrantX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/vehicle_registrantx1",
+        "prefixes": {
+          "bons1": "http://ei/core/business_party_characteristic",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DFIAccount.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/dfi_account",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyTermIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_term_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyEvaluationInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_evaluation_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MarketingCampaign.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/marketing_campaign",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/strategic_alliance",
+          "bons1": "http://ei/core/marketing_campaign_accreditation",
+          "bons2": "http://ei/core/marketing_campaign_contact",
+          "bons3": "http://ei/core/marketing_campaign_note",
+          "bons4": "http://ei/core/managed_document"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MortgageeInvoiceDocument.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/mortgagee_invoice_document",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx5"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedBranch.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extendedbranch",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/branchx1",
+          "bons1": "http://ei/core/addressx1",
+          "bons2": "http://ei/core/language"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ISOSymbolInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/iso_symbol_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PhysicalAddress.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/physicaladdress",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/address"
+        },
+        "defaultNamespace": "http://ei/core/physicaladdress"
+      }
+    },
+    {
+      "id": "Schemas/TaxX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/taxx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossPayee.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_payee",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/typed_addressx3",
+          "bons0": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StatusInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/status_informationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/error"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MarketingProgram.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/marketing_program",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PPCAggregatedSummaryX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/ppc_aggregated_summaryx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualInformationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_informationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyTypeIdentifierX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_type_identifierx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DriverX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/driverx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RiskRatingGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/risk_rating_group",
+        "prefixes": {
+          "bons1": "http://ei/core/risk_rating_parameter",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ParentActivityStatusInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/parent_activity_status_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/activity_status_information",
+          "bons1": "http://ei/crm/detailed_error"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BankVault.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/bank_vault",
+        "prefixes": {
+          "bons1": "http://ei/core/typed_addressx3",
+          "bons2": "http://ei/core/business_party_characteristic",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossControlLocation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_control_location",
+        "prefixes": {
+          "bons0": "http://ei/core/standardized_addressx3",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationOccupancyAggregation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_occupancy_aggregation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/limitx2",
+          "bons2": "http://ei/core/premiumx5",
+          "bons3": "http://ei/core/exposurex1",
+          "bons0": "http://ei/core/location_occupancy_calculation"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SectionPolicyTypeCrossReference.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/section_policy_type_cross_reference",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyTermRuleBasedStatus.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_term_rule_based_status",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CoverageCategoryInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/coverage_category_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SalesforceContactNotificationPreferences.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/salesforce_contact_notification_preferences",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInvestigatorX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_investigatorx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/medical_institutionx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ClientUpdateProcessInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/client_update_process_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomBusinessData.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/custom_business_data",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomBusinessDataGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http:/core/custom_business_data_group",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/custom_business_data"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AllianceMarketSegment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alliance_market_segment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInvestigatorX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_investigatorx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/medical_institutionx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessParty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_party",
+        "prefixes": {
+          "bons0": "http://ei/core/individual_name",
+          "bons1": "http://ei/core/typed_addressx2",
+          "bons2": "http://ei/core/telecomm_electronic_address",
+          "bons4": "http://ei/core/individual_identifier",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ApplicationUserProfileProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/application_user_profile_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StatusInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/corelibrary/statusinformation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossControlLocationWithSurvey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_control_location_with_survey",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/loss_control_location",
+          "bons1": "http://ei/core/loss_control_survey",
+          "bons2": "http://ei/core/survey_contactx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomizationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customizationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInvestigator.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_investigator",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/medical_institution"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EventProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/event_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DriverX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/driverx3",
+        "prefixes": {
+          "bons0": "http://ei/core/loss_type",
+          "bons1": "http://ei/core/driver_violation",
+          "bons3": "http://ei/core/business_party_characteristic",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DriverX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/driverx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossHistory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_history",
+        "prefixes": {
+          "bons1": "http://ei/core/loss_history_cause_of_loss_payment",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TypedAddressX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/typed_addressx3",
+        "prefixes": {
+          "bons1": "http://ei/core/standardized_addressx5",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CUWDocumentFiling.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/CUWDocumentFiling",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationAdjacencyCalculation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_adjacency_calculation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProducerIdentifierX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/producer_identifierx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/HazardousAreaX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/hazardous_areax1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RelatedBusinessParty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/related_business_party",
+        "prefixes": {
+          "Q1": "http://ei/core/business_party",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInvestigatorX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_investigatorx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/medical_institutionx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyMessageInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/risk/survey_message_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AliasInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alias_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/WeatherStationInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/weather_station_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CountryX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/countryx1",
+        "prefixes": {
+          "bons0": "http://ei/core/territory",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AllianceProductCategory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alliance_product_category",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProducerIdentifierX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/producer/producer_identifierx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomizationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customizationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TypedAddressX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/typed_addressx2",
+        "prefixes": {
+          "bons0": "http://ei/core/standardized_addressx4",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentURLInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_url_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalDevice.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_device",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/QuestionAndAnswer.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/QuestionAndAnswer",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DailyWeatherData.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/daily_weather_data",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContactRole.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contact_role",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SpecialArrangementFee.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/special_arrangement_fee",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PerilInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/peril_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FormX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/formx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/QuestionAndAnswer"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Form.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/form",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/QuestionAndAnswer"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessEventInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_event_information",
+        "prefixes": {
+          "bons1": "http://ei/core/business_event_key",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/NationalityInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/nationality_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BillingAccount.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/billing_account",
+        "prefixes": {
+          "Q1": "http://ei/core/bill_payor",
+          "bons1": "http://ei/core/addressx5",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProducerCommissionRate.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/producer_commission_rate",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FormRecipientDistributionSettings.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/form_recipient_distribution_settings",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessPartyWithRelationshipX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_party_with_relationshipx1",
+        "prefixes": {
+          "bons0": "http://ei/core/business_partyx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons3": "http://ei/core/related_business_partyx1",
+          "bons1": "http://ei/core/related_householdx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ComponentProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/component_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AdditionalInterest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/additional_interest",
+        "prefixes": {
+          "bons1": "http://ei/core/business_party_characteristic",
+          "bons2": "http://ei/core/typed_addressx3",
+          "bons3": "http://ei/core/business_party_covered_risk_interest",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ReinsuranceInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/reinsurance_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/GeniusSection.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/genius_section",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Performer.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/performer",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FormX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/formx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customizationx1",
+          "bons2": "http://ei/core/question_and_answerx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/WebFocusLogOnInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/web_focus_log_on_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/web_application_cookie"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyProcessingNote.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_processing_note",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProducerIdentifierX4.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/producer_identifierx4",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AffiliateCompany.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/affiliate_company",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExternalVendorSystem.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/external_vendor_system",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessContact.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_contact",
+        "prefixes": {
+          "bons0": "http://ei/core/typed_address",
+          "bons1": "http://ei/core/phone_information",
+          "bons2": "http://ei/core/email_information",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntRestrictionOption.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_restriction_option",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_rule_group",
+          "bons1": "http://ei/core/prdct_compnt_cross_reference",
+          "bons3": "http://ei/core/prdct_compnt_subject_type_part",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MarketingCampaignAccreditation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/marketing_campaign_accreditation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Household.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/household",
+        "prefixes": {
+          "Q1": "http://ei/core/addressx4",
+          "bons2": "http://ei/core/customer_segment",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RoutingCodeInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/routing_code_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ApplicationUserProfile.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/application_user_profile",
+        "prefixes": {
+          "bons1": "http://ei/core/application_user_profile",
+          "bons2": "http://ei/core/application_user_profile_property",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FormDistributionRecipientGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/form_distribution_recipient_group",
+        "prefixes": {
+          "bons0": "http://ei/core/form_recipient_distribution_settings",
+          "bons1": "http://ei/core/customization",
+          "bons2": "http://ei/core/recipient_policy_form_reference",
+          "bons3": "http://ei/core/form_destination_receiver",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CCMCategory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/ccm_category",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossType.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_type",
+        "prefixes": {
+          "bons1": "http://ei/core/loss_history",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/HashMap.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/hash_map",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/item"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PaymentOption.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/payment_option",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BMCertificateJurisdictionFeeSummary.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/bm_certificate_jurisdiction_fee_summary",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentSet.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_set",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/managed_document"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntRuleGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_rule_group",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_restriction_option",
+          "bons1": "http://ei/core/prdct_compnt_hazard",
+          "bons2": "http://ei/core/prdct_compnt_loss_value_option",
+          "bons4": "http://ei/core/prdct_compnt_product_part",
+          "bons5": "http://ei/core/prdct_compnt_exclusion_variation",
+          "bons6": "http://ei/core/prdct_compnt_subject_type_part",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BillingActivity.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/billing_activity",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AllianceCustomerGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alliance_customer_group",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MarketingCampaignNote.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/marketing_campaign_note",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Product.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/product",
+        "prefixes": {
+          "bons1": "http://ei/core/prdct_compnt_cross_reference",
+          "bons2": "http://ei/core/prdct_compnt_rule_group",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/GetAccessSourceInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/get_access_source_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LimitX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/limitx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/NAICSInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/naics_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EntryTypeInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/entry_type_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/GetAccessUserInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/get_access_user_information",
+        "prefixes": {
+          "bons0": "http://ei/core/customization",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurchargeX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/surchargex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DriverViolation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/driver_violation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LimitX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/limitx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/OrganizationUnits.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/organizationunits",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/organizationunits"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInstitutionX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_institutionx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentSearchCriteria.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_search_criteria",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/document_search_subcriteria"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RelatedHouseholdX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/related_householdx1",
+        "prefixes": {
+          "Q1": "http://ei/core/householdx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProgramInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/program_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EmailInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/email_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PayrollReportingTransaction.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/payroll_reporting_transaction",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/payroll_report",
+          "bons0": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsTextObjectKey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_text_object_key",
+        "prefixes": {
+          "bons1": "http://ei/core/text_analytics_text_object_key_component",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StandardizedAddressX4.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/standardized_addressx4",
+        "prefixes": {
+          "bons0": "http://ei/core/addressx4",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_subject_type_part",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/OtherParticipatingCarrierInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/other_participating_carrier_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ServiceProcessClassification.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/service_process_classification",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyRecommendationResponse.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_recommendation_response",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/survey_contactx1",
+          "bons0": "http://ei/core/document_set",
+          "bons1": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/WritingCompany.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/writing_company",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInstitutionX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_institutionx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx5"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CapturableX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/capturablex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MessageLoggingInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/message_logging_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons3": "http://ei/core/message_logging_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurchargeX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/surchargex2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ResumeActivityInputData.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/resume_activity_input_data",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyContactX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_contactx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/business_contactx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossControlSurvey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_control_survey",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/survey_recommendation",
+          "bons3": "http://ei/core/survey_contactx1",
+          "bons1": "http://ei/core/document_set",
+          "bons2": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BillingAccountPaymentSummary.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/billing_account_payment_summary",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MedicalInstitutionX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/medical_institutionx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ManagedDocument.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/managed_document",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/file",
+          "bons1": "http://ei/core/document_indexing_group"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsConceptTermResult.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_concept_term_result",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsTextObjectKeyComponent.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_text_object_key_component",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EmailInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/email_informationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentIndexingInputGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_indexing_input_group",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ManagementOrientedCodes.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/management_oriented_codes",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyProcessingNoteSet.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http:/ei/core/policy_processing_note_set",
+        "prefixes": {
+          "bons0": "http://ei/core/policy_processing_note",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ErrorInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/error_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StandardizedAddressX5.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/standardized_addressx5",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx5"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessEventInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_event_informationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/business_event_detail",
+          "bons1": "http://ei/core/business_event_level_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsConceptResult.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_concept_result",
+        "prefixes": {
+          "bons1": "http://ei/core/text_analytics_concept_term_result",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ISOCategorySymbolInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/iso_category_symbol_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/iso_symbol_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SourceSystemUserProfileId.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/source_system_user_profile_id",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ClaimLifeCycleStageProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/claim_life_cycle_stage_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PremiumX5.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/premiumx5",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyRecommendation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_recommendation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/survey_recommendation_response",
+          "bons3": "http://ei/core/survey_contactx1",
+          "bons0": "http://ei/core/document_set",
+          "bons2": "http://ei/core/customizationx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ManagedDocumentX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/managed_documentx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/document_indexing_group",
+          "bons1": "http://ei/core/file"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ModifiersX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/modifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AffiliateCompanyInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/affiliate_company_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/affiliate_company"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RegionAndLanguageSettings.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/region_and_language_settings",
+        "prefixes": {
+          "Q1": "http://ei/core/time_zone",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/languagex1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ClaimNoteSet.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http:/ei/core/claim_note_set",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/claim_note"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RelatedHousehold.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/related_household",
+        "prefixes": {
+          "Q1": "http://ei/core/household",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AdditionalInsuredX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/additional_insuredx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/business_party_characteristic",
+          "bons2": "http://ei/core/business_party_covered_risk_interest",
+          "bons3": "http://ei/core/typed_addressx3",
+          "bons4": "http://ei/core/entity_alias_name"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntCrossReference.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_cross_reference",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SourceSystemData.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/source_system_data",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntProductPart.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_product_part",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_rule_group",
+          "bons1": "http://ei/core/prdct_compnt_statistical_instruction",
+          "bons3": "http://ei/core/prdct_compnt_subject_type_part",
+          "bons4": "http://ei/core/prdct_compnt_cross_reference",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StrategicAlliance.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/strategic_alliance",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/branchx1",
+          "bons1": "http://ei/core/strategic_alliance_sbu"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentBusinessProperty.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_business_property",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PerformerX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/performerx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/typed_address",
+          "bons1": "http://ei/core/phone_information",
+          "bons2": "http://ei/core/email_information"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Mortgagee.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/mortgagee",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/typed_addressx3",
+          "bons0": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TypedAddress.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/typed_address",
+        "prefixes": {
+          "bons1": "http://ei/core/standardized_addressx3",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/HazardousArea.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/hazardous_area",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyEvent.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_event",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ReferralZone.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/referral_zone",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ISOStateException.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/iso_state_exception",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/MarketingCampaignContact.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/marketing_campaign_contact",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/campaign_contact_alliance_sbu_association",
+          "bons1": "http://ei/core/business_contact_role",
+          "bons2": "http://ei/core/business_contact_type"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PremiumX6.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/premiumx6",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Sponsor.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/sponsor",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PaymentMethod.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/payment_method",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IdentificationInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/identification_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ClaimNote.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/claim_note",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ProductPolicyTypeCrossReference.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/product_policy_type_cross_reference",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/section_policy_type_cross_reference"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CurrencyExchangeRates.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/currency_exchange_rates",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/currency_exchange_rate"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ModifiersX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/modifierx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomBusinessDataGroups.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http:/core/custom_business_data_groups",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http:/core/custom_business_data_group"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ResourceX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/resourcex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/branchx1",
+          "bons0": "http://ei/core/departmentx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SpecialArrangementProducer.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/special_arrangement_producer",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/special_arrangement_fee",
+          "bons0": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/UserProfile.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/user_profile",
+        "prefixes": {
+          "bons0": "http://ei/core/user_authorization",
+          "bons1": "http://ei/core/user",
+          "bons3": "http://ei/core/application_user_profile",
+          "bons4": "http://ei/core/region_and_language_settings",
+          "bons5": "http://ei/core/access_control_group",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons6": "http://ei/core/customizationx1",
+          "bons2": "http://ei/core/source_system_user_profile_id"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PerformerX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/performerx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/phone_information",
+          "bons2": "http://ei/core/email_information",
+          "bons3": "http://ei/core/business_party_characteristic",
+          "bons4": "http://ei/core/typed_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DepartmentX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/departmentx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentIndexingGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_indexing_group",
+        "prefixes": {
+          "bons1": "http://ei/core/document_business_property",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Document.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PPCAggregatedSummary.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/ppc_aggregated_summary",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ServiceInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/service_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessUnitInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_unit_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ResidentialStructureWildfireEnrollment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/residential_structure_wildfire_enrollment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/business_contactx2",
+          "bons2": "http://ei/core/typed_address"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PremiumX7.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/premiumx7",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntStatisticalInstruction.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_statistical_instruction",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessEventDetail.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_event_detail",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TaxingJurisdictionX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/taxing_jurisdictionx1",
+        "prefixes": {
+          "bons0": "http://ei/core/line_of_business_tax_ratex1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessEventLevelInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_event_level_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StandardizedAddressX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/standardized_addressx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/NativeLanguageInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/native_language_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Insurer.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/insurer",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/insurer"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StateMandatedInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/state_mandated_information",
+        "prefixes": {
+          "bons0": "http://ei/core/state_mandated_parameter",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/WebDavKey.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/webdav_key",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CurrencyExchangeRate.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/currency_exchange_rate",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LineOfBusinessInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/line_of_business_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationAdjacencyAggregationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_adjacency_aggregationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/location_adjacency_calculation",
+          "bons1": "http://ei/core/limitx2",
+          "bons3": "http://ei/core/exposurex1",
+          "bons4": "http://ei/core/premiumx6"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyLocation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_location",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/standardized_addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DeductibleX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/deductiblex2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AddressX5.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/addressx5",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LegalRepresentativeX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/legal_representativex3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx5"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RiskAdjustmentProgram.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/risk_adjustment_program",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/InsurerX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/insurerx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyContact.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/survey_contact",
+        "prefixes": {
+          "bons0": "http://ei/core/business_contact",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SponsorX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/sponsorx3",
+        "prefixes": {
+          "bons1": "http://ei/core/addressx5",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedAddressX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_addressx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "Q1": "http://ei/core/addressx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CatastropheEventInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/catastrophe_event_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessInformationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_informationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessInformationX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_informationx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedAddressX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_addressx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SponsorX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/sponsorx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ClaimLifeCycleStage.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/claim_life_cycle_stage",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/claim_life_cycle_stage_property"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Capturable.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/capturable",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationOccupancyCalculation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_occupancy_calculation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LegalRepresentativeX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/legal_representativex2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx3"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DeductibleX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/deductiblex3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customization"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AddressX4.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/addressx4",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LineOfBusinessTaxRateX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/line_of_business_tax_ratex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/TextAnalyticsConceptGroupResult.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/text_analytics_concept_group_result",
+        "prefixes": {
+          "bons1": "http://ei/core/text_analytics_concept_result",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Driver.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/driver",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Drug.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/drug",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntHazard.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_hazard",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_rule_group",
+          "bons1": "http://ei/core/prdct_compnt_cross_reference",
+          "bons3": "http://ei/core/prdct_compnt_subject_type_part",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationAdjacencyAggregationX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_adjacency_aggregationx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/location_adjacency_calculation",
+          "bons2": "http://ei/core/exposurex2",
+          "bons3": "http://ei/core/limitx3",
+          "bons1": "http://ei/core/premiumx7"
+        }
+      }
+    },
+    {
+      "id": "Schemas/InputParameter.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/input_parameter",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LanguageX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/languagex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CitizenshipInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/citizenship_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/InsurerX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/insurerx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedAddressX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_addressx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/addressx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/User.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/user",
+        "prefixes": {
+          "bons1": "http://ei/core/business_partyx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AdditionalInsured.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/additional_insured",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons3": "http://ei/core/typed_addressx3",
+          "bons2": "http://ei/core/business_party_covered_risk_interest",
+          "bons0": "http://ei/core/business_party_characteristic"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_informationx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SponsorX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/sponsorx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LocationAdjacencyAggregation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/location_adjacency_aggregation",
+        "prefixes": {
+          "bons0": "http://ei/core/location_adjacency_calculation",
+          "bons1": "http://ei/core/limitx2",
+          "bons2": "http://ei/core/premiumx5",
+          "bons3": "http://ei/core/exposurex1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/IndividualIdentifierX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/individual_identifierx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EventDateTime.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/event_date_time",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ActivityStatusInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/activity_status_information",
+        "prefixes": {
+          "bons0": "http://ei/crm/detailed_error",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LegalRepresentativeX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/legal_representativex1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/addressx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/LossHistoryCauseOfLossPayment.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/loss_history_cause_of_loss_payment",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SurveyPeril.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/risk/survey_peril",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/WebApplicationCookie.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/web_application_cookie",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StateOrProvince.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/state_or_province",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ContractResearchOrganization.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/contract_research_organization",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AddressX3.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/addressx3",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/EndpointInformationX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/endpoint_informationx1",
+        "prefixes": {
+          "bons1": "http://ei/core/endpoint_informationx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/FamilyOffice.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/family_office",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RiskRatingParameter.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/risk_rating_parameter",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/VINInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/vin_information",
+        "prefixes": {
+          "bons0": "http://ei/core/vin_information",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomerGroupX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customer_groupx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RecipientPolicyFormReference.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/recipient_policy_form_reference",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/GetAccessRoleInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/get_access_role_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RelatedBusinessPartyX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/related_business_partyx1",
+        "prefixes": {
+          "Q1": "http://ei/core/business_partyx1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AddressX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/addressx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedInsurerX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_insurerx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/language",
+          "bons0": "http://ei/core/insurerx2"
+        }
+      }
+    },
+    {
+      "id": "Schemas/InsuranceAdminRole.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/insurance_admin_role",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/RatingTerritory.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/rating_territory",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyIdentifier.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_identifier",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/VehicleRegistrant.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/vehicle_registrant",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyProcessingData.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_processing_data",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Fee.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/fee",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessPartyWithRelationship.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_party_with_relationship",
+        "prefixes": {
+          "bons0": "http://ei/core/business_party",
+          "bons1": "http://ei/core/related_business_party",
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/related_household"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Address.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/address",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        },
+        "defaultNamespace": "http://ei/core/address"
+      }
+    },
+    {
+      "id": "Schemas/Country.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/country",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/territory"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AccessControlGroup.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/access_control_group",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/QuestionAndAnswerX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/question_and_answerx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/customizationx1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DetailedError.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/crm/detailed_error",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/StateMandatedParameter.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/state_mandated_parameter",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BusinessSourceInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/business_source_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AllianceSBUYearlyFinancial.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/alliance_sbu_yearly_financial",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyKeyParameter.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_key_parameter",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/SICInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/sic_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/File.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/file",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/languagex1"
+        }
+      }
+    },
+    {
+      "id": "Schemas/CustomerGroupX2.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customer_groupx2",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/DocumentSearchSubcriteria.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/document_search_subcriteria",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PrdctCompntLossValueOption.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/prdct_compnt_loss_value_option",
+        "prefixes": {
+          "bons0": "http://ei/core/prdct_compnt_rule_group",
+          "bons1": "http://ei/core/prdct_compnt_cross_reference",
+          "bons3": "http://ei/core/prdct_compnt_subject_type_part",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/BranchX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/branchx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/AddressX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/addressx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/ExtendedInsurerX1.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/extended_insurerx1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/insurerx1",
+          "bons1": "http://ei/core/language"
+        }
+      }
+    },
+    {
+      "id": "Schemas/Customization.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/customization",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "Schemas/PolicyContactInformation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/policy_contact_information",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons2": "http://ei/core/email_information",
+          "bons0": "http://ei/core/phone_information"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_retrieval_loc3x1_http",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "Port_0": "http://ei/location/location_retrieval_loc3x1",
+          "soap": "http://schemas.xmlsoap.org/wsdl/soap/",
+          "soapenc": "http://schemas.xmlsoap.org/soap/encoding/",
+          "this": "http://ei/location/location_retrieval_loc3x1_http"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1/LocationListReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_list_reply",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/location/location",
+          "bons1": "http://ei/core/status_informationx1"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "type": "wsdl",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_retrieval_loc3x1",
+        "prefixes": {
+          "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+          "bons1": "http://ei/core/simplefault",
+          "bons2": "http://ei/location/get_location_list_request_loc3x1",
+          "bons3": "http://ei/location/location_list_reply",
+          "bons4": "http://ei/location/location_request",
+          "tns": "http://ei/location/location_retrieval_loc3x1",
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1/LocationRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/location_request",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LocationRetrievalLOC3X1/GetLocationListRequest.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/location/get_location_list_request_loc3x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/GetBytesReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/get_bytes_reply",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/EndpointMapping.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/properties",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/CoreSupportProperties.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/properties",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons1": "http://ei/core/properties"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/GetStringReply.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/get_string_reply",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/SourceTranslation.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/source_translation",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/source_translation"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/ProductSupportProperties.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/product_support_properties_pdt804x1",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema",
+          "bons0": "http://ei/core/product_identifier"
+        }
+      }
+    },
+    {
+      "id": "PrivateSchemas/SimpleFault.xsd",
+      "type": "xsd_schema",
+      "namespaces": {
+        "targetNamespace": "http://ei/core/simplefault",
+        "prefixes": {
+          "xsd": "http://www.w3.org/2001/XMLSchema"
+        }
+      }
+    },
+    {
+      "id": "LOC3X1/GetLocationListLOC3X1BReplySubMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/RandLocationToCimLocationMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/.DS_Store",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationListLOC3X1BReplySubMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListRequestMap.xml",
+      "type": "ibm_map"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListReplySubMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationListLOC3X1BReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListReplySubMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListRequestMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationWithTaxingJurisdictionsReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationListLOC3X1BReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListReplyMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListReplySubMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListRequestMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1MGetLocationListReplySubMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/RandLocationToCimLocationMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListRequestMap_map.monbak",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationListRequestMap.map",
+      "type": "unknown"
+    },
+    {
+      "id": "LOC3X1/LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap_map.monbak",
+      "type": "unknown"
+    }
+  ],
+  "edges": [
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "Schemas/StateOrProvince.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceListReply.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "PrivateSchemas/SimpleFault.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "StateOrProvinceRetrievalCRP11X1",
+      "resolved": false,
+      "kind": "wsdl_portType"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvinceListRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvinceListResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvinceRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvinceResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvinceList_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "to": "GetStateOrProvince_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1Http.wsdl",
+      "to": "StateOrProvinceRetrievalCRP11X1/StateOrProvinceRetrievalCRP11X1.wsdl",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "StateOrProvinceRetrievalCRP11X1/GetStateOrProvinceListReply.xsd",
+      "to": "Schemas/StateOrProvince.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationListReply.xsd",
+      "to": "Schemas/StatusInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationListReply.xsd",
+      "to": "../Schemas/Location.xsd",
+      "resolved": false,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "LocationRetrievalLOC3X1M/LocationRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "PrivateSchemas/SimpleFault.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "LocationRetrievalLOC3X1M/LocationListReply.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "LocationRetrievalLOC3X1M/GetLocationListRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "LocationRetrievalLOC3X1M",
+      "resolved": false,
+      "kind": "wsdl_portType"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationList3X1MRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationList3X1MResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationList3X1M_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1MRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1MResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1M/LocationRetrievalLOC3X1M.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1M_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "LocationRetrievalLOC3X1B/LocationRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "PrivateSchemas/SimpleFault.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "LocationRetrievalLOC3X1B/LocationListReply.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "LocationRetrievalLOC3X1B/GetLocationListRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "LocationRetrievalLOC3X1B",
+      "resolved": false,
+      "kind": "wsdl_portType"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationList3X1BRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationList3X1BResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationList3X1B_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1BRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1BResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationRetrievalLOC3X1B.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions3X1B_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationListReply.xsd",
+      "to": "Schemas/StatusInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1B/LocationListReply.xsd",
+      "to": "../Schemas/Location.xsd",
+      "resolved": false,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1Http.wsdl",
+      "to": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "Schemas/Country.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "CountryRetrievalCRP10X1/GetCountryListReply.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "CountryRetrievalCRP10X1/GetCountryRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "PrivateSchemas/SimpleFault.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "CountryRetrievalCRP10X1",
+      "resolved": false,
+      "kind": "wsdl_portType"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountryListRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountryListResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountryRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountryResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountryList_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/CountryRetrievalCRP10X1.wsdl",
+      "to": "GetCountry_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/GetCountryReply.xsd",
+      "to": "Schemas/Country.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "CountryRetrievalCRP10X1/GetCountryListReply.xsd",
+      "to": "Schemas/Country.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInstitution.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX3.xsd",
+      "to": "Schemas/IndividualInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX3.xsd",
+      "to": "Schemas/EmailInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX3.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX3.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TaxingJurisdiction.xsd",
+      "to": "Schemas/LineOfBusinessTaxRateX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LegalRepresentative.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX1.xsd",
+      "to": "Schemas/PremiumX6.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX1.xsd",
+      "to": "Schemas/Exposurex1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX1.xsd",
+      "to": "Schemas/LocationOccupancyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX1.xsd",
+      "to": "Schemas/LimitX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX2.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX2.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX2.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/AllianceSBUYearlyFinancial.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/AllianceSBUMonthlyFinancial.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/AllianceCustomerGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/AllianceProductCategory.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/BusinessProcessLocationType.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/AllianceMarketSegment.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAllianceSBU.xsd",
+      "to": "Schemas/MarketingProgram.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BillPayor.xsd",
+      "to": "Schemas/BusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsuranceAdminRole.xsd",
+      "to": "Schemas/InsuranceAdminRole.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/EntityAliasName.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/EntityAliasName.xsd",
+      "to": "Schemas/IndividualInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Exposurex2.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/Exposurex2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/Fee.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/TaxX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/SurchargeX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReport.xsd",
+      "to": "Schemas/PremiumX7.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/HouseholdX1.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/HouseholdX1.xsd",
+      "to": "Schemas/CustomerSegment.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserAuthorization.xsd",
+      "to": "Schemas/AccessAttribute.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyProcessingInformation.xsd",
+      "to": "Schemas/RiskRatingGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyProcessingInformation.xsd",
+      "to": "Schemas/PolicyProcessingData.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyProcessingInformation.xsd",
+      "to": "Schemas/PolicyProcessingNoteSet.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CommissionRatesByPolicyCategory.xsd",
+      "to": "Schemas/ProducerCommissionRate.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntExclusionVariation.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntExclusionVariation.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntExclusionVariation.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX2.xsd",
+      "to": "Schemas/PremiumX7.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX2.xsd",
+      "to": "Schemas/LimitX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX2.xsd",
+      "to": "Schemas/Exposurex2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregationX2.xsd",
+      "to": "Schemas/LocationOccupancyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX1.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX1.xsd",
+      "to": "Schemas/IndividualInformationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX1.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX1.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX1.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PriorCarrier.xsd",
+      "to": "Schemas/Competitor.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/IssuedPolicyForm.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/IssuedPolicyForm.xsd",
+      "to": "Schemas/ManagedDocument.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/EntityAliasNameX1.xsd",
+      "to": "Schemas/IndividualInformationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/EntityAliasNameX1.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyX1.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyX1.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyX1.xsd",
+      "to": "Schemas/TelecommElectronicAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyX1.xsd",
+      "to": "Schemas/IndividualName.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyX1.xsd",
+      "to": "Schemas/IndividualIdentifierX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX4.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX4.xsd",
+      "to": "Schemas/IndividualInformationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX4.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX4.xsd",
+      "to": "Schemas/EmailInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContactX4.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfileIdentifier.xsd",
+      "to": "Schemas/SourceSystemUserProfileId.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StatusInformationX2.xsd",
+      "to": "Schemas/ErrorInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormDestinationReceiver.xsd",
+      "to": "Schemas/BusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsurer.xsd",
+      "to": "Schemas/InsurerX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/VehicleRegistrantX1.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/VehicleRegistrantX1.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaign.xsd",
+      "to": "Schemas/ManagedDocument.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaign.xsd",
+      "to": "Schemas/MarketingCampaignNote.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaign.xsd",
+      "to": "Schemas/MarketingCampaignContact.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaign.xsd",
+      "to": "Schemas/MarketingCampaignAccreditation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaign.xsd",
+      "to": "Schemas/StrategicAlliance.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MortgageeInvoiceDocument.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedBranch.xsd",
+      "to": "Schemas/Language.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedBranch.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedBranch.xsd",
+      "to": "Schemas/BranchX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PhysicalAddress.xsd",
+      "to": "Schemas/Address.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossPayee.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossPayee.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StatusInformationX1.xsd",
+      "to": "Schemas/Error.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RiskRatingGroup.xsd",
+      "to": "Schemas/RiskRatingParameter.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ParentActivityStatusInformation.xsd",
+      "to": "Schemas/DetailedError.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ParentActivityStatusInformation.xsd",
+      "to": "Schemas/ActivityStatusInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BankVault.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BankVault.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlLocation.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlLocation.xsd",
+      "to": "Schemas/StandardizedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregation.xsd",
+      "to": "Schemas/Exposurex1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregation.xsd",
+      "to": "Schemas/LocationOccupancyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregation.xsd",
+      "to": "Schemas/PremiumX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationOccupancyAggregation.xsd",
+      "to": "Schemas/LimitX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInvestigatorX3.xsd",
+      "to": "Schemas/MedicalInstitutionX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CustomBusinessDataGroup.xsd",
+      "to": "Schemas/CustomBusinessData.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInvestigatorX2.xsd",
+      "to": "Schemas/MedicalInstitutionX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessParty.xsd",
+      "to": "Schemas/TelecommElectronicAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessParty.xsd",
+      "to": "Schemas/TypedAddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessParty.xsd",
+      "to": "Schemas/IndividualName.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessParty.xsd",
+      "to": "Schemas/IndividualIdentifier.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlLocationWithSurvey.xsd",
+      "to": "Schemas/SurveyContactX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlLocationWithSurvey.xsd",
+      "to": "Schemas/LossControlSurvey.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlLocationWithSurvey.xsd",
+      "to": "Schemas/LossControlLocation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInvestigator.xsd",
+      "to": "Schemas/MedicalInstitution.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DriverX3.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DriverX3.xsd",
+      "to": "Schemas/DriverViolation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DriverX3.xsd",
+      "to": "Schemas/LossType.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DriverX3.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossHistory.xsd",
+      "to": "Schemas/LossHistoryCauseOfLossPayment.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TypedAddressX3.xsd",
+      "to": "Schemas/StandardizedAddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CUWDocumentFiling.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RelatedBusinessParty.xsd",
+      "to": "Schemas/BusinessParty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInvestigatorX1.xsd",
+      "to": "Schemas/MedicalInstitutionX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CountryX1.xsd",
+      "to": "Schemas/Territory.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TypedAddressX2.xsd",
+      "to": "Schemas/StandardizedAddressX4.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormX1.xsd",
+      "to": "Schemas/QuestionAndAnswer.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Form.xsd",
+      "to": "Schemas/QuestionAndAnswer.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessEventInformation.xsd",
+      "to": "Schemas/BusinessEventKey.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BillingAccount.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BillingAccount.xsd",
+      "to": "Schemas/BillPayor.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationshipX1.xsd",
+      "to": "Schemas/RelatedHouseholdX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationshipX1.xsd",
+      "to": "Schemas/RelatedBusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationshipX1.xsd",
+      "to": "Schemas/BusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInterest.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInterest.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInterest.xsd",
+      "to": "Schemas/BusinessPartyCoveredRiskInterest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Performer.xsd",
+      "to": "Schemas/AddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormX2.xsd",
+      "to": "Schemas/QuestionAndAnswerX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormX2.xsd",
+      "to": "Schemas/CustomizationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/WebFocusLogOnInformation.xsd",
+      "to": "Schemas/WebApplicationCookie.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContact.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContact.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessContact.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRestrictionOption.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRestrictionOption.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRestrictionOption.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Household.xsd",
+      "to": "Schemas/AddressX4.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Household.xsd",
+      "to": "Schemas/CustomerSegment.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ApplicationUserProfile.xsd",
+      "to": "Schemas/ApplicationUserProfileProperty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormDistributionRecipientGroup.xsd",
+      "to": "Schemas/FormDestinationReceiver.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormDistributionRecipientGroup.xsd",
+      "to": "Schemas/RecipientPolicyFormReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormDistributionRecipientGroup.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/FormDistributionRecipientGroup.xsd",
+      "to": "Schemas/FormRecipientDistributionSettings.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossType.xsd",
+      "to": "Schemas/LossHistory.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/HashMap.xsd",
+      "to": "Schemas/Item.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DocumentSet.xsd",
+      "to": "Schemas/ManagedDocument.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntExclusionVariation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntHazard.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntLossValueOption.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntProductPart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntRestrictionOption.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntRuleGroup.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Product.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Product.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/GetAccessUserInformation.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/GetAccessUserInformation.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LimitX3.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInstitutionX1.xsd",
+      "to": "Schemas/AddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DocumentSearchCriteria.xsd",
+      "to": "Schemas/DocumentSearchSubcriteria.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RelatedHouseholdX1.xsd",
+      "to": "Schemas/HouseholdX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReportingTransaction.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PayrollReportingTransaction.xsd",
+      "to": "Schemas/PayrollReport.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TextAnalyticsTextObjectKey.xsd",
+      "to": "Schemas/TextAnalyticsTextObjectKeyComponent.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StandardizedAddressX4.xsd",
+      "to": "Schemas/AddressX4.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendationResponse.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendationResponse.xsd",
+      "to": "Schemas/DocumentSet.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendationResponse.xsd",
+      "to": "Schemas/SurveyContactX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInstitutionX3.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurchargeX2.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyContactX1.xsd",
+      "to": "Schemas/BusinessContactX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlSurvey.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlSurvey.xsd",
+      "to": "Schemas/DocumentSet.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlSurvey.xsd",
+      "to": "Schemas/SurveyContactX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LossControlSurvey.xsd",
+      "to": "Schemas/SurveyRecommendation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MedicalInstitutionX2.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ManagedDocument.xsd",
+      "to": "Schemas/DocumentIndexingGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ManagedDocument.xsd",
+      "to": "Schemas/File.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyProcessingNoteSet.xsd",
+      "to": "Schemas/PolicyProcessingNote.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StandardizedAddressX5.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessEventInformationX1.xsd",
+      "to": "Schemas/BusinessEventLevelInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessEventInformationX1.xsd",
+      "to": "Schemas/BusinessEventDetail.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TextAnalyticsConceptResult.xsd",
+      "to": "Schemas/TextAnalyticsConceptTermResult.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ISOCategorySymbolInformation.xsd",
+      "to": "Schemas/ISOSymbolInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendation.xsd",
+      "to": "Schemas/CustomizationX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendation.xsd",
+      "to": "Schemas/DocumentSet.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendation.xsd",
+      "to": "Schemas/SurveyContactX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyRecommendation.xsd",
+      "to": "Schemas/SurveyRecommendationResponse.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ManagedDocumentX1.xsd",
+      "to": "Schemas/File.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ManagedDocumentX1.xsd",
+      "to": "Schemas/DocumentIndexingGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AffiliateCompanyInformation.xsd",
+      "to": "Schemas/AffiliateCompany.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RegionAndLanguageSettings.xsd",
+      "to": "Schemas/TimeZone.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RegionAndLanguageSettings.xsd",
+      "to": "Schemas/LanguageX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ClaimNoteSet.xsd",
+      "to": "Schemas/ClaimNote.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RelatedHousehold.xsd",
+      "to": "Schemas/Household.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsuredX1.xsd",
+      "to": "Schemas/EntityAliasName.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsuredX1.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsuredX1.xsd",
+      "to": "Schemas/BusinessPartyCoveredRiskInterest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsuredX1.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntProductPart.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntProductPart.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntProductPart.xsd",
+      "to": "Schemas/PrdctCompntStatisticalInstruction.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntProductPart.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAlliance.xsd",
+      "to": "Schemas/StrategicAllianceSBU.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StrategicAlliance.xsd",
+      "to": "Schemas/BranchX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX1.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX1.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX1.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Mortgagee.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Mortgagee.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TypedAddress.xsd",
+      "to": "Schemas/StandardizedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaignContact.xsd",
+      "to": "Schemas/BusinessContactType.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaignContact.xsd",
+      "to": "Schemas/BusinessContactRole.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/MarketingCampaignContact.xsd",
+      "to": "Schemas/CampaignContactAllianceSBUAssociation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Sponsor.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ProductPolicyTypeCrossReference.xsd",
+      "to": "Schemas/SectionPolicyTypeCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CurrencyExchangeRates.xsd",
+      "to": "Schemas/CurrencyExchangeRate.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ModifiersX2.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/CustomBusinessDataGroups.xsd",
+      "to": "Schemas/CustomBusinessDataGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ResourceX1.xsd",
+      "to": "Schemas/DepartmentX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ResourceX1.xsd",
+      "to": "Schemas/BranchX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SpecialArrangementProducer.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SpecialArrangementProducer.xsd",
+      "to": "Schemas/SpecialArrangementFee.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/SourceSystemUserProfileId.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/CustomizationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/RegionAndLanguageSettings.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/UserAuthorization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/AccessControlGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/User.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/UserProfile.xsd",
+      "to": "Schemas/ApplicationUserProfile.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX2.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX2.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX2.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PerformerX2.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DocumentIndexingGroup.xsd",
+      "to": "Schemas/DocumentBusinessProperty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ResidentialStructureWildfireEnrollment.xsd",
+      "to": "Schemas/TypedAddress.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ResidentialStructureWildfireEnrollment.xsd",
+      "to": "Schemas/BusinessContactX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PremiumX7.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TaxingJurisdictionX1.xsd",
+      "to": "Schemas/LineOfBusinessTaxRateX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StandardizedAddressX3.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/StateMandatedInformation.xsd",
+      "to": "Schemas/StateMandatedParameter.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX1.xsd",
+      "to": "Schemas/PremiumX6.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX1.xsd",
+      "to": "Schemas/Exposurex1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX1.xsd",
+      "to": "Schemas/LocationAdjacencyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX1.xsd",
+      "to": "Schemas/LimitX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyLocation.xsd",
+      "to": "Schemas/StandardizedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LegalRepresentativeX3.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/InsurerX2.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SurveyContact.xsd",
+      "to": "Schemas/BusinessContact.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SponsorX3.xsd",
+      "to": "Schemas/AddressX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedAddressX2.xsd",
+      "to": "Schemas/AddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedAddressX3.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SponsorX2.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ClaimLifeCycleStage.xsd",
+      "to": "Schemas/ClaimLifeCycleStageProperty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LegalRepresentativeX2.xsd",
+      "to": "Schemas/AddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/DeductibleX3.xsd",
+      "to": "Schemas/Customization.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/TextAnalyticsConceptGroupResult.xsd",
+      "to": "Schemas/TextAnalyticsConceptResult.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntHazard.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntHazard.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntHazard.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX2.xsd",
+      "to": "Schemas/PremiumX7.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX2.xsd",
+      "to": "Schemas/LimitX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX2.xsd",
+      "to": "Schemas/Exposurex2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregationX2.xsd",
+      "to": "Schemas/LocationAdjacencyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedAddressX1.xsd",
+      "to": "Schemas/AddressX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/User.xsd",
+      "to": "Schemas/BusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsured.xsd",
+      "to": "Schemas/BusinessPartyCharacteristic.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsured.xsd",
+      "to": "Schemas/BusinessPartyCoveredRiskInterest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/AdditionalInsured.xsd",
+      "to": "Schemas/TypedAddressX3.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/SponsorX1.xsd",
+      "to": "Schemas/AddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregation.xsd",
+      "to": "Schemas/Exposurex1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregation.xsd",
+      "to": "Schemas/LocationAdjacencyCalculation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregation.xsd",
+      "to": "Schemas/PremiumX5.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LocationAdjacencyAggregation.xsd",
+      "to": "Schemas/LimitX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ActivityStatusInformation.xsd",
+      "to": "Schemas/DetailedError.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/LegalRepresentativeX1.xsd",
+      "to": "Schemas/AddressX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/RelatedBusinessPartyX1.xsd",
+      "to": "Schemas/BusinessPartyX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsurerX2.xsd",
+      "to": "Schemas/InsurerX2.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsurerX2.xsd",
+      "to": "Schemas/Language.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationship.xsd",
+      "to": "Schemas/RelatedHousehold.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationship.xsd",
+      "to": "Schemas/RelatedBusinessParty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/BusinessPartyWithRelationship.xsd",
+      "to": "Schemas/BusinessParty.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/Country.xsd",
+      "to": "Schemas/Territory.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/QuestionAndAnswerX1.xsd",
+      "to": "Schemas/CustomizationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/File.xsd",
+      "to": "Schemas/LanguageX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntLossValueOption.xsd",
+      "to": "Schemas/PrdctCompntCrossReference.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntLossValueOption.xsd",
+      "to": "Schemas/PrdctCompntRuleGroup.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PrdctCompntLossValueOption.xsd",
+      "to": "Schemas/PrdctCompntSubjectTypePart.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsurerX1.xsd",
+      "to": "Schemas/InsurerX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/ExtendedInsurerX1.xsd",
+      "to": "Schemas/Language.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyContactInformation.xsd",
+      "to": "Schemas/PhoneInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "Schemas/PolicyContactInformation.xsd",
+      "to": "Schemas/EmailInformation.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1Http.wsdl",
+      "to": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationListReply.xsd",
+      "to": "Schemas/StatusInformationX1.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationListReply.xsd",
+      "to": "../Schemas/Location.xsd",
+      "resolved": false,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "LocationRetrievalLOC3X1/LocationRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "LocationRetrievalLOC3X1/LocationListReply.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "LocationRetrievalLOC3X1/GetLocationListRequest.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "PrivateSchemas/SimpleFault.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "LocationRetrievalLOC3X1",
+      "resolved": false,
+      "kind": "wsdl_portType"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationListRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationListResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationWithTaxingJurisdictionsRequestMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationWithTaxingJurisdictionsResponseMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationList_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "LocationRetrievalLOC3X1/LocationRetrievalLOC3X1.wsdl",
+      "to": "GetLocationWithTaxingJurisdictions_SimpleFaultReplyMsg",
+      "resolved": false,
+      "kind": "wsdl_message"
+    },
+    {
+      "from": "PrivateSchemas/CoreSupportProperties.xsd",
+      "to": "PrivateSchemas/EndpointMapping.xsd",
+      "resolved": true,
+      "kind": "import"
+    },
+    {
+      "from": "PrivateSchemas/ProductSupportProperties.xsd",
+      "to": "Schemas/ProductIdentifier.xsd",
+      "resolved": true,
+      "kind": "import"
+    }
+  ],
+  "report": {
+    "cycle_count": 5,
+    "cycles": [
+      [
+        "Schemas/PrdctCompntRuleGroup.xsd",
+        "Schemas/PrdctCompntExclusionVariation.xsd"
+      ],
+      [
+        "Schemas/PrdctCompntHazard.xsd",
+        "Schemas/PrdctCompntRuleGroup.xsd"
+      ],
+      [
+        "Schemas/PrdctCompntRuleGroup.xsd",
+        "Schemas/PrdctCompntLossValueOption.xsd"
+      ],
+      [
+        "Schemas/PrdctCompntRuleGroup.xsd",
+        "Schemas/PrdctCompntProductPart.xsd"
+      ],
+      [
+        "Schemas/PrdctCompntRuleGroup.xsd",
+        "Schemas/PrdctCompntRestrictionOption.xsd"
+      ]
+    ]
+  }
+}

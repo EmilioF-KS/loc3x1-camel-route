@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<res:GetLocationList3X1B xmlns:res="http://ei/location/location_retrieval_loc3x1b">
+  <res:GetLocationListRequest>
+    <res:AddressLine1>1 Main St</res:AddressLine1>
+    <res:AddressLine2>Apt 5</res:AddressLine2>
+    <res:CityName>New York</res:CityName>
+    <res:StateOrProvinceCode>36</res:StateOrProvinceCode>
+    <res:PostalStateAbbreviation>NY</res:PostalStateAbbreviation>
+    <res:PostalCode>10001</res:PostalCode>
+    <res:LocationPlaceCode>123456</res:LocationPlaceCode>
+    <res:CountryCode>US</res:CountryCode>
+    <res:CountryAbbreviation>USA</res:CountryAbbreviation>
+  </res:GetLocationListRequest>
+</res:GetLocationList3X1B>
