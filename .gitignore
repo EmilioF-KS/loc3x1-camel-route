@@ -30,7 +30,7 @@ target/
 *.log
 
 # Generated artifacts
-generated/
+# (Allow committing generated project outputs)
 
 # Test byproducts
 CHUBB/output/.test_artifacts/

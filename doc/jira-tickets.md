@@ -270,7 +270,7 @@ Ticket fields template:
 
 - Status: In Progress
 - Priority: P1
-- Dependencies: AGENT-023, AGENT-020, AGENT-022
+- Dependencies: AGENT-023, AGENT-020, AGENT-022, AGENT-027, AGENT-033
 - Description: Scaffold project with structure identical to `a9.location-orchestration-rest`: `pom.xml`, `src/main/resources/routes/*.yaml`, controllers, config, helper XSLT.
 - Inputs: Routes YAML, XSLTs, DTO plan.
 - Expected Outputs: a9-style project scaffold.
@@ -287,7 +287,7 @@ Ticket fields template:
 
 - Status: To Do
 - Priority: P1
-- Dependencies: GEN-100
+- Dependencies: GEN-100, AGENT-034
 - Description: Create controllers mirroring `a9` endpoints and bind platform-http routes.
 - Inputs: Route definitions and DTOs.
 - Expected Outputs: Controllers wired to routes and OpenAPI definition.
@@ -347,6 +347,142 @@ Ticket fields template:
 - CI/CD Hooks: Fault scenario tests.
 - Estimate: 1d
 
+## Epic: End-to-End Automation & Codegen
+
+### AGENT-025 — Deterministic BPEL → Camel semantics translator
+
+- Status: To Do
+- Priority: P1
+- Dependencies: AGENT-021
+- Description: Translate IBM BPEL control flow and variables into Camel YAML DSL (sequence, flow/parallel, switch/choice, pick, receive/invoke/reply, assign/variables, faults) to eliminate placeholders and preserve orchestration semantics.
+- Inputs: BPEL files, normalized orchestration plan.
+- Expected Outputs: Camel YAML routes that reflect BPEL semantics deterministically.
+- Acceptance Criteria:
+  - [ ] Covers ≥95% of BPEL constructs present in `LocationRetrievalLOC3X1Process.bpel`.
+  - [ ] Variables/assignments mapped to headers/properties consistently.
+  - [ ] Faults/exceptions mapped to error handlers with HTTP responses.
+  - [ ] YAML validates against Camel DSL schema.
+- Tests: Unit patterns for BPEL constructs; integration on workspace BPEL.
+- Artifacts: `agent/src/orchestration.py` (semantic extraction), `agent/src/route_synthesis.py` (DSL generation).
+- CI/CD Hooks: BPEL→Camel regression tests.
+- Estimate: 4d
+
+### AGENT-026 — Deterministic Mediation XML → Camel processors and routes
+
+- Status: To Do
+- Priority: P1
+- Dependencies: AGENT-021, AGENT-030
+- Description: Convert IBM Mediation XML branches/filters/enrich/aggregate patterns into Camel route choices, filters, enrich, aggregation, and processors deterministically.
+- Inputs: Mediation XML, orchestration plan.
+- Expected Outputs: Camel YAML covering mediation semantics; minimal LLM assistance.
+- Acceptance Criteria:
+  - [ ] Common mediation patterns translated without manual edits.
+  - [ ] Branch logic validated with sample payloads.
+  - [ ] YAML validates against Camel DSL.
+- Tests: Scenario tests for mediation branches; snapshot of generated routes.
+- Artifacts: `agent/src/mediation_suggestions.py` (deterministic mode), `agent/src/route_synthesis.py`.
+- CI/CD Hooks: Mediation translation tests.
+- Estimate: 3d
+
+### AGENT-027 — WSDL/XSD → Java DTOs and CXF client codegen integration
+
+- Status: To Do
+- Priority: P1
+- Dependencies: AGENT-012
+- Description: Integrate JAXB and CXF Maven plugins to generate Java DTOs and SOAP client stubs directly from WSDL/XSD contracts; wire into the generated project.
+- Inputs: WSDLs, XSDs from `Dependencies/`.
+- Expected Outputs: Generated sources under `generated/` or project `target/generated-sources` with package naming aligned to contracts.
+- Acceptance Criteria:
+  - [ ] DTOs and client stubs generated and compiled during `mvn clean package`.
+  - [ ] Package names and namespaces consistent with target contracts.
+  - [ ] Coverage report lists operations/types generated.
+- Tests: Build-time verification; unit tests instantiating DTOs.
+- Artifacts: `pom.xml` plugin config, `agent/src/contracts.py` updates as needed.
+- CI/CD Hooks: Codegen verification stage.
+- Estimate: 3d
+
+### AGENT-028 — IBM proprietary `.map` converter → XSLT (if applicable)
+
+- Status: To Do
+- Priority: P2
+- Dependencies: AGENT-022
+- Description: Add parser for proprietary IBM `.map` formats (non-XML) and convert to XSLT, complementing existing XML `map:move` support.
+- Inputs: IBM `.map` files.
+- Expected Outputs: XSLT files in `agent/output/xslt/*.xsl`.
+- Acceptance Criteria:
+  - [ ] `.map` files parsed and translated deterministically to XSLT.
+  - [ ] Transformations validated against destination XSDs.
+- Tests: Unit parsing; integration transforms on sample inputs.
+- Artifacts: `agent/src/map_move_to_xslt.py` (extended), docs on limitations.
+- CI/CD Hooks: Map conversion validation.
+- Estimate: 3d
+
+### AGENT-029 — Automatic binding inference and route wiring
+
+- Status: To Do
+- Priority: P1
+- Dependencies: AGENT-012, AGENT-022, AGENT-027
+- Description: Infer bindings for controllers, routes, XSLT steps, and provider URIs from contracts and orchestration; generate complete wiring so the project builds and runs without placeholders.
+- Inputs: Contracts JSON, orchestration plan, synthesized XSLTs.
+- Expected Outputs: Fully wired Camel YAML and Spring components.
+- Acceptance Criteria:
+  - [ ] All routes reference existing beans/XSLTs and DTOs with no TODOs.
+  - [ ] Provider URIs configurable via properties; defaults provided.
+  - [ ] Build passes without manual edits.
+- Tests: Wiring validation; smoke tests on endpoints.
+- Artifacts: `agent/src/route_synthesis.py`, scaffold updates.
+- CI/CD Hooks: Wiring correctness checks.
+- Estimate: 3d
+
+### AGENT-033 — One‑click generator CLI (IBM path → runnable project)
+
+- Status: To Do
+- Priority: P1
+- Dependencies: AGENT-010, AGENT-012, AGENT-021, AGENT-022, AGENT-023, AGENT-027, AGENT-029
+- Description: Implement a single command to run discovery → contracts → orchestration plan → map/XSLT synthesis → route synthesis → scaffold → controllers → provider wiring → build.
+- Inputs: IBM `Dependencies/` path.
+- Expected Outputs: `generated/a9-like-project` ready to build and run.
+- Acceptance Criteria:
+  - [ ] `python -m agent.scripts.scaffold_project --input <IBM path> --output generated/a9-like-project --auto` completes end‑to‑end.
+  - [ ] `mvn clean package` succeeds on the generated project.
+  - [ ] Service runs locally; platform‑http endpoint returns expected structure for `happy_path_example.xml`.
+- Tests: End‑to‑end pipeline tests; smoke tests.
+- Artifacts: `agent/scripts/scaffold_project.py` updates, `generated/a9-like-project/**`.
+- CI/CD Hooks: One‑click pipeline check.
+- Estimate: 2d
+
+### AGENT-034 — Controller generator and OpenAPI
+
+- Status: To Do
+- Priority: P2
+- Dependencies: AGENT-012, AGENT-023, AGENT-027
+- Description: Auto‑generate Spring controllers and OpenAPI spec from contracts; wire platform‑http endpoints to Camel routes.
+- Inputs: Contracts JSON, route YAML.
+- Expected Outputs: Controllers and OpenAPI definition.
+- Acceptance Criteria:
+  - [ ] Controllers compile and expose endpoints used by routes.
+  - [ ] OpenAPI UI accessible locally.
+- Tests: Controller unit tests; OpenAPI smoke.
+- Artifacts: `src/main/java/.../controllers/*.java`, OpenAPI file.
+- CI/CD Hooks: Controller unit tests.
+- Estimate: 2d
+
+### AGENT-035 — Maven assembly and dependency management
+
+- Status: To Do
+- Priority: P2
+- Dependencies: GEN-100, AGENT-027
+- Description: Ensure `pom.xml` includes Camel 4.x, Spring Boot 3.3.x, CXF codegen, JAXB/Jakarta, XSLT, Jackson; configure plugin executions for codegen and resource packaging.
+- Inputs: Project scaffold, contracts.
+- Expected Outputs: Reproducible builds with generated sources and resources.
+- Acceptance Criteria:
+  - [ ] `mvn clean package` passes consistently across environments.
+  - [ ] Generated sources included in compilation.
+- Tests: Build reproducibility checks; plugin execution tests.
+- Artifacts: `pom.xml` updates.
+- CI/CD Hooks: Build verification.
+- Estimate: 1d
+
 ---
 
 ## Epic: Validation & Testing
@@ -386,7 +522,7 @@ Ticket fields template:
 
 - Status: To Do
 - Priority: P1
-- Dependencies: GEN-100
+- Dependencies: GEN-100, AGENT-033
 - Description: Run `mvn clean package`; execute smoke tests with `happy_path_example.xml`.
 - Inputs: Generated project and sample input XML.
 - Expected Outputs: Build artifacts and smoke test report.
@@ -422,7 +558,7 @@ Ticket fields template:
 
 - Status: To Do
 - Priority: P1
-- Dependencies: AGENT-010..023
+- Dependencies: AGENT-010..023, AGENT-025..035
 - Description: CI for Python agent (lint, unit tests, type checks).
 - Inputs: Agent repository.
 - Expected Outputs: CI workflow and green runs.
