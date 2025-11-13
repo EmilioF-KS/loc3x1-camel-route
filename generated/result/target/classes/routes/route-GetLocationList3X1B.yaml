@@ -1,0 +1,24 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  name: route-GetLocationList3X1B
+spec:
+  flows:
+    - from:
+        uri: "platform-http:/{{controller_path}}"
+        steps:
+          - setHeader:
+              name: Content-Type
+              constant: application/xml
+          - setHeader:
+              name: X-Correlation-ID
+              simple: "${exchangeId}"
+          - log:
+              message: "[${header.X-Correlation-ID}] Request received"
+              loggingLevel: INFO
+          - xslt:
+              resourceUri: classpath:xslt/identity.xsl
+          - to:
+              uri: "http://localhost:8081/provider/locations"
+          - xslt:
+              resourceUri: classpath:xslt/identity.xsl

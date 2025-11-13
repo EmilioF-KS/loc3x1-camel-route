@@ -31,6 +31,9 @@ target/
 
 # Generated artifacts
 # (Allow committing generated project outputs)
+# Include everything under generated/ even if matching ignore patterns above
+!generated/
+!generated/**
 
 # Test byproducts
 CHUBB/output/.test_artifacts/
