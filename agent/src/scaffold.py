@@ -12,43 +12,61 @@ try:
 except Exception:
     convert_maps_dir = None  # type: ignore
 
-README = """# a9-like Project Scaffold (GEN-100)
+README = """# LOC Service — Generated Results
 
-This is an a9-style Spring Boot + Camel (YAML DSL) scaffold.
+This is a generated Spring Boot + Camel (YAML DSL) project built from client inputs.
 
 - Java: 17
 - Spring Boot: 3.3.x
 - Camel: 4.7.x
-- Routes DSL: YAML
-- Includes: Actuator, Jackson, Camel Spring Boot starter, Camel YAML DSL
+- DSL: Camel YAML
+- Includes: Actuator, Jackson, Camel Spring Boot starter, Camel YAML DSL, provider stub
 
-Build (optional, if Maven is available):
+## Prerequisites
+- Java 17 and Maven 3.9+
+- Port `8081` available
 
-```
-mvn -DskipTests package
-```
+## How to Build
+1. Change directory to this results folder
+   - `cd /path/to/this/results`
+2. Build the jar
+   - `mvn clean package -DskipTests`
 
-Run (example):
+## How to Run
+- Jar
+  - `java -jar target/loc-service.jar --server.port=8081`
+- Maven
+  - `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081`
 
-```
-java -jar target/a9-like-project-0.1.0.jar
-```
+Notes:
+- Routes call the built-in provider stub at `http://localhost:8081/provider/locations`.
+- Running on `8081` ensures internal calls succeed with no extra setup.
 
-Camel loads routes from `classpath:routes/*.yaml`.
+## How to Validate
+- Health: `curl -sf http://localhost:8081/actuator/health`
+- Endpoints (POST XML):
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetCountry`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetStateOrProvince`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1B`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1M`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1B`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1M`
+- Sample payload (optional):
+  - `curl -s -X POST -H "Content-Type: application/xml" --data-binary @samples/get_location_list_request_min.xml http://localhost:8081/loc/GetLocationList3X1M`
 
-## Routes & Error Handling (GEN-104)
-- Each route sets `X-Correlation-ID` to the Camel `exchangeId`.
-- Request logs include the correlation ID at INFO.
-- Errors are handled with redelivery policy from provider properties, map to HTTP `500` via `CamelHttpResponseCode`, and return a simple XML error body.
+## Stop Service
+- Jar or Maven run: press `Ctrl+C` in the terminal
 
-## Correlation-ID Logging
-- A servlet filter sets/propagates `X-Correlation-ID` and writes it to logging MDC.
-- Console logging pattern includes `[correlationId]` for all application logs.
-- Camel route logs also include the correlation ID in messages.
+## Optional Codegen (DTOs & Clients)
+- `mvn -Pcodegen generate-sources`
+- Outputs under `target/generated-sources/{jaxb,cxf}`
 
-## Actuator Endpoints
-- Health and Info are exposed at `/actuator/health` and `/actuator/info`.
-- Customize exposure via `management.endpoints.web.exposure.include` in `application.yaml`.
+## Observability & Error Handling
+- `X-Correlation-ID` header is set from Camel `exchangeId` and logged.
+- Error handler maps failures to HTTP `500` with a simple XML body and redelivery policy from `application.yaml`.
+
+## OpenAPI
+- A stub OpenAPI spec is included at `src/main/resources/openapi.yaml` with `/loc/{operation}` POST endpoints.
 """
 
 POM_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -70,6 +88,19 @@ POM_XML = """<?xml version="1.0" encoding="UTF-8"?>
     <name>__PROJECT_NAME__</name>
     <description>__DESCRIPTION__</description>
     <packaging>jar</packaging>
+
+    <build>
+        <finalName>__FINAL_NAME__</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <java.version>17</java.version>
@@ -113,19 +144,74 @@ POM_XML = """<?xml version="1.0" encoding="UTF-8"?>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>false</skip>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <profiles>
+        <profile>
+            <id>codegen</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jaxb2-maven-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>generate-xsd-dtos</id>
+                                <goals>
+                                    <goal>xjc</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>${project.basedir}/src/main/resources/contracts/selected</source>
+                                    </sources>
+                                    <includes>
+                                        <include>**/*.xsd</include>
+                                    </includes>
+                                    <packageName>com.example.dto</packageName>
+                                    <outputDirectory>${project.build.directory}/generated-sources/jaxb</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-codegen-plugin</artifactId>
+                        <version>4.0.5</version>
+                        <executions>
+                            <execution>
+                                <id>generate-wsdl-clients</id>
+                                <goals>
+                                    <goal>wsdl2java</goal>
+                                </goals>
+                                <configuration>
+                                    <wsdlRoot>${project.basedir}/src/main/resources/contracts/selected</wsdlRoot>
+                                    <includes>**/*.wsdl</includes>
+                                    <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                                    <packageNames>com.example.client</packageNames>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
 """
@@ -263,9 +349,9 @@ def scaffold_result(
     reply_xslt: Optional[str] = None,
     provider_uri: Optional[str] = None,
     group_id: str = "com.example",
-    artifact_id: str = "a9-like-project",
+    artifact_id: str = "loc-service",
     version: str = "0.1.0",
-    project_name: str = "a9-like-project",
+    project_name: str = "loc-service",
     description: str = "a9-style Spring Boot + Camel YAML scaffold",
     include_provider_stub: bool = True,
 ) -> List[str]:
@@ -289,6 +375,7 @@ def scaffold_result(
         .replace("__VERSION__", version)
         .replace("__PROJECT_NAME__", project_name)
         .replace("__DESCRIPTION__", description)
+        .replace("__FINAL_NAME__", artifact_id)
     )
 
     # Java package from groupId
@@ -342,6 +429,26 @@ def scaffold_result(
             # Best-effort; keep scaffold valid even if synthesis fails
             pass
 
+    # Generate controllers per operation from plan
+    if orchestration_plan_path:
+        try:
+            from agent.src.controller_generator import generate_controllers
+            java_root = os.path.join(out_path, "src/main/java")
+            ctrls = generate_controllers(orchestration_plan_path, java_root, java_package)
+            created.extend(ctrls)
+        except Exception:
+            pass
+
+    # Generate OpenAPI stub from plan
+    if orchestration_plan_path:
+        try:
+            from agent.src.openapi_generator import generate_openapi
+            openapi_path = os.path.join(out_path, "src/main/resources/openapi.yaml")
+            p = generate_openapi(orchestration_plan_path, openapi_path, title=project_name)
+            created.append(p)
+        except Exception:
+            pass
+
     # Optional: add minimal controller stub matching controller_path
     if controller_path:
         try:
@@ -384,6 +491,25 @@ public class ProviderStubController {{
             os.makedirs(xslt_dir, exist_ok=True)
             generated_xslts = convert_maps_dir(maps_dir, xslt_dir)
             created.extend(generated_xslts)
+        except Exception:
+            pass
+
+    # Optional: assemble selected contracts for M2 codegen
+    contracts_root = os.path.join(out_path, "src/main/resources/contracts")
+    selected_dir = os.path.join(contracts_root, "selected")
+    try:
+        from agent.src.codegen_inputs import assemble_contracts
+        copied = assemble_contracts("agent/manifest.json", selected_dir, wsdl_filter=["LocationRetrievalLOC3X1M.wsdl"])
+        created.extend(copied)
+    except Exception:
+        pass
+    # Emit per-operation Camel YAML routes
+    if orchestration_plan_path:
+        try:
+            from agent.src.route_yaml_emitter import emit_per_operation_routes
+            routes_dir = os.path.join(out_path, "src/main/resources/routes")
+            paths = emit_per_operation_routes(orchestration_plan_path, routes_dir, service_name)
+            created.extend(paths)
         except Exception:
             pass
 

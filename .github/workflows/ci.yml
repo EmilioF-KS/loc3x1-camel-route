@@ -28,3 +28,89 @@ jobs:
           else
             echo "No tests yet"
           fi
+      - name: Validate Camel YAML from deterministic translators
+        run: |
+          python -m agent.src.deterministic_translators --plan agent/orchestration_plan.json --output-dir agent/output/routes --service-name ci-bpel --mode bpel
+          python -m agent.src.deterministic_translators --plan agent/orchestration_plan.json --output-dir agent/output/routes --service-name ci-med --mode med
+          python -c "from agent.src.yaml_schema_validator import validate_camel_integration_yaml_file as v; v('agent/output/routes/ci-bpel.yaml'); v('agent/output/routes/ci-med.yaml'); print('Camel YAML validation passed')"
+      - name: One-click generator
+        run: |
+          python -m agent.scripts.one_click --input CHUBB/Dependencies --output generated/result
+          test -f generated/result/pom.xml
+          test -f generated/result/src/main/resources/routes/loc-service.yaml
+          test -f generated/result/src/main/resources/openapi.yaml
+  runtime-validation:
+    runs-on: ubuntu-latest
+    needs: python-ci
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install Maven
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y maven
+      - name: Generate project (clean)
+        run: |
+          python -m agent.scripts.one_click --input CHUBB/Dependencies --output generated/result --clean
+      - name: Build project
+        run: |
+          (cd generated/result && mvn -q -DskipTests package)
+      - name: Run service
+        run: |
+          JAR=$(ls generated/result/target/*.jar | head -n 1)
+          nohup java -jar "$JAR" > service.log 2>&1 & echo $! > service.pid
+      - name: Wait health
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf -m 1 http://localhost:8080/actuator/health >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Validate endpoints
+        run: |
+          python - << 'PY'
+import json, urllib.request
+ops=[]
+plan=json.loads(open('agent/orchestration_plan.json').read())
+seen=set()
+for b in plan.get('bpel',[]):
+  for s in b.get('steps',[]):
+    op=s.get('operation')
+    if op and op!='null' and op not in seen:
+      ops.append(op); seen.add(op)
+for op in ops:
+  req=urllib.request.Request(f'http://localhost:8080/loc/{op}', data=b'<req/>', method='POST')
+  req.add_header('Content-Type','application/xml')
+  with urllib.request.urlopen(req, timeout=2) as r:
+    assert r.status==200
+PY
+      - name: Stop service
+        run: |
+          kill $(cat service.pid) || true
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install Maven
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y maven
+      - name: Generate scaffold for CI
+        run: |
+          python -c "from agent.src.scaffold import scaffold_result; scaffold_result('generated/result', clean=True, orchestration_plan_path='agent/orchestration_plan.json', service_name='ci')"
+      - name: Assemble selected contracts for codegen
+        run: |
+          python -m agent.src.codegen_inputs --manifest agent/manifest.json --dest generated/result/src/main/resources/contracts/selected --wsdl LocationRetrievalLOC3X1M.wsdl
+      - name: Codegen profile generate-sources (strict gate)
+        run: |
+          (cd generated/result && mvn -q -Pcodegen -DskipTests generate-sources)

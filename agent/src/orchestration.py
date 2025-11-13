@@ -38,6 +38,13 @@ def _parse_bpel(bpel_path: Path) -> Dict[str, Any]:
                 "operation": el.attrib.get("operation"),
                 "variable": el.attrib.get("variable"),
             })
+        elif tag == "reply":
+            steps.append({
+                "kind": "reply",
+                "partnerLink": el.attrib.get("partnerLink"),
+                "operation": el.attrib.get("operation"),
+                "variable": el.attrib.get("variable"),
+            })
         elif tag == "assign":
             steps.append({
                 "kind": "assign",
@@ -52,6 +59,12 @@ def _parse_bpel(bpel_path: Path) -> Dict[str, Any]:
                 "inputVariable": el.attrib.get("inputVariable"),
                 "outputVariable": el.attrib.get("outputVariable"),
             })
+        elif tag in ("switch", "if"):
+            steps.append({"kind": "choice"})
+        elif tag == "flow":
+            steps.append({"kind": "parallel"})
+        elif tag == "pick":
+            steps.append({"kind": "pick"})
         elif tag == "scope":
             catches = []
             for sub in el.iter():
@@ -102,6 +115,12 @@ def _parse_mediation(med_path: Path) -> Dict[str, Any]:
             steps.append({"kind": "invoke", "raw": ET.tostring(el, encoding="unicode")})
         elif tag == "log" or attrs.get("type") == "log":
             steps.append({"kind": "log", "raw": ET.tostring(el, encoding="unicode")})
+        elif tag == "filter":
+            steps.append({"kind": "filter"})
+        elif tag == "enrich":
+            steps.append({"kind": "enrich"})
+        elif tag == "aggregate":
+            steps.append({"kind": "aggregate"})
 
     return {"file": str(med_path), "steps": steps}
 

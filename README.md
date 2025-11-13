@@ -1,58 +1,52 @@
-# LOC3X1 Agentic Pipeline — Spring Boot + Camel YAML (a9-style)
+# LOC3X1 — One-Click Generation and Validation
 
-This repository implements an agentic pipeline that ingests a `Dependencies`-style folder and generates a Spring Boot + Apache Camel YAML project mirroring `CHUBB/00-Emilio-Logic/a9.location-orchestration-rest`.
+## Overview
+This repository produces a runnable Spring Boot + Camel project from client inputs (e.g., a `Dependencies` folder) and validates endpoints exhaustively.
 
-## Quick Start
+## Prerequisites
+- Python 3.11+
+- Java 17
+- Maven 3.9+
 
-1) Create Python venv and install deps:
+## One-Click Generation
 ```
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+python -m agent.scripts.one_click --input CHUBB/Dependencies --output generated/result --clean
 ```
+- `--clean`: removes any existing output before regenerating
+- Produces `generated/result` with routes, controllers, OpenAPI, and contract closure for codegen
 
-2) Run discovery (arbitrary input path) and tests:
+## Build & Run Locally
 ```
-# Generate manifest from any input path
-python agent/scripts/discover.py --input /absolute/path/to/your/Dependencies --output agent/manifest.json --overwrite
-
-# Or use the convenience runner (reads --input or DEP_INPUT_DIR)
-DEP_INPUT_DIR=/absolute/path/to/your/Dependencies \
-bash agent/scripts/run.sh all --output agent/manifest.json --overwrite
-
-# Run tests only
-bash agent/scripts/run.sh test
+cd generated/result
+mvn clean package -DskipTests
+java -jar target/loc-service.jar --server.port=8081
 ```
-
-3) Launch the backend API:
+- Alternatively: `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081`
+- Health: `curl -sf http://localhost:8081/actuator/health`
+- Validate endpoints (POST XML):
 ```
-python api.py
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetCountry
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetStateOrProvince
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1B
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1M
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1B
+curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1M
 ```
-- Health: `GET http://localhost:8000/health`
-- Start a run: `POST http://localhost:8000/runs` with `{ "inputPath": "CHUBB/Dependencies" }`
-- Check status: `GET http://localhost:8000/runs/{id}`
-- Stream progress (SSE): `GET http://localhost:8000/runs/{id}/stream`
+- Sample payload: `curl -s -X POST -H "Content-Type: application/xml" --data-binary @generated/result/samples/get_location_list_request_min.xml http://localhost:8081/loc/GetLocationList3X1M`
+- Stop: press `Ctrl+C`
 
-## Configuration
-Configuration is driven by environment variables with safe defaults; no `.env` file is required.
-See `config.md` in the repository root for all env keys and recommendations.
+## Share Results
+- To share with a teammate: copy `generated/result` to any path
+- Teammate runs the Build & Run steps above
 
-Generated projects use environment variables conventionally; see `generated/.env.template` for guidance.
+## Optional Codegen (DTOs & Clients)
+- `mvn -Pcodegen generate-sources`
+- Outputs under `generated/result/target/generated-sources/{jaxb,cxf}`
 
-## Repository Structure
-- `agent/` — Python agent (LangGraph pipeline, deterministic converters)
-- `backend/` — FastAPI backend exposing API endpoints and SSE
-- `generated/` — Spring Boot + Camel YAML projects produced by the pipeline
-- `examples/` — Example inputs and payloads
-- `doc/` — Documentation (e.g., `jira-tickets.md`)
-- `.github/` — PR templates and CI workflows
-- `config.md` — Configuration policy and env mappings
-- `requirements.txt` — Python dependencies (pinned)
+## CI Gates
+- Strict codegen gate: generates scaffold and runs `mvn -Pcodegen generate-sources`
+- Runtime validation: builds, runs, validates health and posts to endpoints
 
-## CI/CD
-- PRs trigger CI checks (syntax compile, tests when present) and secret scanning.
-- See `.github/workflows/ci.yml` and `.github/workflows/secret-scan.yml`.
-- Integration tests read-only scan the provided input path. Set `DEP_INPUT_DIR` in CI if you use a non-default path.
-
-## Contributing
-See `CONTRIBUTING.md` for coding standards, branching strategy, and PR checklist.
+## Notes
+- Provider stub endpoint is bundled: `http://localhost:8081/provider/locations`
+- Camel loads routes from `classpath:routes/*.yaml`

@@ -483,6 +483,48 @@ Ticket fields template:
 - CI/CD Hooks: Build verification.
 - Estimate: 1d
 
+#### Delivery Plan & Sequencing (Automation Roadmap)
+
+Milestones define a logical and chronological path to full automation. Each milestone has gating dependencies; retake tasks ensure previously refactored tickets are completed professionally under this epic.
+
+- M0 — Preflight and Contracts Ready
+  - Scope: Inputs discovered; contracts built; minimal scaffold verified.
+  - Tickets: AGENT-010..012, GEN-100 (baseline scaffold already working).
+  - Gate: Manifest and contracts exist; agent tests pass.
+
+- M1 — Deterministic Translators
+  - Scope: Deterministic BPEL and Mediation translation feeding route synthesis.
+  - Tickets: AGENT-025, AGENT-026; updates flow into `route_synthesis.py`.
+  - Gate: Generated YAML validates against Camel DSL; coverage ≥95% of constructs in workspace.
+
+- M2 — DTO/Client Codegen & Build Wiring
+  - Scope: WSDL/XSD codegen integrated and compiled; Maven plugins in place.
+  - Tickets: AGENT-027, AGENT-035.
+  - Retake: GEN-100 — integrate generated sources and verify reproducible builds.
+  - Gate: `mvn clean package` compiles generated DTOs/clients without manual edits.
+
+- M3 — Binding Inference & Controllers
+  - Scope: Automatic wiring for controllers, routes, XSLTs, provider URIs; controller/OpenAPI generation.
+  - Tickets: AGENT-029, AGENT-034.
+  - Retake: GEN-101 — ensure generated controllers bind platform-http endpoints and OpenAPI UI is live.
+  - Gate: Endpoints run locally; smoke checks pass using happy path input.
+
+- M4 — One‑Click Generator & E2E Validation
+  - Scope: Single command executes discovery → contracts → plan → maps/XSLTs → routes → scaffold → controllers → build.
+  - Tickets: AGENT-033.
+  - Retake: OPS-202 — run smoke tests on one‑click generated project; OPS-300 — CI covers AGENT-025..035.
+  - Gate: One‑click pipeline completes green; CI stages green on generated project.
+
+Retake of Refactored Tickets (tracked under this epic)
+- GEN-100 — retake after AGENT-027, AGENT-033: ensure scaffold integrates codegen outputs and one‑click readiness.
+- GEN-101 — retake after AGENT-034: controllers and OpenAPI generated and compiled; endpoints wired.
+- OPS-202 — retake after AGENT-033: smoke tests run against one‑click generated project.
+- OPS-300 — retake after AGENT-025..035: agent CI includes new translators, codegen, wiring checks.
+
+Notes
+- “Retake” means re-run and complete the ticket with the new dependencies satisfied; do not mark as Done until milestone gates pass.
+- Keep acceptance criteria strict: build reproducibility, schema/DSL validation, and green CI stages are required to mark milestones as complete.
+
 ---
 
 ## Epic: Validation & Testing

@@ -4,6 +4,9 @@
       "file": "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel",
       "steps": [
         {
+          "kind": "pick"
+        },
+        {
           "kind": "faultHandlers",
           "catches": [
             {
@@ -34,12 +37,24 @@
           "outputVariable": null
         },
         {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
+        },
+        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "choice"
         },
         {
           "kind": "invoke",
@@ -66,12 +81,21 @@
           "outputVariable": null
         },
         {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
+        },
+        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "choice"
         },
         {
           "kind": "invoke",
@@ -96,6 +120,12 @@
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
         },
         {
           "kind": "invoke",
@@ -130,12 +160,10 @@
           "outputVariable": null
         },
         {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
         },
         {
           "kind": "invoke",
@@ -160,6 +188,26 @@
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
         },
         {
           "kind": "faultHandlers",
@@ -192,12 +240,24 @@
           "outputVariable": null
         },
         {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "choice"
         },
         {
           "kind": "invoke",
@@ -224,12 +284,21 @@
           "outputVariable": null
         },
         {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "choice"
         },
         {
           "kind": "invoke",
@@ -254,6 +323,12 @@
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
         },
         {
           "kind": "invoke",
@@ -288,12 +363,10 @@
           "outputVariable": null
         },
         {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
         },
         {
           "kind": "invoke",
@@ -318,6 +391,26 @@
           "operation": "null",
           "inputVariable": null,
           "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
         }
       ]
     }
