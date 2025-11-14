@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/business_source_information">
+	<xsd:complexType name="BusinessSourceInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="BusinessSourceCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the code&amp;nbsp;which identifies the foreign affiliate company that referred the risk to Chubb or
+the&amp;nbsp;Chubb production branch that referred the risk to another Chubb branch for processing.&amp;nbsp; The Corporate table
+E1T01001&amp;nbsp;contains the valid values for this element in the &quot;BUSN_SRC_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessSourceName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the name&amp;nbsp;of the foreign affiliate company that referred the risk to Chubb or the&amp;nbsp;Chubb production
+branch that referred the risk to another Chubb branch for processing.&amp;nbsp; The Corporate table E1T01001&amp;nbsp;contains the
+valid values for this element in the &quot;BUSN_SRC_NA&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessSourceDescription"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the foreign affiliate company that referred the risk to Chubb or the&amp;nbsp;Chubb production branch that
+referred the risk to another Chubb branch for processing.&amp;nbsp; The Corporate table E1T01001&amp;nbsp;contains the valid values
+for this element in the &quot;DB2TableDescription1&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

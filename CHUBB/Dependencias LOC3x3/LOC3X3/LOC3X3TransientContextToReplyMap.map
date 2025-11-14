@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:LOC3X3TransientContextToReplyMap="http://LocationServices/LOC3X3" xmlns:ServiceMessageObject="smo://smo/name%3Dwsdl-primary/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252FLocationServices%252FLOC3X3%257DLOC3X3CorrelationContext/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocation3X3MResponseMsg/xpath%3D%252F/namespace%3DBOMap/smo.xsd" xmlns:ServiceMessageObject_1="smo://smo/name%3Dwsdl-primary/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252FLocationServices%252FLOC3X3%257DLOC3X3CorrelationContext/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithLineOfBusinessInfoResponse/xpath%3D%252F/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3TransientContextToReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="ServiceMessageObject_1:ServiceMessageObject" name="ServiceMessageObject"/>
+  <map:outputBusinessObjectVariable businessObjectRef="ServiceMessageObject:ServiceMessageObject" name="ServiceMessageObject_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/transient"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/transient"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/correlation"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/correlation"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

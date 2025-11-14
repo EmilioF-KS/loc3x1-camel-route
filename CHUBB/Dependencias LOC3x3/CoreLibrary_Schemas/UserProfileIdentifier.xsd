@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/user_profile_identifier"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/source_system_user_profile_id">
+	<xsd:import schemaLocation="SourceSystemUserProfileId.xsd"
+		namespace="http://ei/core/source_system_user_profile_id">
+	</xsd:import>
+	<xsd:complexType name="UserProfileIdentifier">
+		<xsd:sequence>
+
+			<xsd:element minOccurs="0" name="ExternalUserId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the the user id assigned to a user who needs to access systems from outside Chubb's network. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PersonGIN"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a generated identification number associated with a person's External User Id.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CommonUserGIN"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a generated id that is used to identify a user across systems.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EmailAddress"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's e-mail address.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemUserProfileId"
+				type="bons0:SourceSystemUserProfileId" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

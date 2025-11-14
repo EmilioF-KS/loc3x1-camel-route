@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/resume_activity_input_data">
+	<xsd:complexType name="ResumeActivityInputData">
+		<xsd:annotation>
+      <xsd:documentation>&lt;br /&gt;
+&lt;br /&gt;
+&lt;p&gt;
+    This element contains data elements that are needed to resubmit an activity within a business process.
+&lt;/p&gt;</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="ResumeActivityInputDataName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>&lt;br /&gt;
+&lt;p&gt;
+    This element contains the name of the input element.
+&lt;/p&gt;</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ResumeActivityInputDataValue" type="xsd:string">
+				<xsd:annotation><xsd:documentation>&lt;br /&gt;
+&lt;p&gt;
+    This element contains the value of the input element.
+&lt;/p&gt;</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

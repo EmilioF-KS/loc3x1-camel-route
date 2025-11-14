@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/access_attribute"
+	xmlns:bons0="http://ei/core/access_attribute"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="AccessAttribute">
+		<xsd:annotation>
+      
+    <xsd:documentation>Access attributes are used to track what can be accessed.   They are defined to be abstract name/value pairs.</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="AccessAttribute" type="bons0:AccessAttribute">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccessAttributeName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the attribute that a user has access to.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="AccessAttributeValue" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the value of the attribute that a user has access to.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccessAttributeActionCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that describes the action that should be taken for the access attribute.
+Some valid values include Add or Delete.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

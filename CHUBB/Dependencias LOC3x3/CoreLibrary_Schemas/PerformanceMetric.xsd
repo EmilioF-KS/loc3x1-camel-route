@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/performance_metric"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+	<xsd:complexType name="PerformanceMetric">
+		<xsd:sequence>
+
+
+
+
+
+			<xsd:element minOccurs="0"
+				name="PerformanceMetricReferenceCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code that identifies a specific performance metric.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformanceMetricName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a name that identifies a specific performance measure.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformanceMetricValue"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the character value that applies to the associated Performance Metric Name.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformanceMetricAmount"
+				type="xsd:decimal">
+				<xsd:annotation><xsd:documentation>This element contains the decimal value that applies to the associated Performance Metric Name.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PerformanceMetricCurrencyCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code which indentifies the currency of the Performance Metric Amount.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformanceMetricTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element describes the type of data contained in the performance metric.
+Valid values for this element include Currency,  Time, and Quantity.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="UnitOfMeasure"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the measure for the Amount provided for Distance, Time, and Quantity Amounts. 
+Some valid values for this element would include day, weeks, months.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

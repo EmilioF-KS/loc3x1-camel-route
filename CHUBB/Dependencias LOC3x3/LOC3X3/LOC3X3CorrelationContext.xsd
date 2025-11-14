@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://LocationServices/LOC3X3"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="LOC3X3CorrelationContext">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="LineOfBusinessTypeCode"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AsOfDate"
+				type="xsd:date">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

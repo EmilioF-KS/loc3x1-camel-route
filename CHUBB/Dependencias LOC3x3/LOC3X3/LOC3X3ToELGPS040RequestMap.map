@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:ELGPS040REQUEST="http://elias/location/elgp040_request" xmlns:GetLocationReply="http://ei/location/get_location_reply_loc3x3b" xmlns:LOC3X3ToELGPS040RequestMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3ToELGPS040RequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationReply:GetLocationReply" name="GetLocationReply"/>
+  <map:outputBusinessObjectVariable businessObjectRef="ELGPS040REQUEST:ELGPS040REQUEST" name="ELGPS040REQUEST"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/PostalCode"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="ZIP"/>
+      <map:javaCode>java.lang.String __GetLocationReply_Location_StandardizedAddress_PostalCode = (java.lang.String)GetLocationReply_Location_StandardizedAddress_PostalCode;&#xD;
+java.lang.String __ELGPS040REQUEST_ZIP = (java.lang.String)ELGPS040REQUEST_ZIP;&#xD;
+boolean __result__2 = ei.core.map.MapUtility.isValued(__GetLocationReply_Location_StandardizedAddress_PostalCode);&#xD;
+if (__result__2){&#xD;
+	int __result__6;&#xD;
+	{// text length&#xD;
+		__result__6 = __GetLocationReply_Location_StandardizedAddress_PostalCode.length();&#xD;
+	}&#xD;
+	byte __result__7 = 5;&#xD;
+	boolean __result__8;&#xD;
+	{// greater than&#xD;
+		__result__8 = __result__6 > __result__7;&#xD;
+	}&#xD;
+	if (__result__8){&#xD;
+		byte __result__12 = 0;&#xD;
+		byte __result__13 = 5;&#xD;
+		java.lang.String __result__14 = __GetLocationReply_Location_StandardizedAddress_PostalCode.substring(__result__12, __result__13);&#xD;
+		__ELGPS040REQUEST_ZIP = __result__14;&#xD;
+		ELGPS040REQUEST_ZIP = __ELGPS040REQUEST_ZIP;&#xD;
+	}&#xD;
+	else{&#xD;
+		__ELGPS040REQUEST_ZIP = __GetLocationReply_Location_StandardizedAddress_PostalCode;&#xD;
+		ELGPS040REQUEST_ZIP = __ELGPS040REQUEST_ZIP;&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;GetLocationReply_Location_StandardizedAddress_PostalCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocationReply_Location_StandardizedAddress_PostalCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.2&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.1/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocationReply_Location_StandardizedAddress_PostalCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.1/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;text length&quot; description=&quot;The length of the given text&quot; category=&quot;text&quot; template=&quot;&amp;lt;%return%> &amp;lt;%input%>.length();&quot;>
+//        &lt;parameters name=&quot;input&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot; displayName=&quot;input&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;length&quot; displayName=&quot;length&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@parameters.0&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;int&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;5&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;byte&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;greater than&quot; description=&quot;True if the value of the first input is greater than the value of the second input&quot; category=&quot;math&quot; template=&quot;&amp;lt;%return%> &amp;lt;%input1%> > &amp;lt;%input2%>;&quot;>
+//        &lt;parameters name=&quot;input1&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.1/@result/@dataOutputs.0&quot; displayName=&quot;input 1&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;double&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;input2&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; displayName=&quot;input 2&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;double&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;result&quot; displayName=&quot;result&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@result/@dataOutputs.0&quot;>
+//        &lt;conditionalActivities>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocationReply_Location_StandardizedAddress_PostalCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.3/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;0&quot; assignable=&quot;false&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.3/@parameters.1&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;byte&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;5&quot; assignable=&quot;false&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.3/@parameters.2&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;byte&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;substring&quot; category=&quot;java.lang.String&quot; className=&quot;java.lang.String&quot; memberName=&quot;substring&quot;>
+//            &lt;parameters name=&quot;String&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//            &lt;/parameters>
+//            &lt;parameters name=&quot;start&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.1/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;int&quot;/>
+//            &lt;/parameters>
+//            &lt;parameters name=&quot;end&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;int&quot;/>
+//            &lt;/parameters>
+//            &lt;result>
+//              &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.4&quot;/>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//            &lt;/result>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.3/@result/@dataOutputs.0&quot; value=&quot;ELGPS040REQUEST_ZIP&quot; variable=&quot;true&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.1 //@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.2 //@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.3 //@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.0/@executableElements.4&quot;/>
+//          &lt;condition value=&quot;true&quot;/>
+//        &lt;/conditionalActivities>
+//        &lt;conditionalActivities>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocationReply_Location_StandardizedAddress_PostalCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.1/@executableElements.1&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.1/@executableElements.0/@dataOutputs.0&quot; value=&quot;ELGPS040REQUEST_ZIP&quot; variable=&quot;true&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.1/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.4/@conditionalActivities.1/@executableElements.1&quot;/>
+//          &lt;condition value=&quot;&quot;/>
+//        &lt;/conditionalActivities>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.1 //@executableElements.2/@conditionalActivities.0/@executableElements.2 //@executableElements.2/@conditionalActivities.0/@executableElements.3 //@executableElements.2/@conditionalActivities.0/@executableElements.4&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1 //@executableElements.2&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!2:3,1&#xD;
+//!SMAP!3:4,1&#xD;
+//!SMAP!6:5,4&#xD;
+//!SMAP!7:9,1&#xD;
+//!SMAP!8:10,4&#xD;
+//!SMAP!9:14,1&#xD;
+//!SMAP!12:15,1&#xD;
+//!SMAP!13:16,1&#xD;
+//!SMAP!14:17,1&#xD;
+//!SMAP!15:18,2&#xD;
+//!SMAP!18:22,2&#xD;
+//!SMAP!1000000:153,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/PostalStateAbbreviation"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="STATE"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/StreetNumber"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="HOUSE_NUM"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/PreDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="PRE_DIR"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/StreetName"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="STREET_NAME"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/StreetSuffixAbbreviation"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="STREET_TYPE"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/PostDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="ELGPS040REQUEST" property="POST_DIR"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/locationx5"
+	xmlns:bons1="http://ei/core/rating_territoryx1"
+	xmlns:bons2="http://ei/core/standardized_addressx5"
+	xmlns:bons3="http://ei/location/location_informationx3"
+	xmlns:bons4="http://ei/core/hazardous_areax1"
+	xmlns:bons5="http://ei/core/referral_zone"
+	xmlns:bons6="http://ei/core/taxing_jurisdictionx1"
+	xmlns:bons9="http://ei/core/customization"
+	xmlns:bons8="http://ei/core/location_occupancy_aggregationx2"
+	xmlns:bons7="http://ei/core/location_adjacency_aggregationx2">
+	<xsd:import schemaLocation="LocationAdjacencyAggregationX2.xsd"
+		namespace="http://ei/core/location_adjacency_aggregationx2">
+	</xsd:import>
+	<xsd:import schemaLocation="LocationOccupancyAggregationX2.xsd"
+		namespace="http://ei/core/location_occupancy_aggregationx2">
+	</xsd:import>
+	<xsd:import namespace="http://ei/location/location_informationx3"
+		schemaLocation="LocationInformationX3.xsd">
+	</xsd:import>
+
+
+	<xsd:import namespace="http://ei/core/customization"
+		schemaLocation="Customization.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/standardized_addressx5"
+		schemaLocation="StandardizedAddressX5.xsd">
+	</xsd:import>
+
+
+	<xsd:import namespace="http://ei/core/taxing_jurisdictionx1"
+		schemaLocation="TaxingJurisdictionX1.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/referral_zone"
+		schemaLocation="ReferralZone.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/hazardous_areax1"
+		schemaLocation="HazardousAreaX1.xsd">
+	</xsd:import>
+
+	<xsd:import namespace="http://ei/core/rating_territoryx1"
+		schemaLocation="RatingTerritoryX1.xsd">
+	</xsd:import>
+
+	<xsd:complexType name="Location">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="RatingTerritory" type="bons1:RatingTerritory">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationInformation"
+				type="bons3:LocationInformation">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StandardizedAddress"
+				type="bons2:StandardizedAddress">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="TaxingJurisdiction" type="bons6:TaxingJurisdiction">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="HazardousArea" type="bons4:HazardousArea">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="ReferralZone" type="bons5:ReferralZone">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="LocationOccupancyAggregation"
+				type="bons8:LocationOccupancyAggregation">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="LocationAdjacencyAggregation"
+				type="bons7:LocationAdjacencyAggregation">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Customization" type="bons9:Customization">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a unique number assigned to the location on a policy. This number should remain constant throughout the policy for all transactions.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationSequenceNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a sequential Location Number.  It is incremented each time a new risk location is added to a policy and can vary over time from the Risk Location Number if a location is removed from a policy.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationNAICSCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies a category of business as defined by the United States, Mexican, and Canadian governments.
+The E1T00611 Corporate Table contains valid values this element in the "NAICS_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationSICCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>
+This element identifies a major industry classification as determined by the US Federal Government. 
+The first two characters of the SIC code are the Major Group.
+The last two characters of the SIC code are the Industry Code.  
+The E1T00331 Corporate Table contains valid values for the SIC Code(SIC_C), as well as columns for Major Group (SIC_MAJ_GRP_C) and Industry Code (SIC_INDST_C). 
+The E1T00321 Corporate Table contains valid values for only the Major Group (SIC_MAJ_GRP).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SourceSystemLocationCheckConfidenceCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a confidence code assigned by the Source System to the results received from a location check.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="LocationCheckRequestSequenceNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a sequential number assigned to each location check request.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationCheckRequestDate"
+				type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date the location check was requested for a particular location.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MessageLocationId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an Id assigned for the  lifetime of the message that will be used to identify the Location.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RelatedLocationId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the id of a related location.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContingentPremiseLocationIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates if this location is a contigent business premise.   The contigent business income coverage applies to the loss of earnings of an Insured because of loss to another business which the one of the Insured's major customers or suppliers.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/languagex1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="Language">
+		<xsd:sequence>
+
+
+			<xsd:element minOccurs="0" name="LanguageCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a two character ISO(International Standards Organization) code which identifies the language.
+Some valid options for this element include 'en' for English, 'fr' for French, and 'de' for German.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="LanguageGeographicalCoverageCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the last two characters of the ISO(International Standards Organization) Web Browser Language Identification code that represents a recognized variance of the official language typically due to geography.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DisplayLanguageCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the LanguageCode that the Language Locale Description is in.
+
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DisplayLanguageGeographicalCoverageCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the Language Geographical Coverage Code that the Language Locale Description is in.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LanguageLocaleDescription"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the description of a  unique language spoken within a particular region of the world. 
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemLanguageCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code that identifies a language as it is known by the source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SourceSystemLanguageDescription" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a language description as it is known by the source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

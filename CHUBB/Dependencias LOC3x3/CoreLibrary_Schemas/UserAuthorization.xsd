@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/user_authorization" xmlns:bons1="http://ei/core/access_attribute" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://ei/core/access_attribute" schemaLocation="AccessAttribute.xsd"/>
+	<xsd:complexType name="UserAuthorization">
+		<xsd:annotation>
+      <xsd:documentation>User Authorization is the process of determing which permissions a user should have.   This could be access to an application, features within an application, or data within an application.
+
+
+
+</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="AccessAttribute" type="bons1:AccessAttribute">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserAuthorizationTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the type of User Authorization.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="SourceSystemName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the data entry application (Policy, Claim, other) which originated the transaction or other data feed.  The application would be the source of detailed information and history about the policy, claim, etc.
+The E1T00871 Corporate Table contains valid values for this element in the "SYS_SRC_NAME" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DataSourceName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the data source.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

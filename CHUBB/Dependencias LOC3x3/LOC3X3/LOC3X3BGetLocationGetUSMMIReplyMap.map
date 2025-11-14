@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationReply="http://ei/location/get_location_reply_loc3x3b" xmlns:GetUSMMIReply="http://ei/location/get_us_mmi_reply_loc804x1" xmlns:LOC3X3BGetLocationGetUSMMIReplyMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BGetLocationGetUSMMIReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetUSMMIReply:GetUSMMIReply" name="GetUSMMIReply"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationReply:GetLocationReply" name="GetLocationReply"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetUSMMIReply" property="Location/StandardizedAddress/EnclosingPostalCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/EnclosingPostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetUSMMIReply" property="Location/StandardizedAddress/CountyName"/>
+      <map:output businessObjectVariableRef="GetLocationReply" property="Location/StandardizedAddress/CountyName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:submap submapName="LOC3X3BGetLocationGetUSMMIReplyMap:LOC3X3BHazardousAreaSubmap">
+      <map:input businessObjectVariableRef="GetUSMMIReply" property="Location/HazardousArea" variableName="HazardousArea"/>
+      <map:output businessObjectVariableRef="GetLocationReply" property="Location/HazardousArea" variableName="HazardousArea_1"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:LOC3X3StandardizedAddressToStandardizedAddress="http://LocationServices/LOC3X3" xmlns:StandardizedAddress="http://ei/location/standardized_addressx2" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3StandardizedAddressToStandardizedAddress</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="StandardizedAddress:StandardizedAddress" name="StandardizedAddress"/>
+  <map:outputBusinessObjectVariable businessObjectRef="StandardizedAddress:StandardizedAddress" name="StandardizedAddress_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="AddressLine1"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="AddressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="AddressLine2"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="AddressLine2"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="AddressLine3"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="AddressLine3"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="CityName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="CityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="CountyName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="CountyName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StateOrProvinceName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StateOrProvinceName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StateOrProvinceAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StateOrProvinceAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="PostalStateAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="PostalStateAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="PostalCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="PostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="CountryCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="CountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="CountryName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="CountryName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="13">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="CountryAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="CountryAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="14">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="ISOCountryCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="ISOCountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="15">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="LocationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="16">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="POBoxIndicator"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="POBoxIndicator"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="17">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="BuildingName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="BuildingName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="18">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StreetNumber"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StreetNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="19">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="PreDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="PreDirectionalAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="20">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StreetName"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StreetName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="21">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="StreetSuffixAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="StreetSuffixAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="22">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="PostDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="PostDirectionalAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="23">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="AddressUnitNumber"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="AddressUnitNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="24">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="AddressUnitTypeAbbreviation"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="AddressUnitTypeAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="25">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="DeliveryPointNumber"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="DeliveryPointNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="26">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="Latitude"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="Latitude"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="27">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="Longitude"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="Longitude"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="28">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="FIPSCountyCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="FIPSCountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="29">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="FIPSStateCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="FIPSStateCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="30">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="EnclosingPostalCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="EnclosingPostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="31">
+    <map:move>
+      <map:input businessObjectVariableRef="StandardizedAddress" property="GeoCodingStatusCode"/>
+      <map:output businessObjectVariableRef="StandardizedAddress_1" property="GeoCodingStatusCode"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

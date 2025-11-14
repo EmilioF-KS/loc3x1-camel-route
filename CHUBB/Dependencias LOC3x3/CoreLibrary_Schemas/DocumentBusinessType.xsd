@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/document_business_type"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="DocumentBusinessType">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="DocumentBusinessTypeCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code of the type of business document.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DocumentBusinessTypeDescription" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a description of the type of business document.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentBusinessTypeText"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a text area that describes the type of business document.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

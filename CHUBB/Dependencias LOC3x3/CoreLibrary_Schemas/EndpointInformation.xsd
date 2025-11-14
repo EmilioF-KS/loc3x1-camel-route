@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/endpoint_information">
+	<xsd:complexType name="EndpointInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="EndpointURL"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element represents the Uniform Resource Language(URL) of the service to be invoked. It is the physical address 
+used when calling a service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NumberOfSecondsURLExpires"
+				type="xsd:integer"><xsd:annotation><xsd:documentation>This element represents the number of seconds after which the URL expires at client cache. Sent via service response. 
+Zero implies to use a common system value.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="Parameter">
+				<xsd:annotation><xsd:documentation>This element contains name-value pairs that can be used for endpoint parameters.</xsd:documentation></xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="Name"
+								type="xsd:string" />
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

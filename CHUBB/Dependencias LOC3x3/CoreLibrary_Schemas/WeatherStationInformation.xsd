@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/weather_station_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="WeatherStationInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="WeatherStationCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a four-letter code value uniquely identifies a weather station.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WeatherStationName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the weather station</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WeatherStationLatitude"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This is the latitude of the weather station.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WeatherStationLongitude"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This is the longitude of the weather station.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="WeatherStationElevationMeasure" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the elevation in feet of the weather station.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PostalStateAbbreviation"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the two character US Postal State Abbreviation. 
+The E1T00111 Corporate Table contains valid values for this element in the "PSTL_ST_AB" column. 
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CityName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the city of an address.
+				</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TimeZoneCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains time zone which is a region on earth that has a uniform standard time for legal, commercial, and social purposes.  
+A sample value for this element is EST which represents Eastern Standard Time.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

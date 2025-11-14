@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:MasterpieceInfo="http://dto.rand.chubb.com" xmlns:MasterpieceInfoToRatingTerritoryMap="http://LocationServices/LOC3X3" xmlns:MasterpieceTerritoryInformation="http://cpi/core/masterpiece_territory" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>MasterpieceInfoToRatingTerritoryMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="MasterpieceInfo:MasterpieceInfo" name="MasterpieceInfo"/>
+  <map:outputBusinessObjectVariable businessObjectRef="MasterpieceTerritoryInformation:MasterpieceTerritoryInformation" name="MasterpieceTerritoryInformation"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="masterpieceTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="MasterpieceTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="altMasterpieceTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="AlternateMasterpieceTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="prvAltMasterpieceTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="PreviousAlternateMasterpieceTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="autoTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="AutoCasualtyTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="homeownersTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="HomeOwnersTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="prvMasterpieceTerritoryCode"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="PreviousMasterpieceTerritoryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="MasterpieceInfo" property="changeEffectiveDate"/>
+      <map:output businessObjectVariableRef="MasterpieceTerritoryInformation" property="ChangeEffectiveDate"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

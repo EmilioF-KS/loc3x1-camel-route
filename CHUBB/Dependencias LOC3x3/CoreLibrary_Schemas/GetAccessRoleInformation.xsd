@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/get_access_role_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="GetAccessRoleInformation">
+		<xsd:annotation>
+      <xsd:documentation>This element contains a free-form code which represents a group of roles used for access classifications 
+on Chubb.com.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="GetAccessRoleCategoryCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains a category of roles supported under the GetAccess system.  A sample value for this element
+ is 'RCATAG' which represents Chubb Agent.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GetAccessRoleCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains a free-form role code supported under the GetAccess system.  A sample value for this code is 
+'AGTADM' which represents Agency Administrator.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GetAccessRoleName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains the name of a role associated with the Get Access Role Code.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GetAccessRoleTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains the type of  role code supported under the GetAccess system.  A sample value for this
+element is 'ADMIN'.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RoleEffectiveDate"
+				type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date that the role became effective</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RoleExpirationDate"
+				type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date that the role expired.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/currency_exchange_rates"
+	xmlns:bons0="http://ei/core/currency_exchange_rate">
+	<xsd:import schemaLocation="CurrencyExchangeRate.xsd"
+		namespace="http://ei/core/currency_exchange_rate">
+	</xsd:import>
+	<xsd:complexType name="CurrencyExchangeRates">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CurencyExchangeRate"
+				type="bons0:CurrencyExchangeRate" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

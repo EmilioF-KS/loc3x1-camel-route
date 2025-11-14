@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationResponseMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3%257DGetLocationResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:GetLocationResponseMsg_1="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3b%257DGetLocationResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3GetLocationReplyMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3GetLocationReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationResponseMsg_1:GetLocationResponseMsg" name="GetLocationResponseMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationResponseMsg:GetLocationResponseMsg" name="GetLocationResponseMsg_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/StatusInformation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/StatusInformation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CityName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountyName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountyName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostalStateAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostalStateAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StateOrProvinceAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostalCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/LocationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/POBoxIndicator"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/POBoxIndicator"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="16">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/TaxingJurisdiction"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/TaxingJurisdiction"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="17">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/HazardousArea"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/HazardousArea"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="18">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/IndustrialRiskInsurerCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/IndustrialRiskInsurerCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="19">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/LicenseCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/LicenseCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="20">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/RatingTerritory"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/RatingTerritory"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="15">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/LocationClassificationCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/LocationClassificationCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="14">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/CountyCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/CountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="13">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/CityCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/CityCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="21">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine1"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="22">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/FireDistrictCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/FireDistrictCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="23">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/CountryAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="24">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/ISOCountryCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/ISOCountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="25">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/MineSubsidenceCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/MineSubsidenceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="26">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/FloridaTortCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/FloridaTortCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="27">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasPlaceCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="28">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasCountyCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasCountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="29">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasCityCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/TexasCityCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="30">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/PublicProtectionInformation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/LocationInformation/PublicProtectionInformation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="31">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PreDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PreDirectionalAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="32">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetNumber"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="33">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetSuffixAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetSuffixAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="34">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostDirectionalAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/PostDirectionalAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="35">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressUnitNumber"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressUnitNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="36">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/Latitude"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/Latitude"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="37">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/Longitude"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/Longitude"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="38">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressUnitTypeAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressUnitTypeAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="39">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/DeliveryPointNumber"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/DeliveryPointNumber"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="40">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/FIPSStateCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/FIPSStateCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="41">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/FIPSCountyCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/FIPSCountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="42">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/GeoCodingStatusCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/GeoCodingStatusCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="43">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/EnclosingPostalCode"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/EnclosingPostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="44">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/BuildingName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/BuildingName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="45">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine2"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine2"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="46">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine3"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/AddressLine3"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="47">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/ReferralZone"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/ReferralZone"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="48">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationResponseMsg" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetName"/>
+      <map:output businessObjectVariableRef="GetLocationResponseMsg_1" property="GetLocationResponse/GetLocationReply/Location/StandardizedAddress/StreetName"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

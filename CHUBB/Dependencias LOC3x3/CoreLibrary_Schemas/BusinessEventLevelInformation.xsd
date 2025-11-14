@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/business_event_level_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="BusinessEventLevelInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="BusinessEventLevelNumber"
+				type="xsd:integer">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessEventLevelName"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessEventLevelValue"
+				type="xsd:string">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

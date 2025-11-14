@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationListRequest="http://ei/location/get_location_list_request_loc3x3m" xmlns:GetLocationListRequest_1="http://ei/location/get_location_list_request_loc3x3b" xmlns:LOC3X3BGetLocationListRequestMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BGetLocationListRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationListRequest_1:GetLocationListRequest" name="GetLocationListRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationListRequest:GetLocationListRequest" name="GetLocationListRequest_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/AddressLine1"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/AddressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/CityName"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/CityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/PostalCode"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/PostalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/LocationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/StateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/StateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/StateOrProvinceName"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/StateOrProvinceName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/StateOrProvinceAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/StateOrProvinceAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/PostalStateAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/PostalStateAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/CountryCode"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/CountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/CountryName"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/CountryName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/CountryAbbreviation"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/CountryAbbreviation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="StandardizedAddress/ISOCountryCode"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="StandardizedAddress/ISOCountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="13">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="UserId"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="UserId"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="14">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="SystemId"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="SystemId"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="15">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListRequest" property="DataSourceOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationListRequest_1" property="DataSourceOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

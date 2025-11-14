@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/business_party_with_relationship"
+	xmlns:bons0="http://ei/core/business_party"
+	xmlns:bons1="http://ei/core/related_business_party"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons2="http://ei/core/related_household">
+	<xsd:import schemaLocation="RelatedHousehold.xsd"
+		namespace="http://ei/core/related_household">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/related_business_party"
+		schemaLocation="RelatedBusinessParty.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/business_party"
+		schemaLocation="BusinessParty.xsd">
+	</xsd:import>
+	<xsd:complexType name="BusinessPartyWithRelationship">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:BusinessParty">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0"
+						name="RelatedBusinessParty" type="bons1:RelatedBusinessParty">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="RelatedHousehold"
+						type="bons2:RelatedHousehold" maxOccurs="unbounded">
+					</xsd:element>
+				</xsd:sequence>
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

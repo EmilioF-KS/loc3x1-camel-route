@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationList3X3MResponseMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocationList3X3MResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3MGetLocationListReplyMap="http://LocationServices/LOC3X3" xmlns:getLocationsResponse="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationsResponse/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3MGetLocationListReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="getLocationsResponse:getLocationsResponse" name="getLocationsResponse"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationList3X3MResponseMsg:GetLocationList3X3MResponseMsg" name="GetLocationList3X3MResponseMsg"/>
+  <map:propertyMap executionOrder="1">
+    <map:submap submapName="LOC3X3MGetLocationListReplyMap:RandLocationToCimLocationX2Map">
+      <map:input businessObjectVariableRef="getLocationsResponse" property="getLocationsResponse/locations" variableName="Location"/>
+      <map:output businessObjectVariableRef="GetLocationList3X3MResponseMsg" property="GetLocationList3X3MResponse/GetLocationListReply/Location" variableName="Location_1"/>
+    </map:submap>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="GetLocationList3X3MResponseMsg" property="GetLocationList3X3MResponse/GetLocationListReply/StatusInformation"/>
+      <map:javaCode>commonj.sdo.DataObject __GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation = (commonj.sdo.DataObject)GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation;&#xD;
+commonj.sdo.DataObject __result__1;&#xD;
+{// create StatusInformation&#xD;
+	com.ibm.websphere.bo.BOFactory factory = 
+	   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+	 __result__1 = factory.create(&quot;http://ei/core/status_informationx1&quot;,&quot;StatusInformation&quot;);&#xD;
+}&#xD;
+commonj.sdo.DataObject statusInformation = __result__1;&#xD;
+java.lang.String __result__3 = &quot;S&quot;;&#xD;
+statusInformation.setString(&quot;StatusCode&quot;, __result__3);&#xD;
+__GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation = statusInformation;&#xD;
+GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation = __GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation;&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create StatusInformation&quot; description=&quot;create a new StatusInformation {http://ei/core/status_informationx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/status_informationx1&amp;quot;,&amp;quot;StatusInformation&amp;quot;);&quot;>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;StatusInformation&quot; namespace=&quot;http://ei/core/status_informationx1&quot; nillable=&quot;false&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;statusInformation&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;StatusInformation&quot; namespace=&quot;http://ei/core/status_informationx1&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;S&amp;quot;&quot; assignable=&quot;false&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.3&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@dataOutputs.0&quot; value=&quot;statusInformation.StatusCode&quot; field=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;statusInformation&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.5&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;StatusInformation&quot; namespace=&quot;http://ei/core/status_informationx1&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.4/@dataOutputs.0&quot; value=&quot;GetLocationList3X3MResponseMsg_GetLocationList3X3MResponse_GetLocationListReply_StatusInformation&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;StatusInformation&quot; namespace=&quot;http://ei/core/status_informationx1&quot;/>
+//  &lt;/executableElements>
+//  &lt;localVariables name=&quot;statusInformation&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;StatusInformation&quot; namespace=&quot;http://ei/core/status_informationx1&quot;/>
+//  &lt;/localVariables>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.2 //@executableElements.3&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.4 //@executableElements.5&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!1:2,6&#xD;
+//!SMAP!2:8,1&#xD;
+//!SMAP!3:9,1&#xD;
+//!SMAP!4:10,1&#xD;
+//!SMAP!6:11,2&#xD;
+//!SMAP!1000000:59,1</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+</map:businessObjectMap>
