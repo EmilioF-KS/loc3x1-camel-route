@@ -1,9 +1,3 @@
-com/example/controller/GetLocationList3X1MController.class
-com/example/controller/GetLocationList3X1BController.class
-com/example/Application.class
-com/example/controller/GetStateOrProvinceController.class
-com/example/controller/GetLocationWithTaxingJurisdictions3X1MController.class
-com/example/controller/GetCountryController.class
 com/example/controller/provider/ProviderStubController.class
-com/example/controller/GetLocationWithTaxingJurisdictions3X1BController.class
 com/example/config/CorrelationIdFilter.class
+com/example/Application.class

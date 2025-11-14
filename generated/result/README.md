@@ -1,37 +1,55 @@
-# a9-like Project Scaffold (GEN-100)
+# LOC Service — Generated Results
 
-This is an a9-style Spring Boot + Camel (YAML DSL) scaffold.
+This is a generated Spring Boot + Camel (YAML DSL) project built from client inputs.
 
 - Java: 17
 - Spring Boot: 3.3.x
 - Camel: 4.7.x
-- Routes DSL: YAML
-- Includes: Actuator, Jackson, Camel Spring Boot starter, Camel YAML DSL
+- DSL: Camel YAML
+- Includes: Actuator, Jackson, Camel Spring Boot starter, Camel YAML DSL, provider stub
 
-Build (optional, if Maven is available):
+## Prerequisites
+- Java 17 and Maven 3.9+
+- Port `8081` available
 
-```
-mvn -DskipTests package
-```
+## How to Build
+1. Change directory to this results folder
+   - `cd /path/to/this/results`
+2. Build the jar
+   - `mvn clean package -DskipTests`
 
-Run (example):
+## How to Run
+- Jar
+  - `java -jar target/loc-service.jar --server.port=8081`
+- Maven
+  - `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081`
 
-```
-java -jar target/a9-like-project-0.1.0.jar
-```
+Notes:
+- Routes call the built-in provider stub at `http://localhost:8081/provider/locations`.
+- Running on `8081` ensures internal calls succeed with no extra setup.
 
-Camel loads routes from `classpath:routes/*.yaml`.
+## How to Validate
+- Health: `curl -sf http://localhost:8081/actuator/health`
+- Endpoints (POST XML):
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetCountry`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetStateOrProvince`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1B`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationList3X1M`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1B`
+  - `curl -s -X POST -H "Content-Type: application/xml" --data '<req/>' http://localhost:8081/loc/GetLocationWithTaxingJurisdictions3X1M`
+- Sample payload (optional):
+  - `curl -s -X POST -H "Content-Type: application/xml" --data-binary @samples/get_location_list_request_min.xml http://localhost:8081/loc/GetLocationList3X1M`
 
-## Routes & Error Handling (GEN-104)
-- Each route sets `X-Correlation-ID` to the Camel `exchangeId`.
-- Request logs include the correlation ID at INFO.
-- Errors are handled with redelivery policy from provider properties, map to HTTP `500` via `CamelHttpResponseCode`, and return a simple XML error body.
+## Stop Service
+- Jar or Maven run: press `Ctrl+C` in the terminal
 
-## Correlation-ID Logging
-- A servlet filter sets/propagates `X-Correlation-ID` and writes it to logging MDC.
-- Console logging pattern includes `[correlationId]` for all application logs.
-- Camel route logs also include the correlation ID in messages.
+## Optional Codegen (DTOs & Clients)
+- `mvn -Pcodegen generate-sources`
+- Outputs under `target/generated-sources/{jaxb,cxf}`
 
-## Actuator Endpoints
-- Health and Info are exposed at `/actuator/health` and `/actuator/info`.
-- Customize exposure via `management.endpoints.web.exposure.include` in `application.yaml`.
+## Observability & Error Handling
+- `X-Correlation-ID` header is set from Camel `exchangeId` and logged.
+- Error handler maps failures to HTTP `500` with a simple XML body and redelivery policy from `application.yaml`.
+
+## OpenAPI
+- A stub OpenAPI spec is included at `src/main/resources/openapi.yaml` with `/loc/{operation}` POST endpoints.

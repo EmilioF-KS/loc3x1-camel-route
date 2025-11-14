@@ -5,7 +5,7 @@ metadata:
 spec:
   flows:
     - from:
-        uri: "platform-http:/{{controller_path}}"
+        uri: platform-http:/loc/GetLocationList3X1M
         steps:
           - setHeader:
               name: Content-Type
@@ -16,9 +16,19 @@ spec:
           - log:
               message: "[${header.X-Correlation-ID}] Request received"
               loggingLevel: INFO
-          - xslt:
-              resourceUri: classpath:xslt/identity.xsl
           - to:
-              uri: "http://localhost:8081/provider/locations"
-          - xslt:
-              resourceUri: classpath:xslt/identity.xsl
+              uri: "xslt:classpath:xslt/identity.xsl"
+          - removeHeaders:
+              pattern: "HTTP_*"
+          - removeHeaders:
+              pattern: "CamelHttp*"
+          - removeHeader:
+              name: CamelHttpUri
+          - removeHeader:
+              name: CamelHttpUrl
+          - removeHeader:
+              name: CamelHttpPath
+          - to:
+              uri: "http://localhost:8081/provider/locations?bridgeEndpoint=true"
+          - to:
+              uri: "xslt:classpath:xslt/identity.xsl"

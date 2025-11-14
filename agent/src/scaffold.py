@@ -135,8 +135,18 @@ POM_XML = """<?xml version="1.0" encoding="UTF-8"?>
             <version>${camel.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-platform-http</artifactId>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-platform-http-starter</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-http-starter</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-xslt-starter</artifactId>
             <version>${camel.version}</version>
         </dependency>
         <dependency>
@@ -354,6 +364,7 @@ def scaffold_result(
     project_name: str = "loc-service",
     description: str = "a9-style Spring Boot + Camel YAML scaffold",
     include_provider_stub: bool = True,
+    include_controllers: bool = False,
 ) -> List[str]:
     """
     Create or recreate the a9-style scaffold under out_path.
@@ -429,8 +440,8 @@ def scaffold_result(
             # Best-effort; keep scaffold valid even if synthesis fails
             pass
 
-    # Generate controllers per operation from plan
-    if orchestration_plan_path:
+    # Generate controllers per operation from plan (disabled by default to avoid conflict with Camel platform-http)
+    if orchestration_plan_path and include_controllers:
         try:
             from agent.src.controller_generator import generate_controllers
             java_root = os.path.join(out_path, "src/main/java")

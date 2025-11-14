@@ -15,6 +15,10 @@ def resolve_route_placeholders(yaml_path: str, controller_path: str, request_xsl
     current_op: str | None = None
     for ln in lines:
         s = ln.strip()
+        if "platform-http:/{{controller_path}}" in s:
+            indent = ln.split("uri:")[0] if "uri:" in ln else ln[:ln.find(s)]
+            new_lines.append(f"{indent}uri: platform-http:/{controller_path}")
+            continue
         if s.startswith("id:") and "-controller" in s:
             # id: loc-service-Op-controller
             parts = s.split()
@@ -61,7 +65,7 @@ def resolve_generated_routes(routes_dir: str, resources_root: str) -> List[str]:
         ctrl = infer_controller_path(op)
         req = "classpath:xslt/identity.xsl"
         rep = "classpath:xslt/identity.xsl"
-        prov = "http://localhost:8081/provider/locations"
+        prov = "http://localhost:8081/provider/locations?bridgeEndpoint=true"
         resolve_route_placeholders(str(p), ctrl, req, rep, prov)
         resolved.append(str(p))
     return resolved
