@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/uw_industry_segment" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="UWIndustrySegment">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="SICCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies a major industry classification as determined by the US Federal Government. 
+The first two characters of the SIC code are the Major Group.
+The last two characters of the SIC code are the Industry Code.  
+The E1T00331 Corporate Table contains valid values for the SIC Code(SIC_C), as well as columns for Major Group (SIC_MAJ_GRP_C) and Industry Code (SIC_INDST_C). 
+The E1T00321 Corporate Table contains valid values for only the Major Group (SIC_MAJ_GRP).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupCode" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a code that identifies the highest level of industry for commerical underwriting analysis and risk classification.
+ It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupShortName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a short name that identifies the highest level of industry for commerical underwriting analysis and risk classification.
+ It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupMixedCaseShortName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a mixed case short name that identifies the highest level of industry for commerical underwriting analysis and risk classification.
+  It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a name that identifies the highest level of industry for commerical underwriting analysis and risk classification. 
+ It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupMixedCaseName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a mixed case name that identifies the highest level of industry for commerical underwriting analysis and risk classification.  
+It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryCondensedGroupCommentText" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a comment about the UWIndustryCondensedGroup,  the highest level of industry for commerical underwriting analysis and risk classification.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupCode" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a code that identifies the middle level of industry for commerical underwriting analysis and risk classification.  It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from  SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupShortName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a short name that identifies the middle level of industry for commerical underwriting analysis and risk classification.  It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from  SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupMixedCaseShortName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a mixed case short name that identifies the middle level of industry for commerical underwriting analysis and risk classification.
+  It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a name that identifies the middle level of industry for commerical underwriting analysis and risk classification. 
+ It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupMixedCaseName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a mixed case name that identifies the middle level of industry for commerical underwriting analysis and risk classification.  It is a consolidation of Underwriting Industry Major Group, Chubb assigned values, derived from SIC and UCC combinations </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UWIndustryMajorGroupCommentText" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a comment about the UWIndustryMajorGroup,  the middle level of industry for commerical underwriting analysis and risk classification.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

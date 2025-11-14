@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/access_control_group"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="AccessControlGroup">
+		<xsd:annotation>
+      
+    
+    
+    <xsd:documentation>An access control group gives you access to application(s).  In Get Access they refer to these as access roles.
+</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="AccessControlGroupCategoryCode" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        
+        
+        <xsd:documentation>This element contains a category for the access control group. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccessControlGroupCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        
+        
+        <xsd:documentation>This element contains a code used to identify an access control group.  A sample value for this code is  'AGTADM' which represents Agency Administrator.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccessControlGroupName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        
+        
+        <xsd:documentation>This element contains the name of an access control group.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccessControlGroupTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        
+        
+        <xsd:documentation>This element contains the type of  role code supported under user provisioning.  A sample value for this element is 'ADMIN'.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AccessControlGroupEffectiveDate" type="xsd:date">
+				<xsd:annotation>
+          
+        
+        
+        
+        <xsd:documentation>This element contains the date that the access control group became effective.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AccessControlGroupExpirationDate" type="xsd:date">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains the date that the access control group expired.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="UserAccessControlGroupActionCode" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains a code that describes the action that should be taken for the access control group.
+Some valid values include Add or Delete.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

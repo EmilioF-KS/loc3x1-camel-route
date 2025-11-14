@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/recipient_policy_form_reference">
+	<xsd:complexType name="RecipientPolicyFormReference">
+		<xsd:sequence>
+
+			<xsd:element minOccurs="0" name="FormSequenceNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element indentifies the order in which forms are attached to a policy or transaction.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormPaperTypeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the type of paper that a form will be printed on.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PagePreferenceOptionName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element indicates where to start printing a form or series of forms.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NumberOfPrintedFormCopies" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the number of copies of a form that should be printed.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

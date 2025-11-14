@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/text_analytics_concept" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="TextAnalyticsConcept">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="TextAnalyticsConceptName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the name of a text analytics concept.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TextAnalyticsConceptVersionNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the version of the text analytics concept.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/organizationunits"
+	targetNamespace="http://ei/core/organizationunits">
+	<xsd:element name="OrganizationUnits">
+		<xsd:complexType>
+			<xsd:annotation>
+				
+			<xsd:documentation>
+This business object contains standard Chubb organizational units.
+			</xsd:documentation></xsd:annotation>
+			<xsd:sequence>
+				<xsd:element name="ProducingBranch" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes the Chubb office that receives premium credit for a policy.
+The E1T00031 Corporate Table contains valid values for the elements of this complex type: Name, Abbreviation, Number, Code. 
+					</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Number" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Abbreviation"
+								type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Code" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Name" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ServicingBranch" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes the Chubb office that services a policy.
+The E1T00031 Corporate Table contains valid values for the elements of this complex type: Name, Abbreviation, Number, Code. 
+					</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Abbreviation"
+								type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Number" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ServicingArea" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes the customer group or practice that services a policy.
+The E1T00891 Corporate Table contains valid values for the elements of this complex type: Name, Abbreviation, Code. 
+					</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Abbreviation"
+								type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Code" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="CustomerGroup" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes the underwriting business unit that produces a policy.
+The E1T00891 Corporate Table contains valid values for the elements of this complex type: Name, Abbreviation, Code. 
+					</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Abbreviation"
+								type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Code" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Name" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ProducingDepartment" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes the department that produces a policy.
+The E1T00381 Corporate Table contains valid values for the elements of this complex type: Name, Abbreviation, Number. 
+				</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Abbreviation"
+								type="xsd:string" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Number" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ProcessingOffice" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+This complex type describes a Chubb location that functions as a processing location.
+The E1T00351 Corporate Table contains valid values for the elements of this complex type: Code, Number, Name. 
+					</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:annotation>
+							<xsd:documentation/>
+						</xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="Code" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Number" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="Name" type="xsd:string"
+								minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation/>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

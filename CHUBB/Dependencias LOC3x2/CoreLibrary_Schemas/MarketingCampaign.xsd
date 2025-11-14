@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/marketing_campaign"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/strategic_alliance"
+	xmlns:bons1="http://ei/core/marketing_campaign_accreditation"
+	xmlns:bons2="http://ei/core/marketing_campaign_contact"
+	xmlns:bons3="http://ei/core/marketing_campaign_note"
+	xmlns:bons4="http://ei/core/managed_document">
+	<xsd:import schemaLocation="ManagedDocument.xsd"
+		namespace="http://ei/core/managed_document">
+	</xsd:import>
+	<xsd:import schemaLocation="MarketingCampaignNote.xsd"
+		namespace="http://ei/core/marketing_campaign_note">
+	</xsd:import>
+	<xsd:import schemaLocation="MarketingCampaignContact.xsd"
+		namespace="http://ei/core/marketing_campaign_contact">
+	</xsd:import>
+	<xsd:import schemaLocation="MarketingCampaignAccreditation.xsd"
+		namespace="http://ei/core/marketing_campaign_accreditation">
+	</xsd:import>
+	<xsd:import schemaLocation="StrategicAlliance.xsd"
+		namespace="http://ei/core/strategic_alliance">
+	</xsd:import>
+	<xsd:complexType name="MarketingCampaign">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="StrategicAlliance"
+				type="bons0:StrategicAlliance">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="MarketingCampaignAccreditation"
+				type="bons1:MarketingCampaignAccreditation" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MarketingCampaignContact"
+				type="bons2:MarketingCampaignContact" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MarketingCampaignNote"
+				type="bons3:MarketingCampaignNote" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ManagedDocument"
+				type="bons4:ManagedDocument" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element name="MarketingCampaignSequenceNumber"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains a unique identifier of a marketing campaign.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MarketingCampaignTypeCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies the type of campaign.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MarketingCampaignTypeDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element describes the type of campaign.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MarketingCampaignName" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the name of the marketing campaign (as defined by the business).</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MarketingCampaignDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This elemet contains a description of the marketing campaign.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemMarketingCampaignId"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element is the unique identifier in the source system for a marketing campaign.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

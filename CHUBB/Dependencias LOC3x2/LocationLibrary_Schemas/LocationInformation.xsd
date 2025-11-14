@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/location_information">
+	<xsd:complexType name="LocationInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CityCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that indentifies a city, township, town, village, or rural community located within a state, province or foreign country.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CountyCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that indenifies a geographical subdivision such as a county, parish or census division within a state, province or foreign country.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>			<xsd:element minOccurs="0" name="LocationClassificationCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element classifies the type of location: township, rural community, incorporated place, unincorporate place, airport, indian reservation.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LicenseCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that enables to tax system to compute the municiple license fee.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MineSubsidenceCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies if a fire risk is ceded to the state mine subsidence pool or if more information is needed.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>			<xsd:element minOccurs="0" name="FloridaTortCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indentifies if in Florida a factor is applied in the calculation of the hired car premium or if more information is needed.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>			<xsd:element minOccurs="0"
+				name="PublicProtectionClassification1Code" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a symbol that identifies the public protection classification value most recently assigned by ISO Commercial risk services as a result of an evalutation/reevaluation of a communities fire protection resources.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PublicProtectionClassification2Code" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a symbol that identifies the public protection classification value assigned by ISO Commercial risk services as a result of an evalutation/reevaluation of a communities fire protection resources.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="RatedPublicProtectionClassificationCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the Public Protection Classification Code that is used for rating the Policy.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FireDistrictCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>
+This element is a code assigned by the State to identify the a Municipal Fire Department District. 
+Valid options for this element are in the RAND system.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FireDistrictName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the Municipal Fire Department District. 
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FreeTradeZoneClass"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indentifies the class code of policies written in the Free Trade Zone, which is a special risk insurance market.
+Valid options for this element are '1' - Class 1 Risks or '2' - Class 2 Risks.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FreeTradeZoneCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the postal abbreviation for the location of the Free Trade Zone.
+								</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FreeTradeZoneRiskCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the risks via a code that can be written in the Free Trade Zone as Class II Risks.
+The  E1T01361 Corporate Table contains valid values for this element in the "FREE_TRD_ZN_RSK_C" column.  
+							</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TexasPlaceCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code which indentifies the city within the state Texas.
+Valld values for this codes are defined by the  Texas Insuring Checking Office (TICO).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TexasZoneCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code which identifies a specific geographic area within the state of Texas.
+Valld values for this codes are defined by the  Texas Insuring Checking Office (TICO).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

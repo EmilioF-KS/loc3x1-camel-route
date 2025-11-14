@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/risk/survey_peril"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:complexType name="SurveyPeril">
+		<xsd:sequence>
+
+			<xsd:element minOccurs="0" name="SurveyPerilTypeName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the major grouping of  perils such as Fire, Earthquake, and Wind and Hail.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyPerilIndicator"
+				type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>This element indicates whether the paired peril is included in the survey.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

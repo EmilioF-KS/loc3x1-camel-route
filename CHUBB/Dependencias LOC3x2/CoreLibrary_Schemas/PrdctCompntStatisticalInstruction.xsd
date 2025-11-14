@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/prdct_compnt_statistical_instruction" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PrdctCompntStatisticalInstruction">
+		<xsd:sequence>
+
+			<xsd:element minOccurs="0" name="PolicyPrimaryRiskCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the code for the major risk of the policy.  This is also known as MajorClassCode.
+The Corporate table E1T00191 contains the valid values for this element in the "MAJ_CLS_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OfficeClassCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the classification of the coverage on a policy for internal reporting.
+ The E1T01071 Corporate Table contains the valid values for this element in the "OFF_CLS_N" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubClassCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a code that identifies the type of coverage, type of policy, or Commercial vs. Personal on automobile.  This element is always used in conjuction with the OfficeClassCode.
+The E1T01071 Corporate Table contains the valid values for this element in the "SUB_CLS_C" column.
+					</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MajorCoverageCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the first level of detail below the Office Class-Sub Class level.  
+It is comprised of subline, General Liability line code, peril code and insuring clause. 
+The E1T01071 Corporate Table contains the valid values for this element in the "MAJ_CV_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CoverageCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a code for a line of business specfic coverage provided on the policy.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RatingClassCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the categorization of a risk for rating purposes.
+This element is also known as Rating Classification Code.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TerrorismCoverageCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a code for a Terrorism premium.
+The valid options for the element are " "  or "7". </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyFormCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the code for the type of form on which a policy is written.
+This element is also known as Form Code, Policy Type, Specialty Code and Surety Class.
+The E1T01201 Corporate Table contains valid values for this element in the "SF_POL_FRM_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="WindstormIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies whether or not a policy coverage for damage due to wind.  
+The valid values are ‘Y’ or ‘N’</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ParticipatingBusinessIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies if a policy includes coverages on which a policyholder dividend may be paid.
+The valid options for this element are 'Y' or 'N'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

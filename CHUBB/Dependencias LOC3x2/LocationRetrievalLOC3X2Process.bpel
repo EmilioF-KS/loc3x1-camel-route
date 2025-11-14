@@ -1,0 +1,2742 @@
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://Location2Module/LocationRetrievalLOC3X2Artifacts" xmlns:ns0="http://ei/location/get_location_request_loc3x2b" xmlns:ns1="http://ei/location/get_location_reply_loc3x2b" xmlns:ns10="http://ei/location/get_uk_flood_information_reply_loc802x1" xmlns:ns11="http://ei/location/location_retrieval_loc3x2" xmlns:ns12="http://ei/core/simplefault" xmlns:ns13="http://ei/location/standardized_addressx2" xmlns:ns14="http://ei/core/status_informationx1" xmlns:ns15="http://Location2Module" xmlns:ns16="http://ei/core/error" xmlns:ns17="http://LocationServicesLOC3X2" xmlns:ns2="http://ei/location/location_retrieval_loc3x2b" xmlns:ns3="http://ei/location/address_standardization_loc2x2" xmlns:ns4="http://ei/location/uk_flood_information_retrieval_loc802x1" xmlns:ns5="http://ei/location/standardize_us_address_request_loc2x2" xmlns:ns6="http://ei/location/standardize_us_address_reply_loc2x2" xmlns:ns7="http://ei/location/standardize_osus_address_request_loc2x2" xmlns:ns8="http://ei/location/standardize_osus_address_reply_loc2x2" xmlns:ns9="http://ei/location/get_uk_flood_information_request_loc802x1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="LocationRetrievalLOC3X2Process" suppressJoinFailure="yes" targetNamespace="http://LocationServices" wpc:continueOnError="no" wpc:displayName="LocationRetrievalLOC3X2Process" wpc:executionMode="microflow" wpc:id="6" wpc:validFrom="2011-02-02T21:29:27" wpc:version="IBM_7.0.300">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="LocationRetrievalLOC3X2B/LocationRetrievalLOC3X2B.wsdl" namespace="http://ei/location/location_retrieval_loc3x2b"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AddressStandardizationLOC2X2/AddressStandardizationLOC2X2.wsdl" namespace="http://ei/location/address_standardization_loc2x2"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="UKFloodInformationRetrievalLOC802X1/UKFloodInformationRetrievalLOC802X1.wsdl" namespace="http://ei/location/uk_flood_information_retrieval_loc802x1"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="LocationRetrievalLOC3X2ProcessArtifacts.wsdl" namespace="http://Location2Module/LocationRetrievalLOC3X2Artifacts"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="LocationRetrievalLOC3X2B/GetLocationRequest.xsd" namespace="http://ei/location/get_location_request_loc3x2b"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="LocationRetrievalLOC3X2B/GetLocationReply.xsd" namespace="http://ei/location/get_location_reply_loc3x2b"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="LocationRetrievalLOC3X2B/LocationRetrievalLOC3X2B.wsdl" namespace="http://ei/location/location_retrieval_loc3x2b"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AddressStandardizationLOC2X2/AddressStandardizationLOC2X2.wsdl" namespace="http://ei/location/address_standardization_loc2x2"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="UKFloodInformationRetrievalLOC802X1/UKFloodInformationRetrievalLOC802X1.wsdl" namespace="http://ei/location/uk_flood_information_retrieval_loc802x1"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="AddressStandardizationLOC2X2/StandardizeUSAddressRequest.xsd" namespace="http://ei/location/standardize_us_address_request_loc2x2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="AddressStandardizationLOC2X2/StandardizeUSAddressReply.xsd" namespace="http://ei/location/standardize_us_address_reply_loc2x2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="AddressStandardizationLOC2X2/StandardizeOSUSAddressReply.xsd" namespace="http://ei/location/standardize_osus_address_reply_loc2x2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="AddressStandardizationLOC2X2/StandardizeOSUSAddressRequest.xsd" namespace="http://ei/location/standardize_osus_address_request_loc2x2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="UKFloodInformationRetrievalLOC802X1/GetUKFloodInformationRequest.xsd" namespace="http://ei/location/get_uk_flood_information_request_loc802x1"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="UKFloodInformationRetrievalLOC802X1/GetUKFloodInformationReply.xsd" namespace="http://ei/location/get_uk_flood_information_reply_loc802x1"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="LocationRetrievalLOC3X2/LocationRetrievalLOC3X2.wsdl" namespace="http://ei/location/location_retrieval_loc3x2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="PrivateSchemas/SimpleFault.xsd" namespace="http://ei/core/simplefault"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="Schemas/StandardizedAddressX2.xsd" namespace="http://ei/location/standardized_addressx2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="Schemas/StatusInformationX1.xsd" namespace="http://ei/core/status_informationx1"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="xsd-includes/http.Location2Module.xsd" namespace="http://Location2Module"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="Schemas/Error.xsd" namespace="http://ei/core/error"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="LOC3X2/HazardousAreaList.xsd" namespace="http://LocationServicesLOC3X2"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="LOC3X2/ErrorList.xsd" namespace="http://LocationServicesLOC3X2"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="LocationRetrievalLOC3X2B" partnerLinkType="ns:LocationRetrievalLOC3X2BPLT" wpc:id="104"/>
+    <bpws:partnerLink name="AddressStandardizationLOC2X2Partner" partnerLinkType="ns:AddressStandardizationLOC2X2PLT" partnerRole="Interface" wpc:id="105"/>
+    <bpws:partnerLink name="UKFloodInformationRetrievalLOC802X1Partner" partnerLinkType="ns:UKFloodInformationRetrievalLOC802X1PLT" partnerRole="Interface" wpc:id="106"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="GetLocationRequest" type="ns0:GetLocationRequest" wpc:id="4"/>
+    <bpws:variable name="GetLocationReply" type="ns1:GetLocationReply" wpc:id="5"/>
+    <bpws:variable name="StandardUSAddressRequest" type="ns5:StandardizeUSAddressRequest" wpc:id="23"/>
+    <bpws:variable name="StandardUSAddressReply" type="ns6:StandardizeUSAddressReply" wpc:id="24"/>
+    <bpws:variable name="StandardOSUSAddressRequest" type="ns7:StandardizeOSUSAddressRequest" wpc:id="25"/>
+    <bpws:variable name="StandardOSUSAddressReply" type="ns8:StandardizeOSUSAddressReply" wpc:id="26"/>
+    <bpws:variable name="UKFloodInformationRequest" type="ns9:GetUKFloodInformationRequest" wpc:id="27"/>
+    <bpws:variable name="UKFloodInformationReply" type="ns10:GetUKFloodInformationReply" wpc:id="28"/>
+    <bpws:variable name="SimpleFault" type="ns12:SimpleFault" wpc:id="77"/>
+    <bpws:variable name="StandardizedAddress" type="ns13:StandardizedAddress" wpc:id="91"/>
+    <bpws:variable name="StatusInformation" type="ns14:StatusInformation" wpc:id="92"/>
+    <bpws:variable name="HazardousAreaList" type="ns17:HazardousAreaList" wpc:id="95"/>
+    <bpws:variable name="ErrorList" type="ns17:ErrorList" wpc:id="102"/>
+  </bpws:variables>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741825">
+    <bpws:receive createInstance="yes" name="Receive" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Receive" wpc:id="2">
+      <wpc:output>
+        <wpc:parameter name="GetLocationRequest" variable="GetLocationRequest"/>
+      </wpc:output>
+    </bpws:receive>
+    <bpws:scope name="Scope" wpc:displayName="Scope" wpc:id="62">
+      <bpws:faultHandlers>
+        <bpws:catchAll wpc:id="107">
+          <bpws:sequence name="HiddenSequence8" wpc:id="1073741888">
+            <bpws:invoke name="LogCatchAll" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log CatchAll" wpc:id="65">
+              <wpc:script>
+                <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.util.logging.Level __result__4 = logger.INFO;
+com.ibm.bpe.api.BpelException __result__8 = getCurrentFaultAsException();
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "BPEL CatchAll block - exception caught: ";
+logger.log(__result__4, __result__5, __result__6, __result__7, __result__8);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.8/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.8/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;BPEL CatchAll block - exception caught: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.8/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.8/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.8/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getCurrentFaultAsException" category="local" className="local" memberName="getCurrentFaultAsException">
+//    <result>
+//      <dataOutputs target="//@executableElements.8/@parameters.5"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.BpelException"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="thrown" dataInputs="//@executableElements.7/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.Throwable"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7 //@executableElements.8"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:3,1
+//!SMAP!5:7,1
+//!SMAP!6:6,1
+//!SMAP!7:5,1
+//!SMAP!8:4,1
+//!SMAP!9:8,1
+//!SMAP!1000000:89,1]]></wpc:javaCode>
+              </wpc:script>
+            </bpws:invoke>
+            <bpws:invoke name="CreateSimpleFault" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Create SimpleFault" wpc:id="66">
+              <wpc:script>
+                <wpc:javaCode><![CDATA[ei.core.fault.FaultBuilder __result__1 = ei.core.fault.FaultBuilder.getFaultBuilder();
+commonj.sdo.DataObject __result__2 = __result__1.createSimpleFaultAsDataObject();
+SimpleFault = __result__2;
+com.ibm.bpe.api.BpelException __result__8 = getCurrentFaultAsException();
+java.lang.String __result__9 = __result__8.getMessage();
+com.ibm.bpe.api.BpelException __result__6 = getCurrentFaultAsException();
+java.lang.String __result__7 = __result__6.getFaultName();
+java.lang.String __result__10;
+{// append text
+	__result__10 = __result__7.concat(__result__9);
+}
+java.lang.String __result__5 = "FaultMessageText";
+SimpleFault.setString(__result__5, __result__10);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getFaultBuilder" category="ei.core.fault.FaultBuilder" className="ei.core.fault.FaultBuilder" static="true" memberName="getFaultBuilder">
+//    <result>
+//      <dataOutputs target="//@executableElements.1/@parameters.0"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.fault.FaultBuilder"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="createSimpleFaultAsDataObject" category="ei.core.fault.FaultBuilder" className="ei.core.fault.FaultBuilder" memberName="createSimpleFaultAsDataObject">
+//    <parameters name="FaultBuilder" dataInputs="//@executableElements.0/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.fault.FaultBuilder"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.2"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.1/@result/@dataOutputs.0" value="SimpleFault" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFault" variable="true">
+//    <dataOutputs target="//@executableElements.10/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;FaultMessageText&quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.10/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getCurrentFaultAsException" category="local" className="local" memberName="getCurrentFaultAsException">
+//    <result>
+//      <dataOutputs target="//@executableElements.6/@parameters.0"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.BpelException"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getFaultName" category="com.ibm.bpe.api.BpelException" className="com.ibm.bpe.api.BpelException" memberName="getFaultName">
+//    <parameters name="BpelException" dataInputs="//@executableElements.5/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.BpelException"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.9/@parameters.0"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getCurrentFaultAsException" category="local" className="local" memberName="getCurrentFaultAsException">
+//    <result>
+//      <dataOutputs target="//@executableElements.8/@parameters.0"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.BpelException"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getMessage" category="java.lang.Throwable" className="java.lang.Throwable" memberName="getMessage">
+//    <parameters name="Throwable" dataInputs="//@executableElements.7/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.Throwable"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.9/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:LibraryActivity" name="append text" description="Combine the text of two words into one word" category="text" template="&lt;%return%> &lt;%input1%>.concat(&lt;%input2%>);">
+//    <parameters name="input1" dataInputs="//@executableElements.6/@result/@dataOutputs.0" displayName="input 1">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="input2" dataInputs="//@executableElements.8/@result/@dataOutputs.0" displayName="input 2">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <result name="combined text" displayName="combined text">
+//      <dataOutputs target="//@executableElements.10/@parameters.2"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="setString" category="commonj.sdo.DataObject" className="commonj.sdo.DataObject" memberName="setString">
+//    <parameters name="DataObject" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="arg0" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="arg1" dataInputs="//@executableElements.9/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.2"/>
+//  <executableGroups executableElements="//@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7 //@executableElements.8 //@executableElements.9 //@executableElements.10"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!3:3,1
+//!SMAP!5:12,1
+//!SMAP!6:6,1
+//!SMAP!7:7,1
+//!SMAP!8:4,1
+//!SMAP!9:5,1
+//!SMAP!10:8,4
+//!SMAP!11:13,1
+//!SMAP!1000000:117,1]]></wpc:javaCode>
+              </wpc:script>
+            </bpws:invoke>
+            <bpws:invoke name="LogSimpleFault" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log SimpleFault" wpc:id="67">
+              <wpc:script>
+                <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "SimpleFault created: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFault, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;SimpleFault created: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFault" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+              </wpc:script>
+            </bpws:invoke>
+            <bpws:reply faultName="ns2:SimpleFaultReply" name="ReplyFault2" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Reply Fault" wpc:id="73">
+              <wpc:input>
+                <wpc:parameter name="SimpleFault" variable="SimpleFault"/>
+              </wpc:input>
+            </bpws:reply>
+            <bpws:terminate name="Terminate3" wpc:displayName="Terminate3" wpc:id="69"/>
+          </bpws:sequence>
+        </bpws:catchAll>
+      </bpws:faultHandlers>
+      <bpws:sequence name="HiddenSequence7" wpc:id="1073741887">
+        <bpws:invoke name="LogRequest" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Request" wpc:id="7">
+          <wpc:script>
+            <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Entering BPEL process with request: ";
+java.util.logging.Level __result__4 = java.util.logging.Level.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = java.util.logging.Level.INFO;
+logger.log(__result__10, GetLocationRequest, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Entering BPEL process with request: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="GetLocationRequest" namespace="http://ei/location/get_location_request_loc3x2b"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:134,1]]></wpc:javaCode>
+          </wpc:script>
+        </bpws:invoke>
+        <bpws:invoke name="Initialize" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Initialize" wpc:id="101">
+          <wpc:script>
+            <wpc:javaCode><![CDATA[commonj.sdo.DataObject __result__1;
+{// create HazardousAreaList
+	com.ibm.websphere.bo.BOFactory factory = 
+	   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService("com/ibm/websphere/bo/BOFactory");
+	 __result__1 = factory.create("http://LocationServicesLOC3X2","HazardousAreaList");
+}
+HazardousAreaList = __result__1;
+commonj.sdo.DataObject __result__3;
+{// create ErrorList
+	com.ibm.websphere.bo.BOFactory factory = 
+	   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService("com/ibm/websphere/bo/BOFactory");
+	 __result__3 = factory.create("http://LocationServicesLOC3X2","ErrorList");
+}
+ErrorList = __result__3;
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:LibraryActivity" name="create HazardousAreaList" description="create a new HazardousAreaList {http://LocationServicesLOC3X2}" category="SCA and BO services" template="com.ibm.websphere.bo.BOFactory factory = &#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);&#xA; &lt;%return%> factory.create(&quot;http://LocationServicesLOC3X2&quot;,&quot;HazardousAreaList&quot;);">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="HazardousAreaList" namespace="http://LocationServicesLOC3X2" nillable="false"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="HazardousAreaList" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="HazardousAreaList" namespace="http://LocationServicesLOC3X2"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:LibraryActivity" name="create ErrorList" description="create a new ErrorList {http://LocationServicesLOC3X2}" category="SCA and BO services" template="com.ibm.websphere.bo.BOFactory factory = &#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);&#xA; &lt;%return%> factory.create(&quot;http://LocationServicesLOC3X2&quot;,&quot;ErrorList&quot;);">
+//    <result>
+//      <dataOutputs target="//@executableElements.3"/>
+//      <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="ErrorList" namespace="http://LocationServicesLOC3X2" nillable="false"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.2/@result/@dataOutputs.0" value="ErrorList" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="Error" namespace="http://ei/core/error"/>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,6
+//!SMAP!2:7,1
+//!SMAP!3:8,6
+//!SMAP!4:14,1
+//!SMAP!1000000:51,1]]></wpc:javaCode>
+          </wpc:script>
+        </bpws:invoke>
+        <bpws:switch name="AddressStandardization" wpc:displayName="AddressStandardization" wpc:id="8">
+          <bpws:case wpc:id="10">
+            <bpws:condition expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[(bpws:getVariableData("GetLocationRequest", "/StandardizedAddress/ISOCountryCode") ="US")]]></bpws:condition>
+            <bpws:sequence name="HiddenSequence1" wpc:id="1073741843">
+              <bpws:assign name="Assign" wpc:displayName="Assign Request Fields" wpc:id="20">
+                <bpws:copy>
+                  <bpws:from variable="GetLocationRequest">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StandardUSAddressRequest">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:to>
+                </bpws:copy>
+              </bpws:assign>
+              <bpws:invoke name="LogUSAddressStandardization" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log USAddressStandardization" wpc:id="59">
+                <wpc:script>
+                  <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__4 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__4;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__3 = "Invoking USAddressStandardization with request:";
+java.util.logging.Level __result__2 = java.util.logging.Level.INFO;
+logger.log(__result__2, __result__3, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = java.util.logging.Level.INFO;
+logger.log(__result__10, StandardUSAddressRequest, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Invoking USAddressStandardization with request:&quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.4"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.3/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.0/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.1/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="StandardUSAddressRequest" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="StandardizeUSAddressRequest" namespace="http://ei/location/standardize_us_address_request_loc2x2"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.3 //@executableElements.4"/>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.2 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!2:6,1
+//!SMAP!3:5,1
+//!SMAP!4:1,1
+//!SMAP!5:2,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:134,1]]></wpc:javaCode>
+                </wpc:script>
+              </bpws:invoke>
+              <bpws:invoke name="InvokeUSAddressStandardization" operation="StandardizeUSAddress2X2" partnerLink="AddressStandardizationLOC2X2Partner" portType="ns3:AddressStandardizationLOC2X2" wpc:continueOnError="inherit" wpc:displayName="Invoke USAddressStandardization" wpc:id="11">
+                <wpc:input>
+                  <wpc:parameter name="StandardizeUSAddressRequest" variable="StandardUSAddressRequest"/>
+                </wpc:input>
+                <wpc:output>
+                  <wpc:parameter name="StandardizeUSAddressReply" variable="StandardUSAddressReply"/>
+                </wpc:output>
+                <bpws:catch faultMessageType="ns3:StandardizeUSAddress2X2_SimpleFaultReplyMsg" faultName="ns3:SimpleFaultReply" faultVariable="SimpleFaultReplyVariable" wpc:id="108" wpc:variableId="34">
+                  <bpws:sequence name="HiddenSequence4" wpc:id="1073741862">
+                    <bpws:invoke name="LogFault" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Fault" wpc:id="35">
+                      <wpc:script>
+                        <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "SimpleFault returned from USAddressStandardization: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFaultReplyVariable, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;SimpleFault returned from USAddressStandardization: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFaultReplyVariable" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                      </wpc:script>
+                    </bpws:invoke>
+                    <bpws:assign name="AssignFaultText" wpc:displayName="Assign Fault Text" wpc:id="53">
+                      <bpws:copy>
+                        <bpws:from part="SimpleFaultReply" variable="SimpleFaultReplyVariable">
+                          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                        </bpws:from>
+                        <bpws:to variable="SimpleFault">
+                          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                        </bpws:to>
+                      </bpws:copy>
+                    </bpws:assign>
+                    <bpws:invoke name="LogReply1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Reply" wpc:id="78">
+                      <wpc:script>
+                        <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Replying with SimpleFault: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFault, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Replying with SimpleFault: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFault" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                      </wpc:script>
+                    </bpws:invoke>
+                    <bpws:reply faultName="ns2:SimpleFaultReply" name="ReplyFault" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Reply Fault" wpc:id="75">
+                      <wpc:input>
+                        <wpc:parameter name="SimpleFault" variable="SimpleFault"/>
+                      </wpc:input>
+                    </bpws:reply>
+                    <bpws:terminate name="Terminate" wpc:displayName="Terminate" wpc:id="42"/>
+                  </bpws:sequence>
+                </bpws:catch>
+              </bpws:invoke>
+              <bpws:assign name="AssignReplyFields" wpc:displayName="Assign Reply Fields" wpc:id="93">
+                <bpws:copy>
+                  <bpws:from variable="StandardUSAddressReply">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StandardizedAddress"/>
+                </bpws:copy>
+                <bpws:copy>
+                  <bpws:from variable="StandardUSAddressReply">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusInformation]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StatusInformation"/>
+                </bpws:copy>
+              </bpws:assign>
+            </bpws:sequence>
+          </bpws:case>
+          <bpws:otherwise wpc:id="109">
+            <bpws:sequence name="HiddenSequence2" wpc:id="1073741841">
+              <bpws:assign name="AssignRequestFields" wpc:displayName="Assign Request Fields" wpc:id="18">
+                <bpws:copy>
+                  <bpws:from variable="GetLocationRequest">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StandardOSUSAddressRequest">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:to>
+                </bpws:copy>
+              </bpws:assign>
+              <bpws:invoke name="LogOSUSAddressStandardization" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log OSUSAddressStandardization" wpc:id="58">
+                <wpc:script>
+                  <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__3 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__3;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Invoking OSUSAddressStandardization with request:";
+java.util.logging.Level __result__2 = java.util.logging.Level.INFO;
+logger.log(__result__2, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = java.util.logging.Level.INFO;
+logger.log(__result__10, StandardOSUSAddressRequest, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.3"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.2/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Invoking OSUSAddressStandardization with request:&quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.0/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.1/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="Level.INFO" category="java.util.logging.Level" className="java.util.logging.Level" static="true" memberName="INFO" field="true">
+//    <parameters name="INFO">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <result>
+//      <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="StandardOSUSAddressRequest" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="StandardizeOSUSAddressRequest" namespace="http://ei/location/standardize_osus_address_request_loc2x2"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@result/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3"/>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!2:6,1
+//!SMAP!3:1,1
+//!SMAP!4:2,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:134,1]]></wpc:javaCode>
+                </wpc:script>
+              </bpws:invoke>
+              <bpws:invoke name="InvokeOSUSAddressStandardization" operation="StandardizeOSUSAddress2X2" partnerLink="AddressStandardizationLOC2X2Partner" portType="ns3:AddressStandardizationLOC2X2" wpc:continueOnError="inherit" wpc:displayName="Invoke OSUSAddressStandardization" wpc:id="9">
+                <wpc:input>
+                  <wpc:parameter name="StandardizeOSUSAddressRequest" variable="StandardOSUSAddressRequest"/>
+                </wpc:input>
+                <wpc:output>
+                  <wpc:parameter name="StandardizeOSUSAddressReply" variable="StandardOSUSAddressReply"/>
+                </wpc:output>
+                <bpws:catch faultMessageType="ns3:StandardizeOSUSAddress2X2_SimpleFaultReplyMsg" faultName="ns3:SimpleFaultReply" faultVariable="SimpleFaultReplyVariable1" wpc:id="110" wpc:variableId="32">
+                  <bpws:sequence name="HiddenSequence5" wpc:id="1073741869">
+                    <bpws:invoke name="LogFault1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Fault" wpc:id="33">
+                      <wpc:script>
+                        <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "SimpleFault returned from OSUSAddressStandardization: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFaultReplyVariable1, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;SimpleFault returned from OSUSAddressStandardization: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFaultReplyVariable1" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                      </wpc:script>
+                    </bpws:invoke>
+                    <bpws:assign name="AssignFaultText2" wpc:displayName="Assign Fault Text" wpc:id="51">
+                      <bpws:copy>
+                        <bpws:from part="SimpleFaultReply" variable="SimpleFaultReplyVariable1">
+                          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                        </bpws:from>
+                        <bpws:to variable="SimpleFault">
+                          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                        </bpws:to>
+                      </bpws:copy>
+                    </bpws:assign>
+                    <bpws:invoke name="LogReply2" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Reply" wpc:id="85">
+                      <wpc:script>
+                        <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Replying with SimpleFault: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFault, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Replying with SimpleFault: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFault" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                      </wpc:script>
+                    </bpws:invoke>
+                    <bpws:reply faultName="ns2:SimpleFaultReply" name="ReplyFault1" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Reply Fault" wpc:id="74">
+                      <wpc:input>
+                        <wpc:parameter name="SimpleFault" variable="SimpleFault"/>
+                      </wpc:input>
+                    </bpws:reply>
+                    <bpws:terminate name="Terminate1" wpc:displayName="Terminate" wpc:id="48"/>
+                  </bpws:sequence>
+                </bpws:catch>
+              </bpws:invoke>
+              <bpws:assign name="AssignReplyFields1" wpc:displayName="Assign Reply Fields" wpc:id="94">
+                <bpws:copy>
+                  <bpws:from variable="StandardOSUSAddressReply">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StandardizedAddress"/>
+                </bpws:copy>
+                <bpws:copy>
+                  <bpws:from variable="StandardOSUSAddressReply">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusInformation/StatusCode]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="StatusInformation">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusCode]]></bpws:query>
+                  </bpws:to>
+                </bpws:copy>
+              </bpws:assign>
+              <bpws:invoke name="AddtoHazardousAreaandErrorList" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Add to HazardousArea and Error List" wpc:id="96">
+                <wpc:script>
+                  <wpc:javaCode><![CDATA[java.util.List __result__2 = StandardOSUSAddressReply.getList("HazardousArea");
+java.util.List __result__1 = HazardousAreaList.getList("HazardousArea");
+boolean __result__3 = __result__1.addAll(__result__2);
+java.util.List __result__5 = StandardOSUSAddressReply.getDataObject("StatusInformation").getList("Error");
+java.util.List __result__4 = ErrorList.getList("Error");
+boolean __result__6 = __result__4.addAll(__result__5);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="HazardousAreaList.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="StandardOSUSAddressReply.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.0/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.1/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="ErrorList.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="StandardOSUSAddressReply.StatusInformation.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.2"/>
+//  <executableGroups executableElements="//@executableElements.3 //@executableElements.4 //@executableElements.5"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:2,1
+//!SMAP!2:1,1
+//!SMAP!3:3,1
+//!SMAP!4:5,1
+//!SMAP!5:4,1
+//!SMAP!6:6,1
+//!SMAP!1000000:65,1]]></wpc:javaCode>
+                </wpc:script>
+              </bpws:invoke>
+            </bpws:sequence>
+          </bpws:otherwise>
+        </bpws:switch>
+        <bpws:switch name="Choice" wpc:displayName="Choice" wpc:id="70">
+          <bpws:case wpc:id="72">
+            <bpws:condition expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/"><![CDATA[boolean __result__1 = StatusInformation.getString("StatusCode").toUpperCase().equals("E");
+if (__result__1){
+	boolean __result__4 = false;
+	return __result__4;
+}
+else{
+	boolean __result__7 = true;
+	return __result__7;
+}
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <result name="Result">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </result>
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="StatusInformation.StatusCode.toUpperCase().equals(&quot;E&quot;)" assignable="false">
+//    <dataOutputs target="//@executableElements.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.0/@dataOutputs.0">
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="false" assignable="false">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//      <condition value="true"/>
+//    </conditionalActivities>
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="true" assignable="false">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.0/@dataOutputs.0"/>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//      <condition value=""/>
+//    </conditionalActivities>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:3,1
+//!SMAP!5:4,1
+//!SMAP!7:7,1
+//!SMAP!8:8,1
+//!SMAP!1000000:56,1]]></bpws:condition>
+            <bpws:switch name="GetFlood" wpc:displayName="Get Flood?" wpc:id="12">
+              <bpws:case wpc:id="13">
+                <bpws:condition><![CDATA[boolean __result__1 = GetLocationRequest.getList("AdditionalOptionsText") == null;
+if (__result__1){
+	boolean __result__4 = false;
+	return __result__4;
+}
+else{
+	java.util.List __result__7 = GetLocationRequest.getList("AdditionalOptionsText");
+	boolean __result__8;
+	{// is list empty
+		__result__8 = __result__7.isEmpty();
+	}
+	if (__result__8){
+		boolean __result__11 = false;
+		return __result__11;
+	}
+	else{
+		java.lang.String __result__15 = "FloodInformation";
+		java.util.List __result__14 = GetLocationRequest.getList("AdditionalOptionsText");
+		boolean __result__16;
+		{// list contains item
+			__result__16 = __result__14.contains(__result__15);
+		}
+		if (__result__16){
+			boolean __result__19 = true;
+			return __result__19;
+		}
+		else{
+			boolean __result__22 = false;
+			return __result__22;
+		}
+	}
+}
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <result name="Result">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </result>
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest.AdditionalOptionsText == null" assignable="false">
+//    <dataOutputs target="//@executableElements.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.0/@dataOutputs.0">
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="false" assignable="false">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//      <condition value="true"/>
+//    </conditionalActivities>
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest.AdditionalOptionsText" field="true">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@parameters.0"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:LibraryActivity" name="is list empty" description="Return true if the list is empty, false otherwise" category="list" template="&lt;%return%> &lt;%list%>.isEmpty();">
+//        <parameters name="list" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.0/@dataOutputs.0" displayName="parameter">
+//          <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//        </parameters>
+//        <result name="isEmpty" displayName="is empty">
+//          <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2"/>
+//          <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//        </result>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@result/@dataOutputs.0">
+//        <conditionalActivities>
+//          <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="false" assignable="false">
+//            <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.0/@executableElements.1"/>
+//            <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//          <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.0/@executableElements.1"/>
+//          <condition value="true"/>
+//        </conditionalActivities>
+//        <conditionalActivities>
+//          <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest.AdditionalOptionsText" field="true">
+//            <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.2/@parameters.0"/>
+//            <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;FloodInformation&quot;" assignable="false">
+//            <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.2/@parameters.1"/>
+//            <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:LibraryActivity" name="list contains item" description="Return true if the list contains the provided Object" category="list" template="&lt;%return%> &lt;%list%>.contains(&lt;%object%>);">
+//            <parameters name="list" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.0/@dataOutputs.0" displayName="list">
+//              <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//            </parameters>
+//            <parameters name="object" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.1/@dataOutputs.0" displayName="object">
+//              <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.Object"/>
+//            </parameters>
+//            <result name="contains" displayName="contains">
+//              <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3"/>
+//              <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//            </result>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.2/@result/@dataOutputs.0">
+//            <conditionalActivities>
+//              <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="true" assignable="false">
+//                <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.1"/>
+//                <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//              </executableElements>
+//              <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//              <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.1"/>
+//              <condition value="true"/>
+//            </conditionalActivities>
+//            <conditionalActivities>
+//              <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="false" assignable="false">
+//                <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.1"/>
+//                <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//              </executableElements>
+//              <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.0/@dataOutputs.0"/>
+//              <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.1"/>
+//              <condition value=""/>
+//            </conditionalActivities>
+//          </executableElements>
+//          <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.1 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.2 //@executableElements.1/@conditionalActivities.1/@executableElements.2/@conditionalActivities.1/@executableElements.3"/>
+//          <condition value=""/>
+//        </conditionalActivities>
+//      </executableElements>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.1 //@executableElements.1/@conditionalActivities.1/@executableElements.2"/>
+//      <condition value=""/>
+//    </conditionalActivities>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:3,1
+//!SMAP!5:4,1
+//!SMAP!7:7,1
+//!SMAP!8:8,4
+//!SMAP!9:12,1
+//!SMAP!11:13,1
+//!SMAP!12:14,1
+//!SMAP!14:18,1
+//!SMAP!15:17,1
+//!SMAP!16:19,4
+//!SMAP!17:23,1
+//!SMAP!19:24,1
+//!SMAP!20:25,1
+//!SMAP!22:28,1
+//!SMAP!23:29,1
+//!SMAP!1000000:153,1]]></bpws:condition>
+                <bpws:switch name="Country" wpc:displayName="Country" wpc:id="14">
+                  <bpws:case wpc:id="15">
+                    <bpws:condition expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/"><![CDATA[boolean __result__1 = (GetLocationRequest.getDataObject("StandardizedAddress").getString("ISOCountryCode") == null ? "GB" == null : GetLocationRequest.getDataObject("StandardizedAddress").getString("ISOCountryCode").equals("GB"));
+if (__result__1){
+	boolean __result__4 = true;
+	return __result__4;
+}
+else{
+	boolean __result__7 = (GetLocationRequest.getDataObject("StandardizedAddress").getString("ISOCountryCode") == null ? "IE" == null : GetLocationRequest.getDataObject("StandardizedAddress").getString("ISOCountryCode").equals("IE"));
+	if (__result__7){
+		boolean __result__10 = true;
+		return __result__10;
+	}
+	else{
+		boolean __result__13 = false;
+		return __result__13;
+	}
+}
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <result name="Result">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </result>
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest.StandardizedAddress.ISOCountryCode ==&quot;GB&quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.0/@dataOutputs.0">
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="true" assignable="false">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//      <condition value="true"/>
+//    </conditionalActivities>
+//    <conditionalActivities>
+//      <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationRequest.StandardizedAddress.ISOCountryCode ==&quot;IE&quot;" assignable="false">
+//        <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//        <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//      </executableElements>
+//      <executableElements xsi:type="com.ibm.wbit.activity:BranchElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.0/@dataOutputs.0">
+//        <conditionalActivities>
+//          <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="true" assignable="false">
+//            <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//            <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.0/@executableElements.0/@dataOutputs.0"/>
+//          <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.0/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.0/@executableElements.1"/>
+//          <condition value="true"/>
+//        </conditionalActivities>
+//        <conditionalActivities>
+//          <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="false" assignable="false">
+//            <dataOutputs target="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//            <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//          </executableElements>
+//          <executableElements xsi:type="com.ibm.wbit.activity:ReturnElement" dataInputs="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.1/@executableElements.0/@dataOutputs.0"/>
+//          <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//          <condition value=""/>
+//        </conditionalActivities>
+//      </executableElements>
+//      <executableGroups executableElements="//@executableElements.1/@conditionalActivities.1/@executableElements.0 //@executableElements.1/@conditionalActivities.1/@executableElements.1"/>
+//      <condition value=""/>
+//    </conditionalActivities>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:3,1
+//!SMAP!5:4,1
+//!SMAP!7:7,1
+//!SMAP!8:8,1
+//!SMAP!10:9,1
+//!SMAP!11:10,1
+//!SMAP!13:13,1
+//!SMAP!14:14,1
+//!SMAP!1000000:86,1]]></bpws:condition>
+                    <bpws:sequence name="HiddenSequence3" wpc:id="1073741845">
+                      <bpws:assign name="AssignRequestFields1" wpc:displayName="Assign Request Fields" wpc:id="22">
+                        <bpws:copy>
+                          <bpws:from variable="StandardOSUSAddressReply">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress/ISOCountryCode]]></bpws:query>
+                          </bpws:from>
+                          <bpws:to variable="UKFloodInformationRequest">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[ISOCountryCode]]></bpws:query>
+                          </bpws:to>
+                        </bpws:copy>
+                        <bpws:copy>
+                          <bpws:from variable="StandardOSUSAddressReply">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress/Latitude]]></bpws:query>
+                          </bpws:from>
+                          <bpws:to variable="UKFloodInformationRequest">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[Latitude]]></bpws:query>
+                          </bpws:to>
+                        </bpws:copy>
+                        <bpws:copy>
+                          <bpws:from variable="StandardOSUSAddressReply">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress/Longitude]]></bpws:query>
+                          </bpws:from>
+                          <bpws:to variable="UKFloodInformationRequest">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[Longitude]]></bpws:query>
+                          </bpws:to>
+                        </bpws:copy>
+                        <bpws:copy>
+                          <bpws:from variable="StandardOSUSAddressReply">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StandardizedAddress/GeoCodingStatusCode]]></bpws:query>
+                          </bpws:from>
+                          <bpws:to variable="UKFloodInformationRequest">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[GeoCodingStatusCode]]></bpws:query>
+                          </bpws:to>
+                        </bpws:copy>
+                      </bpws:assign>
+                      <bpws:invoke name="LogUKFlood" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log UK Flood" wpc:id="60">
+                        <wpc:script>
+                          <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Invoking UKFloodInformationLOC802X1 with request: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, UKFloodInformationRequest, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Invoking UKFloodInformationLOC802X1 with request: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="UKFloodInformationRequest" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="GetUKFloodInformationRequest" namespace="http://ei/location/get_uk_flood_information_request_loc802x1"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                        </wpc:script>
+                      </bpws:invoke>
+                      <bpws:invoke name="InvokeELGPS212" operation="GetUKFloodInformation" partnerLink="UKFloodInformationRetrievalLOC802X1Partner" portType="ns4:UKFloodInformationRetrievalLOC802X1" wpc:continueOnError="inherit" wpc:displayName="Invoke ELGPS212" wpc:id="16">
+                        <wpc:input>
+                          <wpc:parameter name="GetUKFloodInformationRequest" variable="UKFloodInformationRequest"/>
+                        </wpc:input>
+                        <wpc:output>
+                          <wpc:parameter name="GetUKFloodInformationReply" variable="UKFloodInformationReply"/>
+                        </wpc:output>
+                        <bpws:catch faultMessageType="ns4:GetUKFloodInformation_SimpleFaultReplyMsg" faultName="ns4:SimpleFaultReply" faultVariable="SimpleFaultReplyVariable2" wpc:id="111" wpc:variableId="36">
+                          <bpws:sequence name="HiddenSequence6" wpc:id="1073741873">
+                            <bpws:invoke name="LogFault2" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Fault" wpc:id="37">
+                              <wpc:script>
+                                <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "SimpleFault returned from UKFloodInformationLOC802X1: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFaultReplyVariable2, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;SimpleFault returned from UKFloodInformationLOC802X1: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFaultReplyVariable2" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                              </wpc:script>
+                            </bpws:invoke>
+                            <bpws:assign name="AssignFaultText1" wpc:displayName="Assign Fault Text" wpc:id="55">
+                              <bpws:copy>
+                                <bpws:from part="SimpleFaultReply" variable="SimpleFaultReplyVariable2">
+                                  <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                                </bpws:from>
+                                <bpws:to variable="SimpleFault">
+                                  <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[FaultMessageText]]></bpws:query>
+                                </bpws:to>
+                              </bpws:copy>
+                            </bpws:assign>
+                            <bpws:invoke name="LogReply3" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Reply" wpc:id="86">
+                              <wpc:script>
+                                <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Replying with SimpleFault: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, SimpleFault, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Replying with SimpleFault: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="SimpleFault" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="SimpleFault" namespace="http://ei/core/simplefault"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+                              </wpc:script>
+                            </bpws:invoke>
+                            <bpws:reply faultName="ns2:SimpleFaultReply" name="ReplyFault3" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Reply Fault" wpc:id="76">
+                              <wpc:input>
+                                <wpc:parameter name="SimpleFault" variable="SimpleFault"/>
+                              </wpc:input>
+                            </bpws:reply>
+                            <bpws:terminate name="Terminate2" wpc:displayName="Terminate" wpc:id="50"/>
+                          </bpws:sequence>
+                        </bpws:catch>
+                      </bpws:invoke>
+                      <bpws:assign name="AssignReplyFields2" wpc:displayName="Assign Reply Fields" wpc:id="98">
+                        <bpws:copy>
+                          <bpws:from variable="UKFloodInformationReply">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusInformation/StatusCode]]></bpws:query>
+                          </bpws:from>
+                          <bpws:to variable="StatusInformation">
+                            <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusCode]]></bpws:query>
+                          </bpws:to>
+                        </bpws:copy>
+                      </bpws:assign>
+                      <bpws:invoke name="AddtoHazardousAreaandErrorList1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Add to HazardousArea and Error List" wpc:id="99">
+                        <wpc:script>
+                          <wpc:javaCode><![CDATA[java.util.List __result__2 = UKFloodInformationReply.getList("HazardousArea");
+java.util.List __result__1 = HazardousAreaList.getList("HazardousArea");
+boolean __result__3 = __result__1.addAll(__result__2);
+java.util.List __result__5 = UKFloodInformationReply.getDataObject("StatusInformation").getList("Error");
+java.util.List __result__4 = ErrorList.getList("Error");
+boolean __result__6 = __result__4.addAll(__result__5);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="HazardousAreaList.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="UKFloodInformationReply.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.0/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.1/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="ErrorList.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="UKFloodInformationReply.StatusInformation.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.2"/>
+//  <executableGroups executableElements="//@executableElements.3 //@executableElements.4 //@executableElements.5"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:2,1
+//!SMAP!2:1,1
+//!SMAP!3:3,1
+//!SMAP!4:5,1
+//!SMAP!5:4,1
+//!SMAP!6:6,1
+//!SMAP!1000000:65,1]]></wpc:javaCode>
+                        </wpc:script>
+                      </bpws:invoke>
+                    </bpws:sequence>
+                  </bpws:case>
+                </bpws:switch>
+              </bpws:case>
+              <bpws:otherwise wpc:id="112">
+                <bpws:empty name="EmptyAction" wpc:displayName="EmptyAction" wpc:id="103"/>
+              </bpws:otherwise>
+            </bpws:switch>
+          </bpws:case>
+          <bpws:otherwise wpc:id="113">
+            <bpws:invoke name="LogErrors" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Errors" wpc:id="71">
+              <wpc:script>
+                <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Error(s) returned from AddressStandardizationLOC2X2.  Return to consumer without retrieving additional location information.";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+commonj.sdo.DataObject __result__11 = GetLocationReply.getDataObject("StatusInformation");
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, __result__11, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Error(s) returned from AddressStandardizationLOC2X2.  Return to consumer without retrieving additional location information.&quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationReply.StatusInformation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="StatusInformation" namespace="http://ei/core/status_informationx1"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:11,1
+//!SMAP!11:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:12,1
+//!SMAP!1000000:126,1]]></wpc:javaCode>
+              </wpc:script>
+            </bpws:invoke>
+          </bpws:otherwise>
+        </bpws:switch>
+      </bpws:sequence>
+    </bpws:scope>
+    <bpws:assign name="AssignReplyFields3" wpc:displayName="Assign Reply Fields" wpc:id="90">
+      <bpws:copy>
+        <bpws:from variable="StandardizedAddress"/>
+        <bpws:to variable="GetLocationReply">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[Location/StandardizedAddress]]></bpws:query>
+        </bpws:to>
+      </bpws:copy>
+      <bpws:copy>
+        <bpws:from variable="StatusInformation">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusCode]]></bpws:query>
+        </bpws:from>
+        <bpws:to variable="GetLocationReply">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[StatusInformation/StatusCode]]></bpws:query>
+        </bpws:to>
+      </bpws:copy>
+    </bpws:assign>
+    <bpws:invoke name="AssignHazardousAreaandErrorList" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Assign HazardousArea and Error List" wpc:id="100">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[java.util.List __result__2 = HazardousAreaList.getList("HazardousArea");
+java.util.List __result__1 = GetLocationReply.getDataObject("Location").getList("HazardousArea");
+boolean __result__3 = __result__1.addAll(__result__2);
+java.util.List __result__5 = ErrorList.getList("Error");
+java.util.List __result__4 = GetLocationReply.getDataObject("StatusInformation").getList("Error");
+boolean __result__6 = __result__4.addAll(__result__5);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationReply.Location.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="HazardousAreaList.HazardousArea" field="true">
+//    <dataOutputs target="//@executableElements.2/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.0/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.1/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationReply.StatusInformation.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="ErrorList.Error" field="true">
+//    <dataOutputs target="//@executableElements.5/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="addAll" category="java.util.List" className="java.util.List" memberName="addAll">
+//    <parameters name="List" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.List"/>
+//    </parameters>
+//    <parameters name="c" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.Collection&lt;? extends E>"/>
+//    </parameters>
+//    <result>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="boolean"/>
+//    </result>
+//  </executableElements>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1 //@executableElements.2"/>
+//  <executableGroups executableElements="//@executableElements.3 //@executableElements.4 //@executableElements.5"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:2,1
+//!SMAP!2:1,1
+//!SMAP!3:3,1
+//!SMAP!4:5,1
+//!SMAP!5:4,1
+//!SMAP!6:6,1
+//!SMAP!1000000:65,1]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
+    <bpws:invoke name="LogReply" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Log Reply" wpc:id="61">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[ei.core.logger.LocationRetrievalLOC3X2Logger __result__1 = ei.core.logger.LocationRetrievalLOC3X2Logger.getLogger();
+ei.core.logger.LocationRetrievalLOC3X2Logger logger = __result__1;
+java.lang.String __result__7 = logger.LOC3X2_GetLocation;
+java.lang.String __result__6 = logger.MODULE_NAME;
+java.lang.String __result__5 = "Returning to consumer with reply: ";
+java.util.logging.Level __result__4 = logger.INFO;
+logger.log(__result__4, __result__5, __result__6, __result__7);
+java.lang.String __result__13 = logger.LOC3X2_GetLocation;
+java.lang.String __result__12 = logger.MODULE_NAME;
+java.util.logging.Level __result__10 = logger.INFO;
+logger.log(__result__10, GetLocationReply, __result__12, __result__13);
+
+//@generated:com.ibm.wbit.activity.ui
+//<?xml version="1.0" encoding="UTF-8"?>
+//<com.ibm.wbit.activity:CompositeActivity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.activity="http:///com/ibm/wbit/activity.ecore" name="ActivityMethod">
+//  <exceptions>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="com.ibm.bpe.api.ProcessException"/>
+//  </exceptions>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="getLogger" category="ei.core.logger.LocationRetrievalLOC3X2Logger" className="ei.core.logger.LocationRetrievalLOC3X2Logger" static="true" memberName="getLogger">
+//    <result>
+//      <dataOutputs target="//@executableElements.1"/>
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//    </result>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" dataInputs="//@executableElements.0/@result/@dataOutputs.0" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="&quot;Returning to consumer with reply: &quot;" assignable="false">
+//    <dataOutputs target="//@executableElements.7/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.7/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.2/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.3/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="msg" dataInputs="//@executableElements.4/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.5/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.6/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger" localVariable="//@localVariables.0" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.0"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.INFO" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.1"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="GetLocationReply" variable="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.2"/>
+//    <type xsi:type="com.ibm.wbit.activity:XSDElementType" name="GetLocationReply" namespace="http://ei/location/get_location_reply_loc3x2b"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.MODULE_NAME" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.3"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:Expression" value="logger.LOC3X2_GetLocation" field="true">
+//    <dataOutputs target="//@executableElements.13/@parameters.4"/>
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//  </executableElements>
+//  <executableElements xsi:type="com.ibm.wbit.activity:JavaActivity" name="log" category="ei.core.logger.ICCLogger" className="ei.core.logger.ICCLogger" memberName="log">
+//    <parameters name="ICCLogger" dataInputs="//@executableElements.8/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.ICCLogger"/>
+//    </parameters>
+//    <parameters name="level" dataInputs="//@executableElements.9/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.util.logging.Level"/>
+//    </parameters>
+//    <parameters name="dataObject" dataInputs="//@executableElements.10/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="commonj.sdo.DataObject"/>
+//    </parameters>
+//    <parameters name="sourceClassName" dataInputs="//@executableElements.11/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//    <parameters name="sourceMethodName" dataInputs="//@executableElements.12/@dataOutputs.0">
+//      <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="java.lang.String"/>
+//    </parameters>
+//  </executableElements>
+//  <localVariables name="logger">
+//    <type xsi:type="com.ibm.wbit.activity:JavaElementType" name="ei.core.logger.LocationRetrievalLOC3X2Logger"/>
+//  </localVariables>
+//  <executableGroups executableElements="//@executableElements.0 //@executableElements.1"/>
+//  <executableGroups executableElements="//@executableElements.2 //@executableElements.3 //@executableElements.4 //@executableElements.5 //@executableElements.6 //@executableElements.7"/>
+//  <executableGroups executableElements="//@executableElements.8 //@executableElements.9 //@executableElements.10 //@executableElements.11 //@executableElements.12 //@executableElements.13"/>
+//</com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG
+//!SMAP!*L
+//!SMAP!1:1,1
+//!SMAP!2:2,1
+//!SMAP!4:6,1
+//!SMAP!5:5,1
+//!SMAP!6:4,1
+//!SMAP!7:3,1
+//!SMAP!8:7,1
+//!SMAP!10:10,1
+//!SMAP!12:9,1
+//!SMAP!13:8,1
+//!SMAP!14:11,1
+//!SMAP!1000000:124,1]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
+    <bpws:reply name="Reply" operation="GetLocation3X2B" partnerLink="LocationRetrievalLOC3X2B" portType="ns2:LocationRetrievalLOC3X2B" wpc:displayName="Reply" wpc:id="3">
+      <wpc:input>
+        <wpc:parameter name="GetLocationReply" variable="GetLocationReply"/>
+      </wpc:input>
+    </bpws:reply>
+  </bpws:sequence>
+</bpws:process>

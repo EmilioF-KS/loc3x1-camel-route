@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/addressx1"
+	targetNamespace="http://ei/location/standardized_address">
+
+
+	<xsd:import namespace="http://ei/core/addressx1"
+		schemaLocation="AddressX1.xsd" />
+
+	<xsd:complexType name="StandardizedAddress">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:Address">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="BuildingName"
+						type="xsd:string">
+						<xsd:annotation>
+          <xsd:documentation>This element contains the name of a building at a specific address. </xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="StreetNumber"
+						type="xsd:string">
+						<xsd:annotation>
+          <xsd:documentation>This element contains the number assigned to the building at a specific address.</xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="PreDirectionalAbbreviation" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains a code which identifies the direction that appears before the Street Name in an Address.
+Valid values for this element are 'N' - North, 'E' - East, 'S' - South, 'W' - West, 'NE' Northeast, 'NW' - Northwest, 'SE' - Southeast, and 'SW' - Southwest.
+
+
+</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="StreetName"
+						type="xsd:string">
+						<xsd:annotation>
+          <xsd:documentation>This element contains the name of a street at a specific address. </xsd:documentation>
+        </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="StreetSuffixAbbreviation" type="xsd:string">
+						<xsd:annotation>
+              
+            <xsd:documentation>This element contains an abbreviation which represents the suffix portion of the street address.   
+Some valid options for this element are  'ST' - Street, 'AVE' - Avenue, 'DR'  - Drive.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="PostDirectionalAbbreviation" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains a code which identifies the direction that appears after the Street Name and Street Suffix Abbreviation in an Address.
+Valid values for this element are 'N' - North, 'E' - East, 'S' - South, 'W' - West, 'NE' Northeast, 'NW' - Northwest, 'SE' - Southeast, and 'SW' - Southwest.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="AddressUnitNumber"
+						type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains the number assigned to a unit, which can be a suite or apartment.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="AddressUnitTypeAbbreviation" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains an abbreviation that represents the type of the Unit.
+Some valid options for this element are 'APT' - Apartment, 'FL' - Floor, and 'STE' - Suite.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="DeliveryPointNumber" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains a specific number between 00 and 99 assigned to every US Postal Address.  This is used as the last two digits in the delivery point bar code.
+
+</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="Latitude"
+						type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains the angular distance north or south of the earth's equator, measured in degrees.
+Valid values for this element are from -90 degrees (South Pole) to +90 degrees. (North Pole)
+
+</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="Longitude"
+						type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains the angular distance east or west from the prime meridian at Greenwich, England, measured in degrees.
+Valid values for this element are from -90 degrees to +90 degrees.
+</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="FIPSCountyCode"
+						type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a last three digits of the  five-digit Federal Information Processing Standard (FIPS) code which uniquely identifies counties and county equivalents in the United States. </xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="FIPSStateCode"
+						type="xsd:string">
+						<xsd:annotation><xsd:documentation>This element contains a first two digits of the  five-digit Federal Information Processing Standard (FIPS) code which uniquely identifies a state in the United States. </xsd:documentation></xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

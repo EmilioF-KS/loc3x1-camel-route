@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/status_informationx2"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/error_information">
+	<xsd:import schemaLocation="ErrorInformation.xsd"
+		namespace="http://ei/core/error_information">
+	</xsd:import>
+	<xsd:complexType name="StatusInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ErrorInformation"
+				type="bons0:ErrorInformation" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StatusCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies a code that identifies the type of error.
+
+Valid values are 
+'S' for Sucess, 'E' for Error or 'W' for Warning.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

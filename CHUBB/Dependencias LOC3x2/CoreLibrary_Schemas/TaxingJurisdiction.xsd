@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/line_of_business_tax_ratex1"
+	targetNamespace="http://ei/core/taxing_jurisdiction">
+	<xsd:import namespace="http://ei/core/line_of_business_tax_ratex1"
+		schemaLocation="LineOfBusinessTaxRateX1.xsd">
+	</xsd:import>
+	<xsd:complexType name="TaxingJurisdiction">
+		<xsd:annotation>
+      <xsd:documentation>This element contains the code for the Taxing Jurisidction, for the Taxing Jurisidction contained in the name element.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="LineOfBusinessTaxRate" type="bons0:LineOfBusinessTaxRate">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TaxingJurisdictionTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the type of taxing jurisidiction.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TaxingJurisdictionCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the code for the Taxing Jurisidiction, for the Taxing Jurisidiction contained in the name element</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TaxingJurisdictionName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name for the Taxing Jurisidction.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

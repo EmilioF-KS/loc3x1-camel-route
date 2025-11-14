@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/mortgagee_invoice_document" xmlns:bons1="http://ei/core/addressx5">
+	<xsd:import namespace="http://ei/core/addressx5" schemaLocation="AddressX5.xsd">
+	</xsd:import>
+	<xsd:complexType name="MortgageeInvoiceDocument">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="RiskLocationAddress" type="bons1:Address">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BillPayorMailingAddress" type="bons1:Address">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentCreationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the date a document was created. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BillAccountId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains a unique identifier assigned to the Billing Account.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BillAccountNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the Chubb billing account, which is used to track payments on one or more Chubb Policies for an Insured.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="BillAccountInsuredName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the Insured Name aggregated across multiple policies to the Billing Account level.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="BillTo1To40Name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the first 40 characters of the Bill Payor Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BillTo41To80Name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the last 40 characters of the Bill Payor Name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PolicyNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element identifies an insurance contract.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyTermInceptionDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the inception date of a policy term. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyTermExpirationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the expiration date of a policy term. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LoanNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the number that identifies a loan.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="ProducerNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element is a Chubb ID number for an agent or broker
+This is also known as the Agent Number.
+The AGTAGDA1 Corporate Table contains valid values for this element in the "AGT_N" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InvoiceVendorSentDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the date the invoice is sent out to an external print vendor.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InvoiceDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the date the billing invoice was sent.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InvoiceNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the number that identifies an invoice.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InstallmentAmount" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation>This element is the amount due for an account or policy for a specific payment period.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InstallmentDueDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This element specifies the date that a payment is due.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InvoiceIssueStatusDescription" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element describes the status of issuing the invoice.  ("Issued" | "Not Invoiced,  No payment due at this time" | "Pending") </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="InvoiceDeliveryMethodName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element describes the method by which an invoice was delivered. ("ELECTRONIC" | "FAX" | "EMAIL | "PRINT" | "CERTIFICATE OF MAIL")</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

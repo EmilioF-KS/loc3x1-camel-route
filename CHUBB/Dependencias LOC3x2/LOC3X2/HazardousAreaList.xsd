@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://LocationServicesLOC3X2" xmlns:bons0="http://ei/core/hazardous_area" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/hazardous_area" schemaLocation="../Schemas/HazardousArea.xsd">
+	</xsd:import>
+	<xsd:complexType name="HazardousAreaList">
+		<xsd:sequence>
+
+
+
+
+
+
+
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="HazardousArea" type="bons0:HazardousArea">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

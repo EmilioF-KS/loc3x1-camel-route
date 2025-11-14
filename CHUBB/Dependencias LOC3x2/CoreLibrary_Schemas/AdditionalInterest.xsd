@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/additional_interest" xmlns:bons1="http://ei/core/business_party_characteristic" xmlns:bons2="http://ei/core/typed_addressx3" xmlns:bons3="http://ei/core/business_party_covered_risk_interest" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/typed_addressx3" schemaLocation="TypedAddressX3.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/business_party_characteristic" schemaLocation="BusinessPartyCharacteristic.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/business_party_covered_risk_interest" schemaLocation="BusinessPartyCoveredRiskInterest.xsd"/>
+
+
+	<xsd:complexType name="AdditionalInterest">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="BusinessPartyCoveredRiskInterest" type="bons3:BusinessPartyCoveredRiskInterest">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="BusinessPartyCharacteristic" type="bons1:BusinessPartyCharacteristic">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="TypedAddress" type="bons2:TypedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdditionalInterestSequenceNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This elements contains a sequential number that is incremented each time a new additional interest is added.    
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdditionalInterestName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the Additional Interest.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AdditionalInterestTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the type of additional interest.
+Some possible values include Trust, LCC, or Additional Interest.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="EnterpriseBPRoleCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that represents the function or position a specific business party may play on a Policy or Service Offering for a given enterprise.
+The E1T01611 Corporate Table contains valid values for this element in the "ENTRP_BP_ROLE_C" column. 
+
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnterpriseBPRoleName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the function or position a specific business party may play on a Policy or Service Offering for a given enterprise.
+The E1T01611 Corporate Table contains valid values for this element in the "ENTRP_BP_ROLE_NA" column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPEntityTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the legal nature of the business party. (i.e., individual or organization).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LoanNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the number that identifies a loan.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyCopyIndicator" type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates if a copy of the Policy is to be sent to a Business Party.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="AdditionalInterestOFACRequestedDate" type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This is the date when the Office of Foreign Assets Control search was requested for the Additional Interest.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="MessageAdditionalInterestId" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an Id assigned for the  lifetime of the message that will be used to identify the Additional Interest.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

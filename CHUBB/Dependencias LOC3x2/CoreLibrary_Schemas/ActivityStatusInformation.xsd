@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/activity_status_information" xmlns:bons0="http://ei/crm/detailed_error" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://ei/crm/detailed_error" schemaLocation="DetailedError.xsd"/>
+	<xsd:complexType name="ActivityStatusInformation">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="DetailedError" type="bons0:DetailedError">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StatusCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies a code that identifies the type of error.
+
+Valid values are 
+'S' for Sucess, 'E' for Error or 'W' for Warning.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="ActivityTypeCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies the type of activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies the type of activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ServiceInterfaceName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the name of the service interface (e.g. ProducerValidationPRD1X2).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityStartTimestamp" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the start time of the activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityEndTimestamp" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the end time of the activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
