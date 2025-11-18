@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://ei/location/location_retrieval_loc3x1m" xmlns:ns2="http://ei/location/location_retrieval_loc3x1" xmlns:ns3="http://service.rand.chubb.com" xmlns:ns4="http://ei/location/location_retrieval_loc3x1b" xmlns:ns5="http://ei/core/endpoint_retrieval_sas809x1" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="LocationRetrievalLOC3X1Mediation" name="LocationRetrievalLOC3X1Mediation">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:LocationRetrievalLOC3X1M">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns2:LocationRetrievalLOC3X1">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="RandAccessPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns3:RandAccess"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="RandAccessPartner"/>
+    </reference>
+    <reference name="LocationRetrievalLOC3X1BPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns4:LocationRetrievalLOC3X1B"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="LocationRetrievalLOC3X1Process"/>
+    </reference>
+    <reference name="EndpointRetrievalSAS809X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns5:EndpointRetrievalSAS809X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="EndpointRetrievalSAS809X1Partner"/>
+    </reference>
+  </references>
+  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="LocationRetrievalLOC3X1Mediation.mfc">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+  </implementation>
+</scdl:component>
