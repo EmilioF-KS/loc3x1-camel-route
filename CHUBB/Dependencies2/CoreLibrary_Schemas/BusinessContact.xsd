@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/business_contact"
+	xmlns:bons0="http://ei/core/typed_address"
+	xmlns:bons1="http://ei/core/phone_information"
+	xmlns:bons2="http://ei/core/email_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/email_information"
+		schemaLocation="EmailInformation.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/phone_information"
+		schemaLocation="PhoneInformation.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/typed_address"
+		schemaLocation="TypedAddress.xsd">
+	</xsd:import>
+	<xsd:complexType name="BusinessContact">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="TypedAddress" type="bons0:TypedAddress">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="PhoneInformation" type="bons1:PhoneInformation">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="EmailInformation" type="bons2:EmailInformation">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContactName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the individual who acts as the contact.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContactTypeCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code which identifies the type of contact that an individual is in relation to the business.   Valid values  for this element can be found in application specific reference tables.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+
+			<xsd:element minOccurs="0" name="BusinessName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of a business.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContactTitleName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the contact person's job title.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContactOrderPreferenceTypeNumber" type="xsd:int">
+				<xsd:annotation><xsd:documentation>This element contains a number which identifies the ranking order of the contact.  This may translate to a code on the physical database implementation.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

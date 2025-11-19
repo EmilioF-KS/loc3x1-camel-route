@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://LocationServicesLOC3X2" xmlns:bons0="http://ei/core/error" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/error" schemaLocation="../Schemas/Error.xsd">
+	</xsd:import>
+	<xsd:complexType name="ErrorList">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="Error" type="bons0:Error">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

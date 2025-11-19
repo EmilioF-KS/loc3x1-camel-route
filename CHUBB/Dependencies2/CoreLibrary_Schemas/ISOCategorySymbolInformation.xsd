@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/iso_category_symbol_information"
+	xmlns:bons0="http://ei/core/iso_symbol_information">
+	<xsd:import schemaLocation="ISOSymbolInformation.xsd"
+		namespace="http://ei/core/iso_symbol_information">
+	</xsd:import>
+	<xsd:complexType name="ISOCategorySymbolInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ISOSymbolInformation"
+				type="bons0:ISOSymbolInformation" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SymbolCategoryName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the category the symbol belongs to.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

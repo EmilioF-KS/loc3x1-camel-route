@@ -31,6 +31,7 @@ def synthesize_routes(
     request_xslt: str | None = None,
     reply_xslt: str | None = None,
     provider_uri: str | None = None,
+    allowed_ops: List[str] | None = None,
 ) -> str:
     plan = load_plan(orchestration_plan_path)
     os.makedirs(output_dir, exist_ok=True)
@@ -63,79 +64,79 @@ def synthesize_routes(
             return f"{uri}{sep}connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
         else:
             return "{{{{provider_uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+    if allowed_ops:
+        ops = [op for op in ops if op in allowed_ops]
     if ops:
         for op in ops:
             routes_yaml.append(
                 (
-                    "    - route:\n"
-                    f"        id: {service_name}-{op}-controller\n"
-                    "        from:\n"
-                    f"          uri: platform-http:/{controller_path if controller_path else '{{{{controller_path}}}}'}\n"
+                    "    - from:\n"
+                    f"        uri: platform-http:/loc/{op}\n"
                     "        steps:\n"
-                    "          - set-header:\n"
+                    "          - setHeader:\n"
                     "              name: Content-Type\n"
                     "              constant: application/xml\n"
-                    "          - set-header:\n"
+                    "          - setHeader:\n"
                     "              name: X-Correlation-ID\n"
                     "              simple: \"${exchangeId}\"\n"
                     "          - log:\n"
                     "              message: \"[${header.X-Correlation-ID}] Request received\"\n"
-                    "              level: INFO\n"
-                    "          - xslt:\n"
-                    f"              resourceUri: {request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                    "              loggingLevel: INFO\n"
                     "          - to:\n"
-                    f"              uri: {build_provider_uri(provider_uri)}\n"
-                    "          - xslt:\n"
-                    f"              resourceUri: {reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
+                    f"              uri: xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                    "          - to:\n"
+                    f"              uri: http://localhost:8081/svc/{op}?bridgeEndpoint=true&throwExceptionOnFailure=false&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}\n"
+                    "          - to:\n"
+                    f"              uri: xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
                 )
             )
     else:
         routes_yaml.append(
             (
-                "    - route:\n"
-                f"        id: {service_name}-controller\n"
-                "        from:\n"
-                f"          uri: platform-http:/{controller_path if controller_path else '{{{{controller_path}}}}'}\n"
+                "    - from:\n"
+                f"        uri: platform-http:/loc/{service_name}\n"
                 "        steps:\n"
-                "          - set-header:\n"
+                "          - setHeader:\n"
                 "              name: Content-Type\n"
                 "              constant: application/xml\n"
-                "          - set-header:\n"
+                "          - setHeader:\n"
                 "              name: X-Correlation-ID\n"
                 "              simple: \"${exchangeId}\"\n"
                 "          - log:\n"
                 "              message: \"[${header.X-Correlation-ID}] Request received\"\n"
-                "              level: INFO\n"
-                "          - xslt:\n"
-                f"              resourceUri: {request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                "              loggingLevel: INFO\n"
                 "          - to:\n"
-                f"              uri: {build_provider_uri(provider_uri)}\n"
-                "          - xslt:\n"
-                f"              resourceUri: {reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
+                f"              uri: xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                "          - to:\n"
+                f"              uri: http://localhost:8081/svc/{service_name}?bridgeEndpoint=true&throwExceptionOnFailure=false&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}\n"
+                "          - to:\n"
+                f"              uri: xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
             )
         )
 
     exception_yaml = (
-        "    - on-exception:\n"
-        "        handled: true\n"
-        "        redelivery-policy:\n"
-        "          maximumRedeliveries: {{provider.retry.maxAttempts}}\n"
-        "          redeliveryDelay: {{provider.retry.delayMs}}\n"
+        "    - onException:\n"
+        "        exception: java.lang.Exception\n"
+        "        handled:\n"
+        "          constant: true\n"
+        "        redeliveryPolicy:\n"
+        "          maximumRedeliveries: 3\n"
+        "          redeliveryDelay: 1000\n"
         "        steps:\n"
-        "          - set-header:\n"
+        "          - setHeader:\n"
         "              name: Content-Type\n"
         "              constant: application/xml\n"
-        "          - set-header:\n"
+        "          - setHeader:\n"
         "              name: CamelHttpResponseCode\n"
         "              constant: 500\n"
-        "          - set-body:\n"
+        "          - setBody:\n"
         "              constant: <Error>Internal Server Error</Error>\n"
         "          - log:\n"
         "              message: \"[${header.X-Correlation-ID}] Error handled: ${exception.message}\"\n"
-        "              level: ERROR\n"
+        "              loggingLevel: ERROR\n"
     )
 
-    yaml_text = base_header + "".join(routes_yaml) + exception_yaml
+    yaml_text = base_header + exception_yaml + "".join(routes_yaml)
 
     out_path = os.path.join(output_dir, f"{service_name}.yaml")
     with open(out_path, 'w', encoding='utf-8') as f:

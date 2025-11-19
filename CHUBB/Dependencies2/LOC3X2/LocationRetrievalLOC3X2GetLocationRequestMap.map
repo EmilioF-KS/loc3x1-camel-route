@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocation3X2BRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x2b%257DGetLocation3X2BRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:GetLocationRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x2%257DGetLocationRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LocationRetrievalLOC3X2GetLocationRequestMap="http://Location3MediationModule" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location3MediationModule">
+  <map:name>LocationRetrievalLOC3X2GetLocationRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationRequestMsg:GetLocationRequestMsg" name="GetLocationRequestMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocation3X2BRequestMsg:GetLocation3X2BRequestMsg" name="GetLocation3X2BRequestMsg"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/AdditionalOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocation3X2BRequestMsg" property="GetLocation3X2B/GetLocationRequest/AdditionalOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/StandardizedAddress"/>
+      <map:output businessObjectVariableRef="GetLocation3X2BRequestMsg" property="GetLocation3X2B/GetLocationRequest/StandardizedAddress"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

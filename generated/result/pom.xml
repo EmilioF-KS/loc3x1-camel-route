@@ -14,8 +14,8 @@
     <groupId>com.example</groupId>
     <artifactId>loc-service</artifactId>
     <version>0.1.0</version>
-    <name>loc-service</name>
-    <description>a9-style Spring Boot + Camel YAML scaffold</description>
+    <name>LOC Service</name>
+    <description>LOC service</description>
     <packaging>jar</packaging>
 
     <build>

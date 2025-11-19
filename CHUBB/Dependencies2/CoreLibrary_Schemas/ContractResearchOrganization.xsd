@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/contract_research_organization">
+	<xsd:complexType name="ContractResearchOrganization">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CRONumber"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>Thus element contains the unique number assiged to the Contract Research Organization (CRO) company that is doing business on behalf of the Insured.
+
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CROName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the Contract Research Organization.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CROEffectiveDate"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the effective date of the Contract Research Organization.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

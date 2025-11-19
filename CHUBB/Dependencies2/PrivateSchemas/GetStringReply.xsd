@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/get_string_reply">
+	<xsd:complexType name="GetStringReply">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ContentString" type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ContentType" type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ReturnCode" type="xsd:int">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

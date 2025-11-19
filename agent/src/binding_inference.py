@@ -33,15 +33,22 @@ def resolve_route_placeholders(yaml_path: str, controller_path: str, request_xsl
         if current_op and s.startswith("uri:") and "platform-http:" in s:
             indent = ln.split("uri:")[0]
             new_lines.append(f"{indent}uri: platform-http:/loc/{current_op}")
-            current_op = None
             continue
         # generic replacements
         if "{{request_xslt}}" in ln:
             ln = ln.replace("{{request_xslt}}", request_xslt)
         if "{{reply_xslt}}" in ln:
             ln = ln.replace("{{reply_xslt}}", reply_xslt)
-        if "{{provider.uri}}" in ln:
-            ln = ln.replace("{{provider.uri}}", provider_uri)
+        if "{{provider.uri}}" in ln or "{{provider_uri}}" in ln or "{{{{provider_uri}}}}" in ln:
+            if current_op:
+                prov_local = f"http://localhost:8081/svc/{current_op}?bridgeEndpoint=true"
+                ln = ln.replace("{{provider.uri}}", prov_local)
+                ln = ln.replace("{{provider_uri}}", prov_local)
+                ln = ln.replace("{{{{provider_uri}}}}", prov_local)
+            else:
+                ln = ln.replace("{{provider.uri}}", provider_uri)
+                ln = ln.replace("{{provider_uri}}", provider_uri)
+                ln = ln.replace("{{{{provider_uri}}}}", provider_uri)
         if "resourceUri: {{classpath:" in ln:
             ln = ln.replace("resourceUri: {{classpath:", "resourceUri: classpath:")
         if ln.strip().startswith("resourceUri:") and ln.strip().endswith("}}"):
@@ -51,6 +58,18 @@ def resolve_route_placeholders(yaml_path: str, controller_path: str, request_xsl
             val = parts[1].strip()
             if not (val.startswith('"') and val.endswith('"')):
                 ln = parts[0] + "uri: \"" + val + "\""
+            # unwrap accidental double-braced http URIs such as {{http://...}}
+            v = ln.split("uri:", 1)[1].strip().strip('"')
+            if v.startswith("{{http"):
+                v2 = v.replace("{{http", "http")
+                v2 = v2.replace("}}?", "?")
+                ln = parts[0] + "uri: \"" + v2 + "\""
+        # normalise excessive braces e.g., {{{{x}}}} -> {{x}}
+        if "{{{{" in ln or "}}}}" in ln:
+            ln = ln.replace("{{{{", "{{").replace("}}}}", "}}")
+        # fix duplicated '?' when appending options
+        if "?bridgeEndpoint=true?connectTimeout" in ln:
+            ln = ln.replace("?bridgeEndpoint=true?connectTimeout", "?bridgeEndpoint=true&connectTimeout")
         if "platform-http:/loc/service}}" in ln:
             ln = ln.replace("platform-http:/loc/service}}", "platform-http:/loc/service")
         new_lines.append(ln)
@@ -65,7 +84,7 @@ def resolve_generated_routes(routes_dir: str, resources_root: str) -> List[str]:
         ctrl = infer_controller_path(op)
         req = "classpath:xslt/identity.xsl"
         rep = "classpath:xslt/identity.xsl"
-        prov = "http://localhost:8081/provider/locations?bridgeEndpoint=true"
+        prov = f"http://localhost:8081/svc/{op}?bridgeEndpoint=true"
         resolve_route_placeholders(str(p), ctrl, req, rep, prov)
         resolved.append(str(p))
     return resolved

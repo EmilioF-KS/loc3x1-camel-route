@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/marketing_campaign_accreditation"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="MarketingCampaignAccreditation">
+		<xsd:sequence>
+			<xsd:element name="CampaignAccreditationSequenceNumber"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the sequence number for accreditation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemIdRoleCode" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains values to uniquely identify the role as defined by the source system.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemIdRoleDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element describes the role as defined by the source system.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemIdTypeCode" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies the type of id as defined by the source system.&#10;&#10;</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemIdTypeDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element describes the type of id as defined by the source system.&#10;&#10;</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemTypeUniqueId"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the id as defined by the source system.&#10;&#10;</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccreditationEffectiveDate"
+				type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the effective date for the accreditation.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccreditationExpirationDate"
+				type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the expiration date for the accreditation.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

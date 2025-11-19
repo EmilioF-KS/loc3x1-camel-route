@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/ppc_aggregated_summaryx1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PPCAggregatedSummary">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="PublicProtectionClassification1Code" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a symbol that identifies the public protection classification value most recently assigned by ISO Commercial risk services as a result of an evalutation/reevaluation of a communities fire protection resources.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PublicProtectionClassification2Code" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a symbol that identifies the public protection classification value assigned by ISO Commercial risk services as a result of an evalutation/reevaluation of a communities fire protection resources.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PercentWithPPCValue"
+				type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the percent of the defined area that has a particular PPC value.
+Valid values are from 0 to 1.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DataSourceName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the data source.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOMinPPCCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the lowest PPC Code for a zip code.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOMaxPPCCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the highest PPC Code for a zip code.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ConvertedPPCCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the current PPC Code converted back to the prior classification code values.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ConvertedMinPPCCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the current minimum PPC Code converted back to the prior classification code values.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ConvertedMaxPPCCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the current maximum PPC Code converted back to the prior classification code values.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

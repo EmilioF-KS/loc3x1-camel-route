@@ -364,7 +364,7 @@ def scaffold_result(
     project_name: str = "loc-service",
     description: str = "a9-style Spring Boot + Camel YAML scaffold",
     include_provider_stub: bool = True,
-    include_controllers: bool = False,
+    include_controllers: bool = True,
 ) -> List[str]:
     """
     Create or recreate the a9-style scaffold under out_path.
@@ -502,8 +502,53 @@ public class ProviderStubController {{
             os.makedirs(xslt_dir, exist_ok=True)
             generated_xslts = convert_maps_dir(maps_dir, xslt_dir)
             created.extend(generated_xslts)
+            try:
+                java_root = os.path.join(out_path, "src/main/java")
+                pkg = java_package
+                dst_dir = os.path.join(java_root, pkg.replace('.', '/'), "mediation")
+                os.makedirs(dst_dir, exist_ok=True)
+                lines = []
+                lines.append(f"package {pkg}.mediation;\n")
+                lines.append("import org.apache.camel.builder.RouteBuilder;\n")
+                lines.append("import org.springframework.stereotype.Component;\n\n")
+                lines.append("@Component\n")
+                lines.append("public class MediationRoutes extends RouteBuilder {\n")
+                lines.append("  @Override\n  public void configure() throws Exception {\n")
+                for p in generated_xslts:
+                    name = os.path.basename(p)
+                    base = os.path.splitext(name)[0]
+                    lines.append(f"    from(\"direct:mediation/{base}\").to(\"xslt:classpath:xslt/{name}\");\n")
+                lines.append("  }\n")
+                lines.append("}\n")
+                dst = os.path.join(dst_dir, "MediationRoutes.java")
+                _write(dst, "".join(lines))
+                created.append(dst)
+            except Exception:
+                pass
         except Exception:
             pass
+
+    # Always provide mediation routes with at least identity
+    try:
+        java_root = os.path.join(out_path, "src/main/java")
+        pkg = java_package
+        dst_dir = os.path.join(java_root, pkg.replace('.', '/'), "mediation")
+        os.makedirs(dst_dir, exist_ok=True)
+        lines = []
+        lines.append(f"package {pkg}.mediation;\n")
+        lines.append("import org.apache.camel.builder.RouteBuilder;\n")
+        lines.append("import org.springframework.stereotype.Component;\n\n")
+        lines.append("@Component\n")
+        lines.append("public class MediationRoutes extends RouteBuilder {\n")
+        lines.append("  @Override\n  public void configure() throws Exception {\n")
+        lines.append("    from(\"direct:mediation/identity\").to(\"xslt:classpath:xslt/identity.xsl\");\n")
+        lines.append("  }\n")
+        lines.append("}\n")
+        dst = os.path.join(dst_dir, "MediationRoutes.java")
+        _write(dst, "".join(lines))
+        created.append(dst)
+    except Exception:
+        pass
 
     # Optional: assemble selected contracts for M2 codegen
     contracts_root = os.path.join(out_path, "src/main/resources/contracts")
@@ -514,15 +559,7 @@ public class ProviderStubController {{
         created.extend(copied)
     except Exception:
         pass
-    # Emit per-operation Camel YAML routes
-    if orchestration_plan_path:
-        try:
-            from agent.src.route_yaml_emitter import emit_per_operation_routes
-            routes_dir = os.path.join(out_path, "src/main/resources/routes")
-            paths = emit_per_operation_routes(orchestration_plan_path, routes_dir, service_name)
-            created.extend(paths)
-        except Exception:
-            pass
+    # Per-operation YAML emission disabled; aggregate YAML is produced in one_click via route_synthesis
 
     # Record client_input_path for trace (future use)
     _write(os.path.join(out_path, "CLIENT_INPUT_PATH.txt"), client_input_path or "NONE")

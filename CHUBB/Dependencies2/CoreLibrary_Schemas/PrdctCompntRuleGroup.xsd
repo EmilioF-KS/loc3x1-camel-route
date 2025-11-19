@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/prdct_compnt_rule_group" xmlns:bons0="http://ei/core/prdct_compnt_restriction_option" xmlns:bons1="http://ei/core/prdct_compnt_hazard" xmlns:bons2="http://ei/core/prdct_compnt_loss_value_option" xmlns:bons4="http://ei/core/prdct_compnt_product_part" xmlns:bons5="http://ei/core/prdct_compnt_exclusion_variation" xmlns:bons6="http://ei/core/prdct_compnt_subject_type_part" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://ei/core/prdct_compnt_exclusion_variation" schemaLocation="PrdctCompntExclusionVariation.xsd"/>
+    <xsd:import namespace="http://ei/core/prdct_compnt_hazard" schemaLocation="PrdctCompntHazard.xsd"/>
+    <xsd:import namespace="http://ei/core/prdct_compnt_loss_value_option" schemaLocation="PrdctCompntLossValueOption.xsd"/>
+    <xsd:import namespace="http://ei/core/prdct_compnt_product_part" schemaLocation="PrdctCompntProductPart.xsd"/>
+    <xsd:import namespace="http://ei/core/prdct_compnt_restriction_option" schemaLocation="PrdctCompntRestrictionOption.xsd"/>
+    <xsd:import namespace="http://ei/core/prdct_compnt_subject_type_part" schemaLocation="PrdctCompntSubjectTypePart.xsd"/>
+	<xsd:complexType name="PrdctCompntRuleGroup">
+		<xsd:annotation>
+      <xsd:documentation>The Product Component Rule states the valid operations for a  particular product component classifications.  For example, a rule of  - "Include All" may be allowed to contain  "Services" in the role, "Include All" may be allowed to contain "Coverages" in a role. 
+</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="ProductPart" type="bons4:PrdctCompntProductPart">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="Hazard" type="bons1:PrdctCompntHazard">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="ExclusionVariation" type="bons5:PrdctCompntExclusionVariation">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="LossValueOption" type="bons2:PrdctCompntLossValueOption">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectTypePart" type="bons6:PrdctCompntSubjectTypePart">
+			</xsd:element>
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="RestrictionOption" type="bons0:PrdctCompntRestrictionOption">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProductComponentRuleGroupGIN" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a unique system generated number assigned to a product component rule.
+
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProductComponentRuleGroupTypeCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a symbol that identified the rule for a product component.   Some examples include codes that identify the following rules:    Mandatory and Mutually Exclusive.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProductComponentRuleGroupName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the product component rule.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OperatorGIN" type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OperatorName" type="xsd:string">
+			</xsd:element>
+
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

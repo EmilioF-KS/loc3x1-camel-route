@@ -40,7 +40,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-This handbook explains, from first principles, the technologies and design behind a modernization Proof of Concept (PoC) for the LOC3X1 domain. It covers the client-provided \texttt{Dependencies} folder (WSDL/XSD, mapping specs, BPEL), the modern Spring Boot + Apache Camel implementation, and how mapping, validation, and enrichment combine to produce the final XML output. The content is intended for readers with no prior knowledge of Java, Maven, SOAP, or BPEL, and includes diagrams, tables, and pseudocode to make the logic approachable. References are provided and are clickable. 
+This handbook explains, from first principles, the technologies and design behind the modernization for LOC3X1/LOC3X2. It reflects the current implementation: single aggregated Camel YAML routes, per–operation XML controllers, mediation routes for XSLT, strict sourcing only from \texttt{Dependencies}/\texttt{Dependencies2}, and isolated build/run on port \texttt{8081}. The content is approachable for readers without prior knowledge of Java, Maven, SOAP, or BPEL.
 \end{abstract}
 
 \tableofcontents
@@ -52,7 +52,7 @@ The client supplied an authoritative \texttt{Dependencies} folder containing: WS
 This modernisation effort addresses a fundamental challenge in enterprise software evolution: legacy systems built on vendor-specific orchestration engines and proprietary tooling must be translated into open, portable frameworks that support contemporary development practices—version control, automated testing, continuous integration, and containerised deployment. The client's \texttt{Dependencies} folder represents the complete specification of a location retrieval workflow originally implemented using early-2000s enterprise service bus (ESB) technology. Our task is to preserve the exact business semantics whilst replacing the execution substrate.
 
 \subsection{Level 1: Client Legacy Landscape (Old Technology)}\label{subsec:client-legacy-landscape}
-This first level introduces the original code and specifications living in \texttt{CHUBB/Dependencies/}. It explains how contracts (WSDL), schemas (XSD), mapping specifications (\texttt{.map}), and BPEL orchestrations fit together. Understanding these artefacts is essential: they encode not merely technical details but the business logic, data governance rules, and integration contracts that have been validated over years of production use.
+The \texttt{Dependencies} and \texttt{Dependencies2} folders provide authoritative WSDL/XSD, mapping specifications (\texttt{.map}), and BPEL. These artefacts encode contracts and business logic; the modern build translates them into open frameworks.
 
 \paragraph{Legacy-only Diagram}
 \begin{center}
@@ -78,11 +78,11 @@ Before examining the code samples, it is crucial to understand what each technol
   \item \textbf{WSDL (Web Services Description Language)}: A WSDL document functions as a formal contract between service provider and consumer. It answers three essential questions: \emph{What operations are available?} (e.g., \texttt{GetLocationList}), \emph{What data structures do they accept and return?} (messages with typed parts), and \emph{How do I communicate?} (protocol bindings, typically SOAP over HTTP). If you have encountered OpenAPI (formerly Swagger) specifications for RESTful APIs, WSDL serves an analogous purpose for SOAP-based web services: it provides machine-readable metadata enabling automated client generation, compile-time validation, and runtime introspection. The WSDL vocabulary includes \texttt{types} (data schemas), \texttt{messages} (operation parameters), \texttt{portType} (abstract operations), \texttt{binding} (concrete protocol mapping), and \texttt{service} (network endpoints). For a modern developer, understanding WSDL is essential because many enterprise systems still expose SOAP interfaces, and tools like Apache CXF or JAX-WS can generate Java or Python client code directly from WSDL, eliminating manual serialisation logic.
 
   \vspace{0.5em}
-  \noindent\fbox{\parbox{0.95\textwidth}{%
-  \textbf{\textcolor{red}{Step 1: Generate stubs from WSDL (wsdl2java/wsimport)}}\\
-  \emph{Implemented}: WSDLs in \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1*/} produce client stubs packaged in \texttt{libs/soap-clients-0.0.1-SNAPSHOT.jar}; these types are referenced by routes/controllers (e.g., demo client at \texttt{GET /api/index}).\\
-  \emph{Enhance}: Move stub generation into the build (Maven/Gradle) with locked plugin versions, generate sources to \texttt{target/generated-sources}, and include smoke tests that call mocked SOAP endpoints to ensure stubs align with WSDL changes.
-  }}
+\noindent\fbox{\parbox{0.95\textwidth}{%
+\textbf{\textcolor{red}{Step 1: Assemble WSDL/XSD into \texttt{contracts/selected}}}\\
+\emph{Implemented}: WSDL/XSD are copied from the chosen \texttt{Dependencies*} tree into \texttt{src/main/resources/contracts/selected/}, preserving service folders. Controllers resolve per–operation Request/Reply XSDs from here.\\
+\emph{Enhance}: Automate wsdl2java/jaxb bindings if needed; add CI validation of XMLs against XSDs.
+}}
   \vspace{0.5em}
 
   \item \textbf{XSD (XML Schema Definition)}: An XSD file defines the permissible structure, data types, constraints, and cardinality of XML documents. Whereas WSDL describes \emph{what you can do}, XSD describes \emph{what shape the data must have}. Think of XSD as a formal grammar or type system for XML: it specifies that a \texttt{StatusInformation} element must contain exactly one \texttt{StatusCode} (a string) and zero or one \texttt{StatusMessage} elements, enforced via \texttt{minOccurs} and \texttt{maxOccurs} attributes. XSD supports complex types (structured elements with child nodes), simple types (atomic values with restrictions like patterns or enumerations), and inheritance-like mechanisms (extension and restriction). Schema validation occurs before business logic executes, ensuring malformed or incomplete data never enters the system. From a modern perspective, XSD is analogous to JSON Schema or Protocol Buffers: it provides a contract that tooling can enforce, enabling automated validation, code generation (e.g., JAXB in Java, \texttt{xsData} in Python), and documentation. When you see an XSD, you are looking at the authoritative definition of message formats—deviating from it will cause integration failures.
@@ -98,21 +98,21 @@ Before examining the code samples, it is crucial to understand what each technol
   \item \textbf{.map Specifications}: The client's \texttt{.map} files are tabular specifications documenting field-level transformation rules: ``Copy \texttt{Address/City} from the incoming message to \texttt{Location/Municipality} in the outgoing message,'' or ``If \texttt{StatusCode} is \texttt{SUCCESS}, map it to \texttt{0}; otherwise map to \texttt{1}.'' These specifications originate from proprietary mapping tools (e.g., Oracle ESB Mapper, IBM WebSphere Transformation Extender) where business analysts could define transformations visually or in spreadsheets without writing code. However, \texttt{.map} files themselves are not executable—they are documentation. To operationalise them, we translate every row into XSLT code (or equivalent logic), which becomes part of the version-controlled codebase. This translation is critical: XSLT is a standard, testable, and portable transformation language, whereas \texttt{.map} files are vendor-specific. For a novice developer, the key insight is that \texttt{.map} files encode \emph{business knowledge}—which fields matter, which transformations are legally required, which defaults apply—and this knowledge must be faithfully preserved during modernisation.
 
   \vspace{0.5em}
-  \noindent\fbox{\parbox{0.95\textwidth}{%
-  \textbf{\textcolor{red}{Step 3: Translate .map specifications into XSL/XSLT}}\\
-  \emph{Implemented}: \texttt{CHUBB/main\_mapper\_with\_submaps.xsl} encodes field-level rules from \texttt{.map} specifications and is applied in the mapping stage.\\
-  \emph{Enhance}: Maintain a mapping coverage matrix (each \texttt{.map} row \(\to\) XSLT template), add golden-file tests for inputs/outputs, enable XSLT 2.0 features where helpful, and log mapping decisions for auditability.
-  }}
+\noindent\fbox{\parbox{0.95\textwidth}{%
+\textbf{\textcolor{red}{Step 3: Convert \texttt{.map} to XSLT and register mediation routes}}\\
+\emph{Implemented}: \texttt{Dependencies/Maps} are scanned; maps are converted to XSLT under \texttt{src/main/resources/xslt/}. \texttt{MediationRoutes} registers \texttt{direct:mediation/<mapName>} for each XSLT.\\
+\emph{Enhance}: Add coverage tracking and golden–file tests for transformations.
+}}
   \vspace{0.5em}
 
   \item \textbf{BPEL (Business Process Execution Language)}: BPEL is an XML-based language for orchestrating web service invocations into workflows. A BPEL process reads like an imperative programme: ``Receive a request from the client, invoke Service~A with certain parameters, wait for its response, then conditionally invoke Service~B or Service~C based on the outcome, finally merge results and reply.'' BPEL supports constructs familiar to programmers—sequence, conditional branches (\texttt{if}), loops (\texttt{while}, \texttt{forEach}), parallel execution (\texttt{flow}), exception handling (\texttt{catch})—but expressed in verbose XML rather than a general-purpose language. BPEL processes execute within a BPEL engine (e.g., Oracle BPEL Process Manager, IBM WebSphere Process Server), which manages state, transactions, and long-running interactions. For modernisation, we extract the control flow and business logic from the BPEL XML and re-implement it as a Camel route in YAML: the \emph{semantics} remain identical (same sequence of calls, same conditionals), but the execution substrate changes from a proprietary engine to an open-source integration framework. Understanding BPEL is essential because it documents the \emph{intended behaviour}—the BPEL file is the canonical source of truth for ``what should happen when.''
 
   \vspace{0.5em}
-  \noindent\fbox{\parbox{0.95\textwidth}{%
-  \textbf{\textcolor{red}{Step 4: Evaluate BPEL/Mediate files and translate to routes}}\\
-  \emph{Implemented}: \texttt{CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel} is the orchestration-of-record; its sequence and decisions are re-expressed as Camel YAML routes.\\
-  \emph{Enhance}: Keep a spec-of-record document that explicitly maps BPEL constructs to route steps, include parity tests (legacy vs. modern outputs), and document any divergence with justification.
-  }}
+\noindent\fbox{\parbox{0.95\textwidth}{%
+\textbf{\textcolor{red}{Step 4: Translate BPEL into aggregated Camel YAML}}\\
+\emph{Implemented}: The orchestration is expressed in a single \texttt{routes/loc-service.yaml} with inbound \texttt{platform-http:/loc/<Operation>}, XSLT transforms, and forwarding to \texttt{/svc/<Operation>}.\\
+\emph{Enhance}: Maintain a BPEL\(\leftrightarrow\)YAML mapping document with parity checks.
+}}
   \vspace{0.5em}
 \end{itemize}
 
@@ -648,3 +648,19 @@ A Python + LangGraph + Ollama approach is feasible when deterministic mapping st
 \bibliography{references}
 
 \end{document}
+\section{Current Implementation Summary}
+\begin{itemize}
+  \item \textbf{Aggregated YAML}: One file \texttt{routes/loc-service.yaml} defines all inbound \texttt{platform-http:/loc/<Operation>} flows, applying XSLT via \texttt{to: xslt:classpath:xslt/...} and forwarding to \texttt{/svc/<Operation>} with \texttt{throwExceptionOnFailure=false}.
+  \item \textbf{Controllers}: \texttt{POST /svc/<Operation>} accept XML and reply XML. Controllers reference operation–specific Request/Reply XSDs from \texttt{contracts/selected}. For integration runs, controllers return minimal reply XML; strict validation can be re–enabled.
+  \item \textbf{Mediation}: \texttt{com.example.mediation.MediationRoutes} exposes \texttt{direct:mediation/identity} and registers \texttt{direct:mediation/<mapName>} for converted XSLTs.
+  \item \textbf{Inputs}: Only \texttt{Dependencies} and \texttt{Dependencies2} are ingested. WSDL/XSD are copied into \texttt{contracts/selected} preserving service folders. IBM \texttt{.map} files under \texttt{Dependencies/Maps} are converted to XSLT.
+  \item \textbf{Run}: Build with Maven, run jar on \texttt{8081} or dev via \texttt{spring-boot:run}. Health is exposed under \texttt{/actuator/health}.
+\end{itemize}
+
+\section{Build and Run (Current)}
+\begin{itemize}
+  \item Build: \texttt{mvn clean package -DskipTests}
+  \item Run: \texttt{java -jar -Dserver.port=8081 target/loc-service.jar} (or \texttt{mvn spring-boot:run})
+  \item Health: \texttt{GET /actuator/health}
+  \item Route: \texttt{POST /loc/<Operation>} with XML; direct service: \texttt{POST /svc/<Operation>}.
+\end{itemize}

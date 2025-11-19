@@ -1,3 +1,4 @@
+com/example/mediation/MediationRoutes.class
 com/example/controller/provider/ProviderStubController.class
 com/example/config/CorrelationIdFilter.class
 com/example/Application.class
