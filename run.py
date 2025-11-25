@@ -77,23 +77,28 @@ def start_java():
 
 def start_frontend():
     if not os.path.isfile(os.path.join("frontend", "package.json")):
-        return None
+        return None, None
     if not shutil.which("npm") or not shutil.which("node"):
-        return None
+        return None, None
     install_cmd = ["npm", "install", "--legacy-peer-deps"]
     try:
         subprocess.check_call(install_cmd, cwd="frontend")
     except subprocess.CalledProcessError:
-        return None
+        return None, None
     env = os.environ.copy()
     env.setdefault("VITE_API_BASE_URL", "http://localhost:8000")
     cmd = ["npm", "run", "dev"]
     p = subprocess.Popen(cmd, cwd="frontend", env=env)
-    for _ in range(60):
-        if port_open(5173):
+    chosen = None
+    for _ in range(120):
+        for port in range(5173, 5184):
+            if port_open(port):
+                chosen = port
+                break
+        if chosen:
             break
         time.sleep(0.5)
-    return p
+    return p, chosen
 
 def main():
     ensure_prereqs()
@@ -102,16 +107,19 @@ def main():
     js = None
     if not port_open(8081):
         js = start_java()
-    fe = start_frontend()
+    fe, fe_port = start_frontend()
     print("Backend: http://localhost:8000")
-    print("Frontend: http://localhost:5173")
+    if fe_port:
+        print(f"Frontend: http://localhost:{fe_port}")
+    else:
+        print("Frontend: unavailable")
     print("Service health: http://localhost:8081/actuator/health")
-    if port_open(5173):
+    if fe_port:
         try:
-            webbrowser.open("http://localhost:5173")
+            webbrowser.open(f"http://localhost:{fe_port}")
         except Exception:
             pass
-    else:
+    elif port_open(8000):
         try:
             webbrowser.open("http://localhost:8000/docs")
         except Exception:

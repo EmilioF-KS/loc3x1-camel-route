@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile
+from fastapi import APIRouter, UploadFile, File
 from typing import List
 import os
 import uuid
@@ -6,7 +6,7 @@ import uuid
 router = APIRouter()
 
 @router.post('/upload')
-async def upload_directory(files: List[UploadFile]):
+async def upload_directory(files: List[UploadFile] = File(...)):
     run_id = str(uuid.uuid4())
     base = os.path.join('/tmp/inputs', run_id)
     os.makedirs(base, exist_ok=True)
@@ -22,4 +22,3 @@ async def upload_directory(files: List[UploadFile]):
             fh.write(content)
         count += 1
     return {"id": run_id, "path": base, "files": count}
-
