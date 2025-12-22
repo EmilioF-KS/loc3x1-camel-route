@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: loc-service4
+
+server:
+  port: 8087
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%X{correlationId}] %logger{36} - %msg%n"
+
+camel:
+  main:
+    routesIncludePattern: classpath:routes/*.yaml
+  springboot:
+    routes-include-pattern: classpath:routes/*.yaml
+
+security:
+  requireApiKey: false

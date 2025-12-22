@@ -1,0 +1,7 @@
+com\example\config\CorrelationIdFilter.class
+com\example\mediation\ProviderRoutes.class
+com\example\Application.class
+com\example\controller\LocationController.class
+com\example\mfc\MfcProcessor.class
+com\example\validation\XmlSchemaValidator.class
+com\example\mediation\MediationRoutes.class

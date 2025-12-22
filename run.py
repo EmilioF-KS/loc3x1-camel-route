@@ -40,9 +40,10 @@ def port_open(port):
 def ensure_venv():
     if not os.path.isdir(".venv"):
         subprocess.check_call([sys.executable, "-m", "venv", ".venv"]) 
-    pip = os.path.join(".venv", "bin", "pip")
-    subprocess.check_call([pip, "install", "-r", "requirements.txt"]) 
-    return os.path.join(".venv", "bin", "python")
+    scripts = "Scripts" if os.name == "nt" else "bin"
+    python_bin = os.path.join(".venv", scripts, "python.exe" if os.name == "nt" else "python")
+    subprocess.check_call([python_bin, "-m", "pip", "install", "-r", "requirements.txt"]) 
+    return python_bin
 
 def start_backend(python_bin):
     cmd = [python_bin, "-m", "uvicorn", "backend.app.main:app", "--port", "8000", "--reload"]
@@ -78,16 +79,18 @@ def start_java():
 def start_frontend():
     if not os.path.isfile(os.path.join("frontend", "package.json")):
         return None, None
-    if not shutil.which("npm") or not shutil.which("node"):
+    npm_path = shutil.which("npm")
+    node_path = shutil.which("node")
+    if not npm_path or not node_path:
         return None, None
-    install_cmd = ["npm", "install", "--legacy-peer-deps"]
+    install_cmd = [npm_path, "install", "--legacy-peer-deps"]
     try:
         subprocess.check_call(install_cmd, cwd="frontend")
     except subprocess.CalledProcessError:
         return None, None
     env = os.environ.copy()
     env.setdefault("VITE_API_BASE_URL", "http://localhost:8000")
-    cmd = ["npm", "run", "dev"]
+    cmd = [npm_path, "run", "dev"]
     p = subprocess.Popen(cmd, cwd="frontend", env=env)
     chosen = None
     for _ in range(120):

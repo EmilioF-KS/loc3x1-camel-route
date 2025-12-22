@@ -1,0 +1,21 @@
+route:
+  id: api-get-location-v1
+  from:
+    uri: platform-http:/api/loc/v1/get-location
+    steps:
+      - setHeader:
+          name: Content-Type
+          constant: application/xml
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/LocationRetrievalLOC3X1B/LocationRequest.xsd
+      - to:
+          uri: xslt:classpath:xslt/LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.xsl
+      - to:
+          uri: direct:provider/loc3x1b
+      - to:
+          uri: xslt:classpath:xslt/GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.xsl
+

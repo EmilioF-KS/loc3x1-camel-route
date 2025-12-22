@@ -1,0 +1,6 @@
+com\example\Application.class
+com\example\validation\Dependencies2Validator$SimpleLSInput.class
+com\example\mediation\LocationMediationProcessor.class
+com\example\validation\Dependencies2Validator.class
+com\example\mediation\LocationRetrievalLOC3X2MediationProcessor.class
+com\example\validation\Dependencies2Validator$BaseUriResourceResolver.class

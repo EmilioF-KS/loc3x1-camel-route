@@ -1,0 +1,20 @@
+route:
+  id: get-location-list
+  from:
+    uri: platform-http:/loc/GetLocationList
+    steps:
+      - setHeader:
+          name: Content-Type
+          constant: application/xml
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/LocationRetrievalLOC3X3/GetLocationRequest.xsd
+      - to:
+          uri: xslt:classpath:xslt/LocationRetrievalLOC3X2GetLocationRequestMap.xsl
+      - to:
+          uri: direct:provider/getLocationList
+      - to:
+          uri: xslt:classpath:xslt/LocationRetrievalLOC3X2GetLocationReplyMap.xsl

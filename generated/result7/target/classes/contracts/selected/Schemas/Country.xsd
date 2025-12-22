@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/country"
+	xmlns:bons0="http://ei/core/territory"
+	elementFormDefault="qualified">
+    <xsd:import schemaLocation="Territory.xsd"
+		namespace="http://ei/core/territory"/>
+    <xsd:complexType name="Country">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="Territory" type="bons0:Territory" maxOccurs="unbounded"/>
+            <xsd:element minOccurs="0" name="CountryCode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="CountryAbbreviation" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="CountryName" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="CountryDescription" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="ISOCountryCode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="ISOCountryDescription" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="ConvertedISOCountryCode" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

@@ -1,0 +1,15 @@
+route:
+  id: test-crp10x1
+  from:
+    uri: platform-http:/api/test/crp10x1/get-country
+    steps:
+      - set-header:
+          name: Content-Type
+          constant: application/xml
+      - remove-headers:
+          pattern: CamelHttp*
+      - to:
+          uri: http://{{providers.mock.baseUrl}}/api/crp10x1/v1/get-country?bridgeEndpoint=true
+      - to:
+          uri: validator:classpath:contracts/selected/CountryRetrievalCRP10X1/GetCountryReply.xsd
+

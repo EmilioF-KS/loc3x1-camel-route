@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/corporate/get_country_reply_crp10x1"
+	xmlns:bons0="http://ei/core/country"
+	xmlns:tns="http://ei/corporate/get_country_reply_crp10x1"
+	elementFormDefault="qualified">
+	<xsd:import schemaLocation="../Schemas/Country.xsd"
+		namespace="http://ei/core/country">
+	</xsd:import>
+	<xsd:complexType name="GetCountryReply">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Country"
+				type="bons0:Country" maxOccurs="1">
+			</xsd:element>
+		</xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="GetCountryReply" type="tns:GetCountryReply"/>
+</xsd:schema>

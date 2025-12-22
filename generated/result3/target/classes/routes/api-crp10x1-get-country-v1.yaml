@@ -1,0 +1,39 @@
+route:
+  id: api-crp10x1-get-country-v1
+  from:
+    uri: platform-http:/api/crp10x1/v1/get-country
+    steps:
+      - setHeader:
+          name: Content-Type
+          constant: application/xml
+      - choice:
+          when:
+            - simple: "{{security.requireApiKey}} == 'true' && ${header.X-API-Key} == null"
+              steps:
+                - bean:
+                    ref: com.example.fault.EnhancedFaultBuilder
+                    method: build
+                    parameters:
+                      - AUTH
+                      - Missing API key
+                      - X-API-Key header required
+                - stop: true
+      - log:
+          message: "crp10x1 request: ${body}"
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/CountryRetrievalCRP10X1/GetCountryRequest.xsd
+      - to:
+          uri: direct:provider/crp10x1
+      - log:
+          message: "crp10x1 response: ${body}"
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/CountryRetrievalCRP10X1/GetCountryReply.xsd
+

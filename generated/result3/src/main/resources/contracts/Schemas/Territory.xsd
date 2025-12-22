@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/territory">
+	<xsd:complexType name="Territory">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="TerritoryCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code which indentifies a within a country.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TerritoryName"
+				type="xsd:string"><xsd:annotation><xsd:documentation">This element contains the name of a territory.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
+

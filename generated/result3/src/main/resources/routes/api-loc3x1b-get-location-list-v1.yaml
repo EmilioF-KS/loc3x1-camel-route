@@ -1,0 +1,41 @@
+route:
+  id: api-loc3x1b-get-location-list-v1
+  from:
+    uri: platform-http:/api/loc3x1b/v1/get-location-list
+    steps:
+      - setHeader:
+          name: Content-Type
+          constant: application/xml
+      - choice:
+          when:
+            - simple: "{{security.requireApiKey}} == 'true' && ${header.X-API-Key} == null"
+              steps:
+                - bean:
+                    ref: com.example.fault.EnhancedFaultBuilder
+                    method: build
+                    parameters:
+                      - AUTH
+                      - Missing API key
+                      - X-API-Key header required
+                - stop: true
+      - log:
+          message: "loc3x1b request: ${body}"
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd
+      - to:
+          uri: xslt:classpath:xslt/LOC3X1GetLocationListRequestMap.xsl
+      - to:
+          uri: direct:provider/loc3x1b
+      - log:
+          message: "loc3x1b response: ${body}"
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/LocationRetrievalLOC3X1B/LocationListReply.xsd
+

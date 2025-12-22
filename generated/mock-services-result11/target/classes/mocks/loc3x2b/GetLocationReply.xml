@@ -1,0 +1,4 @@
+<GetLocationReply xmlns="http://ei/location/get_location_reply_loc3x2b">
+  <Location xmlns="http://ei/location/locationx1"/>
+  <StatusInformation xmlns="http://ei/core/status_informationx1"/>
+</GetLocationReply>

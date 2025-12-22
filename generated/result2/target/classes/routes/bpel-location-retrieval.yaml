@@ -1,0 +1,35 @@
+route:
+  id: bpel-location-flow
+  from:
+    uri: platform-http:/loc/BPELLocationRetrieval
+    steps:
+      - setHeader:
+          name: Content-Type
+          constant: application/xml
+      - bean:
+          ref: com.example.validation.XmlSchemaValidator
+          method: validateBody
+          parameters:
+            - ${body}
+            - contracts/selected/LocationRetrievalLOC3X3/GetLocationRequest.xsd
+      - to:
+          uri: xslt:classpath:xslt/LocationRetrievalLOC3X2GetLocationRequestMap.xsl
+      - choice:
+          when:
+            - xpath: "/GetLocationRequest/CountryCode = 'US'"
+              steps:
+                - to:
+                    uri: direct:provider/getLocation
+            - xpath: "/GetLocationRequest/CountryCode = 'UK'"
+              steps:
+                - to:
+                    uri: direct:provider/getLocation
+          otherwise:
+            steps:
+              - to:
+                  uri: direct:provider/getLocation
+      - to:
+          uri: xslt:classpath:xslt/LocationRetrievalLOC3X2GetLocationReplyMap.xsl
+      - to:
+          uri: direct:mediation/identity
+

@@ -1,0 +1,7 @@
+<GetCountryReply xmlns="http://ei/corporate/get_country_reply_crp10x1" xmlns:c="http://ei/core/country">
+  <Country>
+    <c:CountryCode>US</c:CountryCode>
+    <c:CountryName>United States</c:CountryName>
+  </Country>
+  
+</GetCountryReply>

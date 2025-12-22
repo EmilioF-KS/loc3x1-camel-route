@@ -1,0 +1,7 @@
+com\example\Application.class
+com\example\fault\EnhancedFaultBuilder.class
+com\example\provider\ProviderStubRoutes.class
+com\example\controller\provider\ProviderStubController.class
+com\example\config\CorrelationIdFilter.class
+com\example\validation\XmlSchemaValidator.class
+com\example\mediation\MediationRoutes.class

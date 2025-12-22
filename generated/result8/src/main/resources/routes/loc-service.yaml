@@ -1,0 +1,196 @@
+- on-exception:
+    exception: java.lang.Exception
+    handled:
+      constant: true
+    redelivery-policy:
+      maximumRedeliveries: 2
+      redeliveryDelay: 1000
+    steps:
+      - set-header:
+          name: Content-Type
+          constant: application/xml
+      - set-header:
+          name: CamelHttpResponseCode
+          constant: 500
+      - set-body:
+          constant: <Error>Internal Server Error</Error>
+
+- route:
+    id: test-crp10x1
+    from:
+      uri: platform-http:/api/test/crp10x1/get-country
+      steps:
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - log:
+            message: "orchestration: received"
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-body:
+            simple: <GetCountryRequest xmlns="http://ei/corporate/get_country_request_crp10x1"/>
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        # Removed pre-transform to avoid parsing raw client XML before validations
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/crp10x1/v1/get-country?bridgeEndpoint=true
+
+- route:
+    id: test-crp11x1
+    from:
+      uri: platform-http:/api/test/crp11x1/get-state-or-province
+      steps:
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-body:
+            simple: <GetStateOrProvinceRequest xmlns="http://ei/corporate/get_state_or_province_request_crp11x1"/>
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/crp11x1/v1/get-state-or-province?bridgeEndpoint=true&throwExceptionOnFailure=false
+        - log:
+            message: "orchestration: after crp11x1"
+
+- route:
+    id: test-loc3x1b
+    from:
+      uri: platform-http:/api/test/loc3x1b/get-location-list
+      steps:
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-body:
+            simple: <GetLocationListRequest xmlns="http://ei/location/get_location_list_request_loc3x1b"/>
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/loc3x1b/v1/get-location-list?bridgeEndpoint=true
+
+- route:
+    id: orchestration-get-location-list-v1
+    from:
+      uri: platform-http:/api/orchestration/v1/get-location-list
+      steps:
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - convert-body-to:
+            type: java.lang.String
+        - set-body:
+            simple: ${bodyAs(String).replaceAll('^(\\uFEFF|\\s)+','')}
+        - set-property:
+            name: inputBody
+            simple: ${body}
+        - choice:
+            when:
+              - simple: ${body} != null
+                steps:
+                  - set-header:
+                      name: spCode
+                      xpath:
+                        expression: /*[local-name()='GetLocationListRequest']/*[local-name()='StateOrProvinceCode']/text()
+                  - set-header:
+                      name: countryCode
+                      xpath:
+                        expression: /*[local-name()='GetLocationListRequest']/*[local-name()='CountryCode']/text()
+        - choice:
+            when:
+              - simple: ${header.spCode} != null
+                steps:
+                  - set-body:
+                      simple: <GetStateOrProvinceRequest xmlns="http://ei/corporate/get_state_or_province_request_crp11x1"><StateOrProvinceCode>${header.spCode}</StateOrProvinceCode></GetStateOrProvinceRequest>
+            otherwise:
+              steps:
+                - set-body:
+                    simple: <GetStateOrProvinceRequest xmlns="http://ei/corporate/get_state_or_province_request_crp11x1"/>
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/crp11x1/v1/get-state-or-province?bridgeEndpoint=true
+        - set-body:
+            simple: ${exchangeProperty.inputBody}
+        - choice:
+            when:
+              - simple: ${header.countryCode} != null
+                steps:
+                  - set-body:
+                      simple: <GetCountryRequest xmlns="http://ei/corporate/get_country_request_crp10x1"><CountryCode>${header.countryCode}</CountryCode></GetCountryRequest>
+            otherwise:
+              steps:
+                - set-body:
+                    simple: <GetCountryRequest xmlns="http://ei/corporate/get_country_request_crp10x1"/>
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/crp10x1/v1/get-country?bridgeEndpoint=true&throwExceptionOnFailure=false
+        - log:
+            message: "orchestration: after crp10x1"
+        - set-body:
+            simple: ${exchangeProperty.inputBody}
+        - log:
+            message: "orchestration: building canonical LOC3X1B request"
+        - choice:
+            when:
+              - simple: ${header.countryCode} != null || ${header.spCode} != null
+                steps:
+                  - set-body:
+                      simple: <GetLocationListRequest xmlns="http://ei/location/get_location_list_request_loc3x1b"><CountryCode>${header.countryCode}</CountryCode><StateOrProvinceCode>${header.spCode}</StateOrProvinceCode></GetLocationListRequest>
+            otherwise:
+              steps:
+                - set-body:
+                    simple: <GetLocationListRequest xmlns="http://ei/location/get_location_list_request_loc3x1b"/>
+        - set-header:
+            name: Content-Type
+            constant: application/xml
+        - remove-headers:
+            pattern: CamelHttp*
+        - set-header:
+            name: CamelHttpMethod
+            constant: POST
+        - log:
+            message: "orchestration: loc3x1b request=${body}"
+        - to:
+            uri: http://{{providers.mock.baseUrl}}/api/loc3x1b/v1/get-location-list?bridgeEndpoint=true&throwExceptionOnFailure=false
+        - log:
+            message: "orchestration: after loc3x1b"
+        - log:
+            message: "orchestration: loc3x1b status=${header.CamelHttpResponseCode}"
+        - choice:
+            when:
+              - simple: ${header.CamelHttpResponseCode} >= 400
+                steps:
+                  - set-header:
+                      name: Content-Type
+                      constant: application/xml
+                  - set-header:
+                      name: CamelHttpResponseCode
+                      constant: 500
+                  - set-body:
+                      constant: <Error>Internal Server Error</Error>
+            otherwise:
+              steps:
+                - set-header:
+                    name: CamelHttpResponseCode
+                    constant: 200
+        - log:
+            message: "orchestration: reply=${body}"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/country"
+	xmlns:bons0="http://ei/core/territory">
+	<xsd:import schemaLocation="Territory.xsd"
+		namespace="http://ei/core/territory">
+	</xsd:import>
+	<xsd:complexType name="Country">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Territory"
+				type="bons0:Territory" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CountryCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is a code for a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;CNTRY_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CountryAbbreviation"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the abbreviation for a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;CNTRY_AB&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CountryName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the name for a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;CNTRY_NA&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CountryDescription"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the description for a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;CNTRY_DE&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOCountryCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is the abbreviation used by the International Standards Organization (ISO) that identifies a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;ISO_CNTRY_C&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOCountryDescription"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the description used by the International Standards Organization (ISO) that identifies a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;ISO_CNTRY_DE&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ConvertedISOCountryCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is a legacy Chubb code for a country, nation or political state.
+The E1T00101 Corporate Table contains valid values for this element in the &quot;CONV_ISO_CNTRY_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
+

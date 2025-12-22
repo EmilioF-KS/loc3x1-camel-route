@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: a9-like-project
+
+server:
+  port: 8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%X{correlationId}] %logger{36} - %msg%n"
+
+camel:
+  main:
+    routesIncludePattern: classpath:routes/*.yaml
+  provider:
+    loc3x1b:
+      uri: direct:provider/loc3x1b
+    crp10x1:
+      uri: direct:provider/crp10x1
+    crp11x1:
+      uri: direct:provider/crp11x1
+
+security:
+  requireApiKey: false
+
+provider:
+  uri: http://provider/locations
+  timeoutMs: 5000
+  retry:
+    maxAttempts: 3
+    delayMs: 250

@@ -565,3 +565,108 @@ public class ProviderStubController {{
     _write(os.path.join(out_path, "CLIENT_INPUT_PATH.txt"), client_input_path or "NONE")
     created.append(os.path.join(out_path, "CLIENT_INPUT_PATH.txt"))
     return created
+
+POM_MOCK = """<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.3.4</version>
+    <relativePath/>
+  </parent>
+  <groupId>__GROUP_ID__</groupId>
+  <artifactId>__ARTIFACT_ID__</artifactId>
+  <version>__VERSION__</version>
+  <name>__PROJECT_NAME__</name>
+  <properties>
+    <java.version>17</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+"""
+
+APPLICATION_YAML_MOCK = """spring:
+  application:
+    name: mock-services
+
+server:
+  port: 8091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%X{correlationId}] %logger{36} - %msg%n"
+"""
+
+MOCK_APP_JAVA = """
+package com.example.mock;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MockApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MockApplication.class, args);
+    }
+}
+"""
+
+def scaffold_mock_services(
+    out_path: str,
+    group_id: str = "com.example",
+    artifact_id: str = "mock-services",
+    version: str = "1.0.0",
+    project_name: str = "mock-services",
+) -> List[str]:
+    if os.path.exists(out_path):
+        shutil.rmtree(out_path)
+    os.makedirs(out_path, exist_ok=True)
+    created: List[str] = []
+    pom_text = (
+        POM_MOCK
+        .replace("__GROUP_ID__", group_id)
+        .replace("__ARTIFACT_ID__", artifact_id)
+        .replace("__VERSION__", version)
+        .replace("__PROJECT_NAME__", project_name)
+    )
+    _write(os.path.join(out_path, "pom.xml"), pom_text)
+    created.append(os.path.join(out_path, "pom.xml"))
+    _write(os.path.join(out_path, "src/main/resources/application.yaml"), APPLICATION_YAML_MOCK)
+    created.append(os.path.join(out_path, "src/main/resources/application.yaml"))
+    _write(os.path.join(out_path, "src/main/java/com/example/mock/MockApplication.java"), MOCK_APP_JAVA)
+    created.append(os.path.join(out_path, "src/main/java/com/example/mock/MockApplication.java"))
+    return created

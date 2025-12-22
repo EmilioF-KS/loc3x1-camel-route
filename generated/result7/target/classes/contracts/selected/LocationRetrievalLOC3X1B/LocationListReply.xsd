@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/location_list_reply_loc3x1b"
+	xmlns:tns="http://ei/location/location_list_reply_loc3x1b"
+	xmlns:bons0="http://ei/location/location"
+	xmlns:bons1="http://ei/core/status_informationx1"
+	elementFormDefault="qualified">
+    <xsd:import schemaLocation="../Schemas/StatusInformationX1.xsd"
+		namespace="http://ei/core/status_informationx1"/>
+    <xsd:import schemaLocation="../Schemas/Location.xsd"
+		namespace="http://ei/location/location"/>
+    <xsd:complexType name="LocationListReply">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="Location" type="bons0:Location" maxOccurs="unbounded"/>
+            <xsd:element minOccurs="0" name="StatusInformation" type="bons1:StatusInformation"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="LocationListReply" type="tns:LocationListReply"/>
+</xsd:schema>
+

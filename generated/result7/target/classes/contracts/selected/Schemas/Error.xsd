@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://ei/core/error">
+  <xsd:complexType name="Error">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ErrorCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ErrorDescription" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
+

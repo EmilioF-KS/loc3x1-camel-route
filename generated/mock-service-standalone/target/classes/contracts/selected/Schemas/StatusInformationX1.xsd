@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/status_informationx1"
+	xmlns:bons1="http://ei/core/error">
+	<xsd:import schemaLocation="Error.xsd" namespace="http://ei/core/error"/>
+	<xsd:complexType name="StatusInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Error" type="bons1:Error" maxOccurs="unbounded"/>
+			<xsd:element minOccurs="0" name="StatusCode" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

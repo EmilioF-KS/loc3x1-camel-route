@@ -213,7 +213,8 @@ def convert_dir(input_dir: str, output_dir: str):
     os.makedirs(output_dir, exist_ok=True)
     generated = []
     for name in os.listdir(input_dir):
-        if not name.lower().endswith('.xml'):
+        lower = name.lower()
+        if not (lower.endswith('.xml') or lower.endswith('.map')):
             continue
         in_path = os.path.join(input_dir, name)
         out_path = convert_file(in_path, output_dir)
