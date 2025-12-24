@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetCountryReply xmlns="http://ei/location/get_country_reply_crp10x1">
+  <CountryName>UNITED STATES</CountryName>
+</GetCountryReply>

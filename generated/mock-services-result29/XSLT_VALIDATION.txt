@@ -1,0 +1,17 @@
+src\main\resources\xslt\GetLocationListLOC3X1BReplyMap.xsl: OK
+src\main\resources\xslt\GetLocationListLOC3X1BReplySubMap.xsl: OK
+src\main\resources\xslt\GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.xsl: OK
+src\main\resources\xslt\GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationListReplyMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationListReplySubMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationListRequestMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationWithTaxingJurisdictionsReplyMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationWithTaxingJurisdictionsReplySubMap.xsl: OK
+src\main\resources\xslt\LOC3X1GetLocationWithTaxingJurisdictionsRequestMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationListReplyMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationListReplySubMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationListRequestMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationListRequestMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationWithTaxingJurisdictionsReplyMap.xsl: OK
+src\main\resources\xslt\LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap.xsl: OK
+src\main\resources\xslt\RandLocationToCimLocationMap.xsl: OK

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: a9-like-project
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%X{correlationId}] %logger{36} - %msg%n"
+
+camel:
+  main:
+    routesIncludePattern: classpath:routes/*.yaml
+
+provider:
+  uri: http://provider/locations
+  timeoutMs: 5000
+  retry:
+    maxAttempts: 3
+    delayMs: 250
+
+dependencies2:
+  baseUri: http://localhost:8091/contracts/selected

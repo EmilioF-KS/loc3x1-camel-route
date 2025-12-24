@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: loc-service20
+  version: 0.1.0
+paths:
+  /loc/GetLocation:
+    post:
+      operationId: GetLocation
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetCountry:
+    post:
+      operationId: GetCountry
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetStateOrProvince:
+    post:
+      operationId: GetStateOrProvince
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/StandardizeUSAddress2X2:
+    post:
+      operationId: StandardizeUSAddress2X2
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/StandardizeOSUSAddress2X2:
+    post:
+      operationId: StandardizeOSUSAddress2X2
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetUSMMI:
+    post:
+      operationId: GetUSMMI
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetUKFloodInformation:
+    post:
+      operationId: GetUKFloodInformation
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetAUFloodInformation:
+    post:
+      operationId: GetAUFloodInformation
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetUSFloodInformation:
+    post:
+      operationId: GetUSFloodInformation
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetGLTerritoryCode:
+    post:
+      operationId: GetGLTerritoryCode
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetLocation3X3M:
+    post:
+      operationId: GetLocation3X3M
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetLocationList:
+    post:
+      operationId: GetLocationList
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /loc/GetLocationList3X3M:
+    post:
+      operationId: GetLocationList3X3M
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string

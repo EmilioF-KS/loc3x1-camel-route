@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bons1="http://ei/location/get_location_list_request_loc3x1b" xmlns:bons2="http://ei/location/location_list_reply_loc3x1b" xmlns:bons3="http://ei/core/simplefault" xmlns:bons4="http://ei/location/location_request_loc3x1b" xmlns:tns="http://ei/location/location_retrieval_loc3x1b" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocationRetrievalLOC3X1B" targetNamespace="http://ei/location/location_retrieval_loc3x1b">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://ei/location/location_retrieval_loc3x1b" xmlns:bons1="http://ei/location/get_location_list_request_loc3x1b" xmlns:bons2="http://ei/location/location_list_reply_loc3x1b" xmlns:bons3="http://ei/core/simplefault" xmlns:bons4="http://ei/location/location_request_loc3x1b" xmlns:tns="http://ei/location/location_retrieval_loc3x1b" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://ei/location/location_request_loc3x1b" schemaLocation="LocationRequest.xsd"/>
+      <xsd:import namespace="http://ei/core/simplefault" schemaLocation="../PrivateSchemas/SimpleFault.xsd"/>
+      <xsd:import namespace="http://ei/location/location_list_reply_loc3x1b" schemaLocation="LocationListReply.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_list_request_loc3x1b" schemaLocation="GetLocationListRequest.xsd"/>
+      <xsd:element name="GetLocationList3X1B">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationListRequest" nillable="true" type="bons1:GetLocationListRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLocationList3X1BResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationListReply" nillable="true" type="bons2:LocationListReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SimpleFault" nillable="true" type="bons3:SimpleFault"/>
+      <xsd:element name="GetLocationWithTaxingJurisdictions3X1B">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationWithTaxingJurisdictionsRequest" nillable="true" type="bons4:LocationRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLocationWithTaxingJurisdictions3X1BResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationWithTaxingJurisdictionsReply" nillable="true" type="bons2:LocationListReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="GetLocationList3X1BRequestMsg">
+    <wsdl:part element="tns:GetLocationList3X1B" name="GetLocationList3X1BParameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationList3X1BResponseMsg">
+    <wsdl:part element="tns:GetLocationList3X1BResponse" name="GetLocationList3X1BResult"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationList3X1B_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationWithTaxingJurisdictions3X1BRequestMsg">
+    <wsdl:part element="tns:GetLocationWithTaxingJurisdictions3X1B" name="GetLocationWithTaxingJurisdictions3X1BParameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationWithTaxingJurisdictions3X1BResponseMsg">
+    <wsdl:part element="tns:GetLocationWithTaxingJurisdictions3X1BResponse" name="GetLocationWithTaxingJurisdictions3X1BResult"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationWithTaxingJurisdictions3X1B_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:portType name="LocationRetrievalLOC3X1B">
+    <wsdl:operation name="GetLocationList3X1B">
+      <wsdl:input message="tns:GetLocationList3X1BRequestMsg" name="GetLocationList3X1BRequest"/>
+      <wsdl:output message="tns:GetLocationList3X1BResponseMsg" name="GetLocationList3X1BResponse"/>
+      <wsdl:fault message="tns:GetLocationList3X1B_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationWithTaxingJurisdictions3X1B">
+      <wsdl:input message="tns:GetLocationWithTaxingJurisdictions3X1BRequestMsg" name="GetLocationWithTaxingJurisdictions3X1BRequest"/>
+      <wsdl:output message="tns:GetLocationWithTaxingJurisdictions3X1BResponseMsg" name="GetLocationWithTaxingJurisdictions3X1BResponse"/>
+      <wsdl:fault message="tns:GetLocationWithTaxingJurisdictions3X1B_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

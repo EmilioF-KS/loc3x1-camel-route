@@ -63,7 +63,7 @@ def synthesize_routes(
             sep = '&' if '?' in uri else '?'
             return f"{uri}{sep}connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
         else:
-            return "{{{{provider_uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+            return "{{{{provider.uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
     if allowed_ops:
         ops = [op for op in ops if op in allowed_ops]
     if ops:
@@ -83,11 +83,11 @@ def synthesize_routes(
                     "              message: \"[${header.X-Correlation-ID}] Request received\"\n"
                     "              loggingLevel: INFO\n"
                     "          - to:\n"
-                    f"              uri: xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                    f"              uri: \"xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\"\n"
                     "          - to:\n"
-                    f"              uri: http://localhost:8081/svc/{op}?bridgeEndpoint=true&throwExceptionOnFailure=false&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}\n"
+                    f"              uri: \"{build_provider_uri(provider_uri)}\"\n"
                     "          - to:\n"
-                    f"              uri: xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
+                    f"              uri: \"xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\"\n"
                 )
             )
     else:
@@ -106,11 +106,11 @@ def synthesize_routes(
                 "              message: \"[${header.X-Correlation-ID}] Request received\"\n"
                 "              loggingLevel: INFO\n"
                 "          - to:\n"
-                f"              uri: xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
+                f"              uri: \"xslt:{request_xslt if request_xslt else '{{{{request_xslt}}}}'}\"\n"
                 "          - to:\n"
-                f"              uri: http://localhost:8081/svc/{service_name}?bridgeEndpoint=true&throwExceptionOnFailure=false&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}\n"
+                f"              uri: \"{build_provider_uri(provider_uri)}\"\n"
                 "          - to:\n"
-                f"              uri: xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
+                f"              uri: \"xslt:{reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\"\n"
             )
         )
 
@@ -186,7 +186,7 @@ def synthesize_routes_split(
                 sep = '&' if '?' in uri else '?'
                 return f"{uri}{sep}connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
             else:
-                return "{{{{provider_uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+                return "{{{{provider.uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
 
         route_yaml = (
             "    - route:\n"
@@ -206,7 +206,7 @@ def synthesize_routes_split(
             "          - xslt:\n"
             f"              resourceUri: {request_xslt if request_xslt else '{{{{request_xslt}}}}'}\n"
             "          - to:\n"
-            f"              uri: {build_provider_uri(provider_uri)}\n"
+            f"              uri: \"{build_provider_uri(provider_uri)}\"\n"
             "          - xslt:\n"
             f"              resourceUri: {reply_xslt if reply_xslt else '{{{{reply_xslt}}}}'}\n"
         )
@@ -240,7 +240,7 @@ def synthesize_routes_split(
 
 def validate_route_yaml(yaml_path: str, mode: str = 'unresolved', resources_root: str | None = None) -> None:
     text = Path(yaml_path).read_text(encoding='utf-8')
-    placeholders = ["{{controller_path}}", "{{request_xslt}}", "{{provider_uri}}", "{{reply_xslt}}"]
+    placeholders = ["{{controller_path}}", "{{request_xslt}}", "{{provider.uri}}", "{{reply_xslt}}"]
     if mode == 'unresolved':
         missing = [ph for ph in placeholders if ph not in text]
         if missing:

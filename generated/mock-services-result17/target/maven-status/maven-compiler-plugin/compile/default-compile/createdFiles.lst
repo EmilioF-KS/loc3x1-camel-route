@@ -1,0 +1,6 @@
+com\example\mock\provider\MockLoader.class
+com\example\mock\validation\XmlSchemaValidator.class
+com\example\mock\api\Crp11x1Controller.class
+com\example\mock\api\Crp10x1Controller.class
+com\example\mock\api\Loc3x1bController.class
+com\example\mock\Application.class
