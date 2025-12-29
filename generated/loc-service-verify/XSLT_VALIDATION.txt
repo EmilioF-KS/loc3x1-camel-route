@@ -1,0 +1,4 @@
+src\main\resources\xslt\GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.xsl <- CHUBB\00-Emilio-Logic\a7\GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap.xml: OK
+src\main\resources\xslt\GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.xsl <- CHUBB\00-Emilio-Logic\a7\GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap.xml: OK
+src\main\resources\xslt\LOC3X1GetLocationListRequestMap.xsl <- CHUBB\00-Emilio-Logic\a7\LOC3X1GetLocationListRequestMap.xml: OK
+src\main\resources\xslt\RandLocationToCimLocationMap 1.xsl <- CHUBB\00-Emilio-Logic\a7\RandLocationToCimLocationMap 1.xml: OK

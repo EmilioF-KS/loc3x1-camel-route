@@ -1,0 +1,2 @@
+project = 'mock-services'
+extensions = []

@@ -16,7 +16,7 @@ def test_scaffold_result_recreates_structure_and_synthesizes_routes(tmp_path):
     assert os.path.isfile(os.path.join(out_path, "pom.xml"))
     assert os.path.isfile(os.path.join(out_path, "README.md"))
     assert os.path.isfile(os.path.join(out_path, "src/main/resources/application.yaml"))
-    assert os.path.isfile(os.path.join(out_path, "src/main/resources/xslt/identity.xsl"))
+    assert os.path.isfile(os.path.join(out_path, "src/main/resources/xsl/identity.xsl"))
     # Synthesized routes exist
     routes_dir = Path(os.path.join(out_path, "src/main/resources/routes"))
     assert routes_dir.is_dir()
@@ -37,8 +37,8 @@ def test_scaffold_result_recreates_structure_and_synthesizes_routes(tmp_path):
         orchestration_plan_path="agent/orchestration_plan.json",
         service_name="loc-service",
         controller_path="loc/getLocationList",
-        request_xslt="classpath:xslt/identity.xsl",
-        reply_xslt="classpath:xslt/identity.xsl",
+        request_xslt="classpath:xsl/identity.xsl",
+        reply_xslt="classpath:xsl/identity.xsl",
         provider_uri="http://provider/locations",
     )
     synthesized2 = list(routes_dir.glob("*.yaml"))

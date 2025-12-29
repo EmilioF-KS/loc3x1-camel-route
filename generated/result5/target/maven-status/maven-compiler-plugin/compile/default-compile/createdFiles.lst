@@ -1,6 +1,0 @@
-com\example\Application.class
-com\example\fault\EnhancedFaultBuilder.class
-com\example\routes\ApiRoutes.class
-com\example\validation\XmlSchemaValidator.class
-com\example\provider\MockLoader.class
-com\example\mediation\MediationRoutes.class

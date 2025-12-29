@@ -1,7 +1,0 @@
-<GetStateOrProvinceListReply xmlns="http://ei/corporate/get_state_or_province_list_reply_crp11x1" xmlns:s="http://ei/core/state_or_province">
-  <StateOrProvince>
-    <s:StateOrProvinceCode>CA</s:StateOrProvinceCode>
-    <s:StateOrProvinceName>California</s:StateOrProvinceName>
-    <s:CountryCode>US</s:CountryCode>
-  </StateOrProvince>
-</GetStateOrProvinceListReply>

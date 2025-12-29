@@ -1,0 +1,2 @@
+/api/mock/LocationRetrievalLOC3X2/GetLocation|selected.GetLocation|LocationRetrievalLOC3X2GetLocationController
+/api/mock/LocationRetrievalLOC3X2B/GetLocation3X2B|selected.GetLocation3X2B|LocationRetrievalLOC3X2BGetLocation3X2BController

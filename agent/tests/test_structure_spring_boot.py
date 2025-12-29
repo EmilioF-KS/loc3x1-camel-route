@@ -12,7 +12,7 @@ def test_gen100_structure_exists():
     assert os.path.isfile(os.path.join(BASE, "pom.xml"))
     assert os.path.isfile(os.path.join(BASE, "README.md"))
     assert os.path.isfile(os.path.join(BASE, "src/main/resources/application.yaml"))
-    assert os.path.isfile(os.path.join(BASE, "src/main/resources/xslt/identity.xsl"))
+    assert os.path.isfile(os.path.join(BASE, "src/main/resources/xsl/identity.xsl"))
 
 
 def test_gen100_pom_versions_and_deps():

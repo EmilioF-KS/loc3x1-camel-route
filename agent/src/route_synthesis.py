@@ -61,9 +61,9 @@ def synthesize_routes(
     def build_provider_uri(uri: str | None) -> str:
         if uri:
             sep = '&' if '?' in uri else '?'
-            return f"{uri}{sep}connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+            return f"{uri}{sep}bridgeEndpoint=true&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
         else:
-            return "{{{{provider.uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+            return "{{{{provider.uri}}}}?bridgeEndpoint=true&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
     if allowed_ops:
         ops = [op for op in ops if op in allowed_ops]
     if ops:
@@ -184,9 +184,9 @@ def synthesize_routes_split(
         def build_provider_uri(uri: str | None) -> str:
             if uri:
                 sep = '&' if '?' in uri else '?'
-                return f"{uri}{sep}connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+                return f"{uri}{sep}bridgeEndpoint=true&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
             else:
-                return "{{{{provider.uri}}}}?connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
+                return "{{{{provider.uri}}}}?bridgeEndpoint=true&connectTimeout={{{{provider.timeoutMs}}}}&socketTimeout={{{{provider.timeoutMs}}}}"
 
         route_yaml = (
             "    - route:\n"

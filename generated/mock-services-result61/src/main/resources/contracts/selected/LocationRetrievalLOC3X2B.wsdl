@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bons1="http://ei/location/get_location_request_loc3x2b" xmlns:bons2="http://ei/location/get_location_reply_loc3x2b" xmlns:bons3="http://ei/core/simplefault" xmlns:tns="http://ei/location/location_retrieval_loc3x2b" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LocationRetrievalLOC3X2B" targetNamespace="http://ei/location/location_retrieval_loc3x2b">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://ei/location/location_retrieval_loc3x2b" xmlns:bons1="http://ei/location/get_location_request_loc3x2b" xmlns:bons2="http://ei/location/get_location_reply_loc3x2b" xmlns:bons3="http://ei/core/simplefault" xmlns:tns="http://ei/location/location_retrieval_loc3x2b" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://ei/core/simplefault" schemaLocation="../PrivateSchemas/SimpleFault.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_reply_loc3x2b" schemaLocation="GetLocationReply.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_request_loc3x2b" schemaLocation="GetLocationRequest.xsd"/>
+      <xsd:element name="GetLocation3X2B">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationRequest" nillable="true" type="bons1:GetLocationRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLocation3X2BResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationReply" nillable="true" type="bons2:GetLocationReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SimpleFault" nillable="true" type="bons3:SimpleFault"/>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="GetLocation3X2BRequestMsg">
+    <wsdl:part element="tns:GetLocation3X2B" name="GetLocation3X2BParameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocation3X2BResponseMsg">
+    <wsdl:part element="tns:GetLocation3X2BResponse" name="GetLocation3X2BResult"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocation3X2B_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:portType name="LocationRetrievalLOC3X2B">
+    <wsdl:operation name="GetLocation3X2B">
+      <wsdl:input message="tns:GetLocation3X2BRequestMsg" name="GetLocation3X2BRequest"/>
+      <wsdl:output message="tns:GetLocation3X2BResponseMsg" name="GetLocation3X2BResponse"/>
+      <wsdl:fault message="tns:GetLocation3X2B_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

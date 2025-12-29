@@ -22,13 +22,13 @@ Usage:
 - Síntesis de mapeos desde contratos → XSLT (AGENT-022):
   - Sin depender de `.map` de IBM. Se infieren movimientos directamente desde XSDs en `CHUBB/Dependencies`.
   - Ejemplo (Request LOC3X1B):
-    `python -m agent.src.map_synthesis --src-xsd CHUBB/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd --src-root GetLocationListRequest --dst-xsd CHUBB/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd --dst-root GetLocationListRequest --src-prefix GetLocationList/GetLocationListRequest --dst-prefix GetLocationList3X1B/GetLocationListRequest --emit-xslt --output-dir agent/output/xslt`
+    `python -m agent.src.map_synthesis --src-xsd CHUBB/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd --src-root GetLocationListRequest --dst-xsd CHUBB/Dependencies/LocationRetrievalLOC3X1B/GetLocationListRequest.xsd --dst-root GetLocationListRequest --src-prefix GetLocationList/GetLocationListRequest --dst-prefix GetLocationList3X1B/GetLocationListRequest --emit-xslt --output-dir agent/output/xsl`
   - Nota: El sintetizador empareja campos con nombres idénticos y el conversor XSLT agrupa contenedores correctamente; `CHUBB/00-Emilio-Logic` queda deprecado para validación.
 - Síntesis masiva (Request y Reply LOC3X1B/LOC3X1M):
-    - LOC3X1B: `python -m agent.src.bulk_synthesis --profile LOC3X1B --output-dir agent/output/xslt`
-    - LOC3X1M: `python -m agent.src.bulk_synthesis --profile LOC3X1M --output-dir agent/output/xslt`
+    - LOC3X1B: `python -m agent.src.bulk_synthesis --profile LOC3X1B --output-dir agent/output/xsl`
+    - LOC3X1M: `python -m agent.src.bulk_synthesis --profile LOC3X1M --output-dir agent/output/xsl`
     - Opcional: habilitar heurísticas (AGENT-024) para emparejar nombres similares:
-      `python -m agent.src.bulk_synthesis --profile LOC3X1B --enable-heuristics --output-dir agent/output/xslt`
+      `python -m agent.src.bulk_synthesis --profile LOC3X1B --enable-heuristics --output-dir agent/output/xsl`
     - Genera: `GetLocationListRequest_from_GetLocationListRequest.xsl`, `LocationListReply_from_LocationListReply.xsl` (y variantes LOC3X1M)
     - Artefacto AGENT-024: cuando se habilitan heurísticas, se emite `agent/output/synthesized_maps.json` con:
       - Cobertura (campos destino totales vs. mapeados y ratio)
@@ -70,5 +70,5 @@ Provider wiring (GEN-102 baseline):
 - A fallback provider stub is included by default; disable with `--no-provider-stub`.
 
 - Validación de transformaciones XSLT contra XSD:
-  - Aplicar y validar: `python -m agent.src.validate_transform --xslt agent/output/xslt/GetLocationListRequest_from_GetLocationListRequest.xsl --input examples/get_location_list_request_min.xml --mode request --base-xsd-dir CHUBB/Dependencies/LocationRetrievalLOC3X1B`
+-  - Aplicar y validar: `python -m agent.src.validate_transform --xslt agent/output/xsl/GetLocationListRequest_from_GetLocationListRequest.xsl --input examples/get_location_list_request_min.xml --mode request --base-xsd-dir CHUBB/Dependencies/LocationRetrievalLOC3X1B`
   - El validador envuelve el resultado con un elemento raíz del espacio de nombres `location_retrieval_loc3x1b` y valida contra los XSD importados (`GetLocationListRequest.xsd` / `LocationListReply.xsd`).

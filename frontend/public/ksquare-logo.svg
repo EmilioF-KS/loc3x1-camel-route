@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<rect width="512" height="512" fill="#ffffff"/>
+<g fill="#0F2E5F">
+  <path d="M80 60h120L80 220l250 212h-132L140 300 90 364V60z"/>
+  <path d="M320 60h120L250 240l60 48 190-228h-120z"/>
+</g>
+<g font-size="44" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-weight="700">
+  <text x="40" y="468" fill="#57B8C6">THE </text>
+  <text x="150" y="468" fill="#0F2E5F">KSQUARE </text>
+  <text x="380" y="468" fill="#57B8C6">GROUP</text>
+</g>
+</svg>

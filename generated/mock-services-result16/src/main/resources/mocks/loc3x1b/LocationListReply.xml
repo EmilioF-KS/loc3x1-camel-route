@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LocationListReply xmlns="http://ei/location/location_list_reply_loc3x1b">
-  <Location xmlns="http://ei/location/location">
-    <Name>Sample</Name>
-  </Location>
-  <StatusInformation xmlns="http://ei/core/status_informationx1">
-    <StatusCode>OK</StatusCode>
-  </StatusInformation>
-</LocationListReply>

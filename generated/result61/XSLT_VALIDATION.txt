@@ -1,0 +1,3 @@
+src\main\resources\xsl\LocationRetrievalLOC3X2GetLocationReplyMap.xsl <- CHUBB\Dependencias LOC3x2\LOC3X2\LocationRetrievalLOC3X2GetLocationReplyMap.map: OK
+src\main\resources\xsl\LocationRetrievalLOC3X2GetLocationRequestMap.xsl <- CHUBB\Dependencias LOC3x2\LOC3X2\LocationRetrievalLOC3X2GetLocationRequestMap.map: OK
+src\main\resources\xsl\SimpleFaultSubMap.xsl <- CHUBB\Dependencias LOC3x2\LOC3X2\SimpleFaultSubMap.map: OK

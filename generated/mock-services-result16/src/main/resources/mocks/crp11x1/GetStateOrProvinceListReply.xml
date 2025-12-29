@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<GetStateOrProvinceListReply xmlns="http://ei/location/get_state_or_province_list_reply_crp11x1">
-  <StateOrProvince>NY</StateOrProvince>
-  <StateOrProvince>CA</StateOrProvince>
-</GetStateOrProvinceListReply>

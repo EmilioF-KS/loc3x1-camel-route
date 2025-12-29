@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://ei/location/location_retrieval_loc3x2b" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://ei/location/location_retrieval_loc3x2b_http" name="LocationRetrievalLOC3X2BHttp" targetNamespace="http://ei/location/location_retrieval_loc3x2b_http">
+  <wsdl:import location="LocationRetrievalLOC3X2B.wsdl" namespace="http://ei/location/location_retrieval_loc3x2b"/>
+  <wsdl:binding name="LocationRetrievalLOC3X2BHttpBinding" type="Port_0:LocationRetrievalLOC3X2B">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocation3X2B">
+      <soap:operation soapAction="GetLocation3X2B"/>
+      <wsdl:input name="GetLocation3X2BRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLocation3X2BResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LocationRetrievalLOC3X2BHttpService">
+    <wsdl:port binding="this:LocationRetrievalLOC3X2BHttpBinding" name="LocationRetrievalLOC3X2BHTTP_LocationRetrievalLOC3X2BHttpPort">
+      <soap:address location="http://tempuri"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

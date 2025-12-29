@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://ei/country/country_retrieval_crp10X1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://ei/country/country_retrieval_crp10X1_http" name="CountryRetrievalCRP10X1Http" targetNamespace="http://ei/country/country_retrieval_crp10X1_http">
+  <wsdl:import location="CountryRetrievalCRP10X1.wsdl" namespace="http://ei/country/country_retrieval_crp10X1"/>
+  <wsdl:binding name="CountryRetrievalCRP10X1HttpBinding" type="Port_0:CountryRetrievalCRP10X1">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCountryList">
+      <soap:operation soapAction="GetCountryList"/>
+      <wsdl:input name="GetCountryListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCountryListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountry">
+      <soap:operation soapAction="GetCountry"/>
+      <wsdl:input name="GetCountryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryRetrievalCRP10X1HttpService">
+    <wsdl:port binding="this:CountryRetrievalCRP10X1HttpBinding" name="CountryRetrievalCRP10X1HTTP_CountryRetrievalCRP10X1HttpPort">
+      <soap:address location="http://localhost:9083/CorporateServicesWeb/sca/CountryRetrievalCRP10X1Http"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

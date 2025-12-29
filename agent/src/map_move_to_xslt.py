@@ -226,7 +226,7 @@ def main():
     parser = argparse.ArgumentParser(description='Convert IBM map:move operations to XSLT.')
     parser.add_argument('--input', help='Path to an IBM map XML file')
     parser.add_argument('--input-dir', help='Directory containing IBM map XML files')
-    parser.add_argument('--output-dir', default='agent/output/xslt', help='Directory to write generated XSLT files')
+    parser.add_argument('--output-dir', default='agent/output/xsl', help='Directory to write generated XSLT files')
     args = parser.parse_args()
 
     if args.input_dir:

@@ -1,0 +1,2 @@
+YAML: generated/result59/src/main/resources/routes/loc-service59.yaml
+Generated: 0

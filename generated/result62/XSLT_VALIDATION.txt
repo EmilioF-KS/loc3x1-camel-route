@@ -1,0 +1,4 @@
+src\main\resources\xsl\LocationRetrievalLOC3X2Mediation.xsl <- ..\..\..\..\..\tmp\inputs\c6e5ba7a-dab8-474e-9ecd-a8fd4f4f1357\LocationRetrievalLOC3X2Mediation.xml: OK
+src\main\resources\xsl\LocationRetrievalLOC3X2GetLocationReplyMap.xsl <- ..\..\..\..\..\tmp\inputs\c6e5ba7a-dab8-474e-9ecd-a8fd4f4f1357\LOC3X2\LocationRetrievalLOC3X2GetLocationReplyMap.map: OK
+src\main\resources\xsl\LocationRetrievalLOC3X2GetLocationRequestMap.xsl <- ..\..\..\..\..\tmp\inputs\c6e5ba7a-dab8-474e-9ecd-a8fd4f4f1357\LOC3X2\LocationRetrievalLOC3X2GetLocationRequestMap.map: OK
+src\main\resources\xsl\SimpleFaultSubMap.xsl <- ..\..\..\..\..\tmp\inputs\c6e5ba7a-dab8-474e-9ecd-a8fd4f4f1357\LOC3X2\SimpleFaultSubMap.map: OK

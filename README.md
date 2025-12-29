@@ -56,6 +56,30 @@ Not required:
   - `mvn -DskipTests package`
   - `java -jar target/loc-service.jar --server.port=8081`
 
+## Automated Testing
+
+- Use `scripts/test_apps.sh` to automate build and a brief health check.
+- Logs are written to `scripts/logs/test_apps_YYYYMMDD-HHMMSS.log` and a short run is terminated automatically.
+- Prerequisites: `java 17+`, `maven 3.9+`, `bash` available in the environment.
+- Usage:
+  - Latest generated app: `bash scripts/test_apps.sh`
+  - Specific app directory: `bash scripts/test_apps.sh generated/result42`
+  - Override port: `PORT=8087 bash scripts/test_apps.sh`
+- Pipeline integration: the backend orchestrator invokes this script during the `building` and `verifying` stages.
+
+## Camel Execute Endpoint
+
+- Each generated project includes an endpoint to execute a Camel route:
+  - `POST /api/camel/execute?routeId=mediation/identity`
+  - Content-Type: `application/xml`
+  - Returns transformed XML, or an error with status `400/500` on failure.
+- Default behavior:
+  - If `routeId` is omitted, the `mediation/identity` route is used.
+- Logging:
+  - Requests and failures are logged via SLF4J.
+- Integration tests:
+  - See `agent/tests/test_camel_execute_endpoint.py` for end-to-end verification.
+
 ## What It Does
 
 - Creates and uses a local Python virtual environment `.venv`

@@ -1,3 +1,0 @@
-src\main\java\com\example\mock\api\Loc3x1bController.java: OK
-src\main\resources\contracts\selected\LocationRetrievalLOC3X1B\GetLocationListRequest.xsd: OK
-src\main\resources\mocks\loc3x1b\LocationListReply.xml: OK

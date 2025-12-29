@@ -1,0 +1,6 @@
+YAML: c:/CHUBB/IA/Alberto_Recreation_Latest/TRAE-CHUBB/loc3x1-camel-route/generated/result61/src/main/resources/routes/loc-service61.yaml
+Generated: 4
+- c:\CHUBB\IA\Alberto_Recreation_Latest\TRAE-CHUBB\loc3x1-camel-route\generated\result61\src\main\java\com/locationretrievalloc3x2process\controller\http\LocGetLocation3X2BController.java
+- c:\CHUBB\IA\Alberto_Recreation_Latest\TRAE-CHUBB\loc3x1-camel-route\generated\result61\src\main\java\com/locationretrievalloc3x2process\controller\http\LocStandardizeUSAddress2X2Controller.java
+- c:\CHUBB\IA\Alberto_Recreation_Latest\TRAE-CHUBB\loc3x1-camel-route\generated\result61\src\main\java\com/locationretrievalloc3x2process\controller\http\LocStandardizeOSUSAddress2X2Controller.java
+- c:\CHUBB\IA\Alberto_Recreation_Latest\TRAE-CHUBB\loc3x1-camel-route\generated\result61\src\main\java\com/locationretrievalloc3x2process\controller\http\LocGetUKFloodInformationController.java

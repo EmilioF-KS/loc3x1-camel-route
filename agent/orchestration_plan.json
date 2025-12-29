@@ -1,25 +1,22 @@
 {
   "bpel": [
     {
-      "file": "C:\\tmp\\inputs\\6fe08c62-4700-46c7-98d9-4dae20944ec9\\LocationRetrievalLOC3X2Process.bpel",
+      "file": "C:\\tmp\\inputs\\16e6a2a1-0d07-46f2-b1af-e86e543bff68\\LocationRetrievalLOC3X1Process.bpel",
       "steps": [
         {
-          "kind": "receive",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
-          "variable": null
+          "kind": "pick"
         },
         {
           "kind": "faultHandlers",
           "catches": [
             {
-              "faultName": "ns3:SimpleFaultReply"
+              "faultName": "ns7:SimpleFaultReply"
             },
             {
-              "faultName": "ns3:SimpleFaultReply"
+              "faultName": "ns13:SimpleFaultReply"
             },
             {
-              "faultName": "ns4:SimpleFaultReply"
+              "faultName": "ns10:SimpleFaultReply"
             }
           ]
         },
@@ -40,6 +37,42 @@
           "outputVariable": null
         },
         {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "StateOrProvinceRetrievalCRP11X1Partner",
+          "portType": "ns7:StateOrProvinceRetrievalCRP11X1",
+          "operation": "GetStateOrProvince",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
@@ -49,8 +82,49 @@
         },
         {
           "kind": "reply",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "CountryRetrievalCRP10X1Partner",
+          "portType": "ns13:CountryRetrievalCRP10X1",
+          "operation": "GetCountry",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
           "variable": null
         },
         {
@@ -70,39 +144,12 @@
           "outputVariable": null
         },
         {
-          "kind": "choice"
-        },
-        {
-          "kind": "assign",
-          "name": "Assign"
-        },
-        {
           "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
+          "partnerLink": "LocationRetrievalLOC3X1MPartner",
+          "portType": "ns10:LocationRetrievalLOC3X1M",
+          "operation": "GetLocationList3X1M",
           "inputVariable": null,
           "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "AddressStandardizationLOC2X2Partner",
-          "portType": "ns3:AddressStandardizationLOC2X2",
-          "operation": "StandardizeUSAddress2X2",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "assign",
-          "name": "AssignFaultText"
         },
         {
           "kind": "invoke",
@@ -114,31 +161,15 @@
         },
         {
           "kind": "reply",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
           "variable": null
         },
         {
-          "kind": "assign",
-          "name": "AssignReplyFields"
-        },
-        {
-          "kind": "assign",
-          "name": "AssignRequestFields"
-        },
-        {
           "kind": "invoke",
           "partnerLink": "null",
           "portType": "wpc:null",
           "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "AddressStandardizationLOC2X2Partner",
-          "portType": "ns3:AddressStandardizationLOC2X2",
-          "operation": "StandardizeOSUSAddress2X2",
           "inputVariable": null,
           "outputVariable": null
         },
@@ -151,8 +182,12 @@
           "outputVariable": null
         },
         {
-          "kind": "assign",
-          "name": "AssignFaultText2"
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
         },
         {
           "kind": "invoke",
@@ -164,100 +199,29 @@
         },
         {
           "kind": "reply",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
           "variable": null
         },
         {
-          "kind": "assign",
-          "name": "AssignReplyFields1"
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "choice"
-        },
-        {
-          "kind": "choice"
-        },
-        {
-          "kind": "choice"
-        },
-        {
-          "kind": "assign",
-          "name": "AssignRequestFields1"
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "UKFloodInformationRetrievalLOC802X1Partner",
-          "portType": "ns4:UKFloodInformationRetrievalLOC802X1",
-          "operation": "GetUKFloodInformation",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "assign",
-          "name": "AssignFaultText1"
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
           "kind": "reply",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationList3X1B",
           "variable": null
         },
         {
-          "kind": "assign",
-          "name": "AssignReplyFields2"
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "invoke",
-          "partnerLink": "null",
-          "portType": "wpc:null",
-          "operation": "null",
-          "inputVariable": null,
-          "outputVariable": null
-        },
-        {
-          "kind": "assign",
-          "name": "AssignReplyFields3"
+          "kind": "faultHandlers",
+          "catches": [
+            {
+              "faultName": "ns7:SimpleFaultReply"
+            },
+            {
+              "faultName": "ns13:SimpleFaultReply"
+            },
+            {
+              "faultName": "ns10:SimpleFaultReply"
+            }
+          ]
         },
         {
           "kind": "invoke",
@@ -277,23 +241,185 @@
         },
         {
           "kind": "reply",
-          "partnerLink": "LocationRetrievalLOC3X2B",
-          "operation": "GetLocation3X2B",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "StateOrProvinceRetrievalCRP11X1Partner",
+          "portType": "ns7:StateOrProvinceRetrievalCRP11X1",
+          "operation": "GetStateOrProvince",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "choice"
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "CountryRetrievalCRP10X1Partner",
+          "portType": "ns13:CountryRetrievalCRP10X1",
+          "operation": "GetCountry",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "LocationRetrievalLOC3X1MPartner",
+          "portType": "ns10:LocationRetrievalLOC3X1M",
+          "operation": "GetLocationWithTaxingJurisdictions3X1M",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "invoke",
+          "partnerLink": "null",
+          "portType": "wpc:null",
+          "operation": "null",
+          "inputVariable": null,
+          "outputVariable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
+          "variable": null
+        },
+        {
+          "kind": "reply",
+          "partnerLink": "LocationRetrievalLOC3X1B",
+          "operation": "GetLocationWithTaxingJurisdictions3X1B",
           "variable": null
         }
       ]
     }
   ],
-  "mediation": [
-    {
-      "file": "C:\\tmp\\inputs\\6fe08c62-4700-46c7-98d9-4dae20944ec9\\LocationRetrievalLOC3X2Mediation.xml",
-      "steps": []
-    }
-  ],
+  "mediation": [],
   "summary": {
     "bpel_count": 1,
-    "mediation_count": 1,
-    "invoke_count": 22,
-    "transform_count": 10
+    "mediation_count": 0,
+    "invoke_count": 36,
+    "transform_count": 0
   }
 }

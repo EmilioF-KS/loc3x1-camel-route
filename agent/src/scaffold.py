@@ -254,8 +254,8 @@ provider:
     maxAttempts: 3
     delayMs: 250
 
-request_xslt: classpath:xslt/identity.xsl
-reply_xslt: classpath:xslt/identity.xsl
+request_xslt: classpath:xsl/identity.xsl
+reply_xslt: classpath:xsl/identity.xsl
 
 dependencies2:
   baseUri: http://localhost:8091/contracts/selected
@@ -308,6 +308,57 @@ public class ControllerStub {
     @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public String post() {
         return "<ok/>";
+    }
+}
+"""
+
+CAMEL_EXECUTE_CONTROLLER_JAVA_TMPL = """
+package __JAVA_PACKAGE__.controller;
+
+import org.apache.camel.CamelContext;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.support.DefaultExchange;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+
+@RestController
+public class CamelExecuteController {
+    private static final Logger log = LoggerFactory.getLogger(CamelExecuteController.class);
+    private final CamelContext camelContext;
+    private final ProducerTemplate template;
+
+    public CamelExecuteController(CamelContext camelContext, ProducerTemplate template) {
+        this.camelContext = camelContext;
+        this.template = template;
+    }
+
+    @PostMapping(path = "/api/camel/execute", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<String> execute(
+            @RequestParam(name = "routeId", required = false) String routeId,
+            @RequestBody(required = false) String body
+    ) {
+        String rid = (routeId == null || routeId.isBlank()) ? "mediation/identity" : routeId;
+        String uri = "direct:" + rid;
+        try {
+            if (camelContext.hasEndpoint(uri) == null) {
+                log.warn("Endpoint not found: {}", uri);
+                return ResponseEntity.badRequest().contentType(MediaType.APPLICATION_XML).body("<error>route not found</error>");
+            }
+            String payload = (body == null || body.isBlank()) ? "<root/>" : body;
+            String out = template.requestBody(uri, payload, String.class);
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_XML).body(out != null ? out : "<ok/>");
+        } catch (Exception e) {
+            log.error("Camel execute failed for {}: {}", uri, e.getMessage(), e);
+            return ResponseEntity.status(500).contentType(MediaType.APPLICATION_XML).body("<error>internal</error>");
+        }
     }
 }
 """
@@ -401,6 +452,11 @@ def scaffold_result(
     # Java package from groupId
     java_package = group_id if group_id else "com.example"
     app_java_text = APPLICATION_JAVA_TMPL.replace("__JAVA_PACKAGE__", java_package)
+    pom_text = (
+        pom_text
+        .replace("com.example.dto", f"{java_package}.dto")
+        .replace("com.example.client", f"{java_package}.client")
+    )
 
     files: List[Tuple[str, str]] = [
         (os.path.join(out_path, "README.md"), README),
@@ -408,7 +464,8 @@ def scaffold_result(
         (os.path.join(out_path, "src/main/resources/application.yaml"), APPLICATION_YAML),
         (os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/Application.java"), app_java_text),
         (os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/config/CorrelationIdFilter.java"), CORRELATION_FILTER_JAVA_TMPL.replace("__JAVA_PACKAGE__", java_package)),
-        (os.path.join(out_path, "src/main/resources/xslt/identity.xsl"), XSLT_IDENTITY),
+        (os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/controller/CamelExecuteController.java"), CAMEL_EXECUTE_CONTROLLER_JAVA_TMPL.replace("__JAVA_PACKAGE__", java_package)),
+        (os.path.join(out_path, "src/main/resources/xsl/identity.xsl"), XSLT_IDENTITY),
     ]
     for path, content in files:
         _write(path, content)
@@ -471,7 +528,7 @@ def scaffold_result(
         must_exist = [
             os.path.join(out_path, "pom.xml"),
             os.path.join(out_path, "src/main/resources/application.yaml"),
-            os.path.join(out_path, "src/main/resources/xslt/identity.xsl"),
+            os.path.join(out_path, "src/main/resources/xsl/identity.xsl"),
             os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/Application.java"),
         ]
         for p in must_exist:
@@ -488,6 +545,17 @@ def scaffold_result(
                     except Exception:
                         # Allow unresolved placeholders in neutral scaffolds
                         pass
+            # Generate Java controllers for platform-http endpoints found in route YAMLs
+            try:
+                from agent.src.http_controller_gen import generate_http_controllers
+                report_path = os.path.join(out_path, "HTTP_CONTROLLER_VALIDATION.txt")
+                java_root = os.path.join(out_path, "src/main/java")
+                for name in os.listdir(routes_dir):
+                    if name.endswith(".yaml"):
+                        yaml_path = os.path.join(routes_dir, name)
+                        generate_http_controllers(yaml_path, java_root, java_package, out_report=report_path)
+            except Exception:
+                pass
         if issues:
             _write(os.path.join(out_path, "STRUCTURE_VALIDATION.txt"), "\n".join(issues))
             created.append(os.path.join(out_path, "STRUCTURE_VALIDATION.txt"))
@@ -552,15 +620,16 @@ public class ProviderStubController {{
     # Optional: generate XSLTs from IBM maps directory
     if convert_maps_dir:
         try:
-            xslt_dir = os.path.join(out_path, "src/main/resources/xslt")
-            os.makedirs(xslt_dir, exist_ok=True)
+            xsl_dir = os.path.join(out_path, "src/main/resources/xsl")
+            os.makedirs(xsl_dir, exist_ok=True)
             generated_xslts: List[str] = []
             if maps_dir:
                 try:
-                    generated_xslts = convert_maps_dir(maps_dir, xslt_dir)
+                    xs = convert_maps_dir(maps_dir, xsl_dir) or []
+                    generated_xslts.extend(xs)
                 except Exception:
-                    generated_xslts = []
-            else:
+                    pass
+            if not generated_xslts:
                 try:
                     import json as _json
                     from pathlib import Path as _Path
@@ -576,13 +645,64 @@ public class ProviderStubController {{
                                     parents.append(d)
                         for d in parents:
                             try:
-                                xs = convert_maps_dir(d, xslt_dir) or []
+                                xs = convert_maps_dir(d, xsl_dir) or []
                                 generated_xslts.extend(xs)
                             except Exception:
                                 pass
                 except Exception:
                     pass
             created.extend(generated_xslts)
+            try:
+                checks: List[str] = []
+                idx: dict = {}
+                if maps_dir and os.path.isdir(maps_dir):
+                    try:
+                        for n in os.listdir(maps_dir):
+                            ln = n.lower()
+                            if ln.endswith(".xml") or ln.endswith(".map"):
+                                b = os.path.splitext(n)[0]
+                                idx[b] = os.path.join(maps_dir, n)
+                    except Exception:
+                        idx = {}
+                else:
+                    try:
+                        import json as _json
+                        from pathlib import Path as _Path
+                        mpath = _Path("agent/manifest.json")
+                        if mpath.exists():
+                            manifest = _json.loads(mpath.read_text(encoding="utf-8"))
+                            arts = manifest.get("artifacts", [])
+                            parents: List[str] = []
+                            for a in arts:
+                                if a.get("type") == "ibm_map":
+                                    d = os.path.dirname(a.get("abs_path", a.get("path", "")))
+                                    if d and d not in parents:
+                                        parents.append(d)
+                            for d in parents:
+                                try:
+                                    for n in os.listdir(d):
+                                        ln = n.lower()
+                                        if ln.endswith(".xml") or ln.endswith(".map"):
+                                            b = os.path.splitext(n)[0]
+                                            idx[b] = os.path.join(d, n)
+                                except Exception:
+                                    pass
+                    except Exception:
+                        idx = {}
+                for b, m in idx.items():
+                    rel_x = os.path.join("src", "main", "resources", "xsl", b + ".xsl")
+                    abs_x = os.path.join(out_path, rel_x)
+                    try:
+                        t = open(abs_x, "r", encoding="utf-8").read()
+                        ok = ("<xsl:stylesheet" in t)
+                        checks.append(f"{rel_x} <- {os.path.relpath(m)}: {'OK' if ok else 'INVALID'}")
+                    except Exception:
+                        checks.append(f"{rel_x} <- {os.path.relpath(m)}: MISSING")
+                if checks:
+                    _write(os.path.join(out_path, "XSLT_VALIDATION.txt"), "\n".join(checks))
+                    created.append(os.path.join(out_path, "XSLT_VALIDATION.txt"))
+            except Exception:
+                pass
             if generated_xslts:
                 try:
                     java_root = os.path.join(out_path, "src/main/java")
@@ -599,7 +719,7 @@ public class ProviderStubController {{
                     for p in generated_xslts:
                         name = os.path.basename(p)
                         base = os.path.splitext(name)[0]
-                        lines.append(f"    from(\"direct:mediation/{base}\").to(\"xslt:classpath:xslt/{name}\");\n")
+                        lines.append(f"    from(\"direct:mediation/{base}\").to(\"xslt:classpath:xsl/{name}\");\n")
                     lines.append("  }\n")
                     lines.append("}\n")
                     dst = os.path.join(dst_dir, "MediationRoutes.java")
@@ -638,7 +758,7 @@ public class ProviderStubController {{
         lines.append("          exchange.getMessage().setBody(\"<Error>Internal Server Error</Error>\");\n")
         lines.append("        }\n")
         lines.append("      });\n")
-        lines.append("    from(\"direct:mediation/identity\").to(\"xslt:classpath:xslt/identity.xsl\");\n")
+        lines.append("    from(\"direct:mediation/identity\").to(\"xslt:classpath:xsl/identity.xsl\");\n")
         lines.append("  }\n")
         lines.append("}\n")
         dst = os.path.join(dst_dir, "MediationRoutes.java")
@@ -804,11 +924,11 @@ public class ProviderStubController {{
     except Exception:
         pass
 
-    # Ensure identity XSLT exists; other XSLTs are generated from MAPs
+    # Ensure identity XSL exists; other XSLs are generated from MAPs
     try:
-        xslt_dir = os.path.join(out_path, "src/main/resources/xslt")
-        os.makedirs(xslt_dir, exist_ok=True)
-        _write(os.path.join(xslt_dir, "identity.xsl"), XSLT_IDENTITY)
+        xsl_dir = os.path.join(out_path, "src/main/resources/xsl")
+        os.makedirs(xsl_dir, exist_ok=True)
+        _write(os.path.join(xsl_dir, "identity.xsl"), XSLT_IDENTITY)
     except Exception:
         pass
     return created
@@ -916,8 +1036,9 @@ def scaffold_mock_services(
     created.append(os.path.join(out_path, "pom.xml"))
     _write(os.path.join(out_path, "src/main/resources/application.yaml"), APPLICATION_YAML_MOCK)
     created.append(os.path.join(out_path, "src/main/resources/application.yaml"))
-    _write(os.path.join(out_path, "src/main/java/com/example/mock/MockApplication.java"), MOCK_APP_JAVA)
-    created.append(os.path.join(out_path, "src/main/java/com/example/mock/MockApplication.java"))
+    java_package = group_id if group_id else "com.example"
+    _write(os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/mock/MockApplication.java"), MOCK_APP_JAVA.replace("com.example", java_package))
+    created.append(os.path.join(out_path, f"src/main/java/{java_package.replace('.', '/')}/mock/MockApplication.java"))
 
     # If contracts_dir provided or manifest exists, copy contracts and generate minimal controllers per operation
     contracts_root = os.path.join(out_path, "src/main/resources/contracts/selected")
@@ -944,16 +1065,53 @@ def scaffold_mock_services(
 
     # Generate XSLTs from MAP files
     try:
-        xslt_dir = os.path.join(out_path, "src/main/resources/xslt")
-        os.makedirs(xslt_dir, exist_ok=True)
-        _write(os.path.join(xslt_dir, "identity.xsl"), XSLT_IDENTITY)
+        xsl_dir = os.path.join(out_path, "src/main/resources/xsl")
+        os.makedirs(xsl_dir, exist_ok=True)
+        _write(os.path.join(xsl_dir, "identity.xsl"), XSLT_IDENTITY)
         generated_xslts: List[str] = []
         if maps_dir and convert_maps_dir:
             try:
-                generated_xslts = convert_maps_dir(maps_dir, xslt_dir) or []
-                created.extend(generated_xslts)
+                xs = convert_maps_dir(maps_dir, xsl_dir) or []
+                for x in xs:
+                    created.append(x)
+                generated_xslts.extend(xs)
             except Exception:
                 pass
+        if not generated_xslts:
+            try:
+                import json as _json
+                from pathlib import Path as _Path
+                mpath = _Path("agent/manifest.json")
+                if mpath.exists():
+                    manifest = _json.loads(mpath.read_text(encoding="utf-8"))
+                    arts = manifest.get("artifacts", [])
+                    parents: List[str] = []
+                    for a in arts:
+                        if a.get("type") == "ibm_map":
+                            d = os.path.dirname(a.get("abs_path", a.get("path", "")))
+                            if d and d not in parents:
+                                parents.append(d)
+                    for d in parents:
+                        try:
+                            xs = convert_maps_dir(d, xsl_dir) if convert_maps_dir else []
+                            for x in xs or []:
+                                created.append(x)
+                            generated_xslts.extend(xs or [])
+                        except Exception:
+                            pass
+            except Exception:
+                pass
+        checks: List[str] = []
+        idx: dict = {}
+        if maps_dir and os.path.isdir(maps_dir):
+            try:
+                for n in os.listdir(maps_dir):
+                    ln = n.lower()
+                    if ln.endswith(".xml") or ln.endswith(".map"):
+                        b = os.path.splitext(n)[0]
+                        idx[b] = os.path.join(maps_dir, n)
+            except Exception:
+                idx = {}
         else:
             try:
                 import json as _json
@@ -970,34 +1128,34 @@ def scaffold_mock_services(
                                 parents.append(d)
                     for d in parents:
                         try:
-                            xs = convert_maps_dir(d, xslt_dir) if convert_maps_dir else []
-                            for x in xs or []:
-                                created.append(x)
-                            generated_xslts.extend(xs or [])
+                            for n in os.listdir(d):
+                                ln = n.lower()
+                                if ln.endswith(".xml") or ln.endswith(".map"):
+                                    b = os.path.splitext(n)[0]
+                                    idx[b] = os.path.join(d, n)
                         except Exception:
                             pass
             except Exception:
-                pass
-        if generated_xslts:
-            checks: List[str] = []
-            for p in generated_xslts:
-                try:
-                    t = open(p, "r", encoding="utf-8").read()
-                    ok = ("<xsl:stylesheet" in t)
-                    checks.append(f"{os.path.relpath(p, out_path)}: {'OK' if ok else 'INVALID'}")
-                except Exception:
-                    checks.append(f"{os.path.relpath(p, out_path)}: INVALID")
-            _write(os.path.join(out_path, "XSLT_VALIDATION.txt"), "\n".join(checks))
-            created.append(os.path.join(out_path, "XSLT_VALIDATION.txt"))
+                idx = {}
+        for b, m in idx.items():
+            rel_x = os.path.join("src", "main", "resources", "xsl", b + ".xsl")
+            abs_x = os.path.join(out_path, rel_x)
+            try:
+                t = open(abs_x, "r", encoding="utf-8").read()
+                ok = ("<xsl:stylesheet" in t)
+                checks.append(f"{rel_x} <- {os.path.relpath(m)}: {'OK' if ok else 'INVALID'}")
+            except Exception:
+                checks.append(f"{rel_x} <- {os.path.relpath(m)}: MISSING")
+        _write(os.path.join(out_path, "XSLT_VALIDATION.txt"), "\n".join(checks))
+        created.append(os.path.join(out_path, "XSLT_VALIDATION.txt"))
     except Exception:
         pass
 
-    # Generate minimal mock controllers based on WSDL operations present under contracts_root
+    # Generate comprehensive mock controllers based on WSDL operations present under contracts_root
     try:
         import xml.etree.ElementTree as ET
-        api_dir = os.path.join(out_path, "src/main/java/com/example/mock/api")
-        os.makedirs(api_dir, exist_ok=True)
-        ops: List[Tuple[str, str]] = []
+        meta_lines: List[str] = []
+        ops: List[Tuple[str, str, str]] = []  # (service, operation, service_dir_name)
         for root, dirs, files in os.walk(contracts_root):
             for name in files:
                 if name.lower().endswith(".wsdl"):
@@ -1010,36 +1168,141 @@ def scaffold_mock_services(
                             svc = pt.attrib.get("name") or "Service"
                             for op in pt.findall("wsdl:operation", ns):
                                 op_name = op.attrib.get("name") or "Operation"
-                                ops.append((svc, op_name))
+                                svc_dir = os.path.basename(root)
+                                ops.append((svc, op_name, svc_dir))
                     except Exception:
                         continue
         if ops:
             import re
-            def sanitize(name: str) -> str:
+            resources_root = os.path.join(out_path, "src", "main", "resources")
+            def _find_xsds_for_op(svc_dir_name: str, op_name: str) -> Tuple[str, str]:
+                base = os.path.join(resources_root, "contracts", "selected")
+                service_dir = os.path.join(base, svc_dir_name)
+                cand_req: Optional[str] = None
+                cand_rep: Optional[str] = None
+                def pick_xsds(search_dir: str) -> None:
+                    nonlocal cand_req, cand_rep
+                    priorities_req = ["*Request*.xsd", "*request*.xsd"]
+                    priorities_rep = ["*Reply*.xsd", "*response*.xsd", "*reply*.xsd"]
+                    for pat in priorities_req:
+                        for p in sorted([os.path.join(search_dir, x) for x in os.listdir(search_dir) if x.lower().endswith(".xsd")]):
+                            name = os.path.basename(p)
+                            from fnmatch import fnmatch
+                            if fnmatch(name, pat):
+                                cand_req = os.path.relpath(p, resources_root)
+                                break
+                        if cand_req:
+                            break
+                    for pat in priorities_rep:
+                        for p in sorted([os.path.join(search_dir, x) for x in os.listdir(search_dir) if x.lower().endswith(".xsd")]):
+                            name = os.path.basename(p)
+                            from fnmatch import fnmatch
+                            if fnmatch(name, pat):
+                                cand_rep = os.path.relpath(p, resources_root)
+                                break
+                        if cand_rep:
+                            break
+                if os.path.isdir(service_dir):
+                    pick_xsds(service_dir)
+                if not cand_req or not cand_rep:
+                    for root2, dirs2, files2 in os.walk(base):
+                        for f in files2:
+                            if not f.lower().endswith(".xsd"):
+                                continue
+                            low = f.lower()
+                            parent = os.path.basename(root2).lower()
+                            ol = op_name.lower()
+                            if (ol in low) or (ol in parent):
+                                p = os.path.join(root2, f)
+                                if (not cand_req) and ("request" in low or low.endswith("request.xsd")):
+                                    cand_req = os.path.relpath(p, resources_root)
+                                if (not cand_rep) and ("reply" in low or "response" in low):
+                                    cand_rep = os.path.relpath(p, resources_root)
+                return cand_req or "", cand_rep or ""
+            def sanitize_cls(name: str) -> str:
                 s = re.sub(r"[^A-Za-z0-9_]", "", name or "Op")
                 return (s[:1].upper() + s[1:]) if s else "Op"
-            for svc, op in ops:
-                cls = sanitize(svc) + sanitize(op) + "Controller"
-                path = f"/api/{svc}/{op}"
+            def sanitize_pkg(name: str) -> str:
+                s = re.sub(r"[^A-Za-z0-9]", "", name or "svc").lower()
+                return s or "svc"
+            for svc, op, svc_dir in ops:
+                svc_pkg = sanitize_pkg(svc_dir)
+                api_dir = os.path.join(out_path, "src/main/java", java_package.replace(".", "/"), "mock", "api", svc_pkg)
+                os.makedirs(api_dir, exist_ok=True)
+                cls = sanitize_cls(svc) + sanitize_cls(op) + "Controller"
+                endpoint = f"/api/mock/{svc}/{op}"
+                req_xsd_rel, rep_xsd_rel = _find_xsds_for_op(svc_dir, op)
+                req_rel_java = (req_xsd_rel or "").replace("\\", "/")
+                rep_rel_java = (rep_xsd_rel or "").replace("\\", "/")
+                meta_lines.append(f"{svc}/{op} -> {endpoint} :: package {java_package}.mock.api.{svc_pkg} :: req={req_rel_java or 'none'} rep={rep_rel_java or 'none'}")
                 lines = []
-                lines.append("package com.example.mock.api;\n\n")
+                lines.append(f"package {java_package}.mock.api.{svc_pkg};\n\n")
                 lines.append("import org.springframework.http.MediaType;\n")
                 lines.append("import org.springframework.http.ResponseEntity;\n")
                 lines.append("import org.springframework.web.bind.annotation.PostMapping;\n")
                 lines.append("import org.springframework.web.bind.annotation.RequestBody;\n")
-                lines.append("import org.springframework.web.bind.annotation.RestController;\n\n")
+                lines.append("import org.springframework.web.bind.annotation.RestController;\n")
+                lines.append("import org.springframework.web.bind.annotation.RequestParam;\n")
+                lines.append("import org.slf4j.Logger;\n")
+                lines.append("import org.slf4j.LoggerFactory;\n")
+                lines.append("import org.springframework.core.io.ClassPathResource;\n")
+                lines.append("import javax.xml.XMLConstants;\n")
+                lines.append("import javax.xml.transform.stream.StreamSource;\n")
+                lines.append("import javax.xml.validation.Schema;\n")
+                lines.append("import javax.xml.validation.SchemaFactory;\n")
+                lines.append("import javax.xml.validation.Validator;\n")
+                lines.append("import java.io.InputStream;\n")
+                lines.append("import java.io.StringReader;\n")
+                lines.append("import java.nio.charset.StandardCharsets;\n")
+                lines.append("import java.util.regex.Matcher;\n")
+                lines.append("import java.util.regex.Pattern;\n")
+                lines.append("import java.util.ArrayList;\n")
+                lines.append("import java.util.List;\n\n")
                 lines.append("@RestController\n")
                 lines.append("public class " + cls + " {\n")
-                lines.append(
-                    "  @PostMapping(path = \"" + path + "\", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)\n"
-                )
-                lines.append("  public ResponseEntity<String> invoke(@RequestBody String xml) {\n")
-                lines.append("    return ResponseEntity.ok().contentType(MediaType.APPLICATION_XML).body(\"<ok/>\");\n")
+                lines.append("  private static final Logger log = LoggerFactory.getLogger(" + cls + ".class);\n")
+                lines.append("  private static final String SERVICE_DIR = \"" + svc_dir + "\";\n")
+                lines.append("  @PostMapping(path = \"" + endpoint + "\", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)\n")
+                lines.append("  public ResponseEntity<String> invoke(@RequestBody String xml, @RequestParam(name=\"validate\", required=false) Boolean validate) {\n")
+                lines.append("    try {\n")
+                lines.append("      if (validate != null && validate) {\n")
+                if req_rel_java:
+                    lines.append("        try (InputStream is = new ClassPathResource(\"" + req_rel_java + "\").getInputStream()) {\n")
+                    lines.append("          SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);\n")
+                    lines.append("          Schema schema = sf.newSchema(new StreamSource(is));\n")
+                    lines.append("          Validator v = schema.newValidator();\n")
+                    lines.append("          v.validate(new StreamSource(new StringReader(xml)));\n")
+                    lines.append("        } catch (Exception e) {\n")
+                    lines.append("          log.error(\"validation failed: {}\", e.getMessage(), e);\n")
+                    lines.append("          return ResponseEntity.status(400).contentType(MediaType.APPLICATION_XML).body(\"<error>invalid request</error>\");\n")
+                    lines.append("        }\n")
+                else:
+                    lines.append("        // request XSD not found; skipping schema validation\n")
+                lines.append("      }\n")
+                lines.append("      String root = null;\n")
+                if rep_rel_java:
+                    lines.append("      try (InputStream is2 = new ClassPathResource(\"" + rep_rel_java + "\").getInputStream()) {\n")
+                    lines.append("        String xsd = new String(is2.readAllBytes(), StandardCharsets.UTF_8);\n")
+                    lines.append("        Matcher m = Pattern.compile(\"<\\\\s*xs:element\\\\s+name=\\\\\\\"([^\\\\\\\"]+)\\\\\\\"\").matcher(xsd);\n")
+                    lines.append("        if (m.find()) { root = m.group(1); }\n")
+                    lines.append("      } catch (Exception ignored) {}\n")
+                lines.append("      String body = (root != null) ? (\"<\" + root + \"><status>OK</status></\" + root + \">\") : (\"<\" + \"" + op + "\" + \"Response><status>OK</status></\" + \"" + op + "\" + \"Response>\");\n")
+                lines.append("      log.info(\"mock {} request ok\", \"" + svc + "/" + op + "\");\n")
+                lines.append("      return ResponseEntity.ok().contentType(MediaType.APPLICATION_XML).body(body);\n")
+                lines.append("    } catch (Exception e) {\n")
+                lines.append("      log.error(\"mock {} error: {}\", \"" + svc + "/" + op + "\", e.getMessage(), e);\n")
+                lines.append("      return ResponseEntity.status(400).contentType(MediaType.APPLICATION_XML).body(\"<error>invalid request</error>\");\n")
+                lines.append("    }\n")
                 lines.append("  }\n")
                 lines.append("}\n")
                 dst = os.path.join(api_dir, cls + ".java")
                 _write(dst, "".join(lines))
                 created.append(dst)
+        try:
+            _write(os.path.join(out_path, "MOCK_CONTROLLERS.txt"), "\n".join(meta_lines) if ops else "none")
+            created.append(os.path.join(out_path, "MOCK_CONTROLLERS.txt"))
+        except Exception:
+            pass
     except Exception:
         pass
 
@@ -1047,7 +1310,7 @@ def scaffold_mock_services(
     try:
         checks = []
         for rel in [
-            os.path.join("src", "main", "java", "com", "example", "mock", "api", "Loc3x1bController.java"),
+            os.path.join("src", "main", "java", *java_package.split("."), "mock", "api", "Loc3x1bController.java"),
             os.path.join("src", "main", "resources", "contracts", "selected", "LocationRetrievalLOC3X1B", "GetLocationListRequest.xsd"),
             os.path.join("src", "main", "resources", "mocks", "loc3x1b", "LocationListReply.xml"),
         ]:
@@ -1065,7 +1328,7 @@ def scaffold_mock_services(
             "Generated from the selected folder's contracts and MAP files.\n\n"
             "## MAP to XSLT Preprocessing\n"
             "- Discovers MAP files via manifest or explicit maps dir.\n"
-            "- Converts to XSLT under `src/main/resources/xslt`.\n"
+            "- Converts to XSLT under `src/main/resources/xsl`.\n"
             "- Validates XSLTs for parsability; see `XSLT_VALIDATION.txt`.\n\n"
             "## Build\n"
             "- `mvn clean package -DskipTests`\n\n"

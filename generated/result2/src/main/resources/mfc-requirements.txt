@@ -1,6 +1,0 @@
-Derived Web Service requirements from MFC:
-- SimpleFault must be generated on error conditions.
-- Location retrieval operations accept XML requests and return XML replies.
-- Mediation flow includes request mapping, provider invocation, and reply mapping.
-- Logging for SimpleFault paths is required.
-

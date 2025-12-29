@@ -80,13 +80,13 @@ def test_route_yaml_validates_classpath_and_existence(tmp_path: Path):
     yaml_file.write_text(
         (
             "apiVersion: camel.apache.org/v1\nkind: Integration\nmetadata:\n  name: svc\n"
-            "spec:\n  flows:\n    - route:\n        id: svc-controller\n        from:\n          uri: platform-http:/loc\n        steps:\n          - xslt:\n              resourceUri: classpath:xslt/exists.xsl\n          - to:\n              uri: http://provider\n          - xslt:\n              resourceUri: classpath:xslt/missing.xsl\n"
+            "spec:\n  flows:\n    - route:\n        id: svc-controller\n        from:\n          uri: platform-http:/loc\n        steps:\n          - xslt:\n              resourceUri: classpath:xsl/exists.xsl\n          - to:\n              uri: http://provider\n          - xslt:\n              resourceUri: classpath:xsl/missing.xsl\n"
         ),
         encoding="utf-8",
     )
     # Create resources root and one existing XSLT
     resources_root = tmp_path / "resources"
-    xslt_dir = resources_root / "xslt"
+    xslt_dir = resources_root / "xsl"
     xslt_dir.mkdir(parents=True, exist_ok=True)
     (xslt_dir / "exists.xsl").write_text("<xsl:stylesheet version='1.0'></xsl:stylesheet>", encoding="utf-8")
     # Validation should fail because one resource is missing
@@ -156,8 +156,8 @@ def test_provider_wiring_with_properties(tmp_path: Path):
         str(out_dir),
         service_name="svc",
         controller_path="loc/op",
-        request_xslt="classpath:xslt/req.xsl",
-        reply_xslt="classpath:xslt/rep.xsl",
+        request_xslt="classpath:xsl/req.xsl",
+        reply_xslt="classpath:xsl/rep.xsl",
         provider_uri="{{provider.uri}}",
     )
     text = Path(out_path).read_text(encoding="utf-8")
@@ -177,8 +177,8 @@ def test_gen104_correlation_header_and_request_logging(tmp_path: Path):
         str(out_dir),
         service_name="svc",
         controller_path="loc/op",
-        request_xslt="classpath:xslt/req.xsl",
-        reply_xslt="classpath:xslt/rep.xsl",
+        request_xslt="classpath:xsl/req.xsl",
+        reply_xslt="classpath:xsl/rep.xsl",
         provider_uri="http://provider/op",
     )
     text = Path(out_path).read_text(encoding="utf-8")
