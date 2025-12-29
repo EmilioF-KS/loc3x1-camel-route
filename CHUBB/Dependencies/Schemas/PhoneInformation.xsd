@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/phone_information">
+	<xsd:complexType name="PhoneInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="SourceSystemPhoneId"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the phone id as it is known by the source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's phone number.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneExtensionNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the extension for a phone number.  It is the internal number that is required after the dialing the phone number.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PhoneTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a name to identify the type of phone number.  Valid values for this will be corporately defined and used company wide.  This is also known as PhoneDeviceTypeName. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneTypeDescription"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a description to identify the type of phone number.  Some possible values may include Mobile or Pager.  This is also known as PhoneDeviceTypeDescription.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PreferredPhoneIndicator"
+				type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>This element contains a description to identify the type of phone number.  Some possible values may include Mobile or Pager.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContactOrderPreferenceTypeNumber" type="xsd:integer"><xsd:annotation><xsd:documentation>This element contains a number which identifies the ranking order of the contact.  This may translate to a code on the physical database implementation.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="UsageTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element indentifies personal/business usage associated to the contact method.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContactModePreferenceTypeName" type="xsd:string"><xsd:annotation><xsd:documentation>This element describes how to make contact when multiple options exist.  Valid values for this will be corporately defined and used company wide.
+For example for a phone, options may include fax, text, or call.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

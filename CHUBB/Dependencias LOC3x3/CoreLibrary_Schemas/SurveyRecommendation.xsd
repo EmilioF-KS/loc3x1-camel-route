@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/survey_recommendation"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons1="http://ei/core/survey_recommendation_response"
+	xmlns:bons3="http://ei/core/survey_contactx1"
+	xmlns:bons0="http://ei/core/document_set"
+	xmlns:bons2="http://ei/core/customizationx2">
+	<xsd:import schemaLocation="CustomizationX2.xsd"
+		namespace="http://ei/core/customizationx2">
+	</xsd:import>
+	<xsd:import schemaLocation="DocumentSet.xsd"
+		namespace="http://ei/core/document_set">
+	</xsd:import>
+	<xsd:import schemaLocation="SurveyContactX1.xsd"
+		namespace="http://ei/core/survey_contactx1">
+	</xsd:import>
+
+	<xsd:import schemaLocation="SurveyRecommendationResponse.xsd"
+		namespace="http://ei/core/survey_recommendation_response">
+	</xsd:import>
+
+	<xsd:complexType name="SurveyRecommendation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendationResponse"
+				type="bons1:SurveyRecommendationResponse" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyContact"
+				type="bons3:SurveyContact" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentSet"
+				type="bons0:DocumentSet" maxOccurs="unbounded">
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="SurveyRecommendNumber"
+				type="xsd:integer"><xsd:annotation><xsd:documentation>This element contains a unique number assigned to the recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyRecommendTitleName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the title of the survey recommendation selected by the person evaluating a risk.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendCategoryCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code that identifies the category that a recommendation belongs to.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendCategoryDescription" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the category that a recommendation belongs to.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="SurveyRecommendGroupCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code that identifies a recommendation group.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendGroupDescription" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the description of the recommendation group.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyReccomendText"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the text of the survey recommendation selected by the person evaluating a risk.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyRecommendCommentText"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains additional comments written and entered by the Risk Engineer when evaluating a risk and selecting a recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="LossControlReferenceResourceName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the resource that was used in evaluating an loss control report or service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendPriorityCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code that identifies the criticality of a loss recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendPriorityName" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the criticality of a loss recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendVendorStatusCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code that identifies the status of the Survey Recommendation.    </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendVendorStatusName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the status of the Survey Recommendation.    </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyRecommendStatusCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code that identifies the status of the Survey Recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="SurveyRecommendStatusName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the status of the Survey Recommendation.   </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyRecommendIssuedDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the date the risk engineer entered the recommendation based on their assessment of the risk.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="SurveyRecommendClosedDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the date the Underwriter has found resolution for the recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+
+
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendResponseDueDate" type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the date a response is due from the client.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendResponseReceivedIndicator"
+				type="xsd:boolean"><xsd:annotation><xsd:documentation>This element indicates if any responses have been received for this recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyVendorLineOfInsuranceCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the line of insurance as known by a vendor.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyVendorLineOfInsuranceName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the line of insurance as known by a vendor.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendCostComplyCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code associated to a cost estimate range for compliance with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendCostComplyDescription" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a cost estimate range for compliance with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendCostComplyCommentText" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains comments related to the cost to comply with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendTimeComplyCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code associated to a time estimate range for compliance with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendTimeComplyDescription" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a time estimate range for compliance with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendTimeComplyCommentText" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains comments related to the time to comply with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendLikelihoodComplyCode" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code that identifies the client's likelihood to comply with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendLikelihoodComplyDescription"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element describes the client's likelihood to comply with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyRecommendLikelihoodComplyCommentText"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains comments related to the likelihood to comply with a survey recommendation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0"
+				name="MostRecentTargetClientCompletionDate" type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the date the client expects to complete the recommendation.  Since this date is entered on each response, the most recent date entered will be summarized to the recommendation level.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="MostRecentClientCompletedDate" type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the date the survey recommendation was reported as closed by the Chubb client.  Since this date is entered on each response, the most recent date entered will be summarized to the recommendation level.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="MostRecentResponseDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the most recent response date from all the responses that have been entered.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SurveyDisplayRecommendNumber" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the survey recommendation number that appears on correspondence and is used by the business parties to identify the survey recommendation. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SurveyRecommendUniqueId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>String representation for SurveyRecommendNumber</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Customization"
+				type="bons2:Customization" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,35 @@
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.example.location: DEBUG
+
+endpoints:
+  crp10x1:
+    getCountry: "http://localhost:8080/api/crp10x1/getCountry"
+  crp11x1:
+    getStateOrProvince: "http://localhost:8080/api/crp11x1/getStateOrProvince"
+  loc3x1m:
+    getLocationList: "http://localhost:8080/api/loc3x1m/getLocationList"
+
+
+# External endpoints (override per env)
+rand:
+  access:
+    url: "http://rand.example.com/services/location" # original mediation rewrote target to RandAccess  [1](https://ksquaregroup-my.sharepoint.com/personal/emilio_flores_theksquaregroup_com/Documents/Microsoft%20Copilot%20Chat%20Files/LocationRetrievalLOC3X1Mediation.xml)
+
+# Timeouts
+camel:
+  http:
+    connectionRequestTimeout: 5000
+    connectTimeout: 5000
+    socketTimeout: 15000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

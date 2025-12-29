@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://ei/corporate/state_or_province_retrieval_crp11x1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://ei/corporate/state_or_province_retrieval_crp11x1_http" name="StateOrProvinceRetrievalCRP11X1Http" targetNamespace="http://ei/corporate/state_or_province_retrieval_crp11x1_http">
+  <wsdl:import location="StateOrProvinceRetrievalCRP11X1.wsdl" namespace="http://ei/corporate/state_or_province_retrieval_crp11x1"/>
+  <wsdl:binding name="StateOrProvinceRetrievalCRP11X1HttpBinding" type="Port_0:StateOrProvinceRetrievalCRP11X1">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetStateOrProvinceList">
+      <soap:operation soapAction="GetStateOrProvinceList"/>
+      <wsdl:input name="GetStateOrProvinceListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetStateOrProvinceListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateOrProvince">
+      <soap:operation soapAction="GetStateOrProvince"/>
+      <wsdl:input name="GetStateOrProvinceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetStateOrProvinceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StateOrProvinceRetrievalCRP11X1HttpService">
+    <wsdl:port binding="this:StateOrProvinceRetrievalCRP11X1HttpBinding" name="StateOrProvinceRetrievalCRP11X1HTTP_StateOrProvinceRetrievalCRP11X1HttpPort">
+      <soap:address location="http://localhost:9083/CorporateServicesWeb/sca/StateOrProvinceRetrievalCRP11X1Http"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

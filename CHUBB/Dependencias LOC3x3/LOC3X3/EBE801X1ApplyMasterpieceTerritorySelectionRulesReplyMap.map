@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:ApplyMasterpieceTerritorySelectionRulesResponseMsg="smo://smo/name%3Dwsdl-body/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Fget_location_request_loc3x3m%257DGetLocationRequest/message%3D%257Bhttp%253A%252F%252Fcpi%252Fbusiness%252Fmasterpiece_territory_selection_rules_ebe801x1%257DApplyMasterpieceTerritorySelectionRulesResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:EBE801X1ApplyMasterpieceTerritorySelectionRulesReplyMap="http://LocationServices/LOC3X3" xmlns:GetLocation3X3MResponseMsg="smo://smo/name%3Dwsdl-body/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Fget_location_request_loc3x3m%257DGetLocationRequest/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocation3X3MResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>EBE801X1ApplyMasterpieceTerritorySelectionRulesReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg:ApplyMasterpieceTerritorySelectionRulesResponseMsg" name="ApplyMasterpieceTerritorySelectionRulesResponseMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocation3X3MResponseMsg:GetLocation3X3MResponseMsg" name="GetLocation3X3MResponseMsg"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/MasterpieceTerritoryCode"/>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/PreviousMasterpieceTerritoryCode"/>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/PreviousAlternateMasterpieceTerritoryCode"/>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/AlternateMasterpieceTerritoryCode"/>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/AutoCasualtyTerritoryCode"/>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/MasterpieceTerritoryInformation/HomeOwnersTerritoryCode"/>
+      <map:output businessObjectVariableRef="GetLocation3X3MResponseMsg" property="GetLocation3X3MResponse/GetLocationReply/Location/RatingTerritory"/>
+      <map:javaCode>java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_MasterpieceTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_MasterpieceTerritoryCode;&#xD;
+java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousMasterpieceTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousMasterpieceTerritoryCode;&#xD;
+java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousAlternateMasterpieceTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousAlternateMasterpieceTerritoryCode;&#xD;
+java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AlternateMasterpieceTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AlternateMasterpieceTerritoryCode;&#xD;
+java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AutoCasualtyTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AutoCasualtyTerritoryCode;&#xD;
+java.lang.String __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_HomeOwnersTerritoryCode = (java.lang.String)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_HomeOwnersTerritoryCode;&#xD;
+java.util.List __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory = (java.util.List)GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory;&#xD;
+java.lang.String mpTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_MasterpieceTerritoryCode;&#xD;
+java.lang.String mpAltTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AlternateMasterpieceTerritoryCode;&#xD;
+java.lang.String mpPrvAltTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousAlternateMasterpieceTerritoryCode;&#xD;
+java.lang.String mpAutoTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AutoCasualtyTerritoryCode;&#xD;
+java.lang.String mpHoTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_HomeOwnersTerritoryCode;&#xD;
+java.lang.String mpPrvTerrCode = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousMasterpieceTerritoryCode;&#xD;
+boolean __result__14 = ei.core.map.MapUtility.isValued(mpTerrCode);&#xD;
+if (__result__14){&#xD;
+	commonj.sdo.DataObject __result__17;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__17 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__17;&#xD;
+	java.lang.String __result__19 = &quot;MasterpieceTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__19);&#xD;
+	java.lang.String __result__21 = mpTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__21);&#xD;
+	boolean __result__25;&#xD;
+	{// add item to list&#xD;
+		__result__25 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__28 = ei.core.map.MapUtility.isValued(mpAltTerrCode);&#xD;
+if (__result__28){&#xD;
+	commonj.sdo.DataObject __result__31;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__31 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__31;&#xD;
+	java.lang.String __result__33 = &quot;AlternateMasterpieceTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__33);&#xD;
+	java.lang.String __result__35 = mpAltTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__35);&#xD;
+	boolean __result__39;&#xD;
+	{// add item to list&#xD;
+		__result__39 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__42 = ei.core.map.MapUtility.isValued(mpPrvAltTerrCode);&#xD;
+if (__result__42){&#xD;
+	commonj.sdo.DataObject __result__45;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__45 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__45;&#xD;
+	java.lang.String __result__47 = &quot;PreviousAlternateMasterpieceTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__47);&#xD;
+	java.lang.String __result__49 = mpPrvAltTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__49);&#xD;
+	boolean __result__53;&#xD;
+	{// add item to list&#xD;
+		__result__53 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__56 = ei.core.map.MapUtility.isValued(mpAutoTerrCode);&#xD;
+if (__result__56){&#xD;
+	commonj.sdo.DataObject __result__59;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__59 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__59;&#xD;
+	java.lang.String __result__61 = &quot;AutoCasualtyTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__61);&#xD;
+	java.lang.String __result__63 = mpAutoTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__63);&#xD;
+	boolean __result__67;&#xD;
+	{// add item to list&#xD;
+		__result__67 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__70 = ei.core.map.MapUtility.isValued(mpHoTerrCode);&#xD;
+if (__result__70){&#xD;
+	commonj.sdo.DataObject __result__73;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__73 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__73;&#xD;
+	java.lang.String __result__75 = &quot;HomeOwnersTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__75);&#xD;
+	java.lang.String __result__77 = mpHoTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__77);&#xD;
+	boolean __result__81;&#xD;
+	{// add item to list&#xD;
+		__result__81 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+boolean __result__84 = ei.core.map.MapUtility.isValued(mpPrvTerrCode);&#xD;
+if (__result__84){&#xD;
+	commonj.sdo.DataObject __result__87;&#xD;
+	{// create RatingTerritory&#xD;
+		com.ibm.websphere.bo.BOFactory factory = 
+		   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+		 __result__87 = factory.create(&quot;http://ei/core/rating_territoryx1&quot;,&quot;RatingTerritory&quot;);&#xD;
+	}&#xD;
+	commonj.sdo.DataObject RatingTerritory = __result__87;&#xD;
+	java.lang.String __result__89 = &quot;PreviousMasterpieceTerritory&quot;;&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryName&quot;, __result__89);&#xD;
+	java.lang.String __result__91 = mpPrvTerrCode.trim();&#xD;
+	RatingTerritory.setString(&quot;RatingTerritoryCode&quot;, __result__91);&#xD;
+	boolean __result__95;&#xD;
+	{// add item to list&#xD;
+		__result__95 = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory.add(RatingTerritory);&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_MasterpieceTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousMasterpieceTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousAlternateMasterpieceTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AlternateMasterpieceTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AutoCasualtyTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_HomeOwnersTerritoryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_MasterpieceTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot; value=&quot;mpTerrCode&quot; localVariable=&quot;//@localVariables.2&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AlternateMasterpieceTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.3&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@dataOutputs.0&quot; value=&quot;mpAltTerrCode&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousAlternateMasterpieceTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.5&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.4/@dataOutputs.0&quot; value=&quot;mpPrvAltTerrCode&quot; localVariable=&quot;//@localVariables.3&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_AutoCasualtyTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.7&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.6/@dataOutputs.0&quot; value=&quot;mpAutoTerrCode&quot; localVariable=&quot;//@localVariables.1&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_HomeOwnersTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.9&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.8/@dataOutputs.0&quot; value=&quot;mpHoTerrCode&quot; localVariable=&quot;//@localVariables.4&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_MasterpieceTerritoryInformation_PreviousMasterpieceTerritoryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.11&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.10/@dataOutputs.0&quot; value=&quot;mpPrvTerrCode&quot; localVariable=&quot;//@localVariables.5&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpTerrCode&quot; localVariable=&quot;//@localVariables.2&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.13/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.12/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.14&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.13/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.14/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;MasterpieceTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.14/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.0 //@executableElements.14/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.2 //@executableElements.14/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.4 //@executableElements.14/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.14/@conditionalActivities.0/@executableElements.6 //@executableElements.14/@conditionalActivities.0/@executableElements.7 //@executableElements.14/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpAltTerrCode&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.16/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.15/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.17&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.16/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.17/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;AlternateMasterpieceTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpAltTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.17/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.0 //@executableElements.17/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.2 //@executableElements.17/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.4 //@executableElements.17/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.17/@conditionalActivities.0/@executableElements.6 //@executableElements.17/@conditionalActivities.0/@executableElements.7 //@executableElements.17/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpPrvAltTerrCode&quot; localVariable=&quot;//@localVariables.3&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.19/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.18/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.20&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.19/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.20/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;PreviousAlternateMasterpieceTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpPrvAltTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.20/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.0 //@executableElements.20/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.2 //@executableElements.20/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.4 //@executableElements.20/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.20/@conditionalActivities.0/@executableElements.6 //@executableElements.20/@conditionalActivities.0/@executableElements.7 //@executableElements.20/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpAutoTerrCode&quot; localVariable=&quot;//@localVariables.1&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.22/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.21/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.23&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.22/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.23/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;AutoCasualtyTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpAutoTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.23/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.0 //@executableElements.23/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.2 //@executableElements.23/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.4 //@executableElements.23/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.23/@conditionalActivities.0/@executableElements.6 //@executableElements.23/@conditionalActivities.0/@executableElements.7 //@executableElements.23/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpHoTerrCode&quot; localVariable=&quot;//@localVariables.4&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.25/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.24/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.26&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.25/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.26/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;HomeOwnersTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpHoTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.26/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.0 //@executableElements.26/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.2 //@executableElements.26/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.4 //@executableElements.26/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.26/@conditionalActivities.0/@executableElements.6 //@executableElements.26/@conditionalActivities.0/@executableElements.7 //@executableElements.26/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpPrvTerrCode&quot; localVariable=&quot;//@localVariables.5&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.28/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.27/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.29&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.28/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create RatingTerritory&quot; description=&quot;create a new RatingTerritory {http://ei/core/rating_territoryx1}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/rating_territoryx1&amp;quot;,&amp;quot;RatingTerritory&amp;quot;);&quot;>
+//        &lt;result>
+//          &lt;dataOutputs target=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot; nillable=&quot;false&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.29/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;PreviousMasterpieceTerritory&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.3&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryName&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;mpPrvTerrCode.trim()&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.5&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot; value=&quot;RatingTerritory.RatingTerritoryCode&quot; field=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_Location_RatingTerritory&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;RatingTerritory&quot; localVariable=&quot;//@executableElements.29/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.8/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//        &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.6/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.7/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;localVariables name=&quot;RatingTerritory&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;RatingTerritory&quot; namespace=&quot;http://ei/core/rating_territoryx1&quot;/>
+//      &lt;/localVariables>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.0 //@executableElements.29/@conditionalActivities.0/@executableElements.1&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.2 //@executableElements.29/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.4 //@executableElements.29/@conditionalActivities.0/@executableElements.5&quot;/>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.29/@conditionalActivities.0/@executableElements.6 //@executableElements.29/@conditionalActivities.0/@executableElements.7 //@executableElements.29/@conditionalActivities.0/@executableElements.8&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;localVariables name=&quot;mpAltTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;mpAutoTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;mpTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;mpPrvAltTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;mpHoTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;mpPrvTerrCode&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/localVariables>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.2 //@executableElements.3&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.4 //@executableElements.5&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.6 //@executableElements.7&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.8 //@executableElements.9&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.10 //@executableElements.11&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.12 //@executableElements.13 //@executableElements.14&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.15 //@executableElements.16 //@executableElements.17&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.18 //@executableElements.19 //@executableElements.20&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.21 //@executableElements.22 //@executableElements.23&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.24 //@executableElements.25 //@executableElements.26&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.27 //@executableElements.28 //@executableElements.29&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!2:8,1&#xD;
+//!SMAP!4:9,1&#xD;
+//!SMAP!6:10,1&#xD;
+//!SMAP!8:11,1&#xD;
+//!SMAP!10:12,1&#xD;
+//!SMAP!12:13,1&#xD;
+//!SMAP!14:14,1&#xD;
+//!SMAP!15:15,1&#xD;
+//!SMAP!17:16,6&#xD;
+//!SMAP!18:22,1&#xD;
+//!SMAP!19:23,1&#xD;
+//!SMAP!20:24,1&#xD;
+//!SMAP!21:25,1&#xD;
+//!SMAP!22:26,1&#xD;
+//!SMAP!25:27,4&#xD;
+//!SMAP!28:34,1&#xD;
+//!SMAP!29:35,1&#xD;
+//!SMAP!31:36,6&#xD;
+//!SMAP!32:42,1&#xD;
+//!SMAP!33:43,1&#xD;
+//!SMAP!34:44,1&#xD;
+//!SMAP!35:45,1&#xD;
+//!SMAP!36:46,1&#xD;
+//!SMAP!39:47,4&#xD;
+//!SMAP!42:54,1&#xD;
+//!SMAP!43:55,1&#xD;
+//!SMAP!45:56,6&#xD;
+//!SMAP!46:62,1&#xD;
+//!SMAP!47:63,1&#xD;
+//!SMAP!48:64,1&#xD;
+//!SMAP!49:65,1&#xD;
+//!SMAP!50:66,1&#xD;
+//!SMAP!53:67,4&#xD;
+//!SMAP!56:74,1&#xD;
+//!SMAP!57:75,1&#xD;
+//!SMAP!59:76,6&#xD;
+//!SMAP!60:82,1&#xD;
+//!SMAP!61:83,1&#xD;
+//!SMAP!62:84,1&#xD;
+//!SMAP!63:85,1&#xD;
+//!SMAP!64:86,1&#xD;
+//!SMAP!67:87,4&#xD;
+//!SMAP!70:94,1&#xD;
+//!SMAP!71:95,1&#xD;
+//!SMAP!73:96,6&#xD;
+//!SMAP!74:102,1&#xD;
+//!SMAP!75:103,1&#xD;
+//!SMAP!76:104,1&#xD;
+//!SMAP!77:105,1&#xD;
+//!SMAP!78:106,1&#xD;
+//!SMAP!81:107,4&#xD;
+//!SMAP!84:114,1&#xD;
+//!SMAP!85:115,1&#xD;
+//!SMAP!87:116,6&#xD;
+//!SMAP!88:122,1&#xD;
+//!SMAP!89:123,1&#xD;
+//!SMAP!90:124,1&#xD;
+//!SMAP!91:125,1&#xD;
+//!SMAP!92:126,1&#xD;
+//!SMAP!95:127,4&#xD;
+//!SMAP!1000000:716,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/StatusInformation/StatusCode"/>
+      <map:output businessObjectVariableRef="GetLocation3X3MResponseMsg" property="GetLocation3X3MResponse/GetLocationReply/StatusInformation/StatusCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:custom>
+      <map:input businessObjectVariableRef="ApplyMasterpieceTerritorySelectionRulesResponseMsg" property="ApplyMasterpieceTerritorySelectionRulesResponse/ApplyMasterpieceTerritorySelectionRulesReply/StatusInformation/Error"/>
+      <map:output businessObjectVariableRef="GetLocation3X3MResponseMsg" property="GetLocation3X3MResponse/GetLocationReply/StatusInformation/Error"/>
+      <map:javaCode>java.util.List __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_StatusInformation_Error = (java.util.List)ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_StatusInformation_Error;&#xD;
+java.util.List __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_StatusInformation_Error = (java.util.List)GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_StatusInformation_Error;&#xD;
+java.util.List sourceList = __ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_StatusInformation_Error;&#xD;
+java.util.List targetList = __GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_StatusInformation_Error;&#xD;
+java.util.Iterator iter5 = sourceList.iterator();&#xD;
+while(iter5.hasNext()){&#xD;
+	commonj.sdo.DataObject sourceError = (commonj.sdo.DataObject)iter5.next();&#xD;
+	java.lang.String __result__7 = sourceError.getString(&quot;ErrorCode&quot;);&#xD;
+	boolean __result__8 = ei.core.map.MapUtility.isValued(__result__7);&#xD;
+	boolean codeValued = __result__8;&#xD;
+	if (codeValued){&#xD;
+		commonj.sdo.DataObject __result__13;&#xD;
+		{// create Error&#xD;
+			com.ibm.websphere.bo.BOFactory factory = 
+			   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/websphere/bo/BOFactory&quot;);
+			 __result__13 = factory.create(&quot;http://ei/core/error&quot;,&quot;Error&quot;);&#xD;
+		}&#xD;
+		commonj.sdo.DataObject targetError = __result__13;&#xD;
+		java.lang.Object __result__17 = null;&#xD;
+		try {&#xD;
+			{// EBE801X1ErrorMap&#xD;
+				java.util.HashMap inputMap = new java.util.HashMap();
+				java.util.HashMap outputMap = new java.util.HashMap();
+				inputMap.put(&quot;Error&quot;, sourceError);
+				outputMap.put(&quot;Error_1&quot;, targetError);
+				com.ibm.wbiserver.map.MapService _serv = 
+					(com.ibm.wbiserver.map.MapService)new com.ibm.websphere.sca.ServiceManager().locateService(&quot;com/ibm/wbiserver/map/MapService&quot;);
+				_serv.transform(&quot;http://LocationServices/LOC3X3&quot;, &quot;EBE801X1ErrorMap&quot;, inputMap, outputMap, ((com.ibm.wbiserver.relationshipservice.common.ExecutionContext)__result__17));&#xD;
+			}&#xD;
+		}&#xD;
+		catch(com.ibm.wbiserver.map.exceptions.WBIMapFailureException ex){&#xD;
+			throw ex;&#xD;
+		}&#xD;
+		catch(com.ibm.wbiserver.map.exceptions.WBIMapNotFoundException ex2){&#xD;
+			throw ex2;&#xD;
+		}&#xD;
+		catch(com.ibm.wbiserver.map.exceptions.WBIMapServiceException ex3){&#xD;
+			throw ex3;&#xD;
+		}&#xD;
+		boolean __result__30;&#xD;
+		{// add item to list&#xD;
+			__result__30 = targetList.add(targetError);&#xD;
+		}&#xD;
+	}&#xD;
+	else{&#xD;
+	}&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_StatusInformation_Error&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ApplyMasterpieceTerritorySelectionRulesResponseMsg_ApplyMasterpieceTerritorySelectionRulesResponse_ApplyMasterpieceTerritorySelectionRulesReply_StatusInformation_Error&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot; value=&quot;sourceList&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MResponseMsg_GetLocation3X3MResponse_GetLocationReply_StatusInformation_Error&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.3&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@dataOutputs.0&quot; value=&quot;targetList&quot; localVariable=&quot;//@localVariables.1&quot; variable=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;sourceList&quot; localVariable=&quot;//@localVariables.0&quot; variable=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.5&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:IterationActivity&quot; dataInputs=&quot;//@executableElements.4/@dataOutputs.0&quot; iterationVariable=&quot;sourceError&quot; iterationType=&quot;java.util.Collection&quot;>
+//    &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;sourceError.ErrorCode&quot; field=&quot;true&quot;>
+//      &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.1/@parameters.0&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot; nillable=&quot;false&quot;/>
+//    &lt;/executableElements>
+//    &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//      &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.5/@executableElements.0/@dataOutputs.0&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//      &lt;/parameters>
+//      &lt;result>
+//        &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.2&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//      &lt;/result>
+//    &lt;/executableElements>
+//    &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.5/@executableElements.1/@result/@dataOutputs.0&quot; value=&quot;codeValued&quot; localVariable=&quot;//@executableElements.5/@localVariables.1&quot; variable=&quot;true&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/executableElements>
+//    &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;codeValued&quot; localVariable=&quot;//@executableElements.5/@localVariables.1&quot; variable=&quot;true&quot;>
+//      &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/executableElements>
+//    &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.5/@executableElements.3/@dataOutputs.0&quot;>
+//      &lt;conditionalActivities>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;create Error&quot; description=&quot;create a new Error {http://ei/core/error}&quot; category=&quot;SCA and BO services&quot; template=&quot;com.ibm.websphere.bo.BOFactory factory = &amp;#xA;   (com.ibm.websphere.bo.BOFactory) new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/websphere/bo/BOFactory&amp;quot;);&amp;#xA; &amp;lt;%return%> factory.create(&amp;quot;http://ei/core/error&amp;quot;,&amp;quot;Error&amp;quot;);&quot;>
+//          &lt;result>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.1&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot; nillable=&quot;false&quot;/>
+//          &lt;/result>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.0/@result/@dataOutputs.0&quot; value=&quot;targetError&quot; localVariable=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;sourceError&quot; localVariable=&quot;//@executableElements.5/@localVariables.0&quot; variable=&quot;true&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@parameters.0&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://cpi/core/error&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;targetError&quot; localVariable=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@parameters.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;null&quot; assignable=&quot;false&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@parameters.2&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;EBE801X1ErrorMap&quot; description=&quot;perform mapping {0}EBE801X1ErrorMap {http://LocationServices/LOC3X3}&quot; category=&quot;mapping service&quot; template=&quot;java.util.HashMap inputMap = new java.util.HashMap();&amp;#xA;java.util.HashMap outputMap = new java.util.HashMap();&amp;#xA;inputMap.put(&amp;quot;Error&amp;quot;, &amp;lt;%Error%>);&amp;#xA;outputMap.put(&amp;quot;Error_1&amp;quot;, &amp;lt;%Error_1%>);&amp;#xA;com.ibm.wbiserver.map.MapService _serv = &amp;#xA;&amp;#x9;(com.ibm.wbiserver.map.MapService)new com.ibm.websphere.sca.ServiceManager().locateService(&amp;quot;com/ibm/wbiserver/map/MapService&amp;quot;);&amp;#xA;_serv.transform(&amp;quot;http://LocationServices/LOC3X3&amp;quot;, &amp;quot;EBE801X1ErrorMap&amp;quot;, inputMap, outputMap, &amp;lt;%executionContext%>);&quot;>
+//          &lt;parameters name=&quot;Error&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.2/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://cpi/core/error&quot;/>
+//          &lt;/parameters>
+//          &lt;parameters name=&quot;Error_1&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.3/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot;/>
+//          &lt;/parameters>
+//          &lt;parameters name=&quot;executionContext&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.4/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.relationshipservice.common.ExecutionContext&quot;/>
+//          &lt;/parameters>
+//          &lt;exceptions>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapFailureException&quot;/>
+//          &lt;/exceptions>
+//          &lt;exceptions>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapNotFoundException&quot;/>
+//          &lt;/exceptions>
+//          &lt;exceptions>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapServiceException&quot;/>
+//          &lt;/exceptions>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ExceptionHandler&quot; name=&quot;Exception Handler&quot;>
+//          &lt;parameters name=&quot;ex&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@exceptions.0/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapFailureException&quot;/>
+//          &lt;/parameters>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ex&quot; variable=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6/@executableElements.1/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapFailureException&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ThrowActivity&quot; name=&quot;throw Exception&quot; exceptionType=&quot;java.lang.Throwable&quot;>
+//            &lt;parameters name=&quot;Throwable&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6/@executableElements.0/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Throwable&quot;/>
+//            &lt;/parameters>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6/@executableElements.0 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6/@executableElements.1&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ExceptionHandler&quot; name=&quot;Exception Handler&quot;>
+//          &lt;parameters name=&quot;ex2&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@exceptions.1/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapNotFoundException&quot;/>
+//          &lt;/parameters>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ex2&quot; variable=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7/@executableElements.1/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapNotFoundException&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ThrowActivity&quot; name=&quot;throw Exception&quot; exceptionType=&quot;java.lang.Throwable&quot;>
+//            &lt;parameters name=&quot;Throwable&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7/@executableElements.0/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Throwable&quot;/>
+//            &lt;/parameters>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7/@executableElements.0 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7/@executableElements.1&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ExceptionHandler&quot; name=&quot;Exception Handler&quot;>
+//          &lt;parameters name=&quot;ex3&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5/@exceptions.2/@dataOutputs.0&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapServiceException&quot;/>
+//          &lt;/parameters>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;ex3&quot; variable=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8/@executableElements.1/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;com.ibm.wbiserver.map.exceptions.WBIMapServiceException&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:ThrowActivity&quot; name=&quot;throw Exception&quot; exceptionType=&quot;java.lang.Throwable&quot;>
+//            &lt;parameters name=&quot;Throwable&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8/@executableElements.0/@dataOutputs.0&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Throwable&quot;/>
+//            &lt;/parameters>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8/@executableElements.0 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8/@executableElements.1&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;targetList&quot; localVariable=&quot;//@localVariables.1&quot; variable=&quot;true&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.11/@parameters.0&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;targetError&quot; localVariable=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@localVariables.0&quot; variable=&quot;true&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.11/@parameters.1&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot;/>
+//        &lt;/executableElements>
+//        &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;add item to list&quot; description=&quot;Add the provided Object at the end of the list&quot; category=&quot;list&quot; template=&quot;&amp;lt;%return%> &amp;lt;%list%>.add(&amp;lt;%object%>);&quot;>
+//          &lt;parameters name=&quot;list&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.9/@dataOutputs.0&quot; displayName=&quot;list&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//          &lt;/parameters>
+//          &lt;parameters name=&quot;object&quot; dataInputs=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.10/@dataOutputs.0&quot; displayName=&quot;object&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Object&quot;/>
+//          &lt;/parameters>
+//          &lt;result name=&quot;added&quot; displayName=&quot;added&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//          &lt;/result>
+//        &lt;/executableElements>
+//        &lt;localVariables name=&quot;targetError&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://ei/core/error&quot;/>
+//        &lt;/localVariables>
+//        &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.0 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.1&quot;/>
+//        &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.2 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.3 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.4 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.5 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.6 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.7 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.8&quot;/>
+//        &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.9 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.10 //@executableElements.5/@executableElements.4/@conditionalActivities.0/@executableElements.11&quot;/>
+//        &lt;condition value=&quot;true&quot;/>
+//      &lt;/conditionalActivities>
+//      &lt;conditionalActivities>
+//        &lt;condition value=&quot;&quot;/>
+//      &lt;/conditionalActivities>
+//    &lt;/executableElements>
+//    &lt;localVariables name=&quot;sourceError&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;Error&quot;/>
+//    &lt;/localVariables>
+//    &lt;localVariables name=&quot;codeValued&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/localVariables>
+//    &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.0 //@executableElements.5/@executableElements.1 //@executableElements.5/@executableElements.2&quot;/>
+//    &lt;executableGroups executableElements=&quot;//@executableElements.5/@executableElements.3 //@executableElements.5/@executableElements.4&quot;/>
+//    &lt;iterationVariableType xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;Error&quot; namespace=&quot;http://cpi/core/error&quot; nillable=&quot;false&quot;/>
+//  &lt;/executableElements>
+//  &lt;localVariables name=&quot;sourceList&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/localVariables>
+//  &lt;localVariables name=&quot;targetList&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.util.List&quot;/>
+//  &lt;/localVariables>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.2 //@executableElements.3&quot;/>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.4 //@executableElements.5&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!2:3,1&#xD;
+//!SMAP!4:4,1&#xD;
+//!SMAP!5:5,3&#xD;
+//!SMAP!7:8,1&#xD;
+//!SMAP!8:9,1&#xD;
+//!SMAP!9:10,1&#xD;
+//!SMAP!11:11,1&#xD;
+//!SMAP!13:12,6&#xD;
+//!SMAP!14:18,1&#xD;
+//!SMAP!17:19,1&#xD;
+//!SMAP!18:21,9&#xD;
+//!SMAP!21:32,1&#xD;
+//!SMAP!24:35,1&#xD;
+//!SMAP!27:38,1&#xD;
+//!SMAP!30:40,4&#xD;
+//!SMAP!1000000:258,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+</map:businessObjectMap>

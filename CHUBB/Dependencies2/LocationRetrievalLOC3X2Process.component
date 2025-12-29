@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://ei/location/location_retrieval_loc3x2b" xmlns:ns2="http://ei/location/uk_flood_information_retrieval_loc802x1" xmlns:ns3="http://ei/location/address_standardization_loc2x2" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="LocationRetrievalLOC3X2Process" name="LocationRetrievalLOC3X2Process">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:LocationRetrievalLOC3X2B">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="UKFloodInformationRetrievalLOC802X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:UKFloodInformationRetrievalLOC802X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="AddressStandardizationLOC2X2Mediation"/>
+    </reference>
+    <reference name="AddressStandardizationLOC2X2Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns3:AddressStandardizationLOC2X2"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="AddressStandardizationLOC2X2Mediation"/>
+    </reference>
+  </references>
+  <implementation xsi:type="process:ProcessImplementation">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+    <process bpel="/LocationRetrievalLOC3X2Process.bpel"/>
+  </implementation>
+</scdl:component>

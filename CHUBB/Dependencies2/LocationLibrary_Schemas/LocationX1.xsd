@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/locationx1"
+	xmlns:bons0="http://ei/core/rating_territory"
+	xmlns:bons1="http://ei/location/location_information"
+	xmlns:bons3="http://ei/location/standardized_addressx2"
+	xmlns:bons2="http://ei/core/taxing_jurisdiction"
+	xmlns:bons4="http://ei/core/hazardous_area">
+	<xsd:import schemaLocation="HazardousArea.xsd"
+		namespace="http://ei/core/hazardous_area">
+	</xsd:import>
+	<xsd:import schemaLocation="TaxingJurisdiction.xsd"
+		namespace="http://ei/core/taxing_jurisdiction">
+	</xsd:import>
+	<xsd:import schemaLocation="StandardizedAddressX2.xsd"
+		namespace="http://ei/location/standardized_addressx2">
+	</xsd:import>
+	<xsd:import schemaLocation="LocationInformation.xsd"
+		namespace="http://ei/location/location_information">
+	</xsd:import>
+	<xsd:import schemaLocation="RatingTerritory.xsd"
+		namespace="http://ei/core/rating_territory">
+	</xsd:import>
+	<xsd:complexType name="Location">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="RatingTerritory" type="bons0:RatingTerritory">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationInformation"
+				type="bons1:LocationInformation">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StandardizedAddress"
+				type="bons3:StandardizedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="TaxingJurisdiction" type="bons2:TaxingJurisdiction">
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="HazardousArea" type="bons4:HazardousArea">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

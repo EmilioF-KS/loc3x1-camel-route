@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/legal_representativex1"
+	xmlns:bons1="http://ei/core/addressx2">
+	<xsd:import schemaLocation="AddressX2.xsd"
+		namespace="http://ei/core/addressx2">
+	</xsd:import>
+	<xsd:complexType name="LegalRepresentative">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Address"
+				type="bons1:Address">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LegalRepresentativeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the legal representative.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneNumber"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a person's phone number.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FaxNumber"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a person's fax number.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EmailAddress"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a person's e-mail address.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

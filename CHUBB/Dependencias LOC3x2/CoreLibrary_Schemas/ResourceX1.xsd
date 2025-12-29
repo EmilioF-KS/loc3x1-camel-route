@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/resourcex1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons2="http://ei/core/branchx1"
+	xmlns:bons0="http://ei/core/departmentx1">
+
+	<xsd:import schemaLocation="DepartmentX1.xsd"
+		namespace="http://ei/core/departmentx1">
+	</xsd:import>
+	<xsd:import schemaLocation="BranchX1.xsd"
+		namespace="http://ei/core/branchx1">
+	</xsd:import>
+
+
+
+
+
+	<xsd:complexType name="Resource">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="Branch"
+				type="bons2:Branch" />
+			<xsd:element minOccurs="0" name="Department"
+				type="bons0:Department">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GivenName"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's first name.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MiddleInitial"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains the first letter from a person's middle name.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Surname"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's last name.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NameSuffix"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains the suffix that follows a person’s full name and provides additional information about the person. There are academic, honorary, professional, and social name suffixes.
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CPNumber"
+				type="xsd:string">
+				<xsd:annotation>
+					
+				<xsd:documentation>This element is the number assigned to the contract partcipant.   A contract partcipant may be, but is not limited to, an insured, a prospective insured, a risk manager, an additional insured, or a Chubb resource.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="RACFId"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element is used to sign on to an application.  Also known as RACFId.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="EmailAddress"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's e-mail address.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneNumber"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's phone number.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FaxNumber"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's fax number.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CellPhoneNumber"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's cell phone number.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PagerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains a person's pager number.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ManagerName"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The element specifies the full name of a person's manager.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="SectionCode"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element specifies the code of the sub-division of a department.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SectionName"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element specifcies the name of sub-division of a department.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CostCenterCode"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element is used to identify the code of an area to which expenses will be directly assigned.  
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CostCenterName"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element is used to identify the name of an area to which expeneses will be directly assigned.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationCode"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element is the code that uniquely identifies a geographic area within a state.
+
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationName"
+				type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>This element contains the name of a particular location.
+
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="IndividualFullName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element  consists of first, middle and last name strung together and separated by a space into a single name line.
+
+ </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NickName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the familiar or shortened substituted name for a person, place, etc.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ResourceActiveIndicator"
+				type="xsd:boolean"><xsd:annotation><xsd:documentation>This element indicates whether the resource is active.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

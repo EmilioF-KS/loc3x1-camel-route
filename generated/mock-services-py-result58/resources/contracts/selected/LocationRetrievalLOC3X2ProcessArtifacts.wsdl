@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="LocationRetrievalLOC3X2" targetNamespace="http://Location2Module/LocationRetrievalLOC3X2Artifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://Location2Module/LocationRetrievalLOC3X2Artifacts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl0="http://ei/location/location_retrieval_loc3x2b" xmlns:wsdl1="http://ei/location/address_standardization_loc2x2" xmlns:wsdl2="http://ei/location/uk_flood_information_retrieval_loc802x1">
+  <plnk:partnerLinkType name="LocationRetrievalLOC3X2BPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:LocationRetrievalLOC3X2B"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="AddressStandardizationLOC2X2PLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl1:AddressStandardizationLOC2X2"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="UKFloodInformationRetrievalLOC802X1PLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl2:UKFloodInformationRetrievalLOC802X1"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="LocationRetrievalLOC3X2B/LocationRetrievalLOC3X2B.wsdl" namespace="http://ei/location/location_retrieval_loc3x2b"/>
+    <wsdl:import location="AddressStandardizationLOC2X2/AddressStandardizationLOC2X2.wsdl" namespace="http://ei/location/address_standardization_loc2x2"/>
+    <wsdl:import location="UKFloodInformationRetrievalLOC802X1/UKFloodInformationRetrievalLOC802X1.wsdl" namespace="http://ei/location/uk_flood_information_retrieval_loc802x1"/>
+</wsdl:definitions>

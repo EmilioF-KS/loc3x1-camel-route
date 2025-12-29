@@ -1,0 +1,8 @@
+YAML: generated/result63/src/main/resources/routes/loc-service63.yaml
+Generated: 6
+- generated/result63\src/main/java\com/summary\controller\http\LocGetLocationList3X1BController.java
+- generated/result63\src/main/java\com/summary\controller\http\LocGetStateOrProvinceController.java
+- generated/result63\src/main/java\com/summary\controller\http\LocGetCountryController.java
+- generated/result63\src/main/java\com/summary\controller\http\LocGetLocationList3X1MController.java
+- generated/result63\src/main/java\com/summary\controller\http\LocGetLocationWithTaxingJurisdictions3X1BController.java
+- generated/result63\src/main/java\com/summary\controller\http\LocGetLocationWithTaxingJurisdictions3X1MController.java

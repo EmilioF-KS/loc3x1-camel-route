@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/risk/survey_message_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="SurveyMessageInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="MessageCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element represents a code associated with a message.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MessageDescription"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the description of the message.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

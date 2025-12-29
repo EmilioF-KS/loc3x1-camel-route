@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/corporate/get_state_or_province_request_crp11x1">
+	<xsd:complexType name="GetStateOrProvinceRequest">
+		<xsd:sequence>			<xsd:element minOccurs="0" name="StateOrProvinceCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is a code for a state, province or territory within a country or nation.
+The E1T00111 Corporate Table contains valid values for this element in the &quot;ST_PROV_C&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="StateOrProvinceAbbreviation" type="xsd:string"><xsd:annotation><xsd:documentation>This element is the abbreviation for a state, province or territory within a country or nation.
+The E1T00111 Corporate Table contains valid values for this element in the &quot;ST_PROV_AB&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PostalStateAbbreviation"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation> This element is the two character US Postal State Abbreviation. 
+The E1T00111 Corporate Table contains valid values for this element in the &quot;PSTL_ST_AB&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StateOrProvinceName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the name for a state, province or territory within a country or nation.
+The E1T00111 Corporate Table contains valid values for this element in the &quot;ST_PROV_NA&quot;or &quot;ST_PROV_MXCSH_NA&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AsOfDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the search start date.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

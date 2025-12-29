@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/prior_carrier"
+	xmlns:bons1="http://ei/core/competitor"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/competitor"
+		schemaLocation="Competitor.xsd" />
+	<xsd:complexType name="PriorCarrier">
+		<xsd:complexContent>
+			<xsd:extension base="bons1:Competitor">
+				<xsd:sequence>
+
+					<xsd:element minOccurs="0" name="CoverageLapseCode"
+						type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element indicates if the coverage on the Policy has lapsed.
+Valid values include 'Y', 'N' or 'W'- Waived.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="CoverageLapseReasonCode" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element identifies why the coverage lapsed.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="PriorCarrierYears"
+						type="xsd:integer">
+						<xsd:annotation>
+              <xsd:documentation>This element contains the number of years that a risk was held with a Prior Carrier.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="SourceSystemPriorCarrierCode" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains a code for the Prior Carrier as it is known by the Source System.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="PriorCarrierPolicyInformationText" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains free form text related to details about the Policy with the Prior Carrier. </xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="BodilyInjuryLimitCategoryCode" type="xsd:string">
+						<xsd:annotation>
+              <xsd:documentation>This element contains a code which identifies a Limit range for a Bodily Injury coverage.</xsd:documentation>
+            </xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="PriorCarrierPolicyNumber" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the Policy number of the Prior Carrier.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

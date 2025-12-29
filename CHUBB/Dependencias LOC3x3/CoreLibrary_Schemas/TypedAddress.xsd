@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/typed_address"
+	xmlns:bons1="http://ei/core/standardized_addressx3"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import schemaLocation="StandardizedAddressX3.xsd"
+		namespace="http://ei/core/standardized_addressx3">
+	</xsd:import>
+	<xsd:complexType name="TypedAddress">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="StandardizedAddress"
+				type="bons1:StandardizedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemAddressId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the id of an address as it is known by the source system.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="AddressTypeName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name to identify the type of address. Valid values for this will be corporately defined and used company wide.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressTypeDescription"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a description to identify the type of  address.  Some potential address types may include home, business, billing.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="AddressDefaultIndicator"
+				type="xsd:boolean">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if this address is the default address.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AddressValidatedIndicator"
+				type="xsd:boolean">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element indicates if an address has been validated. 
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<xsd:element minOccurs="0" name="PreferredAddressIndicator"
+				type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>This element indicates if this address is the preferred address.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContactOrderPreferenceTypeNumber" type="xsd:integer"><xsd:annotation><xsd:documentation>This element contains a number which identifies the ranking order of the contact.  This may translate to a code on the physical database implementation.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UsageTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element indentifies personal/business usage associated to the contact method.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ContactModePreferenceTypeName" type="xsd:string"><xsd:annotation><xsd:documentation>This element describes how to make contact when multiple options exist.  Valid values for this will be corporately defined and used company wide.
+For example for a phone, options may include fax, text, or call.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:HazardousArea="http://ei/core/hazardous_areax1" xmlns:LOC3X3BHazardousAreaSubmap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BHazardousAreaSubmap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="HazardousArea:HazardousArea" name="HazardousArea"/>
+  <map:outputBusinessObjectVariable businessObjectRef="HazardousArea:HazardousArea" name="HazardousArea_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaTypeCode"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaTypeCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaTypeName"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaTypeName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaName"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaCode"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousTierCode"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousTierCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaIndicator"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaIndicator"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="HazardousAreaText"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="HazardousAreaText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="DataSourceName"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="DataSourceName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="LocationMatchTypeName"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="LocationMatchTypeName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="HazardousArea" property="LocationMatchTypeValue"/>
+      <map:output businessObjectVariableRef="HazardousArea_1" property="LocationMatchTypeValue"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

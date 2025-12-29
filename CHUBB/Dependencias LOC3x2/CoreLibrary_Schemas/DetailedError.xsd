@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/crm/detailed_error" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="DetailedError">
+		<xsd:annotation>
+      <xsd:documentation>This element represents a code associated with an error.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ErrorCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element represents a code associated with an error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the description of the error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorSeverityLevel" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies a code that represents success or failure of the service call. 
+
+Valid values for this element are
+ 'I' for Success with additional information to convey
+ 'S' for Success
+ 'E' for Error 
+ 'W' for warning </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorSourceIdentifier" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains information about the source of the error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProviderErrorCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the error code assigned by a provider service.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorTimestamp" type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date/time of the error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorOccurrenceDescriptionText" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains information about where in the XML the error occurred.  If the values of multiple elements are included, they will be seperated by a delimiter.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorElementNameValueText" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the input element and the value that resulted in an error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AssociatedElementLevelName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This contains the name of the level.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ErrorCategoryName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the category of an error.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

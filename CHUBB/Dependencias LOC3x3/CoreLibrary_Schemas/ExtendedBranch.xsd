@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/branchx1"
+	targetNamespace="http://ei/core/extendedbranch"
+	xmlns:bons1="http://ei/core/addressx1"
+	xmlns:bons2="http://ei/core/language">
+
+	<xsd:import schemaLocation="Language.xsd"
+		namespace="http://ei/core/language">
+	</xsd:import>
+	<xsd:import schemaLocation="AddressX1.xsd"
+		namespace="http://ei/core/addressx1">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/branchx1"
+		schemaLocation="BranchX1.xsd" />
+
+	<xsd:complexType name="ExtendedBranch">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:Branch">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="MailingAddress"
+						type="bons1:Address">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BranchPhoneNumber"
+						type="xsd:string">
+						<xsd:annotation><xsd:documentation>This element is the telephone number for a Chubb Branch. The number contains the area, exchange and number. For a foreign branch it will contain the country number.
+
+</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="BranchFaxNumber"
+						type="xsd:string">
+						<xsd:annotation><xsd:documentation>This element is the fax number for a Chubb Branch. The number contains the area, exchange and number. For a foreign branch it will contain the country number.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="ZoneNumber"
+						type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a numeric value that identifies a Chubb defined territory.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="BranchMailingLabelName" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name that should appear on the mailing address for a Branch.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="ForeignBranchIndicator" type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies whether the branch is non-domestic.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="Language"
+						type="bons2:Language">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>
+
+
+

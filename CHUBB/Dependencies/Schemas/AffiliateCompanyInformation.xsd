@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/affiliate_company_information"
+	xmlns:bons0="http://ei/core/affiliate_company">
+	<xsd:import schemaLocation="AffiliateCompany.xsd"
+		namespace="http://ei/core/affiliate_company">
+	</xsd:import>
+	<xsd:complexType name="AffiliateCompanyInformation">
+		<xsd:annotation><xsd:documentation>This element identifies the insurance contract from an affiliate company</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="AffiliateCompanyPolicyNumber" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element identifies the insurance contract from an affiliate company.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AffiliateCompany"
+				type="bons0:AffiliateCompany">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

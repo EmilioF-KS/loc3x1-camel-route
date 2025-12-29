@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/alliance_product_category"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="AllianceProductCategory">
+		<xsd:sequence>
+			<xsd:element name="AllianceProductCategoryCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies a specific product category.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceProductCategoryName"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the name associated with the Alliance product category code.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

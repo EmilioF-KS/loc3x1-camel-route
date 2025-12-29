@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationReply="http://ei/location/get_location_reply_loc3x3b" xmlns:GetLocationReply_1="http://ei/location/get_location_reply_loc3x3m" xmlns:LOC3X3BGetLocationReplyMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BGetLocationReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationReply_1:GetLocationReply" name="GetLocationReply"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationReply:GetLocationReply" name="GetLocationReply_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/RatingTerritory"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/RatingTerritory"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/TaxingJurisdiction"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/TaxingJurisdiction"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/HazardousArea"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/HazardousArea"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/CityCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/CityCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/CountyCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/CountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/FloridaTortCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/FloridaTortCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/FireDistrictCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/FireDistrictCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/IndustrialRiskInsurerCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/IndustrialRiskInsurerCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/LicenseCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/LicenseCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/LocationClassificationCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/LocationClassificationCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/MineSubsidenceCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/MineSubsidenceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/TexasCityCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/TexasCityCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="13">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/TexasCountyCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/TexasCountyCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="14">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/TexasPlaceCode"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/TexasPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="15">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationReply" property="Location/LocationInformation/PublicProtectionInformation"/>
+      <map:output businessObjectVariableRef="GetLocationReply_1" property="Location/LocationInformation/PublicProtectionInformation"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

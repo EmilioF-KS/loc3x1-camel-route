@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/docusign_envelope">
+	<xsd:complexType name="DocuSignEnvelope">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="EnvelopeId"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SendEnvelopeIndicator"
+				type="xsd:boolean">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DoscusignBrandId"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnvelopeStatus"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnvelopeAuthenticationCode"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnvelopeCreationTimestamp"
+				type="xsd:dateTime">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnvelopeReceivedTimestamp"
+				type="xsd:dateTime">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ExpireEnvelopeIndicator"
+				type="xsd:boolean">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PriorToEnvelopeExpirationReminderDays" type="xsd:integer">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnvelopeExpirationDays"
+				type="xsd:integer">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NotificationCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is used internally to correspond to an external ElectronicNotificationId.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

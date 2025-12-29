@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/strategic_alliance_sbu"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/marketing_program"
+	xmlns:bons1="http://ei/core/alliance_market_segment"
+	xmlns:bons2="http://ei/core/business_process_location_type"
+	xmlns:bons3="http://ei/core/alliance_product_category"
+	xmlns:bons4="http://ei/core/alliance_customer_group"
+	xmlns:bons5="http://ei/core/alliance_sbu_monthly_financial"
+	xmlns:bons6="http://ei/core/alliance_sbu_yearly_financial">
+	<xsd:import schemaLocation="AllianceSBUYearlyFinancial.xsd"
+		namespace="http://ei/core/alliance_sbu_yearly_financial">
+	</xsd:import>
+	<xsd:import schemaLocation="AllianceSBUMonthlyFinancial.xsd"
+		namespace="http://ei/core/alliance_sbu_monthly_financial">
+	</xsd:import>
+	<xsd:import schemaLocation="AllianceCustomerGroup.xsd"
+		namespace="http://ei/core/alliance_customer_group">
+	</xsd:import>
+	<xsd:import schemaLocation="AllianceProductCategory.xsd"
+		namespace="http://ei/core/alliance_product_category">
+	</xsd:import>
+	<xsd:import schemaLocation="BusinessProcessLocationType.xsd"
+		namespace="http://ei/core/business_process_location_type">
+	</xsd:import>
+	<xsd:import schemaLocation="AllianceMarketSegment.xsd"
+		namespace="http://ei/core/alliance_market_segment">
+	</xsd:import>
+	<xsd:import schemaLocation="MarketingProgram.xsd"
+		namespace="http://ei/core/marketing_program">
+	</xsd:import>
+	<xsd:complexType name="StrategicAllianceSBU">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="MarketingProgram"
+				type="bons0:MarketingProgram">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AllianceMarketSegment"
+				type="bons1:AllianceMarketSegment" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="BusinessProcessLocationType"
+				type="bons2:BusinessProcessLocationType" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AllianceProductCategory"
+				type="bons3:AllianceProductCategory" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AllianceCustomerGroup"
+				type="bons4:AllianceCustomerGroup" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AllianceSBUMonthlyFinancial"
+				type="bons5:AllianceSBUMonthlyFinancial" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AllianceSBUYearlyFinancial"
+				type="bons6:AllianceSBUYearlyFinancial" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element name="AllianceSBUCode" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains a code that uniquely identifies an Alliance specific SBU.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceSBUName" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the name of an Alliance specific SBU.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SpecialTermsDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the text description for any special terms defined for the Alliance.&#10;&#10;</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SpecialPricingDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the text description for any special pricing defined for the alliance.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceSBUActiveIndicator"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element identifies if the Alliance SBU is active or not.&#10;&#10;</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+
+
+
+
+
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

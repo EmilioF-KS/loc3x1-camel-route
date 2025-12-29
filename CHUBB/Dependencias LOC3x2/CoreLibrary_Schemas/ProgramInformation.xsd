@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ei/core/program_information">
+	<xsd:complexType name="ProgramInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ProgramDescription" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the description of the program.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProgramTypeCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the type of program. Some valid values include 'TAQA' and '11'.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

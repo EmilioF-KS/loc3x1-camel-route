@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocation3X3MRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocation3X3MRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3MGetLocationRequestMap="http://LocationServices/LOC3X3" xmlns:getLocationWithLineOfBusinessInfoRequest="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithLineOfBusinessInfoRequest/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3MGetLocationRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocation3X3MRequestMsg:GetLocation3X3MRequestMsg" name="GetLocation3X3MRequestMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="getLocationWithLineOfBusinessInfoRequest:getLocationWithLineOfBusinessInfoRequest" name="getLocationWithLineOfBusinessInfoRequest"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/AddressLine1"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/addressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/CityName"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/cityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:custom>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/StateOrProvinceCode"/>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/CountryCode"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/stateOrProvinceCode"/>
+      <map:javaCode>java.lang.String __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode = (java.lang.String)GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode;&#xD;
+java.lang.String __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode = (java.lang.String)GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode;&#xD;
+java.lang.String __getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = (java.lang.String)getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode;&#xD;
+boolean __result__2 = ei.core.map.MapUtility.isValued(__GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode);&#xD;
+if (__result__2){&#xD;
+	java.lang.String __result__5 = &quot;8A&quot;;&#xD;
+	boolean __result__7;&#xD;
+	{// text equal to (ignore case)&#xD;
+		__result__7 = __result__5.equalsIgnoreCase(__GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode);&#xD;
+	}&#xD;
+	if (__result__7){&#xD;
+		__getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode;&#xD;
+		getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode;&#xD;
+	}&#xD;
+	else{&#xD;
+		java.lang.String __result__14 = &quot;8B&quot;;&#xD;
+		boolean __result__15;&#xD;
+		{// text equal to (ignore case)&#xD;
+			__result__15 = __result__14.equalsIgnoreCase(__GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode);&#xD;
+		}&#xD;
+		if (__result__15){&#xD;
+			__getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode;&#xD;
+			getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode;&#xD;
+		}&#xD;
+		else{&#xD;
+			__getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode;&#xD;
+			getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode;&#xD;
+		}&#xD;
+	}&#xD;
+}&#xD;
+else{&#xD;
+	__getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode;&#xD;
+	getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode = __getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode;&#xD;
+}&#xD;
+
+//@generated:com.ibm.wbit.activity.ui
+//&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+//&lt;com.ibm.wbit.activity:CompositeActivity xmi:version=&quot;2.0&quot; xmlns:xmi=&quot;http://www.omg.org/XMI&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:com.ibm.wbit.activity=&quot;http:///com/ibm/wbit/activity.ecore&quot; name=&quot;ActivityMethod&quot;>
+//  &lt;parameters name=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;parameters name=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; objectType=&quot;true&quot;>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/parameters>
+//  &lt;exceptions>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.Exception&quot;/>
+//  &lt;/exceptions>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//    &lt;dataOutputs target=&quot;//@executableElements.1/@parameters.0&quot;/>
+//    &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:JavaActivity&quot; name=&quot;isValued&quot; category=&quot;ei.core.map.MapUtility&quot; className=&quot;ei.core.map.MapUtility&quot; static=&quot;true&quot; memberName=&quot;isValued&quot;>
+//    &lt;parameters name=&quot;str&quot; dataInputs=&quot;//@executableElements.0/@dataOutputs.0&quot;>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//    &lt;/parameters>
+//    &lt;result>
+//      &lt;dataOutputs target=&quot;//@executableElements.2&quot;/>
+//      &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//    &lt;/result>
+//  &lt;/executableElements>
+//  &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.1/@result/@dataOutputs.0&quot;>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;8A&amp;quot;&quot; assignable=&quot;false&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.2/@parameters.0&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.2/@parameters.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;text equal to (ignore case)&quot; description=&quot;Whether or not the two strings of text are the same, ignoring case&quot; category=&quot;text&quot; template=&quot;&amp;lt;%return%> &amp;lt;%input1%>.equalsIgnoreCase(&amp;lt;%input2%>);&quot;>
+//        &lt;parameters name=&quot;input1&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot; displayName=&quot;input 1&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;parameters name=&quot;input2&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.1/@dataOutputs.0&quot; displayName=&quot;input 2&quot;>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//        &lt;/parameters>
+//        &lt;result name=&quot;are words equal&quot; displayName=&quot;are words equal&quot;>
+//          &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3&quot;/>
+//          &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//        &lt;/result>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.2/@result/@dataOutputs.0&quot;>
+//        &lt;conditionalActivities>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.0/@executableElements.1&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot; value=&quot;getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode&quot; variable=&quot;true&quot;>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.0/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.0/@executableElements.1&quot;/>
+//          &lt;condition value=&quot;true&quot;/>
+//        &lt;/conditionalActivities>
+//        &lt;conditionalActivities>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.2/@parameters.1&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;&amp;quot;8B&amp;quot;&quot; assignable=&quot;false&quot;>
+//            &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.2/@parameters.0&quot;/>
+//            &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:LibraryActivity&quot; name=&quot;text equal to (ignore case)&quot; description=&quot;Whether or not the two strings of text are the same, ignoring case&quot; category=&quot;text&quot; template=&quot;&amp;lt;%return%> &amp;lt;%input1%>.equalsIgnoreCase(&amp;lt;%input2%>);&quot;>
+//            &lt;parameters name=&quot;input1&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.1/@dataOutputs.0&quot; displayName=&quot;input 1&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//            &lt;/parameters>
+//            &lt;parameters name=&quot;input2&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.0/@dataOutputs.0&quot; displayName=&quot;input 2&quot;>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;java.lang.String&quot;/>
+//            &lt;/parameters>
+//            &lt;result name=&quot;are words equal&quot; displayName=&quot;are words equal&quot;>
+//              &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3&quot;/>
+//              &lt;type xsi:type=&quot;com.ibm.wbit.activity:JavaElementType&quot; name=&quot;boolean&quot;/>
+//            &lt;/result>
+//          &lt;/executableElements>
+//          &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:BranchElement&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.2/@result/@dataOutputs.0&quot;>
+//            &lt;conditionalActivities>
+//              &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_StateOrProvinceCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//                &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.1&quot;/>
+//                &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//              &lt;/executableElements>
+//              &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.0/@dataOutputs.0&quot; value=&quot;getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode&quot; variable=&quot;true&quot;>
+//                &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//              &lt;/executableElements>
+//              &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.0/@executableElements.1&quot;/>
+//              &lt;condition value=&quot;true&quot;/>
+//            &lt;/conditionalActivities>
+//            &lt;conditionalActivities>
+//              &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//                &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.1&quot;/>
+//                &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//              &lt;/executableElements>
+//              &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.0/@dataOutputs.0&quot; value=&quot;getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode&quot; variable=&quot;true&quot;>
+//                &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//              &lt;/executableElements>
+//              &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3/@conditionalActivities.1/@executableElements.1&quot;/>
+//              &lt;condition value=&quot;&quot;/>
+//            &lt;/conditionalActivities>
+//          &lt;/executableElements>
+//          &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.1 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.2 //@executableElements.2/@conditionalActivities.0/@executableElements.3/@conditionalActivities.1/@executableElements.3&quot;/>
+//          &lt;condition value=&quot;&quot;/>
+//        &lt;/conditionalActivities>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.0/@executableElements.0 //@executableElements.2/@conditionalActivities.0/@executableElements.1 //@executableElements.2/@conditionalActivities.0/@executableElements.2 //@executableElements.2/@conditionalActivities.0/@executableElements.3&quot;/>
+//      &lt;condition value=&quot;true&quot;/>
+//    &lt;/conditionalActivities>
+//    &lt;conditionalActivities>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; value=&quot;GetLocation3X3MRequestMsg_GetLocation3X3M_GetLocationRequest_StandardizedAddress_CountryCode&quot; variable=&quot;true&quot; assignable=&quot;false&quot; input=&quot;true&quot;>
+//        &lt;dataOutputs target=&quot;//@executableElements.2/@conditionalActivities.1/@executableElements.1&quot;/>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableElements xsi:type=&quot;com.ibm.wbit.activity:Expression&quot; dataInputs=&quot;//@executableElements.2/@conditionalActivities.1/@executableElements.0/@dataOutputs.0&quot; value=&quot;getLocationWithLineOfBusinessInfoRequest_getLocationWithLineOfBusinessInfo_address_stateOrProvinceCode&quot; variable=&quot;true&quot;>
+//        &lt;type xsi:type=&quot;com.ibm.wbit.activity:XSDElementType&quot; name=&quot;string&quot; namespace=&quot;http://www.w3.org/2001/XMLSchema&quot;/>
+//      &lt;/executableElements>
+//      &lt;executableGroups executableElements=&quot;//@executableElements.2/@conditionalActivities.1/@executableElements.0 //@executableElements.2/@conditionalActivities.1/@executableElements.1&quot;/>
+//      &lt;condition value=&quot;&quot;/>
+//    &lt;/conditionalActivities>
+//  &lt;/executableElements>
+//  &lt;executableGroups executableElements=&quot;//@executableElements.0 //@executableElements.1 //@executableElements.2&quot;/>
+//&lt;/com.ibm.wbit.activity:CompositeActivity>
+//@generated:end
+//!SMAP!*S WBIACTDBG&#xD;
+//!SMAP!*L&#xD;
+//!SMAP!2:4,1&#xD;
+//!SMAP!3:5,1&#xD;
+//!SMAP!5:6,1&#xD;
+//!SMAP!7:7,4&#xD;
+//!SMAP!8:11,1&#xD;
+//!SMAP!11:12,2&#xD;
+//!SMAP!14:16,1&#xD;
+//!SMAP!15:17,4&#xD;
+//!SMAP!16:21,1&#xD;
+//!SMAP!19:22,2&#xD;
+//!SMAP!22:26,2&#xD;
+//!SMAP!25:32,2&#xD;
+//!SMAP!1000000:177,1</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/CountryCode"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/countryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/PostalCode"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/postalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/locationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/StandardizedAddress/CountyName"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/address/countyName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/AsOfDate"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/asOfDate"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocation3X3MRequestMsg" property="GetLocation3X3M/GetLocationRequest/LineOfBusinessTypeCode"/>
+      <map:output businessObjectVariableRef="getLocationWithLineOfBusinessInfoRequest" property="getLocationWithLineOfBusinessInfo/lineOfBusinessTypeCode"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/branchx1">
+	<xsd:complexType name="Branch">
+		<xsd:sequence>
+			<xsd:element name="BranchName" type="xsd:string"
+				minOccurs="0">
+				<xsd:annotation>
+					
+				<xsd:documentation>
+This element specifies the name of the Chubb office that receives premium credit for a policy.
+The E1T00031 Corporate Table contains valid values for this element in the "BR_LOC_NA" or the "MXC_BR_LOC_NA" column.
+						</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchAbbreviation" type="xsd:string"
+				minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+This element specifies the abbreviation of the Chubb office that receives premium credit for a policy.
+The E1T00031 Corporate Table contains valid values for this element in the "BR_AB" column.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchNumber" type="xsd:string"
+				minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+This element specifies the number of the Chubb office that receives premium credit for a policy.
+The E1T00031 Corporate Table contains valid values for this element in the "BR_LOC_N" column.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BranchCode" type="xsd:string"
+				minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+This element specifies the code of the Chubb office that receives premium credit for a policy.
+The E1T00031 Corporate Table contains valid values for this element in the "BR_OFF_C" column.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

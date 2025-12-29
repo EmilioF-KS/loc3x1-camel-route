@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/campaign_contact_alliance_sbu_association"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="CampaignContactAllianceSBUAssociation">
+		<xsd:sequence>
+			<xsd:element name="AllianceSBUAssociationCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the value assigned to uniquely identify the association to an Alliance specific SBU; currently CSI, CPI, CCI, A&amp;H, or when no association exists the default is Branch Management.    </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceSBUAssociationDescription"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the name defined for an Alliance specific SBU.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

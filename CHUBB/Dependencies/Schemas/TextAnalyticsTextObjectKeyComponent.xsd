@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/text_analytics_text_object_key_component"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="TextAnalyticsTextObjectKeyComponent">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="TextObjectKeyComponentSequenceNumber" type="xsd:integer">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains a sequential number assigned to a component of a text object.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="TextObjectKeyComponentName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        
+        <xsd:documentation>This element contains the name of the component being used to identify a text object.  These values will be consistently established across the enterprise.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0"
+				name="TextObjectKeyComponentValue" type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element will contain the value of a text object component.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/get_location_request_loc3x3m"
+	xmlns:bons0="http://ei/location/standardized_addressx2">
+	<xsd:import schemaLocation="../Schemas/StandardizedAddressX2.xsd"
+		namespace="http://ei/location/standardized_addressx2">
+	</xsd:import>
+	<xsd:complexType name="GetLocationRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="StandardizedAddress"
+				type="bons0:StandardizedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LineOfBusinessTypeCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element indicates if this is transaction is on behalf a Commercial or Personal Policy.
+Valid values are: &quot;C&quot; or &quot;P&quot;.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProcessClassificationName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element allows the source of the data to be classified so a specific action(process) can be taken based on whay system and/or CCM is supplying the data.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="1" name="UserId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is used to sign on to an application.  
+This is also known as RACFId.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="1" name="SystemId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies internal/external sources of information.
+This is also known as the System Source Code. 
+The Corporate table E1T00871 contains the valid values for this element in the &quot;SYS_SRC_C&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AsOfDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains the search start date.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DataSourceOptionsText"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies which data source(s) the consumer wants called for this service when multiple data sources are available.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="AdditionalOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies which options the consumer wants executed on this service.   
+For example, this coud be used for enrichment.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="HazardousAreaOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the hazardous area data to be returned from the service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="RatingTerritoryOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the rating territory data to be returned from the service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="ReferralZonesOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the referral zone data to be returned from the service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="LocationInformationOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the additional location related data to be returned from the service.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

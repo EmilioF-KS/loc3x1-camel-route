@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/limitx2"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="Limit">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="LimitTypeReferenceCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies a specific limit type.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies a specific limit type.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitAmount"
+				type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the maximum amount the company agrees to pay in case of a loss.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitCurrencyCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code which indentifies the currency of the limit amount.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitAmountTypeName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element describes the type of data contained in the limit amount.
+Valid values for this element include Currency, Distance, Time, and Quantity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UnitOfMeasure"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the measure for the Amount provided for Distance, Time, and Quantity Amounts. 
+Some valid values for this element would include day, weeks, months.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitOptionsTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies the code for additional types of Limits that can apply to a coverage.
+One use of this element is to track if a coverage limit is "stacked" or "nonstacked".</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CoverageSharedLimitIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is used to indicate if this limit is shared across coverages.  Valid values are "Yes" or "No"</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitCurrencyExchangeRate"
+				type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element is used in a calculation to convert limit amounts from one currency to another currency.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitRate"
+				type="xsd:decimal"><xsd:annotation><xsd:documentation>This element contains the Rate that will be applied to determine the Limit Amount.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LimitPercent"
+				type="xsd:decimal"><xsd:annotation><xsd:documentation>This element contains a percent of the total limit. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

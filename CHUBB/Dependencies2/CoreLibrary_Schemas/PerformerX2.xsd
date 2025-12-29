@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/performerx2"
+	xmlns:bons1="http://ei/core/phone_information"
+	xmlns:bons2="http://ei/core/email_information"
+	xmlns:bons3="http://ei/core/business_party_characteristic"
+	xmlns:bons4="http://ei/core/typed_addressx3">
+	<xsd:import schemaLocation="TypedAddressX3.xsd"
+		namespace="http://ei/core/typed_addressx3">
+	</xsd:import>
+	<xsd:import schemaLocation="BusinessPartyCharacteristic.xsd"
+		namespace="http://ei/core/business_party_characteristic">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/email_information"
+		schemaLocation="EmailInformation.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/phone_information"
+		schemaLocation="PhoneInformation.xsd">
+	</xsd:import>
+
+	<xsd:complexType name="Performer">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="TypedAddress" type="bons4:TypedAddress">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="PhoneInformation" type="bons1:PhoneInformation">
+			</xsd:element>
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="EmailInformation" type="bons2:EmailInformation">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of a business.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessEntityIndicator"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates if something is a business entity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="GivenName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's first name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MiddleInitial"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the first letter from a person's middle name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Surname"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's last name.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NameSuffix"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the suffix that follows a person’s full name and provides additional information about the person. There are academic, honorary, professional, and social name suffixes.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformerRoleTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies the role type of the performer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformerRoleTypeName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies the role type of the performer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the number of the performer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PerformerCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code used to identify a performer.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="BusinessPartyCharacteristic"
+				type="bons3:BusinessPartyCharacteristic" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

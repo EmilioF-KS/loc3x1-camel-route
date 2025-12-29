@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationList3X3MRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocationList3X3MRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3MGetLocationListRequestMap="http://LocationServices/LOC3X3" xmlns:getLocationsRequest="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationsRequest/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3MGetLocationListRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationList3X3MRequestMsg:GetLocationList3X3MRequestMsg" name="GetLocationList3X3MRequestMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="getLocationsRequest:getLocationsRequest" name="getLocationsRequest"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/AddressLine1"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/addressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/CityName"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/cityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/StateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/stateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/CountryCode"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/countryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/PostalCode"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/postalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/locationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationList3X3MRequestMsg" property="GetLocationList3X3M/GetLocationListRequest/StandardizedAddress/CountyName"/>
+      <map:output businessObjectVariableRef="getLocationsRequest" property="getLocations/address/countyName"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

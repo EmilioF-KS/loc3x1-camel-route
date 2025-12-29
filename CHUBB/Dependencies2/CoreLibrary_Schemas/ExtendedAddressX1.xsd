@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/addressx1"
+	targetNamespace="http://ei/core/extended_addressx1">
+	<xsd:import namespace="http://ei/core/addressx1"
+		schemaLocation="AddressX1.xsd" />
+	<xsd:complexType name="ExtendedAddress">
+		<xsd:annotation>
+			<xsd:documentation>
+This business object contains the Address business object plus other additional information about an Address. 			
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="bons0:Address">
+				<xsd:sequence>					<xsd:element minOccurs="0" name="FireDistrictCode"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+This element is a code assigned by the State to identify the a Municipal Fire Department District. 
+Valid options for this element are in the RAND system.
+						</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="TaxIdentityCode"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+This element is the political subdivisions code assigned to a location within a state for tax purposes.
+Valid options for this element are in the RAND system.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>					<xsd:element minOccurs="0" name="FreeTradeZoneClass"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+							
+This element indentifies the class code of policies written in the Free Trade Zone, which is a special risk insurance market.
+Valid options for this element are '1' - Class 1 Risks or '2' - Class 2 Risks.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0" name="FreeTradeZoneCode"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+This element is the postal abbreviation for the location of the Free Trade Zone.
+								</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element minOccurs="0"
+						name="FreeTradeZoneRiskCode" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+This element identifies the risks via a code that can be written in the Free Trade Zone as Class II Risks.
+The  E1T01361 Corporate Table contains valid values for this element in the "FREE_TRD_ZN_RSK_C" column.  
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+
+
+
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,281 @@
+bpel:
+  -
+    file: "/Users/albertohernandez/Documents/projects/loc3x1-camel-route/CHUBB/Dependencies/LocationRetrievalLOC3X1Process.bpel"
+    steps:
+      -
+        kind: faultHandlers
+        catches:
+          -
+            faultName: "ns7:SimpleFaultReply"
+          -
+            faultName: "ns13:SimpleFaultReply"
+          -
+            faultName: "ns10:SimpleFaultReply"
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: StateOrProvinceRetrievalCRP11X1Partner
+        portType: "ns7:StateOrProvinceRetrievalCRP11X1"
+        operation: GetStateOrProvince
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: CountryRetrievalCRP10X1Partner
+        portType: "ns13:CountryRetrievalCRP10X1"
+        operation: GetCountry
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: LocationRetrievalLOC3X1MPartner
+        portType: "ns10:LocationRetrievalLOC3X1M"
+        operation: GetLocationList3X1M
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: faultHandlers
+        catches:
+          -
+            faultName: "ns7:SimpleFaultReply"
+          -
+            faultName: "ns13:SimpleFaultReply"
+          -
+            faultName: "ns10:SimpleFaultReply"
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: StateOrProvinceRetrievalCRP11X1Partner
+        portType: "ns7:StateOrProvinceRetrievalCRP11X1"
+        operation: GetStateOrProvince
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: CountryRetrievalCRP10X1Partner
+        portType: "ns13:CountryRetrievalCRP10X1"
+        operation: GetCountry
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: LocationRetrievalLOC3X1MPartner
+        portType: "ns10:LocationRetrievalLOC3X1M"
+        operation: GetLocationWithTaxingJurisdictions3X1M
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+      -
+        kind: invoke
+        partnerLink: null
+        portType: "wpc:null"
+        operation: null
+        inputVariable: null
+        outputVariable: null
+mediation:
+
+summary:
+  bpel_count: 1
+  mediation_count: 0
+  invoke_count: 36
+  transform_count: 0

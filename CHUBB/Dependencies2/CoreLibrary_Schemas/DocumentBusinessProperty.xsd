@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/document_business_property"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="DocumentBusinessProperty">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="DocumentBusinessPropertyName" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the name of a business property for a document.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="DocumentBusinessPropertyValue" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the value associated to a specific business property for a document.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DocumentBusinessPropertyDate" type="xsd:date"><xsd:annotation><xsd:documentation>This element contains a date of a document property.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DocumentBusinessPropertyIndicator" type="xsd:boolean"><xsd:annotation><xsd:documentation>This element contains a indicator for a document property.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

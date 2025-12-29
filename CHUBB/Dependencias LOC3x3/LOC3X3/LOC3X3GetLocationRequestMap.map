@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3b%257DGetLocationRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:GetLocationRequestMsg_1="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3%257DGetLocationRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3GetLocationRequestMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3GetLocationRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationRequestMsg_1:GetLocationRequestMsg" name="GetLocationRequestMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationRequestMsg:GetLocationRequestMsg" name="GetLocationRequestMsg_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/StandardizedAddress"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/StandardizedAddress"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/LineOfBusinessTypeCode"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/LineOfBusinessTypeCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/UserId"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/UserId"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/SystemId"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/SystemId"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/AsOfDate"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/AsOfDate"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/DataSourceOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/DataSourceOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/AdditionalOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/AdditionalOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="8">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/HazardousAreaOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/HazardousAreaOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="9">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/RatingTerritoryOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/RatingTerritoryOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="10">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/ReferralZonesOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/ReferralZonesOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="11">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/LocationInformationOptionsText"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/LocationInformationOptionsText"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="12">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequestMsg" property="GetLocation/GetLocationRequest/ProcessClassificationName"/>
+      <map:output businessObjectVariableRef="GetLocationRequestMsg_1" property="GetLocation/GetLocationRequest/ProcessClassificationName"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

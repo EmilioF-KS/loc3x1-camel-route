@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/business_partyx1"
+	xmlns:bons0="http://ei/core/individual_identifierx1"
+	xmlns:bons1="http://ei/core/telecomm_electronic_address"
+	xmlns:bons2="http://ei/core/individual_name"
+	xmlns:bons4="http://ei/core/business_party_characteristic"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons5="http://ei/core/typed_addressx3">
+	<xsd:import schemaLocation="TypedAddressX3.xsd"
+		namespace="http://ei/core/typed_addressx3">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/business_party_characteristic"
+		schemaLocation="BusinessPartyCharacteristic.xsd" />
+
+	<xsd:import namespace="http://ei/core/telecomm_electronic_address"
+		schemaLocation="TelecommElectronicAddress.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/individual_name"
+		schemaLocation="IndividualName.xsd">
+	</xsd:import>
+
+	<xsd:import namespace="http://ei/core/individual_identifierx1"
+		schemaLocation="IndividualIdentifierX1.xsd" />
+
+
+
+
+	<xsd:complexType name="BusinessParty">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="IndividualIdentifier"
+				type="bons0:IndividualIdentifier">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="IndividualName" type="bons2:IndividualName">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="BPTypedAddress" type="bons5:TypedAddress">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="BPTelecommElectronicAddress"
+				type="bons1:TelecommElectronicAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPDurableKey"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an unique identifier assigned to an instance of a business party for its entire lifetime.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BPTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies a type of business party.
+The E1T01581 Corporate Table contains valid values for this element in the 'BP_TY_C' column. </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="BusinessPartyCharacteristic"
+				type="bons4:BusinessPartyCharacteristic" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessPartyName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of a business party.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

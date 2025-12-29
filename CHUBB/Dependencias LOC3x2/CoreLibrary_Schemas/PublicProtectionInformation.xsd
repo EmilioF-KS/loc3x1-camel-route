@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/public_protection_information">
+	<xsd:complexType name="PublicProtectionInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="PublicProtectionInformationName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a name that identifies a specific public protection.
+
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PublicProtectionInformationValue" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element would contain the value of the specific public protection that is specificed in the name element.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

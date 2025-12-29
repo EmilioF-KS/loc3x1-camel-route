@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://ei/location/location_retrieval_loc3x2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://ei/location/location_retrieval_loc3x2_http" name="LocationRetrievalLOC3X2Http" targetNamespace="http://ei/location/location_retrieval_loc3x2_http">
+  <wsdl:import location="LocationRetrievalLOC3X2.wsdl" namespace="http://ei/location/location_retrieval_loc3x2"/>
+  <wsdl:binding name="LocationRetrievalLOC3X2HttpBinding" type="Port_0:LocationRetrievalLOC3X2">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocation">
+      <soap:operation soapAction="GetLocation"/>
+      <wsdl:input name="GetLocationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLocationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SimpleFaultReply">
+        <soap:fault name="SimpleFaultReply" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LocationRetrievalLOC3X2HttpService">
+    <wsdl:port binding="this:LocationRetrievalLOC3X2HttpBinding" name="LocationRetrievalLOC3X2HTTP_LocationRetrievalLOC3X2HttpPort">
+      <soap:address location="http://localhost:9083/LocationServicesWeb/sca/LocationRetrievalLOC3X2Http"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.*; @Data @NoArgsConstructor @AllArgsConstructor public class ErrorItem{ private String errorCode,errorDescription,errorSeverityLevel,errorSourceIdentifier; }

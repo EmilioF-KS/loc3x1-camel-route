@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/parent_activity_status_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons2="http://ei/core/activity_status_information"
+	xmlns:bons1="http://ei/crm/detailed_error">
+	<xsd:import schemaLocation="DetailedError.xsd"
+		namespace="http://ei/crm/detailed_error">
+	</xsd:import>
+	<xsd:import schemaLocation="ActivityStatusInformation.xsd"
+		namespace="http://ei/core/activity_status_information">
+	</xsd:import>
+
+	<xsd:complexType name="ParentActivityStatusInformation">
+
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="ActivityStatusInformation"
+				type="bons2:ActivityStatusInformation">
+			</xsd:element>
+
+
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="DetailedError" type="bons1:DetailedError">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="StatusCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies a code that identifies the type of error.
+
+Valid values are 
+'S' for Sucess, 'E' for Error or 'W' for Warning.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies the type of activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityTypeName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies the type of activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ServiceInterfaceName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies the name of the service interface (e.g. ProducerValidationPRD1X2).</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityStartTimestamp"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the start time of the activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ActivityEndTimestamp"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the end time of the activity.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+
+
+
+	</xsd:complexType>
+</xsd:schema>

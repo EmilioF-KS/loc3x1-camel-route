@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/location/location_role"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/location/locationx4">
+	<xsd:import schemaLocation="LocationX4.xsd"
+		namespace="http://ei/location/locationx4">
+	</xsd:import>
+	<xsd:complexType name="LocationRole">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="LocationRoleName"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Location"
+				type="bons0:Location">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

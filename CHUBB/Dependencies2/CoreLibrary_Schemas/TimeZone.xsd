@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/time_zone"  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="TimeZone">
+		<xsd:annotation>
+      <xsd:documentation>A 'Time Zone' refers to any of 24 regions loosely divided by longitude, where the same standard time is kept.  The Greenwich Meridian, also known as the prime meridian or International Meridian, is the "starting point" for dividing the Earth's surface into time zones. Each time zone is 15 degrees of longitude wide (with local variations) and the local time is one hour earlier than the zone immediately to the east on the map.</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="TimeZoneCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code for a Time Zone.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TimeZoneAbbreviation" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an abbreviation for a time zone.  Time Zone abbreviations are not unique.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TimeZoneName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the time zone.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CoordinatedUniversalTimeOffsetValue" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a time zones offset from the Coordinated Universal Time.  (UTC)  UTC is the time standard commonly used across the world. The world's timing centers have agreed to keep their time scales closely synchronized - or coordinated.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

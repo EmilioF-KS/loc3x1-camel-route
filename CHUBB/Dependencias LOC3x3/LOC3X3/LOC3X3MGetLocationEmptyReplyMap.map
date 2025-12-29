@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocation3X3MResponseMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x3m%257DGetLocation3X3MResponseMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X3MGetLocationErrorReplyMap="http://LocationServices/LOC3X3" xmlns:getLocationWithLineOfBusinessInfoResponse="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithLineOfBusinessInfoResponse/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3MGetLocationEmptyReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="getLocationWithLineOfBusinessInfoResponse:getLocationWithLineOfBusinessInfoResponse" name="getLocationWithLineOfBusinessInfoResponse"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocation3X3MResponseMsg:GetLocation3X3MResponseMsg" name="GetLocation3X3MResponseMsg"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="getLocationWithLineOfBusinessInfoResponse" property="getLocationWithLineOfBusinessInfoResponse/locationOutput/StatusInformation/StatusCode"/>
+      <map:output businessObjectVariableRef="GetLocation3X3MResponseMsg" property="GetLocation3X3MResponse/GetLocationReply/StatusInformation/StatusCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:submap submapName="LOC3X3MGetLocationErrorReplyMap:LOC3X3MErrorMap">
+      <map:input businessObjectVariableRef="getLocationWithLineOfBusinessInfoResponse" property="getLocationWithLineOfBusinessInfoResponse/locationOutput/StatusInformation/Error" variableName="Error"/>
+      <map:output businessObjectVariableRef="GetLocation3X3MResponseMsg" property="GetLocation3X3MResponse/GetLocationReply/StatusInformation/Error" variableName="Error_1"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

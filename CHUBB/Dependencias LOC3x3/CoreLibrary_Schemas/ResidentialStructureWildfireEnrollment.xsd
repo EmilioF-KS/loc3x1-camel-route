@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/residential_structure_wildfire_enrollment"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/business_contactx2"
+	xmlns:bons2="http://ei/core/typed_address">
+	<xsd:import schemaLocation="TypedAddress.xsd"
+		namespace="http://ei/core/typed_address">
+	</xsd:import>
+	<xsd:import schemaLocation="BusinessContactX2.xsd"
+		namespace="http://ei/core/business_contactx2">
+	</xsd:import>
+	<xsd:complexType name="ResidentialStructureWildfireEnrollment">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="TypedAddress"
+				type="bons2:TypedAddress" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessContact"
+				type="bons0:BusinessContact" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SubjectSequenceNumber"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a sequential Subject Number.  It is incremented each time a new subject of insurance is added to a policy.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EnrollmentEffectiveDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>The element contains the date the enrollment option takes effect.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0"
+				name="WildfireEnrollmentOptionsName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the wildfire enrollent status including enrolled, eligible, ineligible, and error.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="DataSourceName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the data source.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

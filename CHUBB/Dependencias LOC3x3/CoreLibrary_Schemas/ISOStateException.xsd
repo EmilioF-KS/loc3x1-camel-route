@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/iso_state_exception"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="ISOStateException">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="ISOStateExceptionCodeDescription" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the describes the code that identifies a more specific breakdown of coverages or rating characteristics that are assigned by the State for reporting of specific lines of business, as per the ISO Commercial Stat Plan.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOStateExceptionCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the code that identifies a more specific breakdown of coverages or rating characteristics that are assigned by the State for reporting of specific lines of business, as per the ISO Commercial Stat Plan.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

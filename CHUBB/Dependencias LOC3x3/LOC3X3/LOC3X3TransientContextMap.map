@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:LOC3X3TransientContextMap="http://LocationServices/LOC3X3" xmlns:ServiceMessageObject="smo://smo/name%3Dwsdl-primary/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252FLocationServices%252FLOC3X3%257DLOC3X3CorrelationContext/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithLineOfBusinessInfoResponse/xpath%3D%252F/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3TransientContextMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="ServiceMessageObject:ServiceMessageObject" name="ServiceMessageObject"/>
+  <map:outputBusinessObjectVariable businessObjectRef="ServiceMessageObject:ServiceMessageObject" name="ServiceMessageObject_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/transient/Location"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/StatusInformation"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/transient/StatusInformation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/correlation/LineOfBusinessTypeCode"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/correlation/LineOfBusinessTypeCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/StatusInformation"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/StatusInformation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/correlation/AsOfDate"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/correlation/AsOfDate"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

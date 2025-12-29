@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/location_occupancy_calculation"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="LocationOccupancyCalculation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="LocationOccupancyCalcName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the location occupancy calculation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="LocationOccupancyCalcAmount" type="xsd:decimal">
+				<xsd:annotation><xsd:documentation>This element contains a location occupancy calculation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LocationOccupancyCalcValue"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a location occupancy calculation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

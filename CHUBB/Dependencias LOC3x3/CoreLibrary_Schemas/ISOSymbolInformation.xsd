@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/iso_symbol_information">
+	<xsd:complexType name="ISOSymbolInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ISOSymbolCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code from ISO.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOSymbolDescription"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a description from ISO.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SymbolCrossReferenceName"
+				type="xsd:string" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>This element contains the name of another context where the symbol code is applicable.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

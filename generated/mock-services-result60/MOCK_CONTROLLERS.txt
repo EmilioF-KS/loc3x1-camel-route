@@ -1,0 +1,2 @@
+LocationRetrievalLOC3X2/GetLocation -> /api/mock/LocationRetrievalLOC3X2/GetLocation :: package com.locationretrievalloc3x2process.mock.api.selected :: req=contracts/selected/GetLocationRequest.xsd rep=contracts/selected/GetLocationReply.xsd
+LocationRetrievalLOC3X2B/GetLocation3X2B -> /api/mock/LocationRetrievalLOC3X2B/GetLocation3X2B :: package com.locationretrievalloc3x2process.mock.api.selected :: req=none rep=none

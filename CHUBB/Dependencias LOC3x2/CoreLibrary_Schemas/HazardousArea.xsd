@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/hazardous_area">
+	<xsd:complexType name="HazardousArea">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="HazardousAreaTypeCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the type code for the Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousAreaTypeName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a name which describes the type of Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousAreaName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousAreaCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the code of the Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousTierCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the tier code of the Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousAreaIndicator"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element indicates if this is a Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="HazardousAreaText"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains text that describes the Hazardous Area.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DataSourceName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the data source.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

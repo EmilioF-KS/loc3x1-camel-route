@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationWithTaxingJurisdictions3X1MRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x1m%257DGetLocationWithTaxingJurisdictions3X1MRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap="http://Location2MediationModule" xmlns:getLocationWithTaxInfoRequest="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithTaxInfoRequest/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location2MediationModule">
+  <map:name>LOC3X1MGetLocationWithTaxingJurisdictionsRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg:GetLocationWithTaxingJurisdictions3X1MRequestMsg" name="GetLocationWithTaxingJurisdictions3X1MRequestMsg"/>
+  <map:outputBusinessObjectVariable businessObjectRef="getLocationWithTaxInfoRequest:getLocationWithTaxInfoRequest" name="getLocationWithTaxInfoRequest"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AddressLine1"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/addressLine1"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CityName"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/cityName"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/StateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/stateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/CountryCode"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/countryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/PostalCode"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/postalCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/LocationPlaceCode"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/address/locationPlaceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationWithTaxingJurisdictions3X1MRequestMsg" property="GetLocationWithTaxingJurisdictions3X1M/GetLocationWithTaxingJurisdictionsRequest/AsOfDate"/>
+      <map:output businessObjectVariableRef="getLocationWithTaxInfoRequest" property="getLocationWithTaxInfo/asOfDate"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

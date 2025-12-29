@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://ei/location/location_retrieval_loc3x3b" xmlns:ns10="http://ei/location/us_gl_territory_information_retrieval_loc810x1" xmlns:ns11="http://ei/location/us_flood_information_retrieval_loc807x1" xmlns:ns2="http://ei/location/location_retrieval_loc3x3m" xmlns:ns3="http://ei/corporate/state_or_province_retrieval_crp11x1" xmlns:ns4="http://ei/country/country_retrieval_crp10X1" xmlns:ns5="http://ei/location/address_standardization_loc2x2" xmlns:ns6="http://ei/location/us_mmi_retrieval_loc804x1" xmlns:ns7="http://ei/location/uk_flood_information_retrieval_loc802x1" xmlns:ns8="http://ei/location/au_flood_information_retrieval_loc805x1" xmlns:ns9="http://LocationMediationLibrary/EliasELGP040/elgp040_z2/ELGP040" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="LocationRetrievalLOC3X3Process" name="LocationRetrievalLOC3X3Process">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:LocationRetrievalLOC3X3B">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="LocationRetrievalLOC3X3MPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:LocationRetrievalLOC3X3M"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="LocationRetrievalLOC3X3Mediation"/>
+    </reference>
+    <reference name="StateOrProvinceRetrievalCRP11X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns3:StateOrProvinceRetrievalCRP11X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="StateOrProvinceRetrievalCRP11X1Partner"/>
+    </reference>
+    <reference name="CountryRetrievalCRP10X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns4:CountryRetrievalCRP10X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="CountryRetrievalCRP10X1Partner"/>
+    </reference>
+    <reference name="AddressStandardizationLOC2X2Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns5:AddressStandardizationLOC2X2"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="AddressStandardizationLOC2X2Mediation"/>
+    </reference>
+    <reference name="UKFloodInformationRetrievalLOC802X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns7:UKFloodInformationRetrievalLOC802X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="AddressStandardizationLOC2X2Mediation"/>
+    </reference>
+    <reference name="USMMIRetrievalLOC804X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns6:USMMIRetrievalLOC804X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="LocationRetrievalLOC3X3Mediation"/>
+    </reference>
+    <reference name="AUFloodInformationRetrievalLOC805X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns8:AUFloodInformationRetrievalLOC805X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <wire target="FloodInformationRetrievalMediation"/>
+    </reference>
+    <reference name="ELGP040Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns9:ELGP040"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability" value="bestEffort"/>
+      <wire target="LocationRetrievalLOC3X3Mediation"/>
+    </reference>
+    <reference name="USFloodInformationRetrievalLOC807X1Partner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns11:USFloodInformationRetrievalLOC807X1"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="LocationRetrievalLOC3X3Mediation"/>
+    </reference>
+  </references>
+  <implementation xsi:type="process:ProcessImplementation">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+    <process bpel="/LOC3X3/LocationRetrievalLOC3X3Process.bpel"/>
+  </implementation>
+</scdl:component>

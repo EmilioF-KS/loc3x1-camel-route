@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/custom_business_data"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="CustomBusinessData">
+		<xsd:annotation><xsd:documentation>This object is used for abstract data name/value (or other data type pairs).</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CustomBusinessDataName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the custom business data.  The value set for any/all use of this abstract element is set within the context of a specific service.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CustomBusinessDataValue"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a value associated with the CustomBusinessDataName.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CustomBusinessDataAmount"
+				type="xsd:decimal">
+				<xsd:annotation><xsd:documentation>This element contains an amount associated with the  CustomBusinessDataName.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CustomBusinessDataIndicator" type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>This element contains an indicator associated with the  CustomBusinessDataName.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CustomBusinessDataDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the date associated with the  CustomBusinessDataName.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CustomBusinessDataTimestamp" type="xsd:dateTime">
+				<xsd:annotation><xsd:documentation>This element contains the timestamp associated with the  CustomBusinessDataName.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CustomBusinessDataTypeName"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the name of the data type, such as string, decimal, date.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CustomBusinessDataCurrencyCode" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a code which indentifies the currency of the custom business data amount.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UnitOfMeasure"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies the measure for the Amount provided for Distance, Time, and Quantity Amounts. 
+Some valid values for this element would include day, weeks, months.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

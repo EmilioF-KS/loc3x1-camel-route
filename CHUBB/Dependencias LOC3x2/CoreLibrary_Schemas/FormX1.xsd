@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/formx1"
+	xmlns:bons0="http://ei/core/QuestionAndAnswer">
+	<xsd:import namespace="http://ei/core/QuestionAndAnswer"
+		schemaLocation="QuestionAndAnswer.xsd">
+	</xsd:import>
+	<xsd:complexType name="Form">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0"
+				name="QuestionsAndAnswers" type="bons0:QuestionAndAnswer">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the code that indentifies a Form.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of a Chubb, Government, or other standard form.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+			<xsd:element minOccurs="0" name="FormSequenceNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indentifies the order in which forms are attached to a policy or transaction.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormIssueDate"
+				type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date when a form was issued.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormRevisionEditionDate"
+				type="xsd:date">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the date when the form text was last modified.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="FormVersionNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indentifies the particular version of a Form.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="RelatedFormCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the Form Code of a related form, such as a parent form.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="AssociatedPolicyLevelName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the name of the Policy Level to which this Form is attached. Valid values include &quot;Policy&quot;,
+&quot;LineOfInsurance&quot;, &quot;LOB&quot;,&amp;nbsp;&quot;Subject&quot; or the name of a Subject, &quot;Coverage&quot; or the name of a Coverage.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AsoociatedPolicyLevelNumber" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the number of the Policy to which this form is associated.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AssociatedPolicyLevelCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the coverage code or line of insurance type code on the the Policy to which this form is associated.  The value in "AssociatedPolicyLevelName" allows which code is provided to be distinguished.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="UnderwriterApprovalIndicator" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element indicates if the underwriter has reviewed and approved the Form.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormPrintIndicator"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is used to indicate if this form should be printed.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="AssociatedParentLevelName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element the name of the parent (the level above) level of the policy level to which a form is attached.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AssociatedParentLevelCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains a code of the parent (the level above) level of the policy level to which a form is attached.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="AssociatedPolicyLevelItemId" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains an id that uniquely identifies an instance of the item within a particular level of the Policy model.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FormCategoryGroupName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the name of the descriptive grouping to which forms are assigned. Some valid values include: declaration,
+amendment, endorsement, and correspondence</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="FormRevisionEditionYearMonth" type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the year and month the form text was last modified.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

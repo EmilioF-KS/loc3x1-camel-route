@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.*; @Data @NoArgsConstructor @AllArgsConstructor public class SimpleFault{ private String faultMessageText; }

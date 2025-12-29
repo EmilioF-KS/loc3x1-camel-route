@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="LocationRetrievalLOC3X3M" targetNamespace="http://ei/location/location_retrieval_loc3x3m" xmlns:bons2="http://ei/core/simplefault" xmlns:bons5="http://ei/location/get_location_request_loc3x3m" xmlns:bons6="http://ei/location/get_location_reply_loc3x3m" xmlns:bons7="http://ei/location/get_location_list_request_loc3x3m" xmlns:bons8="http://ei/location/get_location_list_reply_loc3x3m" xmlns:tns="http://ei/location/location_retrieval_loc3x3m" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://ei/location/location_retrieval_loc3x3m" xmlns:bons12="http://ei/core/simplefault">
+      <xsd:import namespace="http://ei/location/get_location_list_reply_loc3x3m" schemaLocation="GetLocationListReply.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_list_request_loc3x3m" schemaLocation="GetLocationListRequest.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_reply_loc3x3m" schemaLocation="GetLocationReply.xsd"/>
+      <xsd:import namespace="http://ei/location/get_location_request_loc3x3m" schemaLocation="GetLocationRequest.xsd"/>
+      <xsd:import namespace="http://ei/core/simplefault" schemaLocation="../PrivateSchemas/SimpleFault.xsd"/>
+      <xsd:element name="GetLocation3X3M">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationRequest" nillable="true" type="bons5:GetLocationRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLocation3X3MResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationReply" nillable="true" type="bons6:GetLocationReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SimpleFault" nillable="true" type="bons12:SimpleFault"/>
+      <xsd:element name="GetLocationList3X3M">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationListRequest" nillable="true" type="bons7:GetLocationListRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetLocationList3X3MResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetLocationListReply" nillable="true" type="bons8:GetLocationListReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SimpleFault1" nillable="true" type="bons12:SimpleFault"/>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="GetLocation3X3MRequestMsg">
+    <wsdl:part element="tns:GetLocation3X3M" name="GetLocation3X3MParameters1"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocation3X3MResponseMsg">
+    <wsdl:part element="tns:GetLocation3X3MResponse" name="GetLocation3X3MResult1"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocation3X3M_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationList3X3MRequestMsg">
+    <wsdl:part element="tns:GetLocationList3X3M" name="GetLocationList3X3MParameters1"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationList3X3MResponseMsg">
+    <wsdl:part element="tns:GetLocationList3X3MResponse" name="GetLocationList3X3MResult1"/>
+  </wsdl:message>
+    <wsdl:message name="GetLocationList3X3M_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault1" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:portType name="LocationRetrievalLOC3X3M">
+    <wsdl:operation name="GetLocation3X3M">
+      <wsdl:input message="tns:GetLocation3X3MRequestMsg" name="GetLocation3X3MRequest"/>
+      <wsdl:output message="tns:GetLocation3X3MResponseMsg" name="GetLocation3X3MResponse"/>
+      <wsdl:fault message="tns:GetLocation3X3M_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationList3X3M">
+      <wsdl:input message="tns:GetLocationList3X3MRequestMsg" name="GetLocationList3X3MRequest"/>
+      <wsdl:output message="tns:GetLocationList3X3MResponseMsg" name="GetLocationList3X3MResponse"/>
+      <wsdl:fault message="tns:GetLocationList3X3M_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

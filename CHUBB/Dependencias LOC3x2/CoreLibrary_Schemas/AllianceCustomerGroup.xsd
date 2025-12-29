@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/alliance_customer_group"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="AllianceCustomerGroup">
+		<xsd:sequence>
+			<xsd:element name="AllianceCustomerGroupCode"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains a value that uniquely defines an Alliance specific Chubb customer group.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AllianceCustomerGroupName"
+				type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+						
+					<xsd:documentation>This element contains the name associated with Alliance customer group.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

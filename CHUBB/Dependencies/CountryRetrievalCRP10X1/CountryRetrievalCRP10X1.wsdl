@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bons1="http://ei/core/simplefault" xmlns:bons2="http://ei/corporate/get_country_request_crp10x1" xmlns:bons3="http://ei/corporate/get_country_list_reply_crp10x1" xmlns:bons5="http://ei/core/country" xmlns:tns="http://ei/country/country_retrieval_crp10X1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CountryRetrievalCRP10X1" targetNamespace="http://ei/country/country_retrieval_crp10X1">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://ei/country/country_retrieval_crp10X1" xmlns:bons1="http://ei/core/simplefault" xmlns:bons2="http://ei/corporate/get_country_request_crp10x1" xmlns:bons3="http://ei/corporate/get_country_list_reply_crp10x1" xmlns:bons5="http://ei/core/country" xmlns:tns="http://ei/country/country_retrieval_crp10X1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://ei/core/country" schemaLocation="../Schemas/Country.xsd"/>
+            <xsd:import namespace="http://ei/corporate/get_country_list_reply_crp10x1" schemaLocation="GetCountryListReply.xsd"/>
+            <xsd:import namespace="http://ei/corporate/get_country_request_crp10x1" schemaLocation="GetCountryRequest.xsd"/>
+            <xsd:import namespace="http://ei/core/simplefault" schemaLocation="../PrivateSchemas/SimpleFault.xsd"/>
+      <xsd:element name="GetCountryList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AsOfDate" nillable="true" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation>This element contains the search start date.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetCountryListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetCountryListReply" nillable="true" type="bons3:GetCountryListReply"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetCountry">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="GetCountryRequest" nillable="true" type="bons2:GetCountryRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetCountryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Country" nillable="true" type="bons5:Country"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SimpleFault" nillable="true" type="bons1:SimpleFault"/>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="GetCountryListRequestMsg">
+    <wsdl:part element="tns:GetCountryList" name="GetCountryListParameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetCountryListResponseMsg">
+    <wsdl:part element="tns:GetCountryListResponse" name="GetCountryListResult"/>
+  </wsdl:message>
+    <wsdl:message name="GetCountryRequestMsg">
+    <wsdl:part element="tns:GetCountry" name="GetCountryParameters"/>
+  </wsdl:message>
+    <wsdl:message name="GetCountryResponseMsg">
+    <wsdl:part element="tns:GetCountryResponse" name="GetCountryResult"/>
+  </wsdl:message>
+    <wsdl:message name="GetCountryList_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:message name="GetCountry_SimpleFaultReplyMsg">
+    <wsdl:part element="tns:SimpleFault" name="SimpleFaultReply"/>
+  </wsdl:message>
+    <wsdl:portType name="CountryRetrievalCRP10X1">
+    <wsdl:operation name="GetCountry">
+      <wsdl:input message="tns:GetCountryRequestMsg" name="GetCountryRequest"/>
+      <wsdl:output message="tns:GetCountryResponseMsg" name="GetCountryResponse"/>
+      <wsdl:fault message="tns:GetCountry_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+     <wsdl:operation name="GetCountryList">
+      <wsdl:input message="tns:GetCountryListRequestMsg" name="GetCountryListRequest"/>
+      <wsdl:output message="tns:GetCountryListResponseMsg" name="GetCountryListResponse"/>
+      <wsdl:fault message="tns:GetCountryList_SimpleFaultReplyMsg" name="SimpleFaultReply"/>
+    </wsdl:operation>
+    
+  </wsdl:portType>
+</wsdl:definitions>

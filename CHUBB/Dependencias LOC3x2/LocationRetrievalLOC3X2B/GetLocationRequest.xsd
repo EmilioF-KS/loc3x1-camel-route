@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/location/get_location_request_loc3x2b"
+	xmlns:bons0="http://ei/location/standardized_addressx2">
+	<xsd:import schemaLocation="../Schemas/StandardizedAddressX2.xsd"
+		namespace="http://ei/location/standardized_addressx2">
+	</xsd:import>
+	<xsd:complexType name="GetLocationRequest">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="StandardizedAddress"
+				type="bons0:StandardizedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="unbounded"
+				name="AdditionalOptionsText" type="xsd:string"><xsd:annotation><xsd:documentation>This element specifies which options the consumer wants executed on this service.   
+For example, this coud be used for enrichment.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

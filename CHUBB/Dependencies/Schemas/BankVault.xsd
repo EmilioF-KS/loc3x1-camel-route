@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/bank_vault" xmlns:bons1="http://ei/core/typed_addressx3" xmlns:bons2="http://ei/core/business_party_characteristic" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://ei/core/typed_addressx3" schemaLocation="TypedAddressX3.xsd">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/business_party_characteristic" schemaLocation="BusinessPartyCharacteristic.xsd">
+	</xsd:import>
+
+	<xsd:complexType name="BankVault">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="BusinessPartyCharacteristic" type="bons2:BusinessPartyCharacteristic">
+			</xsd:element>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="TypedAddress" type="bons1:TypedAddress">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BankVaultNumber" type="xsd:integer">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a sequential number assigned to identify a bank vault where jewelry is stored.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BankName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of a bank.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

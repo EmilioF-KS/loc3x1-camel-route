@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/marketing_program" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="MarketingProgram">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="MarketingProgramCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element identifies policies written as part of a specific marketing program. 
+The Corporate table E1T00091 contains valid values for this element in the "MRKTG_PGM_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MarketingProgramDescription" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is used to describe the *Marketing Program Code*.
+The Corporate table E1T00091 contains valid values for this element in the "MRKTG_PGM_DE" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/naics_information">
+	<xsd:complexType name="NAICSInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="NAICSCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies a category of business as defined by the United States, Mexican, and Canadian governments. 
+The E1T00611 Corporate Table contains valid values for this element in the &quot;NAICS_C&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="NAICSName"
+				type="xsd:string"><xsd:annotation><xsd:documentation> This element identifies a category of business as defined by the United States, Mexican, and Canadian governments. 
+The E1T00611 Corporate Table contains valid values for this element in the &quot;NAICS_NA&quot; column.</xsd:documentation></xsd:annotation>
+			</xsd:element>		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

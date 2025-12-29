@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/document_search_criteria"
+	xmlns:bons0="http://ei/core/document_search_subcriteria">
+	<xsd:import schemaLocation="DocumentSearchSubcriteria.xsd"
+		namespace="http://ei/core/document_search_subcriteria">
+	</xsd:import>
+	<xsd:complexType name="DocumentSearchCriteria">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="DocumentSearchCriteriaName"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DocumentSearchCriteriaValue" type="xsd:string"
+				maxOccurs="1">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentSearchCriteriaDate"
+				type="xsd:date">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentSearchCriteria"
+				type="xsd:dateTime">
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="DocumentSearchCriteriaIndicator" type="xsd:boolean">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DocumentSearchSubcriteria"
+				type="bons0:DocumentSearchSubcriteria" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,1 @@
+package com.example.location.model; import lombok.Data; import java.util.*; @Data public class LocationListReply{ private List<Location> location=new ArrayList<>(); private StatusInformation statusInformation=new StatusInformation(); }

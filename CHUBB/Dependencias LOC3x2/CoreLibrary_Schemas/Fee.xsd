@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/fee" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="Fee">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="FeeTypeReferenceCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element indentifies the type of fee.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies a specific fee type.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeePercent" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the percent of the fee to be paid.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeeAmount" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the amount of state fee that has been paid by the Insured or mortgagee.
+
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeeCurrencyCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element contains a code which indentifies the currency of the fee amount.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeeRate" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation>This element contains the rate that will be applied to determine the Fee Amount.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PostalStateAbbreviation" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element is the two character US Postal State Abbreviation. 
+The E1T00111 Corporate Table contains valid values for this element in the "PSTL_ST_AB" column. 
+				</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FeeRecoupmentIndicator" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>This element contains an indicator that the fee has been previously paid and needs to be recouped.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

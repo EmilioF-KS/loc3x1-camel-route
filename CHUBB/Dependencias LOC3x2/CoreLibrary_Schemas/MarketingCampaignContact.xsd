@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/marketing_campaign_contact"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://ei/core/campaign_contact_alliance_sbu_association"
+	xmlns:bons1="http://ei/core/business_contact_role"
+	xmlns:bons2="http://ei/core/business_contact_type">
+	<xsd:import schemaLocation="BusinessContactType.xsd"
+		namespace="http://ei/core/business_contact_type">
+	</xsd:import>
+	<xsd:import schemaLocation="BusinessContactRole.xsd"
+		namespace="http://ei/core/business_contact_role">
+	</xsd:import>
+	<xsd:import
+		schemaLocation="CampaignContactAllianceSBUAssociation.xsd"
+		namespace="http://ei/core/campaign_contact_alliance_sbu_association">
+	</xsd:import>
+	<xsd:complexType name="MarketingCampaignContact">
+		<xsd:sequence>
+			<xsd:element minOccurs="0"
+				name="CampaignContactAllianceSBUAssociation"
+				type="bons0:CampaignContactAllianceSBUAssociation"
+				maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessContactRole"
+				type="bons1:BusinessContactRole" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="BusinessContactType"
+				type="bons2:BusinessContactType" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element name="ContactSequenceNumber" type="xsd:integer"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element uniquely identifies a contact.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemContactId" type="xsd:string"
+				nillable="true" minOccurs="0">
+				<xsd:annotation>
+						<xsd:documentation>This element contains the unique identifier for the contact from the source system.</xsd:documentation>
+					</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

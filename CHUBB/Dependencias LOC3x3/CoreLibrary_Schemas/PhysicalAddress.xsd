@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://ei/core/physicaladdress"
+	xmlns:bons0="http://ei/core/address"
+	targetNamespace="http://ei/core/physicaladdress">
+	<xsd:import namespace="http://ei/core/address"
+		schemaLocation="Address.xsd" />
+
+	<xsd:complexType name="PhysicalAddressType">
+		<xsd:annotation><xsd:documentation>This is the information about  a physical location where Chubb has an insurance risk attached to it.</xsd:documentation></xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="bons0:AddressType">
+				<xsd:sequence>
+					<xsd:element name="LocationPlaceCode"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>This element is code assinged by Rand McNally to indentify the location within a State.
+This is also known as Rand McNally Place Code or Mc Nally Place Code.  Valid options for this element are in the RAND system.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FireDistrictCode"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifies a code  assigned by the state. It identifies a Municipal Fire 
+Department District. 
+
+The RAND system contains the valid values.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FreeTradeZoneClass"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifice the class code of policies written in the  *FREE TRADE ZONE*.
+
+Valid values are  '1' Class I Risk, '2' Class II Risks.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FreeTradeZoneCode"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>
+This element  identifies the postal abbreviation for the location of the 
+ *FREE TRADE ZONE*.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FreeTradeZoneRiskCode"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifice the code that  identifies the risks that are permitted to be written in the *FREE TRADE ZONE*  
+Class II Risks.
+
+The  E1T01361 Corporate Table contains valid values for this element.  </xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TaxIdentityCode"
+						type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifies the code that identifies a Political subdivisions within a state  for tax purposes.
+
+The RAND system contains the valid values.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TexasPlaceCode" type="xsd:string"
+						minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifies a code that identifies the city, within the state of Texas.   
+
+The RAND system contains the valid values.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TexasZoneCode" type="xsd:string"
+						minOccurs="0"><xsd:annotation><xsd:documentation>
+This element specifies the code that  identifies a  geographic area, 
+within the state of Texas. 
+
+The RAND system contains the valid values.</xsd:documentation></xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="PhysicalAddress" type="PhysicalAddressType" />
+
+</xsd:schema>

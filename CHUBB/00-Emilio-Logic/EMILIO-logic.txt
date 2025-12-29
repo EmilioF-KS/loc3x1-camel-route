@@ -1,0 +1,232 @@
+EMILIO:
+Hi Reynold Sebastian I'm working on the script that we talked about yesterday. Just to be sure, and I'm clear on this, these are the steps this script I'm building are following:
+ 
+Batch file that:
+
+1. Take the folder with the Java Orchestration (Here they are talking on Dependencies folder)
+2. Take the XSLTs, XSDs, WSDLs and all generated files
+3. Put all together in the Spring boot scaffolding
+4. Compile all the project 
+5. Do the manual things that have to do, for example change the endpoints to our Virtualized services
+6. Test as a microservice
+ 
+Is that right?
+
+
+EMILIO:
+Updating these steps: 
+0. Walkthrough to Alberto from scratch to build the Spring boot project, including the A.I inquiries  
+1. Build a Batch file that takes the folder with the Java Orchestration and following steps
+2. Take the XSLTs, XSDs, WSDLs and all generated files
+3. Put all together in the Spring boot scaffolding
+4. Compile all the project 
+5. Do the manual things that have to do, for example change the endpoints to our Virtualized services
+6. Test as a microservice
+
+Sessions with Alberto made to discuss these steps. Still working on step 0 to explain the whole process to Alberto
+
+
+EMILIO:
+
+1. Get a Spring Boot Project with the Camel Route
+2. Add Validation code 
+3. Add the Input from the XSD and create the Controller
+4. Add Mediation
+5. Add the REST Service calls
+6. Retrieve XSLT from MAPs 
+7. Camel java route to YAML to route
+
+EMILIO:
+Emilio used this prompt attached to the bpel file:
+"This is my BPEL File. I need to migrate to a modern orchestration, to a Spring Boot Java actually, using Apache Camel to handle this orchestration. Could you help me to get a Spring boot project with all the logic of the bpel, but using routes to path this orchestration? and could you give me a brief summary of the steps this bpel follows?"
+
+Generate the full Spring Boot project structure. Here Emilio obtained answer 1 (folder with prefix a1)
+
+EMILIO:
+Emilio also used this prompt as a 2nd option:
+"Could you please give me a Spring boot project zip with all the generated code, and the corresponding pom.xml for dependencies?"
+
+EMILIO:
+Emilio then used this prompt:
+"Create a Controller that receive a payload from a REST services, and once I have the data, send to the Camel route flow. Integrate it to the Spring boot project. The input should be mapped to the XSD I'm adding here."
+
+Here emilio obtained answer 2 (folder a2)
+
+
+EMILIO:
+Emilio then used this prompt:
+"I have a Mediation file related to the BPEL. Give me the corresponding java code and integrate to the Spring boot java project. I also have a Map with the Transformation of the response. Could you give me a XSLT that corresponds to this Map, in order to avoid Maps to transformation, and add it to the Spring boot project? and a XML (input and output) that match this XSL?"
+
+Here Emilio obtained answer 3 (folder a3)
+
+
+EMILIO:
+Alberto Hernandez this is the version containing the first 5 points of 7. I shared the screenshot with the Spring boot server running without problem
+
+Here Emilio shared folder 4 (folder with prefix a4)
+
+EMILIO:
+Working on the last 2 points
+ 
+Tested with these commands: 
+
+$ mvn clean package -DskipTests
+$ mvn spring-boot:run
+
+
+EMILIO:
+For point 5, the prompts were: 
+
+"First, could you please add the XSLTs to the Spring boot project? Also could you please help me with the CRP10X1/CRP11X1 REST Services creation? And add to the Spring Boot project. I'm adding the corresponding CRP10X1 files. I'll upload the corresponding CRP11X1 in my next request"
+
+I'm adding the CRP11X1 Sevice files in order to be added and have a closest version we want
+
+Here emilio provided results in folder a5
+
+
+EMILIO:
+Using Grok: Good news: I only used one prompt to request the project, and it seems nothing else was needed. The following prompts were for sending the files one by one. In the end, it told me it was able to build the project successfully, although I couldn't download the zip file to get it. Alberto Hernandez I think we can review this and it could be more helpful than request all in different prompts  
+ 
+Here Emilio provided results in folder a6
+
+
+EMILIO:
+Alberto Hernandez 6. Retrieve XSLT from MAPs
+
+Can I upload the Map file requests and responses to be added to the project? Here are the Requests and I'll upload the Responses later.
+
+The Map response and the code of the LOC3X1GetLocationListRequestMap.xml: <?xml version="1.0" encoding="UTF-8"?> <map:businessObjectMap xmlns:GetLocationList3X1BRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x1b%257DGetLocationList3X1BRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:GetLocationListRequestMsg="smo://smo/name%3Dwsdl-body/message%3D%257Bhttp%253A%252F%252Fei%252Flocation%252Flocation_retrieval_loc3x1%257DGetLocationListRequestMsg/xpath%3D%252Fbody/namespace%3DBOMap/smo.xsd" xmlns:LOC3X1GetLocationListRequestMap="http://Location2MediationModule" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://Location2MediationModule">   <map:name>LOC3X1GetLocationListRequestMap</map:name>   <map:inputBusinessObjectVariable businessObjectRef="GetLocationListRequestMsg:GetLocationListRequestMsg" name="GetLocationListRequestMsg"/>   <map:outputBusinessObjectVariable businessObjectRef="GetLocationList3X1BRequestMsg:GetLocationList3X1BRequestMsg" name="GetLocationList3X1BRequestMsg"/>   <map:propertyMap executionOrder="1">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/AddressLine1"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/AddressLine1"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="2">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/AddressLine2"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/AddressLine2"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="3">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/CityName"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/CityName"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="4">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/StateOrProvinceCode"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/StateOrProvinceCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="5">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/PostalStateAbbreviation"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/PostalStateAbbreviation"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="6">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/PostalCode"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/PostalCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="7">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/LocationPlaceCode"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/LocationPlaceCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="8">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/CountryCode"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/CountryCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="9">     <map:move>       <map:input businessObjectVariableRef="GetLocationListRequestMsg" property="GetLocationList/GetLocationListRequest/CountryAbbreviation"/>       <map:output businessObjectVariableRef="GetLocationList3X1BRequestMsg" property="GetLocationList3X1B/GetLocationListRequest/CountryAbbreviation"/>     </map:move>   </map:propertyMap> </map:businessObjectMap>
+
+
+Here are the code of the Map and the Submap of the Response: 
+
+<?xml version="1.0" encoding="UTF-8"?> <map:businessObjectMap xmlns:GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap="http://LocationModule" xmlns:LocationListReply="http://ei/location/location_list_reply_loc3x1b" xmlns:location_list_reply_loc3x1m="http://ei/location/location_list_reply_loc3x1m" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationModule">   <map:name>GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap</map:name>   <map:inputBusinessObjectVariable businessObjectRef="location_list_reply_loc3x1m:LocationListReply" name="LocationListReply"/>   <map:outputBusinessObjectVariable businessObjectRef="LocationListReply:LocationListReply" name="LocationListReply_1"/>   <map:propertyMap executionOrder="1">     <map:submap submapName="GetLocationWithTaxingJurisdictionsLOC3X1BReplyMap:GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap">       <map:input businessObjectVariableRef="LocationListReply" property="Location" variableName="Location"/>       <map:output businessObjectVariableRef="LocationListReply_1" property="Location" variableName="Location_1"/>     </map:submap>   </map:propertyMap>   <map:propertyMap executionOrder="2">     <map:move>       <map:input businessObjectVariableRef="LocationListReply" property="StatusInformation"/>       <map:output businessObjectVariableRef="LocationListReply_1" property="StatusInformation"/>     </map:move>   </map:propertyMap> </map:businessObjectMap> and <?xml version="1.0" encoding="UTF-8"?> <map:businessObjectMap xmlns:GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap="http://LocationModule" xmlns:Location="http://ei/location/location" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationModule">   <map:name>GetLocationWithTaxingJurisdictionsLOC3X1BReplySubMap</map:name>   <map:inputBusinessObjectVariable businessObjectRef="Location:Location" name="Location"/>   <map:outputBusinessObjectVariable businessObjectRef="Location:Location" name="Location_1"/>   <map:propertyMap executionOrder="1">     <map:move>       <map:input businessObjectVariableRef="Location" property="LocationInformation/CityCode"/>       <map:output businessObjectVariableRef="Location_1" property="LocationInformation/CityCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="2">     <map:move>       <map:input businessObjectVariableRef="Location" property="LocationInformation/CountyCode"/>       <map:output businessObjectVariableRef="Location_1" property="LocationInformation/CountyCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="3">     <map:move>       <map:input businessObjectVariableRef="Location" property="LocationInformation/LicenseCode"/>       <map:output businessObjectVariableRef="Location_1" property="LocationInformation/LicenseCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="4">     <map:move>       <map:input businessObjectVariableRef="Location" property="LocationInformation/FireDistrictCode"/>       <map:output businessObjectVariableRef="Location_1" property="LocationInformation/FireDistrictCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="5">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/CityName"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CityName"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="6">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/CountyName"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountyName"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="7">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/StateOrProvinceCode"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/StateOrProvinceCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="8">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/StateOrProvinceName"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/StateOrProvinceName"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="9">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/PostalStateAbbreviation"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/PostalStateAbbreviation"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="10">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/PostalCode"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/PostalCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="11">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/CountryCode"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountryCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="12">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/CountryName"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/CountryName"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="13">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/LocationPlaceCode"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/LocationPlaceCode"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="14">     <map:move>       <map:input businessObjectVariableRef="Location" property="StandardizedAddress/POBoxIndicator"/>       <map:output businessObjectVariableRef="Location_1" property="StandardizedAddress/POBoxIndicator"/>     </map:move>   </map:propertyMap>   <map:propertyMap executionOrder="15">     <map:move>       <map:input businessObjectVariableRef="Location" property="TaxingJurisdiction"/>       <map:output businessObjectVariableRef="Location_1" property="TaxingJurisdiction"/>     </map:move>   </map:propertyMap> </map:businessObjectMap> 
+
+
+Thanks
+
+Here emilio provided content of folder a7
+
+EMILIO:
+Alberto Hernandez 7. Camel java route to YAML to route  Dejar el XSLT como utilidad y mantener el mapeo Java actual (el que ya tengo) para JSON end‑to‑end. Un favor mas, pudieras generar proyecto nuevamente pero con el flujo de Camel dentro de un YAML, en vez de estar dentro de la clase de Java?
+
+Agrega el flujo 'with jurisdictions' en YAML también
+
+Final structure after the seven points (seven prompts at least)
+
+Here Emilio provided content of folder with prefix a8
+
+
+EMILIO:
+
+http://localhost:8080/location/loc3x1
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+<p:LocationRequest xsi:type="p:LocationRequest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ei/location/location_request_loc3x1b">
+  <AddressLine1>237 Duffield Street</AddressLine1>
+  <CityName>BROOKLYN</CityName>
+  <PostalStateAbbreviation>NY</PostalStateAbbreviation>
+  <PostalCode>11242</PostalCode>
+  <CountryCode>8A</CountryCode>
+</p:LocationRequest>
+ 
+Output:
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+<LocationListReply>
+    <Location>
+        <LocationInformation>
+            <CityCode>016</CityCode>
+            <CountyCode>024</CountyCode>
+            <LocationClassificationCode>P</LocationClassificationCode>
+            <FireDistrictCode/>
+        </LocationInformation>
+        <StandardizedAddress>
+            <CityName>BROOKLYN                                </CityName>
+            <CountyName>KINGS                              </CountyName>
+            <StateOrProvinceCode>31 </StateOrProvinceCode>
+            <StateOrProvinceName>NEW YORK                 </StateOrProvinceName>
+            <PostalStateAbbreviation>NY</PostalStateAbbreviation>
+            <PostalCode>11242    </PostalCode>
+            <CountryCode>8A </CountryCode>
+            <CountryName>UNITED STATES      </CountryName>
+            <LocationPlaceCode>10022</LocationPlaceCode>
+            <POBoxIndicator>N</POBoxIndicator>
+        </StandardizedAddress>
+        <TaxingJurisdiction>
+            <TaxingJurisdictionTypeName>FireDistrict</TaxingJurisdictionTypeName>
+            <TaxingJurisdictionCode>9999  </TaxingJurisdictionCode>
+        </TaxingJurisdiction>
+        <TaxingJurisdiction>
+            <TaxingJurisdictionTypeName>TaxingTerritory</TaxingJurisdictionTypeName>
+            <TaxingJurisdictionCode/>
+            <TaxingJurisdictionName>NEW YORK                 </TaxingJurisdictionName>
+        </TaxingJurisdiction>
+    </Location>
+    <StatusInformation>
+        <StatusCode>W</StatusCode>
+        <Error>
+            <ErrorDescription>Missing Address Line 1 for FireDistrictCode</ErrorDescription>
+            <ErrorSourceIdentifier/>
+            <ErrorCode>W</ErrorCode>
+            <ErrorSeverityLevel/>
+        </Error>
+    </StatusInformation>
+</LocationListReply>
+ 
+The previous version with seven points is now with five:
+ 
+1. Get a Spring Boot Project with the Camel Route in YAML. Add Validation code for input.
+2. Add the Input from the XSD and create the Controller
+3. Add Mediation
+4. Add the REST Service calls
+5. Retrieve XSLT from MAPs
+ 
+Alberto Hernandez this is the Spring boot structure generated by the 7 steps previously used. It compiles and runs the services:
+
+Here Emilio Privided the results in folder with prefix a9
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

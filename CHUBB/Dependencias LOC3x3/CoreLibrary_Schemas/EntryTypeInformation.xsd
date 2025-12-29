@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/entry_type_information" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="EntryTypeInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="EntryTypeCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element identifies via a code the type of activity (business event) being processed.
+The E1T00271 Corporate Table contains valid values for this element in the "ENT_TY_C" column .</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EntryTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the type of activity (business event) being processed.
+The E1T00271 Corporate Table contains valid values for this element in the "ENT_TY_NA" column .</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EntryTypeAbbreviation" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains an abbreviation for the type of activity (business event) being processed.
+The E1T00271 Corporate Table contains valid values for this element in the "ENT_TY_AB" column .</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="MixedCaseEntryTypeName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the name of the type of activity (business event) being processed.
+The E1T00271 Corporate Table contains valid values for this element in the "MXC_ENT_TY_NA" column .</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

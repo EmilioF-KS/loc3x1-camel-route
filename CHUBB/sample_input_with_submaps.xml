@@ -1,0 +1,33 @@
+<se_1:getLocationWithTaxInfoResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dto="http://dto.rand.chubb.com" xmlns:se="wsdl.http://service.rand.chubb.com" xmlns:se_1="http://service.rand.chubb.com" xmlns:p="http://www.ibm.com/websphere/sibx/smo/v6.0.1">
+      <location>
+        <dto:locationPlaceCode>10022</dto:locationPlaceCode>
+        <dto:cityName>BROOKLYN                                </dto:cityName>
+        <dto:cityCode>016</dto:cityCode>
+        <dto:cityNameSort>BROOKLYN            </dto:cityNameSort>
+        <dto:countyName>KINGS                              </dto:countyName>
+        <dto:countyCode>024</dto:countyCode>
+        <dto:stateProvinceAbbreviation>N Y </dto:stateProvinceAbbreviation>
+        <dto:postalStateAbbreviation>NY</dto:postalStateAbbreviation>
+        <dto:stateOrProvinceName>NEW YORK                 </dto:stateOrProvinceName>
+        <dto:stateOrProvinceCode>31 </dto:stateOrProvinceCode>
+        <dto:countryName>UNITED STATES      </dto:countryName>
+        <dto:countryCode>8A </dto:countryCode>
+        <dto:postalCode>11242    </dto:postalCode>
+        <dto:fireDistrictCode>9999  </dto:fireDistrictCode>
+        <dto:locationClassCode>P</dto:locationClassCode>
+        <dto:windstormZoneIndicator>N</dto:windstormZoneIndicator>
+        <dto:windstormZoneCode>   </dto:windstormZoneCode>
+        <dto:nextMcNallyPlaceCode>     </dto:nextMcNallyPlaceCode>
+        <dto:poBoxIndicator>N</dto:poBoxIndicator>
+        <dto:useMcNallyPlaceCode>     </dto:useMcNallyPlaceCode>
+        <dto:useZipCode>         </dto:useZipCode>
+        <dto:mcNallyIncluisonPlaceCode>51000</dto:mcNallyIncluisonPlaceCode>
+        <dto:taxInfo>
+          <dto:changeEffectiveDate>2021-06-23</dto:changeEffectiveDate>
+          <dto:taxCode>     </dto:taxCode>
+          <dto:iriCode>      </dto:iriCode>
+          <dto:licenseCode>      </dto:licenseCode>
+          <dto:alternateTaxCode>     </dto:alternateTaxCode>
+        </dto:taxInfo>
+      </location>
+    </se_1:getLocationWithTaxInfoResponse>

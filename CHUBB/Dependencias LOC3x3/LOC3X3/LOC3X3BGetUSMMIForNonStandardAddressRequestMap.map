@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationRequest="http://ei/location/get_location_request_loc3x3b" xmlns:GetUSMMIRequest="http://ei/location/get_us_mmi_request_loc804x1" xmlns:LOC3X3BGetUSMMIForNonStandardAddressRequestMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BGetUSMMIForNonStandardAddressRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationRequest:GetLocationRequest" name="GetLocationRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetUSMMIRequest:GetUSMMIRequest" name="GetUSMMIRequest"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequest" property="AsOfDate"/>
+      <map:output businessObjectVariableRef="GetUSMMIRequest" property="AsOfDate"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationRequest" property="StandardizedAddress"/>
+      <map:output businessObjectVariableRef="GetUSMMIRequest" property="StandardizedAddress"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

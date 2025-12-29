@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ei/core/get_access_user_information"
+	xmlns:bons0="http://ei/core/customization"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons2="http://ei/core/addressx3">
+	<xsd:import schemaLocation="AddressX3.xsd"
+		namespace="http://ei/core/addressx3">
+	</xsd:import>
+	<xsd:import namespace="http://ei/core/customization"
+		schemaLocation="Customization.xsd">
+	</xsd:import>
+	<xsd:complexType name="GetAccessUserInformation">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="GetAccessAddress"
+				type="bons2:Address">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="Customization"
+				type="bons0:Customization">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ExternalUserId"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains the the user id assigned to a user who needs to access systems from outside Chubb's network. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is used to sign on to an application.  
+This is also known as RACFId.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PersonGIN"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains a generated identification number associated with a person's External User Id.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserFirstName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the first name of the person who is using the system. This name is used in association with User Name.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserLastName"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the last name of the person who is using the system. This name is used in association with User Name.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserTypeCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element represents the possible type user. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserTypeDescription"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element describes the specifc user type.   </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="UserStatusCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains the state of whether the user is actively engaged with a system or not.  A sample value for this element is ACTIVE.   </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="LanguageLocaleCode"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element represents a unique language distinction. It is a combination of the ISO Codes for language and country e.g., 'EN_US' english spoken in the region of the United States.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TimeZoneCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element contains time zone which is a region on earth that has a uniform standard time for legal, commercial, and social purposes.  
+A sample value for this element is EST which represents Eastern Standard Time.  </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="EmailAddress"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's e-mail address.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PhoneNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a person's phone number.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DelegationCode"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        
+        <xsd:documentation>This element contains a free-form code which represents a relationship to an organization or a reporting structure.  
+This element can contain a 3 position branch code or BranchAbbreviation.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element is a Chubb ID number for an agent or broker.  
+This is also known as the Agent Number.
+The AGTAGDA1 Corporate Table contains valid values for this element in the &quot;AGT_N&quot; column.
+
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ProducerSubNumber"
+				type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>This element identifies a subdivision of business within an agent or broker.
+This also known as Sub Agent Number or Sub Producer Number.
+The AGTAGDA1 Corporate Table contains valid values for this element in the &quot;SUB_AGT_N&quot; column.
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="ProducerName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is the name of an agent or broker.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

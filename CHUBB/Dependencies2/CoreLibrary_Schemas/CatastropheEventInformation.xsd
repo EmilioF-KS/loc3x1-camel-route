@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/catastrophe_event_information"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="CatastropheEventInformation">
+		<xsd:annotation><xsd:documentation>A Catastrophe Event can be defined  by the  Insurance Services Offices Limited {ISO} or  the Chubb National Cat Team.  The valid Chubb Catastrophes are tracked in the Chubb Corporate Catastrophe Code Table E1T01431.  The catastrophe codes are re-used and therefore other Catastrophe attributes are important, such as the Start and End Date.</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CatastropheNumber"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element identifies natural catastrophes and is assigned by the Insurance Services Offices Limited {ISO} or  the CHUBB National Cat Team.  It identifies all claims pertaining to a particular catastrophe.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_N &quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheYear"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies the year the catastrophe occurred and is used with CatastropheNumber and CatastropheStartDate as the unique index.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_Y &quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheStartDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element is the date a catastrophe occurred.  If a catastrophe occurred over more than one day, this is the first date of the event.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_STRT_D&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheEndDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element is the last date of a catastrophe.  For example, if there is a hurricane, this is the date that is recognized by Chubb or by a Standards entity as the final date for that hurricane.  Also see Catastrophe Start Date.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_END_D&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheShortName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is a shortened version of a Catastrophe Name.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_SHRT_NA&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CatastropheMixedCaseShortName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is a mixed case version of the Catastrophe Short Name.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_MXCSH_NA&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the name given to a catastrophic event e.g., 'Cat 60 Wind and Thunderstorm Event' or 'Hurricane Katrina', etc.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_NA&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheMixedCaseName"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is the mixed case version of a Catastrophe Name.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_MXC_NA&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CatastropheMixedCaseDescription" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element is an area text and describes the catastrophic event in mixed case format.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_MXC_DE&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="CatastropheIdEntityCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element identifies the group that declared an event to be a 'catastrophe' and assigned a catastrophe code to the event.  e.g., ISO-PCS {Insurance Services Offices Limited - Property Claim Services} or CHUBB National Cat Team.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CAT_ID_ENTTY_C&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ClaimGroupCatastropheIdNumber" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element uniquely identifies the claim group {the catastrophe} from which this claim is a result.
+The Corporate table E1T01431 contains the valid values for this element in the &quot;CLMGRP_CAT_ID_N&quot;  column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

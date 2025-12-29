@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GetLocationListReply="http://ei/location/get_location_list_reply_loc3x3b" xmlns:GetLocationListReply_1="http://ei/location/get_location_list_reply_loc3x3m" xmlns:LOC3X3BGetLocationListReplyMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3BGetLocationListReplyMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GetLocationListReply_1:GetLocationListReply" name="GetLocationListReply"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GetLocationListReply:GetLocationListReply" name="GetLocationListReply_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GetLocationListReply" property="StatusInformation"/>
+      <map:output businessObjectVariableRef="GetLocationListReply_1" property="StatusInformation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:submap submapName="LOC3X3BGetLocationListReplyMap:LOC3X3BGetLocationListReplySubmap">
+      <map:input businessObjectVariableRef="GetLocationListReply" property="Location" variableName="Location"/>
+      <map:output businessObjectVariableRef="GetLocationListReply_1" property="Location" variableName="Location_1"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

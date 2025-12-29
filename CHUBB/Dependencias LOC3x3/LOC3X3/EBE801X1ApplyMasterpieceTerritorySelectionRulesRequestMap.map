@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:EBE801X1ApplyMasterpieceTerritorySelectionRulesRequest3Ma="http://LocationServices/LOC3X3" xmlns:ServiceMessageObject="smo://smo/name%3Dwsdl-primary/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252FLocationServices%252FLOC3X3%257DLOC3X3CorrelationContext/message%3D%257Bhttp%253A%252F%252Fcpi%252Fbusiness%252Fmasterpiece_territory_selection_rules_ebe801x1%257DApplyMasterpieceTerritorySelectionRulesRequestMsg/xpath%3D%252F/namespace%3DBOMap/smo.xsd" xmlns:ServiceMessageObject_1="smo://smo/name%3Dwsdl-primary/transientContext%3D%257Bhttp%253A%252F%252Fdto.rand.chubb.com%257DLocationOutput/correlationContext%3D%257Bhttp%253A%252F%252FLocationServices%252FLOC3X3%257DLOC3X3CorrelationContext/message%3D%257Bhttp%253A%252F%252Fservice.rand.chubb.com%257DgetLocationWithLineOfBusinessInfoResponse/xpath%3D%252F/namespace%3DBOMap/smo.xsd" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>EBE801X1ApplyMasterpieceTerritorySelectionRulesRequestMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="ServiceMessageObject_1:ServiceMessageObject" name="ServiceMessageObject"/>
+  <map:outputBusinessObjectVariable businessObjectRef="ServiceMessageObject:ServiceMessageObject" name="ServiceMessageObject_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/correlation"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/correlation"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/transient"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="context/transient"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location/stateOrProvinceCode"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/ApplyMasterpieceTerritorySelectionRules/ApplyMasterpieceTerritorySelectionRulesRequest/StateOrProvinceCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location/countryCode"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/ApplyMasterpieceTerritorySelectionRules/ApplyMasterpieceTerritorySelectionRulesRequest/CountryCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:move>
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="context/correlation/AsOfDate"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/ApplyMasterpieceTerritorySelectionRules/ApplyMasterpieceTerritorySelectionRulesRequest/AsOfDate"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:submap submapName="EBE801X1ApplyMasterpieceTerritorySelectionRulesRequest3Ma:MasterpieceInfoToRatingTerritoryMap">
+      <map:input businessObjectVariableRef="ServiceMessageObject" property="body/getLocationWithLineOfBusinessInfoResponse/locationOutput/Location/masterpieceInfo" variableName="MasterpieceInfo"/>
+      <map:output businessObjectVariableRef="ServiceMessageObject_1" property="body/ApplyMasterpieceTerritorySelectionRules/ApplyMasterpieceTerritorySelectionRulesRequest/MasterpieceTerritoryInformation" variableName="MasterpieceTerritoryInformation"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/source_system_user_profile_id"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="SourceSystemUserProfileId">
+		<xsd:annotation><xsd:documentation>This object is used to identify the user profile id for each specific source system. </xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="UserProfileSourceSystemId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the identifier of the system the User Profile Id is associated with.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="UserProfileSourceSystemName" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the name of the system the User Profile Id is associated with.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemUserProfileId"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the user profile id for a specific source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

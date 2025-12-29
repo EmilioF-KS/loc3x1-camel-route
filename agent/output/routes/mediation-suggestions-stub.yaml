@@ -1,0 +1,10 @@
+# mediation-suggestions-stub.yaml
+# REVIEW_REQUIRED: true
+- route:
+    id: mediation-suggestions-stub
+    from:
+      uri: direct:mediation-suggestions
+    steps:
+      - log: 'Applying suggested mediation stubs'
+      - set-body:
+          simple: ${body}

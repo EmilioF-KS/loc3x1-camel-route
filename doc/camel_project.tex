@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\title{LOC3X1/LOC3X2 Camel Project: Current Architecture and Operations}
+\author{Alberto Hernandez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document reflects the current implementation of the generated \texttt{result} folder: a Spring Boot 3.3.x + Apache Camel 4.7.x service with a single aggregated Camel YAML route file, per–operation XML REST controllers, and mediation routes for XSLT transforms. It documents inputs (\texttt{Dependencies}, \texttt{Dependencies2}), contract assembly, XSLT generation from IBM \texttt{.map} files, and how to build and run in isolation on port \texttt{8081}.
+\end{abstract}
+
+\section{Technology Stack}
+\begin{itemize}
+  \item Java 17+ (runtime tested with Java 25).
+  \item Spring Boot 3.3.4.
+  \item Apache Camel 4.7.0 with YAML DSL.
+  \item Starters: \texttt{camel-platform-http-starter}, \texttt{camel-http-starter}, \texttt{camel-xslt-starter}.
+\end{itemize}
+
+\section{Inputs and Generation}
+\begin{itemize}
+  \item Client inputs are \texttt{CHUBB/Dependencies} and \texttt{CHUBB/Dependencies2}. Only these trees are scanned.
+  \item Contracts (WSDL/XSD) are copied into \texttt{src/main/resources/contracts/selected/} preserving service folders.
+  \item Controllers are generated per operation only when a matching Request/Reply XSD pair exists.
+  \item IBM \texttt{.map} files found under \texttt{Dependencies/Maps} are converted to XSLT into \texttt{src/main/resources/xslt/}.
+\end{itemize}
+
+\section{Runtime Architecture}
+\subsection{Aggregated Routes}
+\begin{itemize}
+  \item Single YAML: \texttt{src/main/resources/routes/loc-service.yaml}.
+  \item Inbound: \texttt{platform-http:/loc/<Operation>} per flow.
+  \item Transform: \texttt{to: xslt:classpath:xslt/<...>.xsl} for request/response mapping.
+  \item Forward: \texttt{http://localhost:8081/svc/<Operation>?bridgeEndpoint=true\&throwExceptionOnFailure=false}.
+  \item Global \texttt{onException} defined first; logs at ERROR and returns a simple XML error body when needed.
+\end{itemize}
+
+\subsection{Controllers}
+\begin{itemize}
+  \item Endpoints: \texttt{POST /svc/<Operation>} (XML in/out).
+  \item Each controller references its operation–specific Request/Reply XSDs from \texttt{contracts/selected}.
+  \item For integration runs, controllers return a minimal XML reply; strict validation can be re–enabled.
+\end{itemize}
+
+\subsection{Mediation}
+\begin{itemize}
+  \item Java route builder: \texttt{com.example.mediation.MediationRoutes}.
+  \item Always includes \texttt{direct:mediation/identity} \(\to\) \texttt{xslt:classpath:xslt/identity.xsl}.
+  \item Registers \texttt{direct:mediation/<mapName>} for each converted XSLT.
+\end{itemize}
+
+\section{Project Layout (result)}
+\begin{itemize}
+  \item \texttt{src/main/java/com/example/controller}: per–operation XML controllers.
+  \item \texttt{src/main/java/com/example/mediation}: mediation routes class.
+  \item \texttt{src/main/resources/routes}: \texttt{loc-service.yaml}.
+  \item \texttt{src/main/resources/xslt}: \texttt{identity.xsl} and any generated XSLTs.
+  \item \texttt{src/main/resources/contracts/selected}: WSDL/XSD organised per service.
+  \item \texttt{samples}: auto–generated minimal request samples per operation.
+\end{itemize}
+
+\section{Build and Run}
+\subsection{Build}
+\begin{verbatim}
+mvn clean package -DskipTests
+\end{verbatim}
+
+\subsection{Run}
+\begin{verbatim}
+java -jar -Dserver.port=8081 target/loc-service.jar
+\end{verbatim}
+or dev mode:
+\begin{verbatim}
+mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=8081"
+\end{verbatim}
+
+\subsection{Smoke Tests}
+\begin{verbatim}
+curl -sf http://localhost:8081/actuator/health
+curl -i -X POST -H "Content-Type: application/xml" \
+  --data-binary @samples/<Operation>-request-min.xml \
+  http://localhost:8081/loc/<Operation>
+\end{verbatim}
+
+\section{Notes and Troubleshooting}
+\begin{itemize}
+  \item If maps are not present, mediation still works via \texttt{identity.xsl}.
+  \item Controllers are generated only when Request/Reply XSDs exist; absent pairs are skipped.
+  \item Use jar run for lean checks; use \texttt{spring-boot:run} for live log debugging.
+\end{itemize}
+
+\end{document}

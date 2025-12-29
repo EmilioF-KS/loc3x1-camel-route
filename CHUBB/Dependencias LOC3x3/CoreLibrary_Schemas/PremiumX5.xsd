@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ei/core/premiumx5" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="Premium">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="PremiumTypeReferenceCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code that identifies a specific premium type.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a name that identifies a specific premium type.  </xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumAmount" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the amount of money to be paid to the  insurance company in exchange for the protection provided in the contract.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumCurrencyCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a code which identifies the currency of the premium amount.
+The E1T01030 Corporate table contains the valid values for this element in the "ISO_CURNCY_C" column.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumRate" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the Rate that will be applied to determine the Premium Amount.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="FlatPremiumIndicator" type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>This element specifies if the premium amount is an established value and requires no premium calculation.
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumCurrencyExchangeRate" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element is used in a calculation to convert premium amounts from one currency to another currency.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="OriginalCurrencyCode" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element is a code for the original currency prior to translation.  
+The E1T00121 Corporate Table contains valid values for this element in the "ORIG_CUR_C" column. 
+</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PremiumCurrencyUsageName" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>This element contains the details on the usage of this currency of the Premium.    This can be used to help indentify which is the local, reported, or  accounting currency.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+
+			<xsd:element minOccurs="0" name="PremiumPercent" type="xsd:decimal">
+				<xsd:annotation>
+          <xsd:documentation>This element contains a percent of the total premium.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

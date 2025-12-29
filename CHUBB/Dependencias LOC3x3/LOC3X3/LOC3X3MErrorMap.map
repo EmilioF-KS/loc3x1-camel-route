@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:Error="http://ei/core/error" xmlns:Error_1="http://dto.rand.chubb.com" xmlns:LOC3X3MErrorMap="http://LocationServices/LOC3X3" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://LocationServices/LOC3X3">
+  <map:name>LOC3X3MErrorMap</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="Error_1:Error" name="Error"/>
+  <map:outputBusinessObjectVariable businessObjectRef="Error:Error" name="Error_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="Error" property="ErrorCode"/>
+      <map:output businessObjectVariableRef="Error_1" property="ErrorCode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="Error" property="ErrorDescription"/>
+      <map:output businessObjectVariableRef="Error_1" property="ErrorDescription"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="Error" property="ErrorSeverityLevel"/>
+      <map:output businessObjectVariableRef="Error_1" property="ErrorSeverityLevel"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="Error" property="ErrorSourceIdentifier"/>
+      <map:output businessObjectVariableRef="Error_1" property="ErrorSourceIdentifier"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/currency">
+	<xsd:complexType name="Currency">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ISOCurrencyCode"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the code used by the International Standards Organization (ISO) to identify a currency.
+The E1T01031  Corporate Table contains valid values for this element in the &quot;ISO_CURNCY_C &quot; column. 
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ISOCurrencyDescription"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the description associated with the ISO Currency Code.
+The E1T01031  Corporate Table contains valid values for this element in the &quot;ISO_CURNCY_DE&quot; column. </xsd:documentation></xsd:annotation>
+			</xsd:element>			<xsd:element minOccurs="0" name="WINSCurrencyCode"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the code from the WINS Premium System used to identify a currency. The E1T01031 Corporate Table contains valid values for this element in the WINS_CURR_C column.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

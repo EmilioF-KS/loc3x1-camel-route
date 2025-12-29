@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons1="http://ei/core/messageinformation"
+	targetNamespace="http://ei/core/messageinformation">
+
+	<xsd:element name="MessageInformation">
+		<xsd:complexType>
+			<xsd:annotation><xsd:documentation>This Business Object has information that is in every message</xsd:documentation></xsd:annotation>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="SystemId"
+					type="xsd:string">
+					<xsd:annotation><xsd:documentation>
+This element identifies internal/external systems. 
+Also know as System Source Code. 
+
+Corporate table E1T00871 contains the valid values.</xsd:documentation></xsd:annotation>
+				</xsd:element>
+
+				<xsd:element minOccurs="0" name="UserId"
+					type="xsd:string"><xsd:annotation><xsd:documentation>
+This element identifies the person who is using a system or accessing a service.
+ 
+This is also know as a RCAF ID. Used By WIP and PBSS.</xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element minOccurs="0" name="BusinessClassification"
+					type="xsd:string">
+					<xsd:annotation><xsd:documentation>
+This element is a name used to  look up parameters within Process Server. 
+It will also be used as part of the path name for storing files in Xythos.
+ 
+The only valid value so far is &quot;StarrAviation&quot;</xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

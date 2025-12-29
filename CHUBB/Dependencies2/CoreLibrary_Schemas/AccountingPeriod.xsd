@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ei/core/accounting_period">
+	<xsd:complexType name="AccountingPeriod">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="CalendarDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element contains a day of the calendar month.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="DailyGroupNumber"
+				type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element  identifies each daily processing cycle in an accounting period. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="AccountDate"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains a date of the specific Chubb Accounting Period.
+Valid values for this element must be in the format YYYYMM.</xsd:documentation></xsd:annotation>
+			</xsd:element>			<xsd:element minOccurs="0" name="PLSAccountMonthStartDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the first date of the Account Month for Premium and Loss Processing.
+
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PLSAccountMonthEndDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the last date of the Account Month for Premium and Loss Processing.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PLSAccountMonthStartJuilanDate" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the first date of the Account Month for Premium and Loss Processing in Julian Format.
+Valid values for this element must be in the format YYYYDDD.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="PLSAccountMonthEndJulianDate" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the last date of the Account Month for Premium and Loss Processing in Julian Format.
+Valid values for this element must be in the format YYYYDDD.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ExpenseAccountMonthStartDate" type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the first date of the Account Month for Expense processing. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="ExpenseAccountMonthEndDate"
+				type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the last date of the Account Month for Expense processing. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ExpenseAccountMonthStartJuilanDate" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the first date of the Account Month for Expense Processing in Julian Format.
+Valid values for this element must be in the format YYYYDDD.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="ExpenseAccountMonthEndJuilanDate" type="xsd:string">
+				<xsd:annotation><xsd:documentation>This element contains the last date of the Account Month for Expense Processing in Julian Format.
+Valid values for this element must be in the format YYYYDDD.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="CorporateReferenceDataFreezeDate" type="xsd:date">
+				<xsd:annotation><xsd:documentation>This element contains the last date that corporate reference table changes can be made for an Account Month.
+
+</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

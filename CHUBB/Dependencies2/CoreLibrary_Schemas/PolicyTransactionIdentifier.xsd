@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://ei/core/policy_transaction_identifier"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="PolicyTransactionIdentifier">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="TransactionGroupId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element is a unique id of up to 26 characters used to identify the group of transactions.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemTransactionId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains the transaction id as it is known by the sourcre system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0"
+				name="SourceSystemTransactionTypeName" type="xsd:string"><xsd:annotation><xsd:documentation>This element is the name of the transaction type as it is called by the source system. </xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="SourceSystemPolicyTermId"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element contains an indentifier, which can be a GIN, that uniquely identifies the policy term in the source system.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="PolicyNumber"
+				type="xsd:string"><xsd:annotation><xsd:documentation>This element identifies an insurance contract.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="TransactionEffectiveDate"
+				type="xsd:date"><xsd:annotation><xsd:documentation>This element is the date when changes made to information on a policy transaction are to take effect.  This element is also known as the Attaching Date and the ChangeEffectiveDate.</xsd:documentation></xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,112 @@
+\begin{thebibliography}{10}
+
+\bibitem{langgraph-docs}
+LangChain AI.
+\newblock Langgraph documentation.
+\newblock \url{https://langchain-ai.github.io/langgraph/}.
+\newblock Accessed 2025-11.
+
+\bibitem{jackson-xml}
+FasterXML.
+\newblock Jackson xml module.
+\newblock \url{https://github.com/FasterXML/jackson-dataformat-xml}.
+\newblock Accessed 2025-11.
+
+\bibitem{camel-docs}
+Apache~Software Foundation.
+\newblock Apache camel documentation.
+\newblock \url{https://camel.apache.org/manual/latest/}.
+\newblock Accessed 2025-11.
+
+\bibitem{cxf-docs}
+Apache~Software Foundation.
+\newblock Apache cxf documentation.
+\newblock \url{https://cxf.apache.org/docs/}.
+\newblock Accessed 2025-11.
+
+\bibitem{maven-docs}
+Apache~Software Foundation.
+\newblock Apache maven project.
+\newblock \url{https://maven.apache.org/guides/}.
+\newblock Accessed 2025-11.
+
+\bibitem{jaxb-docs}
+Eclipse Foundation.
+\newblock Jakarta xml binding (jaxb) specification.
+\newblock \url{https://projects.eclipse.org/projects/ee4j.jaxb/specification}.
+\newblock Accessed 2025-11.
+
+\bibitem{jaxws-docs}
+Eclipse Foundation.
+\newblock Jakarta xml web services (jax-ws).
+\newblock \url{https://jakarta.ee/specifications/xml-web-services/}.
+\newblock Accessed 2025-11.
+
+\bibitem{lxml-docs}
+lxml Project.
+\newblock lxml: Xml and html with python.
+\newblock \url{https://lxml.de/}.
+\newblock Accessed 2025-11.
+
+\bibitem{bpel-spec}
+OASIS.
+\newblock Oasis bpel 2.0 specification.
+\newblock \url{https://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.html}.
+\newblock Accessed 2025-11.
+
+\bibitem{spring-boot}
+Pivotal/VMware.
+\newblock Spring boot reference documentation.
+\newblock
+  \url{https://docs.spring.io/spring-boot/docs/current/reference/html/}.
+\newblock Accessed 2025-11.
+
+\bibitem{lombok}
+Lombok Team.
+\newblock Project lombok documentation.
+\newblock \url{https://projectlombok.org/}.
+\newblock Accessed 2025-11.
+
+\bibitem{mapstruct}
+MapStruct Team.
+\newblock Mapstruct reference guide.
+\newblock \url{https://mapstruct.org/documentation/stable/reference/html/}.
+\newblock Accessed 2025-11.
+
+\bibitem{ollama-docs}
+Ollama Team.
+\newblock Ollama documentation.
+\newblock \url{https://ollama.com/docs}.
+\newblock Accessed 2025-11.
+
+\bibitem{fastapi-docs}
+Tiangolo.
+\newblock Fastapi documentation.
+\newblock \url{https://fastapi.tiangolo.com/}.
+\newblock Accessed 2025-11.
+
+\bibitem{zeep-docs}
+Michael van Tessel and Contributors.
+\newblock Zeep soap client documentation.
+\newblock \url{https://docs.python-zeep.org/en/master/}.
+\newblock Accessed 2025-11.
+
+\bibitem{soap-spec}
+W3C.
+\newblock Soap 1.2 (w3c recommendation).
+\newblock \url{https://www.w3.org/TR/soap12-part1/}.
+\newblock Accessed 2025-11.
+
+\bibitem{wsdl-spec}
+W3C.
+\newblock Web services description language (wsdl) 1.1.
+\newblock \url{https://www.w3.org/TR/wsdl}.
+\newblock Accessed 2025-11.
+
+\bibitem{xslt-spec}
+W3C.
+\newblock Xsl transformations (xslt) 1.0/2.0.
+\newblock \url{https://www.w3.org/TR/xslt-30/}.
+\newblock Accessed 2025-11.
+
+\end{thebibliography}
